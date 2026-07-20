@@ -1,0 +1,1089 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<meta name="description" content="Cool Zone Co. — residential & commercial AC and heating repair in Northwest Austin since 1997. Call (512) 795-0779.">
+<meta name="theme-color" content="#131c24">
+<title>Cool Zone Co. — AC &amp; Heating Repair · Northwest Austin · Since 1997</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cg stroke='%2356c8ef' stroke-width='1.8' stroke-linecap='round'%3E%3Cline x1='10' y1='2' x2='10' y2='18'/%3E%3Cline x1='3.1' y1='6' x2='16.9' y2='14'/%3E%3Cline x1='16.9' y1='6' x2='3.1' y2='14'/%3E%3C/g%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&display=swap" rel="stylesheet">
+<style>
+  /* ============================================================
+     COOL ZONE CO. — design concept
+     Steel/slate · one cold accent · diagonal edges · thin rules
+     ============================================================ */
+
+  :root {
+    --ink:        #131c24;   /* deep slate */
+    --ink-2:      #1a2632;
+    --steel:      #eceff2;   /* page ground */
+    --steel-2:    #e2e7ec;
+    --paper:      #ffffff;
+    --cold:       #56c8ef;   /* cold accent, dark grounds */
+    --cold-deep:  #1e7fa6;
+    --cold-ink:   #0f6e93;   /* cold accent, light grounds (AA text) */
+    --mut-d:      #a2b3c2;   /* muted text on dark */
+    --mut-l:      #4c5a66;   /* muted text on light */
+    --line-l:     rgba(19, 28, 36, .16);
+    --line-l-soft:rgba(19, 28, 36, .08);
+    --line-d:     rgba(255, 255, 255, .16);
+    --line-d-soft:rgba(255, 255, 255, .07);
+    --slant:      clamp(2.75rem, 6vw, 5.25rem);
+    --wrap:       1140px;
+    --font:       "Archivo", "Helvetica Neue", Arial, sans-serif;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--font);
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--ink);
+    background: var(--steel);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    padding-bottom: calc(4.25rem + env(safe-area-inset-bottom)); /* room for fixed call bar */
+  }
+
+  ::selection { background: var(--cold); color: var(--ink); }
+
+  a { color: inherit; }
+
+  :focus-visible {
+    outline: 2px solid var(--cold-ink);
+    outline-offset: 3px;
+    border-radius: 1px;
+  }
+  .on-dark :focus-visible { outline-color: var(--cold); }
+
+  .wrap {
+    width: min(var(--wrap), 100% - 2.5rem);
+    margin-inline: auto;
+  }
+
+  /* ---- type utilities -------------------------------------- */
+
+  .kicker {
+    font-size: .72rem;
+    font-weight: 640;
+    letter-spacing: .17em;
+    text-transform: uppercase;
+    color: var(--cold-ink);
+  }
+  .on-dark .kicker { color: var(--cold); }
+
+  h1, h2 {
+    font-stretch: 112%;
+    font-weight: 660;
+    line-height: 1.04;
+    letter-spacing: -.015em;
+    text-wrap: balance;
+  }
+
+  h2 { font-size: clamp(1.9rem, 4.2vw, 3rem); }
+
+  /* Section header: thin rule + kicker + index number */
+  .sec-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 1rem;
+    border-top: 1px solid var(--line-l);
+    padding-top: .8rem;
+    margin-bottom: clamp(2.25rem, 5vw, 3.5rem);
+  }
+  .on-dark .sec-head { border-top-color: var(--line-d); }
+  .sec-head .idx {
+    font-size: .72rem;
+    font-weight: 620;
+    letter-spacing: .14em;
+    color: var(--mut-l);
+  }
+  .on-dark .sec-head .idx { color: var(--mut-d); }
+
+  /* ============================================================
+     HERO — dark slate, diagonal bottom edge with cold sliver
+     ============================================================ */
+
+  .hero-shell {
+    background: linear-gradient(86deg, var(--cold-deep), var(--cold));
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - var(--slant)), 0 100%);
+  }
+
+  .hero {
+    background:
+      radial-gradient(58rem 34rem at 86% -12%, rgba(86, 200, 239, .13), transparent 62%),
+      repeating-linear-gradient(to bottom, var(--line-d-soft) 0 1px, transparent 1px 88px),
+      var(--ink);
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - var(--slant) - 8px), 0 calc(100% - 8px));
+    color: #f2f5f7;
+    padding-bottom: calc(var(--slant) + clamp(2.5rem, 6vw, 4.5rem));
+  }
+
+  /* ---- header ---------------------------------------------- */
+
+  .site-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1.35rem 0 1.2rem;
+    border-bottom: 1px solid var(--line-d-soft);
+  }
+
+  .wordmark {
+    display: inline-flex;
+    align-items: center;
+    gap: .6rem;
+    text-decoration: none;
+    font-size: .93rem;
+    font-weight: 700;
+    letter-spacing: .13em;
+  }
+  .wordmark svg { display: block; }
+  .wordmark .est {
+    margin-left: .35rem;
+    padding: .18rem .5rem .14rem;
+    border: 1px solid var(--line-d);
+    font-size: .6rem;
+    font-weight: 600;
+    letter-spacing: .16em;
+    color: var(--mut-d);
+  }
+
+  .site-nav { display: none; }
+
+  .head-call {
+    display: none;
+    text-decoration: none;
+    font-size: .88rem;
+    font-weight: 680;
+    letter-spacing: .05em;
+    padding: .55rem .95rem;
+    border: 1px solid var(--line-d);
+    transition: border-color .2s ease, color .2s ease;
+  }
+  .head-call:hover { border-color: var(--cold); color: var(--cold); }
+
+  /* ---- hero body ------------------------------------------- */
+
+  .hero-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 3rem;
+    padding-top: clamp(3rem, 8vw, 5.5rem);
+  }
+
+  .hero-eyebrow {
+    display: flex;
+    align-items: center;
+    gap: .9rem;
+    font-size: .72rem;
+    font-weight: 620;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--mut-d);
+    margin-bottom: 1.6rem;
+  }
+  .hero-eyebrow::before {
+    content: "";
+    width: 2.4rem;
+    height: 1px;
+    background: var(--cold);
+  }
+
+  .hero h1 {
+    font-size: clamp(2.65rem, 8vw, 5.4rem);
+    max-width: 13ch;
+  }
+  .hero h1 .dim { color: var(--mut-d); }
+
+  .hero-lede {
+    margin-top: 1.6rem;
+    max-width: 46ch;
+    font-size: clamp(1rem, 1.6vw, 1.13rem);
+    line-height: 1.7;
+    color: #cfd9e1;
+  }
+
+  .hero-cta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1rem 1.4rem;
+    margin-top: 2.3rem;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: .6rem;
+    text-decoration: none;
+    font-weight: 720;
+    font-size: .98rem;
+    letter-spacing: .02em;
+    padding: .95rem 1.5rem;
+    background: var(--cold);
+    color: var(--ink);
+    clip-path: polygon(0 0, calc(100% - 14px) 0, 100% 14px, 100% 100%, 0 100%);
+    transition: transform .18s ease, filter .18s ease;
+  }
+  .btn:hover  { transform: translateY(-2px); filter: brightness(1.06); }
+  .btn:active { transform: translateY(0); }
+  .btn svg { flex: none; }
+
+  .btn-quiet {
+    display: inline-flex;
+    align-items: center;
+    gap: .45rem;
+    text-decoration: none;
+    font-size: .85rem;
+    font-weight: 620;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--mut-d);
+    border-bottom: 1px solid var(--line-d);
+    padding-bottom: .3rem;
+    transition: color .2s ease, border-color .2s ease;
+  }
+  .btn-quiet:hover { color: var(--cold); border-color: var(--cold); }
+
+  .hero-foot {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .5rem 0;
+    margin-top: clamp(2.5rem, 6vw, 4rem);
+    border-top: 1px solid var(--line-d-soft);
+    padding-top: 1rem;
+    font-size: .7rem;
+    font-weight: 620;
+    letter-spacing: .15em;
+    text-transform: uppercase;
+    color: var(--mut-d);
+  }
+  .hero-foot span { display: inline-flex; align-items: center; }
+  .hero-foot span + span::before {
+    content: "";
+    display: inline-block;
+    width: 1px;
+    height: .85em;
+    background: var(--line-d);
+    margin: 0 1.1rem;
+    transform: skewX(-18deg);
+  }
+  .hero-foot b { color: #e6edf2; font-weight: 680; }
+
+  /* ---- temperature scale ----------------------------------- */
+
+  .hero-scale { display: none; }
+  .hero-scale figcaption {
+    margin-top: .9rem;
+    font-size: .62rem;
+    font-weight: 620;
+    letter-spacing: .22em;
+    text-transform: uppercase;
+    color: var(--mut-d);
+    text-align: left;
+  }
+  .scale-label   { font-size: 11.5px; font-weight: 620; fill: #dfe8ee; letter-spacing: .04em; }
+  .scale-minor   { font-size: 9.5px;  font-weight: 500; fill: var(--mut-d); }
+  .scale-note    { font-size: 8px;    font-weight: 620; fill: var(--mut-d); letter-spacing: .18em; }
+  .scale-accent  { fill: var(--cold); }
+  .scale-accent-note { font-size: 8px; font-weight: 680; fill: var(--cold); letter-spacing: .18em; }
+
+  /* ============================================================
+     SECTIONS — shared rhythm
+     ============================================================ */
+
+  section { scroll-margin-top: 2rem; }
+
+  .band       { padding: clamp(3.5rem, 8vw, 6rem) 0; }
+  .band-tight { padding: clamp(3rem, 7vw, 5rem) 0; }
+
+  /* ============================================================
+     SERVICES — notched cards, thin-rule interiors
+     ============================================================ */
+
+  .services-intro {
+    max-width: 52ch;
+    color: var(--mut-l);
+    font-size: 1.05rem;
+    margin: -1.5rem 0 2.75rem;
+  }
+  .services-intro b { color: var(--ink); font-weight: 680; }
+
+  .cards {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.1rem;
+  }
+
+  .card {
+    position: relative;
+    background: var(--paper);
+    clip-path: polygon(0 0, calc(100% - 20px) 0, 100% 20px, 100% 100%, 0 100%);
+    filter: drop-shadow(0 1px 1px rgba(19, 28, 36, .05))
+            drop-shadow(0 14px 28px rgba(19, 28, 36, .07));
+    padding: 1.9rem 1.75rem 1.6rem;
+    transition: transform .22s ease;
+  }
+  @media (hover: hover) {
+    .card:hover { transform: translateY(-4px); }
+  }
+
+  .card .num {
+    position: absolute;
+    top: 1.35rem;
+    right: 1.6rem;
+    font-size: .7rem;
+    font-weight: 640;
+    letter-spacing: .16em;
+    color: var(--mut-l);
+  }
+
+  .card .icon {
+    color: var(--cold-ink);
+    margin-bottom: 1.3rem;
+  }
+  .card .icon svg { display: block; }
+
+  .card h3 {
+    font-size: 1.28rem;
+    font-weight: 700;
+    font-stretch: 108%;
+    letter-spacing: -.01em;
+    margin-bottom: .6rem;
+  }
+
+  .card p {
+    font-size: .95rem;
+    line-height: 1.65;
+    color: var(--mut-l);
+  }
+
+  .card .meta {
+    margin-top: 1.5rem;
+    padding-top: .85rem;
+    border-top: 1px solid var(--line-l-soft);
+    font-size: .68rem;
+    font-weight: 640;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: var(--cold-ink);
+  }
+
+  /* ============================================================
+     SERVICE AREA — copy + abstract plat map
+     ============================================================ */
+
+  .area { background: var(--steel-2); }
+
+  .area-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .area-copy p {
+    margin-top: 1.4rem;
+    max-width: 46ch;
+    color: var(--mut-l);
+    font-size: 1.02rem;
+    line-height: 1.7;
+  }
+  .area-copy p b { color: var(--ink); font-weight: 680; }
+
+  .addr-chip {
+    display: inline-flex;
+    align-items: flex-start;
+    gap: .7rem;
+    margin-top: 1.8rem;
+    padding: 1rem 1.2rem;
+    background: var(--paper);
+    clip-path: polygon(0 0, calc(100% - 14px) 0, 100% 14px, 100% 100%, 0 100%);
+    filter: drop-shadow(0 8px 18px rgba(19, 28, 36, .07));
+    font-size: .9rem;
+    line-height: 1.5;
+  }
+  .addr-chip svg { flex: none; color: var(--cold-ink); margin-top: .1rem; }
+  .addr-chip .lbl {
+    display: block;
+    font-size: .62rem;
+    font-weight: 640;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--mut-l);
+    margin-bottom: .2rem;
+  }
+  .addr-chip b { font-weight: 680; }
+
+  .map-card {
+    background: var(--paper);
+    clip-path: polygon(0 0, calc(100% - 22px) 0, 100% 22px, 100% 100%, 0 100%);
+    filter: drop-shadow(0 1px 1px rgba(19, 28, 36, .05))
+            drop-shadow(0 16px 32px rgba(19, 28, 36, .08));
+    padding: .75rem;
+  }
+  .map-card svg { display: block; width: 100%; height: auto; }
+
+  .map-tag      { font-size: 12px; font-weight: 700; fill: var(--ink); letter-spacing: .03em; }
+  .map-tag-sub  { font-size: 9px;  font-weight: 620; fill: var(--mut-l); letter-spacing: .16em; }
+  .map-zone     { font-size: 10px; font-weight: 640; fill: var(--mut-l); letter-spacing: .24em; }
+  .map-zip      { font-size: 92px; font-weight: 740; font-stretch: 112%; fill: none;
+                  stroke: rgba(19, 28, 36, .18); stroke-width: 1.1; letter-spacing: .02em; }
+  .map-n        { font-size: 11px; font-weight: 680; fill: var(--mut-l); letter-spacing: .1em; }
+
+  /* ============================================================
+     TRUST — dark band, diagonal top & bottom, ruled stats
+     ============================================================ */
+
+  .trust {
+    background:
+      repeating-linear-gradient(to bottom, var(--line-d-soft) 0 1px, transparent 1px 88px),
+      var(--ink-2);
+    color: #f2f5f7;
+    clip-path: polygon(0 var(--slant), 100% 0, 100% calc(100% - var(--slant)), 0 100%);
+    padding: calc(var(--slant) + clamp(2.75rem, 6vw, 4.25rem)) 0;
+  }
+
+  .trust h2 { max-width: 18ch; }
+
+  .stats {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    margin-top: clamp(2.5rem, 5vw, 3.75rem);
+  }
+
+  .stat {
+    border-top: 1px solid var(--line-d);
+    padding-top: 1.1rem;
+  }
+  .stat .n {
+    display: block;
+    font-size: clamp(3rem, 6vw, 4.4rem);
+    font-weight: 720;
+    font-stretch: 115%;
+    line-height: 1;
+    letter-spacing: -.01em;
+  }
+  .stat .n em { font-style: normal; color: var(--cold); }
+  .stat .d {
+    display: block;
+    margin-top: .7rem;
+    max-width: 30ch;
+    font-size: .88rem;
+    line-height: 1.55;
+    color: var(--mut-d);
+  }
+  .stat .d b { color: #e6edf2; font-weight: 680; }
+
+  .nextdoor {
+    margin-top: clamp(3rem, 6vw, 4.25rem);
+    border: 1px solid var(--line-d);
+    border-left: 3px solid var(--cold);
+    padding: clamp(1.6rem, 4vw, 2.4rem) clamp(1.4rem, 4vw, 2.4rem);
+    background: rgba(255, 255, 255, .02);
+  }
+  .nextdoor .lbl {
+    font-size: .68rem;
+    font-weight: 640;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: var(--cold);
+    margin-bottom: 1rem;
+  }
+  .nextdoor .big {
+    font-size: clamp(1.25rem, 2.6vw, 1.7rem);
+    font-weight: 620;
+    font-stretch: 106%;
+    line-height: 1.35;
+    letter-spacing: -.01em;
+    max-width: 34ch;
+  }
+  .nextdoor .big b { color: var(--cold); font-weight: 700; }
+  .nextdoor .fine {
+    margin-top: 1.1rem;
+    font-size: .85rem;
+    color: var(--mut-d);
+    max-width: 52ch;
+  }
+
+  /* ============================================================
+     CONTACT
+     ============================================================ */
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .tel-display {
+    display: inline-block;
+    margin-top: 1.4rem;
+    text-decoration: none;
+    font-size: clamp(2.1rem, 7vw, 4.1rem);
+    font-weight: 720;
+    font-stretch: 112%;
+    line-height: 1.05;
+    letter-spacing: -.015em;
+    color: var(--ink);
+    border-bottom: 3px solid var(--cold);
+    padding-bottom: .3rem;
+    transition: color .2s ease, border-color .2s ease;
+  }
+  .tel-display:hover { color: var(--cold-ink); border-color: var(--cold-ink); }
+
+  .contact-note {
+    margin-top: 1.2rem;
+    color: var(--mut-l);
+    font-size: .98rem;
+    max-width: 42ch;
+  }
+
+  .contact-side {
+    border-top: 1px solid var(--line-l);
+    padding-top: 1.4rem;
+    display: grid;
+    gap: 1.5rem;
+    align-content: start;
+    font-size: .95rem;
+  }
+  .contact-side .item .lbl {
+    display: block;
+    font-size: .64rem;
+    font-weight: 640;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--mut-l);
+    margin-bottom: .35rem;
+  }
+  .contact-side .item b { font-weight: 680; }
+  .contact-side .item a { text-decoration: none; }
+  .contact-side .item a:hover { color: var(--cold-ink); }
+
+  /* ============================================================
+     FOOTER
+     ============================================================ */
+
+  .site-foot {
+    background: var(--ink);
+    color: var(--mut-d);
+    border-top: 3px solid var(--cold);
+    padding: 2.75rem 0 2.5rem;
+    font-size: .82rem;
+  }
+
+  .foot-top {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding-bottom: 1.6rem;
+    border-bottom: 1px solid var(--line-d-soft);
+  }
+  .foot-top .wordmark { color: #e6edf2; }
+  .foot-contact {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .35rem 1.6rem;
+  }
+  .foot-contact a { text-decoration: none; }
+  .foot-contact a:hover { color: var(--cold); }
+
+  .foot-legal {
+    padding-top: 1.5rem;
+    display: grid;
+    gap: .45rem;
+    font-size: .76rem;
+    line-height: 1.6;
+  }
+  .foot-legal .concept { color: #cbd6df; }
+
+  /* ============================================================
+     FIXED CALL BAR — mobile
+     ============================================================ */
+
+  .call-bar {
+    position: fixed;
+    inset: auto 0 0 0;
+    z-index: 60;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: .65rem;
+    background: var(--cold);
+    color: var(--ink);
+    text-decoration: none;
+    font-weight: 740;
+    font-size: 1rem;
+    letter-spacing: .02em;
+    padding: 1.05rem 1rem calc(1.05rem + env(safe-area-inset-bottom));
+    border-top: 1px solid rgba(19, 28, 36, .25);
+    box-shadow: 0 -10px 26px rgba(19, 28, 36, .22);
+  }
+  .call-bar svg { flex: none; }
+  .call-bar .sub { font-weight: 560; opacity: .82; }
+
+  /* ============================================================
+     MOTION
+     ============================================================ */
+
+  @media (prefers-reduced-motion: no-preference) {
+    .rise {
+      opacity: 0;
+      transform: translateY(14px);
+      animation: rise .7s cubic-bezier(.2, .7, .2, 1) forwards;
+    }
+    .rise-2 { animation-delay: .1s; }
+    .rise-3 { animation-delay: .2s; }
+    .rise-4 { animation-delay: .3s; }
+    .rise-5 { animation-delay: .42s; }
+    @keyframes rise {
+      to { opacity: 1; transform: none; }
+    }
+  }
+
+  /* ============================================================
+     BREAKPOINTS
+     ============================================================ */
+
+  @media (min-width: 640px) {
+    .cards { grid-template-columns: repeat(3, 1fr); gap: 1.2rem; }
+    .stats { grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+  }
+
+  @media (min-width: 880px) {
+    body { padding-bottom: 0; }
+    .call-bar { display: none; }
+    .site-nav {
+      display: flex;
+      gap: 2rem;
+      font-size: .74rem;
+      font-weight: 620;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+    }
+    .site-nav a {
+      text-decoration: none;
+      color: var(--mut-d);
+      transition: color .2s ease;
+    }
+    .site-nav a:hover { color: var(--cold); }
+    .head-call { display: inline-flex; }
+    .hero-grid {
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 4rem;
+      align-items: start;
+    }
+    .hero-scale { display: block; }
+    .area-grid {
+      grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+      gap: 4rem;
+      align-items: center;
+    }
+    .contact-grid {
+      grid-template-columns: minmax(0, 7fr) minmax(0, 4fr);
+      gap: 5rem;
+      align-items: end;
+    }
+    .contact-side { border-top: none; border-left: 1px solid var(--line-l); padding: .25rem 0 .25rem 2.5rem; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after { transition: none !important; animation: none !important; }
+  }
+</style>
+</head>
+<body id="top">
+
+<!-- ============================================================
+     HERO
+     ============================================================ -->
+<div class="hero-shell">
+  <div class="hero on-dark">
+    <div class="wrap">
+
+      <header class="site-head">
+        <a class="wordmark" href="#top" aria-label="Cool Zone Co. — home">
+          <svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true">
+            <g stroke="var(--cold)" stroke-width="1.7" stroke-linecap="round">
+              <line x1="10" y1="2" x2="10" y2="18"/>
+              <line x1="3.1" y1="6" x2="16.9" y2="14"/>
+              <line x1="16.9" y1="6" x2="3.1" y2="14"/>
+            </g>
+          </svg>
+          COOL&nbsp;ZONE&nbsp;CO.
+          <span class="est">EST 1997</span>
+        </a>
+        <nav class="site-nav" aria-label="Site">
+          <a href="#services">Services</a>
+          <a href="#area">Service area</a>
+          <a href="#since-1997">Since 1997</a>
+          <a href="#contact">Contact</a>
+        </nav>
+        <a class="head-call" href="tel:+15127950779" aria-label="Call Cool Zone Co. at (512) 795-0779">(512) 795-0779</a>
+      </header>
+
+      <div class="hero-grid">
+        <div>
+          <p class="hero-eyebrow rise">AC &amp; heating repair — Austin, Texas</p>
+          <h1 class="rise rise-2">Austin heat isn&rsquo;t new. <span class="dim">Neither are we.</span></h1>
+          <p class="hero-lede rise rise-3">
+            Cool&nbsp;Zone&nbsp;Co. has repaired air conditioning and heating systems for Austin
+            homes and businesses since 1997. Same owner. Same phone number. Same straight answers.
+          </p>
+          <div class="hero-cta rise rise-4">
+            <a class="btn" href="tel:+15127950779" aria-label="Call Cool Zone Co. at (512) 795-0779">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M6.6 3.2c.6-.6 1.6-.6 2.2 0l2.3 2.3c.6.6.6 1.6 0 2.2l-1.2 1.2c-.3.3-.35.8-.1 1.2a14.5 14.5 0 0 0 4.1 4.1c.4.25.9.2 1.2-.1l1.2-1.2c.6-.6 1.6-.6 2.2 0l2.3 2.3c.6.6.6 1.6 0 2.2l-1 1c-1 1-2.5 1.4-3.9.9-2.6-.9-5-2.4-7.1-4.5-2.1-2.1-3.6-4.5-4.5-7.1-.5-1.4-.1-2.9.9-3.9z"/>
+              </svg>
+              Call (512) 795-0779
+            </a>
+            <a class="btn-quiet" href="#services">
+              See the work
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M6 9l6 6 6-6"/>
+              </svg>
+            </a>
+          </div>
+          <p class="hero-foot rise rise-5">
+            <span>Est. <b>&nbsp;1997</b></span>
+            <span><b>Northwest&nbsp;Austin</b>&nbsp;· 78759</span>
+            <span>Owner&nbsp;<b>Russell&nbsp;Mahavier</b></span>
+          </p>
+        </div>
+
+        <figure class="hero-scale rise rise-4" aria-hidden="true">
+          <svg width="196" height="330" viewBox="0 0 170 320">
+            <!-- axis -->
+            <line x1="30" y1="16" x2="30" y2="292" stroke="rgba(255,255,255,.32)" stroke-width="1"/>
+            <!-- the cool zone band: 75°F to 69°F -->
+            <rect x="22" y="219" width="14" height="39" fill="var(--cold)" opacity=".16"/>
+            <!-- major ticks -->
+            <g stroke="rgba(255,255,255,.55)" stroke-width="1">
+              <line x1="30" y1="24"  x2="50" y2="24"/>
+              <line x1="30" y1="89"  x2="50" y2="89"/>
+              <line x1="30" y1="154" x2="50" y2="154"/>
+              <line x1="30" y1="219" x2="50" y2="219"/>
+              <line x1="30" y1="284" x2="50" y2="284"/>
+            </g>
+            <!-- minor ticks -->
+            <g stroke="rgba(255,255,255,.24)" stroke-width="1">
+              <line x1="30" y1="56.5"  x2="40" y2="56.5"/>
+              <line x1="30" y1="121.5" x2="40" y2="121.5"/>
+              <line x1="30" y1="186.5" x2="40" y2="186.5"/>
+              <line x1="30" y1="251.5" x2="40" y2="251.5"/>
+            </g>
+            <!-- labels -->
+            <text class="scale-label" x="58" y="28">105&#176;</text>
+            <text class="scale-note"  x="58" y="42">AUSTIN &#183; JULY</text>
+            <text class="scale-minor" x="58" y="93">95&#176;</text>
+            <text class="scale-minor" x="58" y="158">85&#176;</text>
+            <text class="scale-minor" x="58" y="223">75&#176;</text>
+            <text class="scale-minor" x="58" y="288">65&#176;</text>
+            <!-- 72° marker -->
+            <path d="M16 232.5 L28 238.5 L16 244.5 Z" class="scale-accent"/>
+            <line x1="30" y1="238.5" x2="50" y2="238.5" stroke="var(--cold)" stroke-width="2"/>
+            <text class="scale-label scale-accent" x="58" y="242.5">72&#176;</text>
+            <text class="scale-accent-note" x="58" y="257">THE COOL ZONE</text>
+          </svg>
+          <figcaption>Outside &#183; vs &#183; your living room</figcaption>
+        </figure>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================
+     SERVICES
+     ============================================================ -->
+<section class="band" id="services">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="kicker">Services</p>
+      <p class="idx">01 / 04</p>
+    </div>
+
+    <h2>Repair, plainly.</h2>
+    <p class="services-intro" style="margin-top:1.2rem;">
+      No upsell theater. <b>Diagnose, explain, fix</b> — the way it&rsquo;s been done
+      from this shop since 1997.
+    </p>
+
+    <div class="cards">
+      <article class="card">
+        <span class="num">01</span>
+        <div class="icon">
+          <svg width="44" height="44" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="24" y1="6" x2="24" y2="42"/>
+            <line x1="8.4" y1="15" x2="39.6" y2="33"/>
+            <line x1="39.6" y1="15" x2="8.4" y2="33"/>
+            <path d="M19 11 L24 16 L29 11"/>
+            <path d="M19 37 L24 32 L29 37"/>
+          </svg>
+        </div>
+        <h3>AC repair</h3>
+        <p>
+          When a system gives out in a Texas July, what matters is a correct diagnosis
+          and a straight answer. We find the actual fault and fix what needs fixing —
+          nothing more.
+        </p>
+        <p class="meta">Cooling &#183; Diagnosis &amp; repair</p>
+      </article>
+
+      <article class="card">
+        <span class="num">02</span>
+        <div class="icon">
+          <svg width="44" height="44" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M16 38c-3.4-4.2 3.4-8.2 0-12.4-3.4-4.2 3.4-8.2 0-12.4"/>
+            <path d="M24 38c-3.4-4.2 3.4-8.2 0-12.4-3.4-4.2 3.4-8.2 0-12.4"/>
+            <path d="M32 38c-3.4-4.2 3.4-8.2 0-12.4-3.4-4.2 3.4-8.2 0-12.4"/>
+            <line x1="10" y1="44" x2="38" y2="44"/>
+          </svg>
+        </div>
+        <h3>Heating</h3>
+        <p>
+          Austin winters are short, but the cold snaps are real. Furnaces and heating
+          systems, repaired with the same care the summer work gets.
+        </p>
+        <p class="meta">Heating &#183; Diagnosis &amp; repair</p>
+      </article>
+
+      <article class="card">
+        <span class="num">03</span>
+        <div class="icon">
+          <svg width="44" height="44" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M27 42 V12 H41 V42"/>
+            <line x1="31.5" y1="18" x2="36.5" y2="18"/>
+            <line x1="31.5" y1="24" x2="36.5" y2="24"/>
+            <line x1="31.5" y1="30" x2="36.5" y2="30"/>
+            <path d="M8 42 V27 L17.5 19 L27 27"/>
+            <path d="M14.5 42 V33 H20.5 V42"/>
+            <line x1="4" y1="42" x2="44" y2="42"/>
+          </svg>
+        </div>
+        <h3>Residential &amp; commercial</h3>
+        <p>
+          Family homes, offices, storefronts, workshops. Twenty-eight years across the
+          equipment that keeps Austin running.
+        </p>
+        <p class="meta">Homes &#183; Businesses</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SERVICE AREA
+     ============================================================ -->
+<section class="band area" id="area">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="kicker">Service area</p>
+      <p class="idx">02 / 04</p>
+    </div>
+
+    <div class="area-grid">
+      <div class="area-copy">
+        <h2>Around the corner, not across town.</h2>
+        <p>
+          Cool&nbsp;Zone&nbsp;Co. is based on Calle&nbsp;Verde&nbsp;Cove in
+          <b>78759 — Northwest Austin</b> — close enough that the people calling
+          for help are often actual neighbors.
+        </p>
+        <p>
+          From that home base, the work covers homes and businesses across the
+          greater Austin area.
+        </p>
+        <div class="addr-chip">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M12 21s-6-5.2-6-10a6 6 0 1 1 12 0c0 4.8-6 10-6 10z"/>
+            <circle cx="12" cy="11" r="2"/>
+          </svg>
+          <span>
+            <span class="lbl">Home base</span>
+            <b>11408 Calle Verde Cv</b><br>
+            Austin, TX 78759
+          </span>
+        </div>
+      </div>
+
+      <div class="map-card" role="img" aria-label="Stylized map placing Cool Zone Co. in Northwest Austin, zip code 78759">
+        <svg viewBox="0 0 560 420" aria-hidden="true">
+          <defs>
+            <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+              <path d="M40 0 H0 V40" fill="none" stroke="rgba(19,28,36,.07)" stroke-width="1"/>
+            </pattern>
+            <clipPath id="mapclip"><rect x="0" y="0" width="560" height="420"/></clipPath>
+          </defs>
+          <g clip-path="url(#mapclip)">
+            <rect x="0" y="0" width="560" height="420" fill="url(#grid)"/>
+            <!-- abstract arterials -->
+            <path d="M-10 410 L 400 -10" fill="none" stroke="rgba(19,28,36,.22)" stroke-width="2"/>
+            <path d="M-10 190 C 150 168, 350 210, 570 166" fill="none" stroke="rgba(19,28,36,.15)" stroke-width="1.4"/>
+            <path d="M128 -10 C 148 150, 104 300, 168 430" fill="none" stroke="rgba(19,28,36,.15)" stroke-width="1.4"/>
+            <!-- crosshair through home base -->
+            <line x1="0" y1="140" x2="560" y2="140" stroke="var(--cold-ink)" stroke-width="1" opacity=".28" stroke-dasharray="2 5"/>
+            <line x1="330" y1="0" x2="330" y2="420" stroke="var(--cold-ink)" stroke-width="1" opacity=".28" stroke-dasharray="2 5"/>
+            <!-- marker rings -->
+            <circle cx="330" cy="140" r="46" fill="none" stroke="var(--cold-ink)" stroke-width="1" opacity=".18"/>
+            <circle cx="330" cy="140" r="30" fill="none" stroke="var(--cold-ink)" stroke-width="1" opacity=".34"/>
+            <circle cx="330" cy="140" r="16" fill="none" stroke="var(--cold-ink)" stroke-width="1.2" opacity=".6"/>
+            <circle cx="330" cy="140" r="5" fill="var(--cold-ink)"/>
+            <!-- marker label -->
+            <text class="map-tag" x="392" y="132">COOL ZONE CO.</text>
+            <text class="map-tag-sub" x="392" y="148">11408 CALLE VERDE CV</text>
+            <!-- zone label + giant zip -->
+            <text class="map-zone" x="36" y="300">NORTHWEST AUSTIN</text>
+            <text class="map-zip" x="30" y="386">78759</text>
+            <!-- compass -->
+            <g transform="translate(516,34)">
+              <line x1="0" y1="16" x2="0" y2="-8" stroke="rgba(19,28,36,.45)" stroke-width="1.2"/>
+              <path d="M-4 -4 L0 -10 L4 -4" fill="none" stroke="rgba(19,28,36,.45)" stroke-width="1.2"/>
+              <text class="map-n" x="-4" y="32">N</text>
+            </g>
+          </g>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     TRUST — since 1997
+     ============================================================ -->
+<section class="trust on-dark" id="since-1997">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="kicker">Since 1997</p>
+      <p class="idx">03 / 04</p>
+    </div>
+
+    <h2>Twenty-eight years is the credential.</h2>
+
+    <div class="stats">
+      <div class="stat">
+        <span class="n">19<em>97</em></span>
+        <span class="d">The year the phone first rang. It hasn&rsquo;t stopped since.</span>
+      </div>
+      <div class="stat">
+        <span class="n">2<em>8</em></span>
+        <span class="d">Consecutive years of continuous operation — through every Austin summer.</span>
+      </div>
+      <div class="stat">
+        <span class="n"><em>1</em></span>
+        <span class="d">Owner. <b>Russell Mahavier</b> still runs the company and stands behind the work.</span>
+      </div>
+    </div>
+
+    <div class="nextdoor">
+      <p class="lbl">Around the neighborhood</p>
+      <p class="big">
+        On Nextdoor — where Northwest Austin actually talks — the Cool&nbsp;Zone name
+        keeps coming up with the same two words attached: <b>honesty</b> and <b>integrity</b>.
+      </p>
+      <p class="fine">
+        We don&rsquo;t reprint reviews or paste star ratings here. That reputation lives
+        where it was earned — ask your neighbors.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     CONTACT
+     ============================================================ -->
+<section class="band-tight" id="contact">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="kicker">Contact</p>
+      <p class="idx">04 / 04</p>
+    </div>
+
+    <div class="contact-grid">
+      <div>
+        <h2>One number since 1997.</h2>
+        <a class="tel-display" href="tel:+15127950779" aria-label="Call Cool Zone Co. at (512) 795-0779">(512)&nbsp;795-0779</a>
+        <p class="contact-note">
+          AC out? Heater struggling? Call and describe what it&rsquo;s doing —
+          you&rsquo;ll get a straight answer about what comes next.
+        </p>
+      </div>
+
+      <div class="contact-side">
+        <div class="item">
+          <span class="lbl">Address</span>
+          <b>11408 Calle Verde Cv</b><br>
+          Austin, TX 78759
+        </div>
+        <div class="item">
+          <span class="lbl">Owner</span>
+          <b>Russell Mahavier</b>
+        </div>
+        <div class="item">
+          <span class="lbl">Work</span>
+          Residential &amp; commercial<br>
+          AC &amp; heating repair
+        </div>
+        <div class="item">
+          <span class="lbl">Phone</span>
+          <a href="tel:+15127950779"><b>(512) 795-0779</b></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     FOOTER
+     ============================================================ -->
+<footer class="site-foot on-dark">
+  <div class="wrap">
+    <div class="foot-top">
+      <span class="wordmark" style="font-size:.82rem;">
+        <svg width="16" height="16" viewBox="0 0 20 20" aria-hidden="true">
+          <g stroke="var(--cold)" stroke-width="1.7" stroke-linecap="round">
+            <line x1="10" y1="2" x2="10" y2="18"/>
+            <line x1="3.1" y1="6" x2="16.9" y2="14"/>
+            <line x1="16.9" y1="6" x2="3.1" y2="14"/>
+          </g>
+        </svg>
+        COOL&nbsp;ZONE&nbsp;CO.
+      </span>
+      <span class="foot-contact">
+        <a href="tel:+15127950779">(512) 795-0779</a>
+        <span>11408 Calle Verde Cv, Austin, TX 78759</span>
+        <span>Since 1997</span>
+      </span>
+    </div>
+    <div class="foot-legal">
+      <span class="concept">Website concept by Murrieta Web Studio</span>
+      <span>This is a design concept created for Cool Zone Co. Not yet the official website of Cool Zone Co.</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ============================================================
+     FIXED CALL BAR — mobile only
+     ============================================================ -->
+<a class="call-bar" href="tel:+15127950779" aria-label="Call Cool Zone Co. at (512) 795-0779">
+  <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <path d="M6.6 3.2c.6-.6 1.6-.6 2.2 0l2.3 2.3c.6.6.6 1.6 0 2.2l-1.2 1.2c-.3.3-.35.8-.1 1.2a14.5 14.5 0 0 0 4.1 4.1c.4.25.9.2 1.2-.1l1.2-1.2c.6-.6 1.6-.6 2.2 0l2.3 2.3c.6.6.6 1.6 0 2.2l-1 1c-1 1-2.5 1.4-3.9.9-2.6-.9-5-2.4-7.1-4.5-2.1-2.1-3.6-4.5-4.5-7.1-.5-1.4-.1-2.9.9-3.9z"/>
+  </svg>
+  Call Cool Zone <span class="sub">&#8212; (512) 795-0779</span>
+</a>
+
+</body>
+</html>
