@@ -297,12 +297,22 @@
     pointer-events: none;
     z-index: 0;
   }
-  .photo img {
+  /* Tight crop: the roof plane, the tool at hand, and the hill-country
+     light carry the frame. No face is the subject of this image. */
+  .photo .crop {
     position: relative;
     z-index: 1;
+    overflow: hidden;
+    aspect-ratio: 768 / 595;
+  }
+  .photo img {
+    position: absolute;
     display: block;
-    width: 100%;
+    width: 208.333%;   /* 1600 / 768  */
+    max-width: none;
     height: auto;
+    left: -108.333%;   /*  -832 / 768 */
+    top: -50.084%;     /*  -298 / 595 */
     filter: saturate(.94) contrast(1.02);
   }
   .photo figcaption {
@@ -363,22 +373,25 @@
     color: var(--ink-soft);
     margin-bottom: 1.1rem;
   }
-  .signature {
+  /* Typographic nameplate — set in the page's display face.
+     Deliberately NOT a handwritten mark: we have no signature to reproduce. */
+  .owner-name {
     font-family: var(--slab);
-    font-style: italic;
-    font-weight: 600;
-    font-size: clamp(3rem, 10vw, 5.6rem);
-    line-height: 1;
-    letter-spacing: -.03em;
+    font-weight: 900;
+    font-size: clamp(2.1rem, 7.6vw, 4.4rem);
+    line-height: 1.02;
+    letter-spacing: .015em;
+    text-transform: uppercase;
     color: var(--forest);
-    transform: rotate(-1.5deg);
     display: inline-block;
   }
-  .signature-band .underline {
+  .signature-band .rule {
     display: block;
     width: min(26rem, 78%);
-    margin: .4rem auto 0;
-    color: var(--cedar);
+    height: 6px;
+    margin: 1.05rem auto 0;
+    border-top: 3px solid var(--cedar);
+    border-bottom: 1px solid rgba(124, 78, 40, .55);
   }
   .signature-band .title {
     margin-top: 1.1rem;
@@ -758,8 +771,10 @@
 
       <figure class="photo">
         <div class="frame">
-          <img src="concept-art.jpg" width="1600" height="893" loading="lazy"
-               alt="A roofer kneeling on an asphalt shingle roof at sunset, with hill country landscape behind him.">
+          <div class="crop">
+            <img src="concept-art.jpg" width="1600" height="893" loading="lazy"
+                 alt="AI-generated concept illustration: an asphalt shingle roof plane at golden hour, a claw hammer within reach, oak and hill country beyond the eave.">
+          </div>
           <svg class="stamp" viewBox="0 0 120 120" aria-hidden="true" focusable="false">
             <defs>
               <path id="stamp-arc" d="M60 12 a48 48 0 1 1 -0.01 0" fill="none"/>
@@ -773,7 +788,7 @@
                   font-family="Bitter, serif" fill="currentColor">HM</text>
           </svg>
         </div>
-        <figcaption>Photograph &mdash; shingle work at last light</figcaption>
+        <figcaption>Concept illustration, AI-generated &mdash; not a photograph of a job or of anyone at the shop</figcaption>
       </figure>
     </div>
   </section>
@@ -783,14 +798,11 @@
   <!-- ============ SIGNATURE BAND ============ -->
   <section class="signature-band" aria-label="The owner's name">
     <div class="wrap">
-      <p class="whose">Every job signed, the old way</p>
-      <p class="signature">Henry Meyer</p>
-      <svg class="underline" viewBox="0 0 300 22" aria-hidden="true" focusable="false">
-        <path d="M6 13 C 58 5, 128 19, 200 11 S 282 7, 295 12" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/>
-        <path d="M212 17 C 236 20, 252 15, 262 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" opacity=".65"/>
-      </svg>
+      <p class="whose">The name over the door</p>
+      <p class="owner-name">Henry Meyer</p>
+      <span class="rule" role="presentation"></span>
       <p class="title">Owner, Henry Meyer Roofing, Inc.</p>
-      <p class="note">Some companies put a brand between you and the work. This one puts a name on it &mdash; <strong>the owner&rsquo;s own</strong>. When the business is called Henry Meyer Roofing, the standard for the work isn&rsquo;t a slogan. It&rsquo;s a signature.</p>
+      <p class="note">Some companies put a brand between you and the work. This one puts a name on it &mdash; <strong>the owner&rsquo;s own</strong>. When the business is called Henry Meyer Roofing, the standard for the work isn&rsquo;t a slogan. It&rsquo;s a name, and it belongs to somebody.</p>
     </div>
   </section>
 
