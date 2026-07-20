@@ -143,7 +143,7 @@
       linear-gradient(var(--ember),var(--ember)) right bottom/58% 54% no-repeat;
   }
 
-  /* ---------- concept plate (editorial illustration band) ---------- */
+  /* ---------- concept plate (photograph band) ---------- */
   .plate{
     border-top:2px solid var(--ink);
     border-bottom:2px solid var(--ink);
@@ -153,8 +153,9 @@
     width:100%;
     height:clamp(12rem,34vw,21rem);
     object-fit:cover;
-    object-position:center 35%;
-    mix-blend-mode:multiply; /* lets the print's white ground take on the paper tone */
+    object-position:center 12%; /* keep both faces in frame in the letterbox crop */
+    /* no blend mode: multiply was tuned for a white-ground illustration and
+       muddies a photograph; the golden-hour warmth already sits on the paper */
   }
   .plate figcaption{
     padding:.7rem 0 .85rem;
@@ -343,9 +344,9 @@
 
   <!-- ============ CONCEPT PLATE ============ -->
   <figure class="plate">
-    <img src="concept-art.jpg" width="1400" height="799" loading="lazy"
-         alt="Abstract linocut-style illustration in terracotta and cream: geometric suns radiating above rippling heat-wave lines">
-    <figcaption class="wrap"><span class="fig">Fig. 01</span> &mdash; The Texas sun, in linocut</figcaption>
+    <img src="concept-art.jpg" width="1600" height="893" loading="lazy"
+         alt="A technician with a tool bag shakes hands with a homeowner at a front door in warm evening light, a utility truck parked on the street behind them">
+    <figcaption class="wrap"><span class="fig">Fig. 01</span> &mdash; Service that starts with a handshake</figcaption>
   </figure>
 
   <div class="duo duo-a" aria-hidden="true"></div>
