@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<meta name="description" content="Robert Salgado Plumbing, LLC — residential plumbing service and repair in South Austin, TX 78748. Responsible Master Plumber M-36859.">
+<title>Robert Salgado Plumbing, LLC — Residential Plumbing, South Austin</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Alegreya+Sans:ital,wght@0,400;0,500;0,700;0,800;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy-0:#0a111f;
+    --navy-1:#0d1626;
+    --navy-2:#122036;
+    --navy-3:#182a45;
+    --ink:#f2ecdf;
+    --ink-soft:#c3cddc;
+    --ink-mute:#8d9cb2;
+    --copper:#c98a58;
+    --copper-hi:#e3ac78;
+    --copper-pale:#ecc9a4;
+    --copper-deep:#9c6538;
+    --rule:rgba(201,138,88,.28);
+    --rule-faint:rgba(195,205,220,.13);
+    --plate-edge:rgba(236,201,164,.5);
+    --maxw:1120px;
+  }
+
+  *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto}
+    *,*::before,*::after{animation:none!important;transition:none!important}
+  }
+
+  body{
+    font-family:"Alegreya Sans",Seravek,'Gill Sans Nova',Ubuntu,Calibri,'DejaVu Sans',source-sans-pro,sans-serif;
+    background:
+      radial-gradient(1100px 520px at 78% -140px, rgba(201,138,88,.13), transparent 62%),
+      radial-gradient(900px 700px at -10% 30%, rgba(24,42,69,.55), transparent 60%),
+      var(--navy-0);
+    color:var(--ink);
+    font-size:18px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  ::selection{background:var(--copper);color:var(--navy-0)}
+
+  a{color:var(--copper-hi);text-decoration:none}
+  a:focus-visible{outline:2px solid var(--copper-hi);outline-offset:3px;border-radius:2px}
+
+  img{max-width:100%;height:auto;display:block}
+
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+
+  /* ---------- header ---------- */
+  .site-head{border-bottom:1px solid var(--rule-faint)}
+  .site-head .wrap{
+    display:flex;align-items:center;gap:16px;
+    padding-top:18px;padding-bottom:18px;
+  }
+  .monogram{
+    flex:none;width:44px;height:44px;border-radius:3px;
+    display:grid;place-items:center;
+    background:linear-gradient(155deg,#dfa471 0%,#c98a58 42%,#a06537 78%,#b97f4d 100%);
+    box-shadow:inset 0 1px 0 rgba(255,236,210,.55),inset 0 -2px 3px rgba(46,22,6,.45),0 2px 8px rgba(0,0,0,.45);
+    color:#33200f;font-weight:800;font-size:17px;letter-spacing:.06em;
+    text-shadow:0 1px 0 rgba(255,232,202,.5);
+  }
+  .head-id{line-height:1.25}
+  .head-id b{display:block;font-weight:700;font-size:17px;letter-spacing:.01em}
+  .head-id span{display:block;font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-mute)}
+  .head-call{
+    margin-left:auto;text-align:right;line-height:1.3;
+  }
+  .head-call small{display:block;font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-mute)}
+  .head-call a{font-weight:800;font-size:19px;letter-spacing:.02em;color:var(--ink)}
+  .head-call a:hover{color:var(--copper-hi)}
+
+  /* ---------- section furniture ---------- */
+  section{padding:84px 0}
+  .sect-label{
+    display:flex;align-items:center;gap:18px;
+    font-size:12.5px;font-weight:700;letter-spacing:.24em;text-transform:uppercase;
+    color:var(--copper);margin-bottom:34px;
+  }
+  .sect-label::after{content:"";flex:1;height:1px;background:linear-gradient(to right,var(--rule),transparent)}
+  .sect-label em{font-style:normal;color:var(--ink-mute);font-weight:500;letter-spacing:.18em}
+
+  h2{font-size:clamp(28px,4vw,38px);font-weight:800;line-height:1.15;letter-spacing:-.01em;max-width:21ch}
+  .lede{color:var(--ink-soft);max-width:58ch;margin-top:14px}
+
+  /* ---------- hero ---------- */
+  .hero{padding:64px 0 90px}
+  .hero-frame{position:relative}
+  /* offset ruled panel behind the card — thin-rule texture */
+  .hero-frame::before{
+    content:"";position:absolute;inset:26px -14px -26px 14px;
+    background:repeating-linear-gradient(to bottom,rgba(201,138,88,.14) 0 1px,transparent 1px 10px);
+    border:1px solid var(--rule-faint);
+    pointer-events:none;
+  }
+  .hero-card{
+    position:relative;
+    background:linear-gradient(170deg,var(--navy-2) 0%,var(--navy-1) 74%);
+    border:1px solid var(--rule);
+    box-shadow:0 30px 70px rgba(0,0,0,.5);
+    padding:14px;
+    animation:rise .8s cubic-bezier(.22,.8,.3,1) both;
+  }
+  @keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+  .hero-card-inner{
+    border:1px solid var(--rule-faint);
+    display:grid;grid-template-columns:1.12fr .88fr;
+    min-height:480px;
+  }
+  .hero-copy{padding:clamp(30px,5vw,58px);display:flex;flex-direction:column;justify-content:center}
+  .eyebrow{
+    font-size:13px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--copper);
+    display:flex;align-items:center;gap:14px;margin-bottom:22px;
+  }
+  .eyebrow::before{content:"";width:34px;height:1px;background:var(--copper)}
+  h1{
+    font-size:clamp(34px,5.2vw,54px);font-weight:800;line-height:1.06;letter-spacing:-.015em;
+    max-width:15ch;
+  }
+  h1 .cu{color:var(--copper-hi)}
+  .hero-sub{color:var(--ink-soft);max-width:46ch;margin-top:20px;font-size:19px}
+  .hero-cta{display:flex;flex-wrap:wrap;gap:14px;margin-top:34px;align-items:center}
+  .btn-call{
+    display:inline-flex;align-items:center;gap:11px;
+    background:linear-gradient(160deg,#e0a570 0%,#c98a58 46%,#aa6f3f 100%);
+    color:#2b1a0b;font-weight:800;font-size:18px;letter-spacing:.02em;
+    padding:15px 26px;border-radius:3px;
+    box-shadow:inset 0 1px 0 rgba(255,235,208,.6),inset 0 -2px 3px rgba(46,22,6,.35),0 10px 26px rgba(201,138,88,.22);
+    transition:transform .15s ease,box-shadow .15s ease;
+  }
+  .btn-call:hover{transform:translateY(-2px);box-shadow:inset 0 1px 0 rgba(255,235,208,.6),inset 0 -2px 3px rgba(46,22,6,.35),0 14px 30px rgba(201,138,88,.3)}
+  .btn-call svg{width:17px;height:17px;flex:none}
+  .btn-ghost{
+    display:inline-flex;align-items:center;
+    padding:14px 22px;border:1px solid var(--rule);border-radius:3px;
+    color:var(--ink-soft);font-weight:700;font-size:16px;letter-spacing:.04em;
+    transition:border-color .15s ease,color .15s ease;
+  }
+  .btn-ghost:hover{border-color:var(--copper);color:var(--copper-pale)}
+  .hero-foot{
+    margin-top:36px;padding-top:18px;border-top:1px solid var(--rule-faint);
+    font-size:14px;color:var(--ink-mute);letter-spacing:.05em;
+  }
+
+  /* ---------- the engraved plate ---------- */
+  .plate-side{
+    border-left:1px solid var(--rule-faint);
+    display:grid;place-items:center;
+    padding:clamp(28px,4vw,46px);
+    background:
+      repeating-linear-gradient(to bottom,rgba(195,205,220,.045) 0 1px,transparent 1px 11px),
+      radial-gradient(420px 300px at 50% 40%,rgba(201,138,88,.09),transparent 70%);
+  }
+  .plate{
+    width:100%;max-width:360px;
+    background:
+      linear-gradient(115deg,rgba(255,240,218,.16) 0%,transparent 34%,transparent 62%,rgba(60,30,10,.22) 100%),
+      linear-gradient(160deg,#daa06c 0%,#c98a58 38%,#a76b3c 72%,#c1834f 100%);
+    border-radius:4px;
+    border:1px solid var(--plate-edge);
+    box-shadow:
+      inset 0 1px 0 rgba(255,238,212,.6),
+      inset 0 -3px 6px rgba(43,20,5,.45),
+      0 18px 44px rgba(0,0,0,.55);
+    padding:12px;
+    position:relative;
+    transform:rotate(-1.2deg);
+  }
+  .plate-inner{
+    border:1px solid rgba(59,32,13,.5);
+    box-shadow:inset 0 1px 2px rgba(46,22,6,.3),0 1px 0 rgba(255,238,212,.35);
+    border-radius:2px;
+    padding:26px 20px 22px;
+    text-align:center;
+    color:#3a2210;
+  }
+  .plate-inner *{text-shadow:0 1px 0 rgba(255,233,203,.42)}
+  .plate-org{font-size:10.5px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;line-height:1.5}
+  .plate-rule{height:1px;background:rgba(59,32,13,.4);box-shadow:0 1px 0 rgba(255,233,203,.35);margin:13px 8px}
+  .plate-role{font-size:12.5px;font-weight:800;letter-spacing:.24em;text-transform:uppercase}
+  .plate-no{
+    font-size:clamp(40px,4.6vw,50px);font-weight:800;letter-spacing:.06em;line-height:1.05;
+    margin:10px 0 6px;
+  }
+  .plate-name{font-size:15px;font-weight:700;letter-spacing:.22em;text-transform:uppercase}
+  .plate-status{margin-top:14px;font-size:10.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;line-height:1.7}
+  .screw{
+    position:absolute;width:13px;height:13px;border-radius:50%;
+    background:radial-gradient(circle at 35% 30%,#eec9a0 0%,#b57c49 45%,#7c4c25 100%);
+    box-shadow:inset 0 -1px 2px rgba(43,20,5,.6),0 1px 2px rgba(0,0,0,.4);
+  }
+  .screw::after{
+    content:"";position:absolute;left:2px;right:2px;top:50%;height:1.5px;
+    background:rgba(46,22,6,.65);transform:translateY(-50%) rotate(38deg);border-radius:1px;
+  }
+  .screw.tl{top:7px;left:7px}.screw.tr{top:7px;right:7px}
+  .screw.bl{bottom:7px;left:7px}.screw.br{bottom:7px;right:7px}
+  .screw.tr::after{transform:translateY(-50%) rotate(-24deg)}
+  .screw.bl::after{transform:translateY(-50%) rotate(76deg)}
+  .screw.br::after{transform:translateY(-50%) rotate(8deg)}
+  .plate-caption{
+    margin-top:22px;font-size:13px;color:var(--ink-mute);text-align:center;
+    letter-spacing:.06em;font-style:italic;
+  }
+
+  /* ---------- services ---------- */
+  .svc-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;border-top:1px solid var(--rule);margin-top:44px}
+  .svc{
+    padding:34px 30px 38px;border-bottom:1px solid var(--rule-faint);
+    position:relative;
+  }
+  .svc:nth-child(odd){border-right:1px solid var(--rule-faint)}
+  .svc-num{font-size:13px;font-weight:700;letter-spacing:.2em;color:var(--copper);display:block;margin-bottom:14px}
+  .svc h3{font-size:23px;font-weight:800;letter-spacing:-.005em;display:flex;align-items:center;gap:12px}
+  .svc h3 svg{width:22px;height:22px;flex:none;color:var(--copper)}
+  .svc p{color:var(--ink-soft);margin-top:10px;max-width:44ch}
+  .svc-note{
+    grid-column:1 / -1;display:flex;gap:16px;align-items:baseline;
+    padding:22px 30px;border-bottom:1px solid var(--rule);
+    color:var(--ink-mute);font-size:15.5px;letter-spacing:.02em;
+  }
+  .svc-note b{color:var(--copper-pale);font-weight:700;white-space:nowrap;letter-spacing:.12em;text-transform:uppercase;font-size:12.5px}
+
+  /* ---------- photo band ---------- */
+  .photo-band{padding:0}
+  .photo-frame{
+    border:1px solid var(--rule);padding:12px;
+    background:linear-gradient(170deg,var(--navy-2),var(--navy-1));
+    box-shadow:0 24px 60px rgba(0,0,0,.45);
+  }
+  .photo-frame img{width:100%;filter:saturate(1.04) contrast(1.02)}
+  .photo-cap{
+    display:flex;gap:16px;align-items:baseline;justify-content:space-between;
+    padding:16px 4px 2px;font-size:14px;color:var(--ink-mute);
+  }
+  .photo-cap i{font-style:italic}
+  .photo-cap span{white-space:nowrap;letter-spacing:.16em;text-transform:uppercase;font-size:11.5px;color:var(--copper)}
+
+  /* ---------- service area ---------- */
+  .area-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:56px;align-items:center;margin-top:8px}
+  .zip{
+    font-size:clamp(84px,12vw,138px);font-weight:800;line-height:.95;letter-spacing:-.02em;
+    color:transparent;
+    background:linear-gradient(165deg,var(--copper-pale) 0%,var(--copper) 55%,var(--copper-deep) 100%);
+    -webkit-background-clip:text;background-clip:text;
+  }
+  .zip small{
+    display:block;color:var(--ink-mute);font-size:13px;font-weight:700;
+    letter-spacing:.3em;text-transform:uppercase;margin-top:12px;
+  }
+  .area-copy p{color:var(--ink-soft);max-width:50ch}
+  .area-copy p + p{margin-top:14px}
+  .area-facts{list-style:none;margin-top:28px;border-top:1px solid var(--rule)}
+  .area-facts li{
+    display:flex;justify-content:space-between;gap:20px;
+    padding:13px 2px;border-bottom:1px solid var(--rule-faint);
+    font-size:16px;
+  }
+  .area-facts li b{font-weight:700;color:var(--ink)}
+  .area-facts li span{color:var(--ink-mute);text-align:right}
+
+  /* ---------- the record ---------- */
+  .record{background:linear-gradient(180deg,rgba(18,32,54,.55),rgba(18,32,54,0) 70%);border-top:1px solid var(--rule-faint)}
+  .ledger{margin-top:44px;border-top:1px solid var(--rule)}
+  .ledger-row{
+    display:grid;grid-template-columns:200px 1fr auto;gap:26px;align-items:baseline;
+    padding:26px 2px;border-bottom:1px solid var(--rule-faint);
+  }
+  .ledger-row dt{
+    font-size:clamp(26px,3.4vw,36px);font-weight:800;letter-spacing:.01em;color:var(--copper-hi);
+    line-height:1.1;
+  }
+  .ledger-row dt small{display:block;font-size:12px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-mute);margin-top:5px}
+  .ledger-row dd{color:var(--ink-soft);max-width:52ch}
+  .ledger-src{
+    font-size:11.5px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;
+    color:var(--ink-mute);border:1px solid var(--rule-faint);border-radius:2px;
+    padding:6px 11px;white-space:nowrap;
+  }
+  .record-foot{margin-top:26px;font-size:15px;color:var(--ink-mute);font-style:italic}
+
+  /* ---------- contact ---------- */
+  .contact-card{
+    border:1px solid var(--rule);padding:14px;margin-top:44px;
+    background:linear-gradient(170deg,var(--navy-2),var(--navy-1));
+    box-shadow:0 24px 60px rgba(0,0,0,.4);
+  }
+  .contact-inner{
+    border:1px solid var(--rule-faint);
+    display:grid;grid-template-columns:1.1fr .9fr;
+  }
+  .contact-main{padding:clamp(30px,4.5vw,52px)}
+  .contact-main h2{max-width:none}
+  .contact-phone{
+    display:inline-block;margin-top:22px;
+    font-size:clamp(30px,4.6vw,44px);font-weight:800;letter-spacing:.01em;color:var(--ink);
+    border-bottom:2px solid var(--copper);padding-bottom:4px;
+  }
+  .contact-phone:hover{color:var(--copper-hi)}
+  .contact-main p{color:var(--ink-mute);margin-top:16px;max-width:44ch;font-size:16.5px}
+  .contact-list{
+    border-left:1px solid var(--rule-faint);
+    display:flex;flex-direction:column;justify-content:center;
+  }
+  .contact-list a,.contact-list div{
+    display:flex;gap:16px;align-items:flex-start;
+    padding:24px clamp(24px,3.5vw,40px);
+    border-bottom:1px solid var(--rule-faint);color:var(--ink-soft);
+  }
+  .contact-list > :last-child{border-bottom:none}
+  .contact-list svg{width:20px;height:20px;flex:none;color:var(--copper);margin-top:4px}
+  .contact-list b{display:block;font-size:12px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-mute);margin-bottom:3px}
+  .contact-list a span,.contact-list div span{word-break:break-word}
+  .contact-list a:hover span{color:var(--copper-pale)}
+
+  /* ---------- footer ---------- */
+  footer{border-top:1px solid var(--rule-faint);padding:44px 0 60px;margin-top:40px}
+  .foot-grid{display:flex;flex-wrap:wrap;gap:26px;justify-content:space-between;align-items:flex-start}
+  .foot-id{font-size:15px;color:var(--ink-mute);line-height:1.7;max-width:52ch}
+  .foot-id b{color:var(--ink-soft);font-weight:700}
+  .foot-credit{font-size:14px;color:var(--ink-mute);text-align:right;line-height:1.7}
+  .foot-credit b{color:var(--copper);font-weight:700}
+  .foot-disclaimer{
+    margin-top:30px;padding-top:20px;border-top:1px solid var(--rule-faint);
+    font-size:13.5px;color:var(--ink-mute);font-style:italic;letter-spacing:.02em;
+  }
+
+  /* ---------- sticky mobile call bar ---------- */
+  .callbar{display:none}
+
+  /* ---------- responsive ---------- */
+  @media (max-width:900px){
+    .hero-card-inner{grid-template-columns:1fr}
+    .plate-side{border-left:none;border-top:1px solid var(--rule-faint)}
+    .area-grid{grid-template-columns:1fr;gap:36px}
+    .contact-inner{grid-template-columns:1fr}
+    .contact-list{border-left:none;border-top:1px solid var(--rule-faint)}
+    .ledger-row{grid-template-columns:150px 1fr;row-gap:10px}
+    .ledger-src{grid-column:2;justify-self:start}
+  }
+  @media (max-width:720px){
+    body{padding-bottom:76px}
+    section{padding:60px 0}
+    .hero{padding:40px 0 64px}
+    .hero-frame::before{inset:18px -8px -18px 8px}
+    .svc-grid{grid-template-columns:1fr}
+    .svc:nth-child(odd){border-right:none}
+    .svc,.svc-note{padding-left:22px;padding-right:22px}
+    .ledger-row{grid-template-columns:1fr}
+    .ledger-src{grid-column:1}
+    .head-call{display:none}
+    .head-id b{font-size:16px}
+    .svc-note{flex-direction:column;gap:8px}
+    .photo-cap{flex-direction:column;gap:6px}
+    .photo-cap span{white-space:normal}
+    .callbar{
+      display:flex;position:fixed;left:0;right:0;bottom:0;z-index:50;
+      background:linear-gradient(160deg,#e0a570 0%,#c98a58 50%,#aa6f3f 100%);
+      box-shadow:inset 0 1px 0 rgba(255,235,208,.6),0 -10px 30px rgba(0,0,0,.5);
+      padding-bottom:env(safe-area-inset-bottom);
+    }
+    .callbar a{
+      flex:1;display:flex;align-items:center;justify-content:center;gap:10px;
+      padding:17px 16px;color:#2b1a0b;font-weight:800;font-size:18px;letter-spacing:.03em;
+    }
+    .callbar svg{width:18px;height:18px}
+  }
+</style>
+</head>
+<body>
+
+<header class="site-head">
+  <div class="wrap">
+    <div class="monogram" aria-hidden="true">RS</div>
+    <div class="head-id">
+      <b>Robert Salgado Plumbing, LLC</b>
+      <span>Master Plumber M-36859 &middot; South Austin</span>
+    </div>
+    <div class="head-call">
+      <small>Call the shop</small>
+      <a href="tel:+15129474603">(512) 947-4603</a>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <!-- ============ HERO ============ -->
+  <section class="hero" aria-labelledby="hero-h">
+    <div class="wrap">
+      <div class="hero-frame">
+        <div class="hero-card">
+          <div class="hero-card-inner">
+            <div class="hero-copy">
+              <p class="eyebrow">Residential plumbing &middot; South Austin, TX</p>
+              <h1 id="hero-h">The man who holds the <span class="cu">license</span> does the work.</h1>
+              <p class="hero-sub">Robert Salgado Plumbing is an owner-run shop in South Austin. One phone number, one responsible master plumber, and eighteen years of work filed under the same name.</p>
+              <div class="hero-cta">
+                <a class="btn-call" href="tel:+15129474603">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.13.96.36 1.9.7 2.8a2 2 0 0 1-.45 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.45c.9.34 1.84.57 2.8.7a2 2 0 0 1 1.7 2.05Z"/></svg>
+                  (512) 947-4603
+                </a>
+                <a class="btn-ghost" href="#record">See the record</a>
+              </div>
+              <p class="hero-foot">Service &amp; repair for homes &middot; Licensed &amp; insured &middot; 18 years in business</p>
+            </div>
+            <div class="plate-side">
+              <div>
+                <div class="plate" role="img" aria-label="Engraved credential plate reading: Texas State Board of Plumbing Examiners, Responsible Master Plumber, license M-36859, Robert Salgado, registry status current, insurance on file.">
+                  <span class="screw tl"></span><span class="screw tr"></span>
+                  <span class="screw bl"></span><span class="screw br"></span>
+                  <div class="plate-inner">
+                    <p class="plate-org">Texas State Board of<br>Plumbing Examiners</p>
+                    <div class="plate-rule"></div>
+                    <p class="plate-role">Responsible Master Plumber</p>
+                    <p class="plate-no">M-36859</p>
+                    <p class="plate-name">Robert Salgado</p>
+                    <div class="plate-rule"></div>
+                    <p class="plate-status">Registry status: current<br>Insurance on file</p>
+                  </div>
+                </div>
+                <p class="plate-caption">The credential the whole shop is built on.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SERVICES ============ -->
+  <section id="services" aria-labelledby="svc-h">
+    <div class="wrap">
+      <p class="sect-label">01 <em>&mdash; What we do</em></p>
+      <h2 id="svc-h">Residential plumbing service and repair. That&rsquo;s the whole list.</h2>
+      <p class="lede">No franchises, no upsells, no sidelines. One trade, practiced in South Austin homes for eighteen years, every job under a master plumber&rsquo;s license.</p>
+
+      <div class="svc-grid">
+        <article class="svc">
+          <span class="svc-num">/ 01</span>
+          <h3>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a4.5 4.5 0 0 0-6 6L3 18l3 3 5.7-5.7a4.5 4.5 0 0 0 6-6L14 13l-3-3 3.7-3.7Z"/></svg>
+            Plumbing service
+          </h3>
+          <p>Scheduled work on the plumbing your home already has &mdash; keeping the systems you live with working the way they should.</p>
+        </article>
+        <article class="svc">
+          <span class="svc-num">/ 02</span>
+          <h3>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v6"/><path d="M8 3h8"/><path d="M12 9a5 5 0 0 1 5 5v6H7v-6a5 5 0 0 1 5-5Z"/><path d="M7 16h10"/></svg>
+            Plumbing repair
+          </h3>
+          <p>Diagnosis and repair when something in the house leaks, drips, clogs, or quits &mdash; found properly and fixed properly.</p>
+        </article>
+        <p class="svc-note"><b>Why the list is short</b> A shop that does one thing under one license can stand behind every job with the owner&rsquo;s own name. If your problem is residential plumbing, it&rsquo;s our problem.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PHOTO ============ -->
+  <section class="photo-band" aria-label="Photograph">
+    <div class="wrap">
+      <figure>
+        <div class="photo-frame">
+          <img src="concept-art.jpg" alt="Gloved hands soldering a copper pipe joint with a handheld torch" width="1600" height="893" loading="lazy">
+        </div>
+        <figcaption class="photo-cap">
+          <i>Copper and open flame &mdash; the working material of the licensed trade.</i>
+          <span>Trade photography</span>
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ============ SERVICE AREA ============ -->
+  <section id="area" aria-labelledby="area-h">
+    <div class="wrap">
+      <p class="sect-label">02 <em>&mdash; Where we work</em></p>
+      <div class="area-grid">
+        <div>
+          <p class="zip">78748<small>South Austin, Texas</small></p>
+        </div>
+        <div class="area-copy">
+          <h2 id="area-h">A South Austin shop, based in the ZIP it serves.</h2>
+          <p>Robert Salgado Plumbing operates out of 11500 Mayo St in South Austin &mdash; not a call center, not a dispatch board. When you phone the shop, you&rsquo;re calling the neighborhood it works in.</p>
+          <ul class="area-facts">
+            <li><b>Shop address</b><span>11500 Mayo St, Austin, TX 78748</span></li>
+            <li><b>Service area</b><span>South Austin residences</span></li>
+            <li><b>Phone</b><span><a href="tel:+15129474603">(512) 947-4603</a></span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ THE RECORD ============ -->
+  <section id="record" class="record" aria-labelledby="rec-h">
+    <div class="wrap">
+      <p class="sect-label">03 <em>&mdash; The record</em></p>
+      <h2 id="rec-h">Don&rsquo;t take our word for it. Look it up.</h2>
+      <p class="lede">Every figure below sits in someone else&rsquo;s ledger &mdash; a state registry, a review site, a permit database. That&rsquo;s the point.</p>
+
+      <dl class="ledger">
+        <div class="ledger-row">
+          <dt>M-36859<small>License</small></dt>
+          <dd>Responsible Master Plumber license held by Robert Salgado &mdash; registry status current, with insurance on file.</dd>
+          <dd class="ledger-src">TX State Board of Plumbing Examiners</dd>
+        </div>
+        <div class="ledger-row">
+          <dt>18<small>Years</small></dt>
+          <dd>Eighteen years in business as a residential plumber in South Austin &mdash; same trade, same name.</dd>
+          <dd class="ledger-src">Years in business</dd>
+        </div>
+        <div class="ledger-row">
+          <dt>A+<small>Rating</small></dt>
+          <dd>The Better Business Bureau&rsquo;s highest rating, earned and held.</dd>
+          <dd class="ledger-src">Better Business Bureau</dd>
+        </div>
+        <div class="ledger-row">
+          <dt>4.3<small>Stars</small></dt>
+          <dd>Average rating across 19 customer reviews &mdash; written by homeowners, not by us.</dd>
+          <dd class="ledger-src">Yelp &middot; 19 reviews</dd>
+        </div>
+        <div class="ledger-row">
+          <dt>157<small>Permits</small></dt>
+          <dd>Permitted jobs on public record &mdash; each one a project a jurisdiction signed off on.</dd>
+          <dd class="ledger-src">BuildZoom permit records</dd>
+        </div>
+      </dl>
+      <p class="record-foot">Licenses can be verified through the Texas State Board of Plumbing Examiners registry.</p>
+    </div>
+  </section>
+
+  <!-- ============ CONTACT ============ -->
+  <section id="contact" aria-labelledby="con-h">
+    <div class="wrap">
+      <p class="sect-label">04 <em>&mdash; Contact</em></p>
+      <div class="contact-card">
+        <div class="contact-inner">
+          <div class="contact-main">
+            <h2 id="con-h">Talk to the shop.</h2>
+            <a class="contact-phone" href="tel:+15129474603">(512) 947-4603</a>
+            <p>The phone is the front door. Call about a repair, a problem you can&rsquo;t place, or the plumbing question you&rsquo;ve been putting off.</p>
+          </div>
+          <div class="contact-list">
+            <a href="tel:+15129474603">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.13.96.36 1.9.7 2.8a2 2 0 0 1-.45 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.45c.9.34 1.84.57 2.8.7a2 2 0 0 1 1.7 2.05Z"/></svg>
+              <span><b>Phone</b>(512) 947-4603</span>
+            </a>
+            <a href="mailto:robertsalgadoplumbing@yahoo.com">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>
+              <span><b>Email</b>robertsalgadoplumbing@yahoo.com</span>
+            </a>
+            <a href="https://facebook.com/residentialplumberinsouthaustin" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3Z"/></svg>
+              <span><b>Facebook</b>facebook.com/residentialplumberinsouthaustin</span>
+            </a>
+            <div>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+              <span><b>Shop</b>11500 Mayo St, Austin, TX 78748</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <p class="foot-id">
+        <b>Robert Salgado Plumbing, LLC</b><br>
+        Residential plumbing service &amp; repair &middot; South Austin, TX 78748<br>
+        Responsible Master Plumber M-36859 &middot; Licensed &amp; insured
+      </p>
+      <p class="foot-credit">
+        Website concept by <b>Murrieta Web Studio</b>
+      </p>
+    </div>
+    <p class="foot-disclaimer">This is a design concept created for Robert Salgado Plumbing, LLC. Not yet the official website of Robert Salgado Plumbing, LLC.</p>
+  </div>
+</footer>
+
+<div class="callbar">
+  <a href="tel:+15129474603">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.13.96.36 1.9.7 2.8a2 2 0 0 1-.45 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.45c.9.34 1.84.57 2.8.7a2 2 0 0 1 1.7 2.05Z"/></svg>
+    Call Robert &mdash; (512) 947-4603
+  </a>
+</div>
+
+</body>
+</html>
