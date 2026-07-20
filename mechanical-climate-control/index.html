@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#071014">
+<title>Mechanical Climate Control — 24/7 AC, Heating &amp; Appliance Repair · Austin, TX</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Alegreya+Sans:ital,wght@0,400;0,500;0,700;0,800;0,900;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#071014;
+    --bg-2:#0b171d;
+    --panel:#0d1c23;
+    --line:#152b33;
+    --line-2:#1e3d48;
+    --text:#e9f3f4;
+    --muted:#9cb6bc;
+    --dim:#5f7f87;
+    --cy:#3fe0d6;
+    --cy-soft:rgba(63,224,214,.55);
+    --cy-deep:#0e6e7c;
+    --cy-dark:#0a2e37;
+    --on-cy:#04262a;
+  }
+
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  html{color-scheme:dark;scroll-behavior:smooth}
+  body{
+    font-family:"Alegreya Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+    background:var(--bg);
+    color:var(--text);
+    font-size:1rem;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+  img,svg{display:block;max-width:100%}
+  a{color:inherit;text-decoration:none}
+  ::selection{background:var(--cy);color:var(--on-cy)}
+  :focus-visible{outline:2px solid var(--cy);outline-offset:3px;border-radius:2px}
+
+  .container{width:min(1120px,92%);margin-inline:auto}
+  section{scroll-margin-top:1.5rem}
+
+  /* ---------- shared type ---------- */
+  .kicker{
+    color:var(--cy);
+    font-size:.72rem;
+    font-weight:700;
+    letter-spacing:.24em;
+    text-transform:uppercase;
+  }
+  .sec-head{margin-bottom:clamp(2rem,5vw,3.2rem)}
+  .sec-head .kicker{display:flex;align-items:center;gap:1rem;margin-bottom:.9rem}
+  .sec-head .kicker::after{content:"";flex:1;height:1px;background:var(--line-2)}
+  .sec-head h2{
+    font-size:clamp(1.9rem,4.6vw,2.9rem);
+    font-weight:800;
+    line-height:1.08;
+    letter-spacing:-.015em;
+    max-width:20ch;
+  }
+  .lede{color:var(--muted);max-width:58ch;margin-top:1rem;font-size:1.06rem}
+
+  /* ---------- duotone texture blocks ---------- */
+  .duo-dots{
+    position:relative;
+    background:linear-gradient(150deg,var(--cy-dark) 0%,#062029 55%,#04141a 100%);
+    overflow:hidden;
+  }
+  .duo-dots::before{
+    content:"";position:absolute;inset:0;pointer-events:none;
+    background-image:radial-gradient(var(--cy-soft) 1px,transparent 1.55px);
+    background-size:11px 11px;
+    opacity:.28;
+  }
+  .duo-lines{
+    position:relative;
+    background:linear-gradient(135deg,var(--cy-dark) 0%,#051b22 60%,#04141a 100%);
+    overflow:hidden;
+  }
+  .duo-lines::before{
+    content:"";position:absolute;inset:0;pointer-events:none;
+    background-image:repeating-linear-gradient(-45deg,rgba(63,224,214,.30) 0 1px,transparent 1px 9px);
+    opacity:.35;
+  }
+
+  /* ---------- header ---------- */
+  .top{
+    position:relative;z-index:5;
+    display:flex;align-items:center;justify-content:space-between;gap:1rem;
+    width:min(1120px,92%);margin-inline:auto;
+    padding-block:1.15rem;
+  }
+  .brand{display:flex;align-items:center;gap:.7rem}
+  .brand .mark{
+    width:36px;height:36px;flex:none;
+    display:grid;place-items:center;
+    border:1px solid var(--line-2);border-radius:8px;
+    color:var(--cy);
+    background:linear-gradient(160deg,rgba(63,224,214,.10),transparent 65%);
+  }
+  .brand .mark svg{width:20px;height:20px}
+  .brand-name{
+    font-size:.78rem;font-weight:800;line-height:1.28;
+    letter-spacing:.16em;text-transform:uppercase;
+  }
+  .brand-name em{font-style:normal;color:var(--muted);font-weight:700}
+  .top nav{display:none;gap:1.7rem}
+  .top nav a{
+    font-size:.8rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+    color:var(--muted);transition:color .18s ease;
+  }
+  .top nav a:hover{color:var(--cy)}
+  .phone-pill{
+    display:flex;align-items:center;gap:.5rem;
+    border:1px solid var(--line-2);border-radius:99px;
+    padding:.5rem .95rem;
+    color:var(--cy);font-weight:800;font-size:.88rem;letter-spacing:.02em;
+    white-space:nowrap;
+    transition:border-color .18s ease,background .18s ease;
+  }
+  .phone-pill:hover{border-color:var(--cy-deep);background:rgba(63,224,214,.06)}
+  .phone-pill svg{width:15px;height:15px}
+  @media(min-width:880px){.top nav{display:flex}}
+
+  /* ---------- hero ---------- */
+  .hero{
+    position:relative;
+    min-height:100svh;
+    display:flex;flex-direction:column;
+    border-bottom:1px solid var(--line);
+    overflow:hidden;
+  }
+  .hero::before{ /* blueprint grid */
+    content:"";position:absolute;inset:0;pointer-events:none;
+    background-image:
+      linear-gradient(rgba(63,224,214,.05) 1px,transparent 1px),
+      linear-gradient(90deg,rgba(63,224,214,.05) 1px,transparent 1px);
+    background-size:54px 54px;
+    mask-image:linear-gradient(180deg,#000 0%,#000 55%,transparent 100%);
+    -webkit-mask-image:linear-gradient(180deg,#000 0%,#000 55%,transparent 100%);
+  }
+  .hero::after{ /* cyan glow */
+    content:"";position:absolute;top:-25%;right:-15%;width:70%;aspect-ratio:1;
+    background:radial-gradient(circle,rgba(63,224,214,.10),transparent 65%);
+    pointer-events:none;
+  }
+  .hero-main{
+    position:relative;z-index:2;
+    flex:1;display:grid;align-content:center;gap:3rem;
+    padding-block:3.5rem 4.5rem;
+  }
+  .hero h1{
+    font-size:clamp(2.5rem,7.4vw,4.7rem);
+    font-weight:900;
+    line-height:1.02;
+    letter-spacing:-.018em;
+    max-width:15ch;
+  }
+  .hero h1 .accent{color:var(--cy)}
+  .hero .hero-kicker{
+    display:flex;align-items:center;gap:.8rem;
+    margin-bottom:1.4rem;
+  }
+  .hero .hero-kicker::before{content:"";width:2.2rem;height:2px;background:var(--cy)}
+  .hero-sub{
+    color:var(--muted);
+    font-size:1.1rem;
+    max-width:52ch;
+    margin-top:1.4rem;
+  }
+  .cta-row{display:flex;flex-wrap:wrap;gap:.8rem;margin-top:2.1rem}
+  .btn{
+    display:inline-flex;align-items:center;gap:.6rem;
+    padding:.95rem 1.5rem;border-radius:10px;
+    font-weight:800;font-size:1rem;letter-spacing:.01em;
+    transition:transform .16s ease,box-shadow .16s ease,border-color .16s ease,background .16s ease;
+  }
+  .btn svg{width:18px;height:18px}
+  .btn-primary{
+    background:var(--cy);color:var(--on-cy);
+    box-shadow:0 6px 28px -8px rgba(63,224,214,.45);
+  }
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 10px 34px -8px rgba(63,224,214,.55)}
+  .btn-ghost{border:1px solid var(--line-2);color:var(--text)}
+  .btn-ghost:hover{border-color:var(--cy-deep);background:rgba(63,224,214,.05)}
+  .status{
+    display:flex;flex-wrap:wrap;align-items:center;gap:.4rem .65rem;
+    margin-top:2rem;
+    color:var(--muted);font-size:.95rem;
+  }
+  .status strong{color:var(--text);font-weight:800;white-space:nowrap}
+  .dot{
+    width:9px;height:9px;flex:none;border-radius:50%;
+    background:var(--cy);
+    box-shadow:0 0 0 0 rgba(63,224,214,.45);
+    animation:pulse 2.4s ease-out infinite;
+  }
+  @keyframes pulse{
+    0%{box-shadow:0 0 0 0 rgba(63,224,214,.45)}
+    70%{box-shadow:0 0 0 11px rgba(63,224,214,0)}
+    100%{box-shadow:0 0 0 0 rgba(63,224,214,0)}
+  }
+
+  /* dial */
+  .dial-panel{
+    border:1px solid var(--line-2);border-radius:14px;
+    padding:clamp(1.6rem,4vw,2.4rem);
+    max-width:420px;
+    justify-self:center;width:100%;
+  }
+  .dial-wrap{position:relative;aspect-ratio:1;max-width:330px;margin-inline:auto}
+  .dial-wrap svg{position:absolute;inset:0;width:100%;height:100%}
+  .g-ring{stroke:var(--line-2);stroke-width:1;fill:none}
+  .g-inner{stroke:var(--line-2);stroke-width:1;fill:none;stroke-dasharray:2 7}
+  .g-ticks{stroke:var(--cy-deep);stroke-width:13;fill:none}
+  .sweep circle{stroke:var(--cy);stroke-width:3;fill:none;stroke-linecap:round;opacity:.9}
+  .sweep{transform-origin:50% 50%;animation:rot 24s linear infinite}
+  @keyframes rot{to{transform:rotate(360deg)}}
+  .dial-core{
+    position:absolute;inset:0;z-index:1;
+    display:grid;place-content:center;text-align:center;gap:.25rem;
+  }
+  .dial-core b{
+    font-size:clamp(3.1rem,10vw,4.3rem);
+    font-weight:900;letter-spacing:-.03em;line-height:1;
+  }
+  .dial-core b span{color:var(--cy)}
+  .dial-core small{
+    font-size:.68rem;font-weight:700;letter-spacing:.26em;
+    text-transform:uppercase;color:var(--muted);
+  }
+  .dial-caption{
+    position:relative;z-index:1;
+    margin-top:1.4rem;text-align:center;
+    color:var(--muted);font-size:.92rem;
+  }
+  .dial-caption b{color:var(--text)}
+  @media(min-width:900px){
+    .hero-main{grid-template-columns:1.12fr .88fr;align-items:center;gap:4rem}
+  }
+
+  /* hero entrance */
+  @media(prefers-reduced-motion:no-preference){
+    .hero-copy>*,.dial-panel{
+      opacity:0;transform:translateY(14px);
+      animation:rise .7s cubic-bezier(.22,.7,.3,1) forwards;
+    }
+    .hero-copy>*:nth-child(1){animation-delay:.05s}
+    .hero-copy>*:nth-child(2){animation-delay:.13s}
+    .hero-copy>*:nth-child(3){animation-delay:.21s}
+    .hero-copy>*:nth-child(4){animation-delay:.29s}
+    .hero-copy>*:nth-child(5){animation-delay:.37s}
+    .dial-panel{animation-delay:.3s}
+  }
+  @keyframes rise{to{opacity:1;transform:none}}
+
+  /* ---------- ticker ---------- */
+  .ticker{
+    border-bottom:1px solid var(--line);
+    padding-block:.85rem;
+    overflow:hidden;
+    background:linear-gradient(180deg,rgba(63,224,214,.035),transparent);
+    mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);
+    -webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);
+  }
+  .ticker-track{display:flex;width:max-content;animation:slide 52s linear infinite}
+  .ticker-track span{
+    white-space:nowrap;
+    font-size:.74rem;font-weight:700;
+    letter-spacing:.26em;text-transform:uppercase;
+    color:var(--dim);
+  }
+  .ticker-track i{font-style:normal;color:var(--cy);padding-inline:1.1rem}
+  @keyframes slide{to{transform:translateX(-50%)}}
+
+  /* ---------- services ---------- */
+  .services{padding-block:clamp(4.2rem,9vw,7.5rem)}
+  .cards{
+    display:grid;gap:1px;
+    background:var(--line);
+    border:1px solid var(--line);
+    border-radius:14px;overflow:hidden;
+    margin-top:clamp(2.2rem,5vw,3.2rem);
+  }
+  @media(min-width:860px){.cards{grid-template-columns:repeat(3,1fr)}}
+  .card{
+    background:var(--bg-2);
+    padding:clamp(1.6rem,3.5vw,2.2rem);
+    position:relative;
+    transition:background .2s ease;
+  }
+  .card:hover{background:var(--panel)}
+  .card .idx{
+    position:absolute;top:1.5rem;right:1.6rem;
+    font-size:.74rem;font-weight:700;letter-spacing:.18em;color:var(--dim);
+  }
+  .icon-tile{
+    width:54px;height:54px;border-radius:10px;
+    display:grid;place-items:center;
+    color:var(--cy);
+    border:1px solid var(--line-2);
+    margin-bottom:1.4rem;
+  }
+  .icon-tile svg{width:26px;height:26px;position:relative;z-index:1}
+  .card h3{font-size:1.28rem;font-weight:800;letter-spacing:-.01em;margin-bottom:.55rem}
+  .card p{color:var(--muted);font-size:.98rem}
+  .mini-list{
+    display:flex;flex-wrap:wrap;gap:.35rem 0;
+    margin-top:1rem;
+    font-size:.78rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--cy);
+  }
+  .mini-list i{font-style:normal;color:var(--dim);padding-inline:.65rem}
+
+  /* ---------- service area ---------- */
+  .area{
+    padding-block:clamp(4.2rem,9vw,7.5rem);
+    border-top:1px solid var(--line);
+  }
+  .area-grid{display:grid;gap:2.6rem}
+  @media(min-width:900px){.area-grid{grid-template-columns:1fr 1fr;align-items:center;gap:4rem}}
+  .area-copy p{color:var(--muted);max-width:52ch}
+  .area-copy p+p{margin-top:1rem}
+  .area-copy .addr{
+    display:flex;align-items:flex-start;gap:.7rem;
+    margin-top:1.6rem;padding:1rem 1.2rem;
+    border:1px solid var(--line-2);border-radius:10px;
+    color:var(--text);font-weight:700;
+    width:fit-content;
+  }
+  .area-copy .addr svg{width:18px;height:18px;color:var(--cy);margin-top:.2rem;flex:none}
+  .area-copy .addr small{display:block;color:var(--muted);font-weight:500}
+  .map-block{
+    border:1px solid var(--line-2);border-radius:14px;
+    aspect-ratio:4/3;
+  }
+  .map-block svg{position:absolute;inset:0;width:100%;height:100%;z-index:1}
+  .map-ring{stroke:rgba(63,224,214,.35);fill:none;stroke-width:1}
+  .map-ring-d{stroke:rgba(63,224,214,.5);fill:none;stroke-width:1;stroke-dasharray:3 6}
+  .map-cross{stroke:rgba(63,224,214,.22);stroke-width:1}
+  .map-pin{fill:none;stroke:var(--cy);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+  .map-dot{fill:var(--cy)}
+  .map-tag{
+    position:absolute;left:1.1rem;bottom:1rem;z-index:2;
+    font-size:.72rem;font-weight:800;letter-spacing:.22em;text-transform:uppercase;
+    color:var(--cy);
+    background:rgba(4,20,26,.75);
+    border:1px solid var(--line-2);border-radius:6px;
+    padding:.42rem .7rem;
+  }
+
+  /* ---------- record ---------- */
+  .record{
+    padding-block:clamp(4.2rem,9vw,7.5rem);
+    border-top:1px solid var(--line);
+    background:var(--bg-2);
+  }
+  .stats{
+    display:grid;gap:1px;
+    background:var(--line-2);
+    border:1px solid var(--line-2);
+    border-radius:14px;overflow:hidden;
+  }
+  @media(min-width:700px){.stats{grid-template-columns:repeat(4,1fr)}}
+  @media(min-width:360px) and (max-width:699px){.stats{grid-template-columns:repeat(2,1fr)}}
+  .stat{
+    background:var(--bg);
+    padding:1.7rem 1.5rem 1.5rem;
+    position:relative;
+  }
+  .stat::before{
+    content:"";position:absolute;top:0;left:1.5rem;width:2.2rem;height:3px;
+    background:var(--cy);
+  }
+  .stat b{
+    display:block;
+    font-size:clamp(2.3rem,5vw,3rem);
+    font-weight:900;letter-spacing:-.02em;line-height:1.05;
+  }
+  .stat b span{color:var(--cy)}
+  .stat small{
+    display:block;margin-top:.45rem;
+    color:var(--muted);font-size:.88rem;line-height:1.45;
+  }
+  .record-note{
+    margin-top:2.2rem;
+    color:var(--muted);
+    max-width:64ch;
+    font-size:1.02rem;
+  }
+  .record-note em{color:var(--text);font-style:italic}
+
+  /* ---------- contact ---------- */
+  .contact{padding-block:clamp(4.2rem,9vw,7.5rem);border-top:1px solid var(--line)}
+  .contact-panel{
+    border:1px solid var(--line-2);border-radius:16px;
+    padding:clamp(1.8rem,5vw,3.2rem);
+    display:grid;gap:2.4rem;
+  }
+  .contact-panel::before{opacity:.16}
+  @media(min-width:860px){.contact-panel{grid-template-columns:1.2fr .8fr;align-items:center;gap:3.5rem}}
+  .contact-call{position:relative;z-index:1}
+  .contact-call h2{
+    font-size:clamp(1.8rem,4.4vw,2.7rem);
+    font-weight:800;letter-spacing:-.015em;line-height:1.1;
+    margin:.8rem 0 1.2rem;max-width:16ch;
+  }
+  .big-tel{
+    display:inline-block;
+    font-size:clamp(2rem,7vw,3.4rem);
+    font-weight:900;letter-spacing:-.02em;line-height:1.1;
+    color:var(--cy);
+    border-bottom:3px solid transparent;
+    transition:border-color .18s ease;
+  }
+  .big-tel:hover{border-color:var(--cy)}
+  .contact-call .sub{color:var(--muted);margin-top:.8rem;font-size:.98rem}
+  .contact-facts{position:relative;z-index:1;display:grid}
+  .fact{
+    display:flex;gap:.9rem;align-items:flex-start;
+    padding-block:1.1rem;
+  }
+  .fact+.fact{border-top:1px solid var(--line-2)}
+  .fact svg{width:20px;height:20px;color:var(--cy);flex:none;margin-top:.2rem}
+  .fact b{display:block;font-weight:800}
+  .fact small{color:var(--muted);font-size:.92rem}
+
+  /* ---------- footer ---------- */
+  footer{
+    border-top:1px solid var(--line);
+    padding-block:2.6rem 3rem;
+  }
+  .foot{display:grid;gap:1.1rem}
+  .foot-brand{
+    display:flex;align-items:center;gap:.6rem;
+    font-size:.78rem;font-weight:800;letter-spacing:.16em;text-transform:uppercase;
+  }
+  .foot-brand svg{width:16px;height:16px;color:var(--cy)}
+  .foot p{color:var(--dim);font-size:.88rem}
+  .foot .studio{color:var(--muted);font-weight:700}
+  .foot .concept{max-width:60ch}
+
+  /* ---------- mobile call bar ---------- */
+  .callbar{
+    position:fixed;left:0;right:0;bottom:0;z-index:60;
+    display:none;
+    padding:.6rem .8rem calc(.6rem + env(safe-area-inset-bottom));
+    background:rgba(7,16,20,.9);
+    -webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);
+    border-top:1px solid var(--line-2);
+  }
+  .callbar a{
+    display:flex;align-items:center;justify-content:center;gap:.6rem;
+    background:var(--cy);color:var(--on-cy);
+    font-weight:900;font-size:1.02rem;letter-spacing:.01em;
+    padding:.95rem;border-radius:11px;
+    box-shadow:0 -4px 24px -6px rgba(63,224,214,.3);
+  }
+  .callbar a svg{width:18px;height:18px}
+  .callbar small{font-weight:700;opacity:.75}
+  @media(max-width:859px){
+    .callbar{display:block}
+    body{padding-bottom:92px}
+  }
+
+  @media(prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto}
+    .sweep,.dot,.ticker-track{animation:none}
+    .hero-copy>*,.dial-panel{opacity:1;transform:none;animation:none}
+  }
+</style>
+</head>
+<body id="top">
+
+<!-- inline icon set -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-mark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+      <path d="M12 3v18"/><path d="M4.2 7.5l15.6 9"/><path d="M19.8 7.5l-15.6 9"/>
+      <circle cx="12" cy="12" r="2.1" fill="currentColor" stroke="none"/>
+    </symbol>
+    <symbol id="i-phone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M6.8 3.5h2.4l1.7 4.2-2 1.6a12.6 12.6 0 0 0 5.8 5.8l1.6-2 4.2 1.7v2.4a2.3 2.3 0 0 1-2.5 2.3A16.3 16.3 0 0 1 4.5 6a2.3 2.3 0 0 1 2.3-2.5Z"/>
+    </symbol>
+    <symbol id="i-flake" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 2.8v18.4"/><path d="M4 7.4l16 9.2"/><path d="M20 7.4 4 16.6"/>
+      <path d="M9.6 4.6 12 6.4l2.4-1.8"/><path d="M9.6 19.4 12 17.6l2.4 1.8"/>
+    </symbol>
+    <symbol id="i-flame" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 3.2C14.9 6.6 17 9.4 17 12.4a5 5 0 0 1-10 0c0-3 2.1-5.8 5-9.2Z"/>
+      <path d="M12 9.6c1.4 1.7 2.4 3 2.4 4.5a2.4 2.4 0 0 1-4.8 0c0-1.5 1-2.8 2.4-4.5Z"/>
+    </symbol>
+    <symbol id="i-washer" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="4" y="3.5" width="16" height="17" rx="2"/>
+      <circle cx="12" cy="13.5" r="4.4"/>
+      <path d="M9.8 14.7a3.1 3.1 0 0 0 4.4 0"/>
+      <path d="M7 6.6h2.6"/>
+      <circle cx="16.6" cy="6.6" r=".95" fill="currentColor" stroke="none"/>
+    </symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 21.5C12 21.5 5 15.8 5 10.6a7 7 0 0 1 14 0c0 5.2-7 10.9-7 10.9Z"/>
+      <circle cx="12" cy="10.4" r="2.4"/>
+    </symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="12" r="8.5"/>
+      <path d="M12 7.5V12l3.2 2"/>
+    </symbol>
+  </defs>
+</svg>
+
+<section class="hero">
+  <header class="top">
+    <a class="brand" href="#top" aria-label="Mechanical Climate Control — home">
+      <span class="mark"><svg aria-hidden="true"><use href="#i-mark"/></svg></span>
+      <span class="brand-name">Mechanical<br><em>Climate Control</em></span>
+    </a>
+    <nav aria-label="Sections">
+      <a href="#services">What we fix</a>
+      <a href="#area">Where we work</a>
+      <a href="#record">The record</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a class="phone-pill" href="tel:+15127850304" aria-label="Call Mechanical Climate Control at (512) 785-0304">
+      <svg aria-hidden="true"><use href="#i-phone"/></svg>
+      (512)&nbsp;785-0304
+    </a>
+  </header>
+
+  <div class="hero-main container">
+    <div class="hero-copy">
+      <p class="kicker hero-kicker">24-hour repair &middot; Austin, TX &middot; Since 2000</p>
+      <h1>Your AC doesn&rsquo;t keep business hours. <span class="accent">Neither do we.</span></h1>
+      <p class="hero-sub">Mechanical Climate Control repairs air conditioning, heating, and the household machines around them &mdash; ovens, refrigerators, washers, dryers. One Austin company, any hour of any day.</p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="tel:+15127850304">
+          <svg aria-hidden="true"><use href="#i-phone"/></svg>
+          Call (512) 785-0304
+        </a>
+        <a class="btn btn-ghost" href="#services">See what we fix</a>
+      </div>
+      <p class="status"><span class="dot" aria-hidden="true"></span><strong>Open now.</strong>&nbsp;<span id="austin-time">The phone is on, whatever time it is.</span></p>
+    </div>
+
+    <div class="dial-panel duo-dots">
+      <div class="dial-wrap" role="img" aria-label="Dial showing 24 hours a day, 7 days a week">
+        <svg viewBox="0 0 340 340" aria-hidden="true">
+          <circle class="g-ring"  cx="170" cy="170" r="156"/>
+          <circle class="g-ticks" cx="170" cy="170" r="156" pathLength="240" stroke-dasharray="1.3 8.7"/>
+          <circle class="g-inner" cx="170" cy="170" r="122"/>
+          <g class="sweep"><circle cx="170" cy="170" r="140" pathLength="100" stroke-dasharray="16 84"/></g>
+        </svg>
+        <div class="dial-core">
+          <b>24<span>/</span>7</b>
+          <small>Hours &middot; Days a week</small>
+        </div>
+      </div>
+      <p class="dial-caption">Nights, weekends, holidays &mdash; <b>the line stays open.</b></p>
+    </div>
+  </div>
+</section>
+
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-track">
+    <span>AC repair<i>/</i>Heating repair<i>/</i>Oven repair<i>/</i>Refrigerator repair<i>/</i>Washer repair<i>/</i>Dryer repair<i>/</i>Open 24 hours<i>/</i>AC repair<i>/</i>Heating repair<i>/</i>Oven repair<i>/</i>Refrigerator repair<i>/</i>Washer repair<i>/</i>Dryer repair<i>/</i>Open 24 hours<i>/</i></span>
+    <span>AC repair<i>/</i>Heating repair<i>/</i>Oven repair<i>/</i>Refrigerator repair<i>/</i>Washer repair<i>/</i>Dryer repair<i>/</i>Open 24 hours<i>/</i>AC repair<i>/</i>Heating repair<i>/</i>Oven repair<i>/</i>Refrigerator repair<i>/</i>Washer repair<i>/</i>Dryer repair<i>/</i>Open 24 hours<i>/</i></span>
+  </div>
+</div>
+
+<section class="services container" id="services">
+  <div class="sec-head">
+    <p class="kicker">01 &middot; What we fix</p>
+    <h2>Two trades under one roof.</h2>
+    <p class="lede">Most companies fix your air <em>or</em> your appliances. We do both &mdash; so the same number works whether it&rsquo;s the AC on a July afternoon or the refrigerator at two in the morning.</p>
+  </div>
+
+  <div class="cards">
+    <article class="card">
+      <span class="idx">/01</span>
+      <div class="icon-tile duo-dots"><svg aria-hidden="true"><use href="#i-flake"/></svg></div>
+      <h3>AC Repair</h3>
+      <p>Warm air from the vents, short cycling, a unit that gives up mid-heatwave &mdash; we diagnose and repair cooling systems at any hour, because Austin heat doesn&rsquo;t wait for morning.</p>
+    </article>
+    <article class="card">
+      <span class="idx">/02</span>
+      <div class="icon-tile duo-dots"><svg aria-hidden="true"><use href="#i-flame"/></svg></div>
+      <h3>Heating Repair</h3>
+      <p>The few Texas nights that actually get cold are exactly when heat tends to fail. We repair heating systems around the clock, all winter &mdash; short as it is.</p>
+    </article>
+    <article class="card">
+      <span class="idx">/03</span>
+      <div class="icon-tile duo-dots"><svg aria-hidden="true"><use href="#i-washer"/></svg></div>
+      <h3>Appliance Repair</h3>
+      <p>The rest of the house breaks too. We repair the machines your kitchen and laundry room depend on:</p>
+      <p class="mini-list">Ovens<i>/</i>Refrigerators<i>/</i>Washers<i>/</i>Dryers</p>
+    </article>
+  </div>
+</section>
+
+<section class="area" id="area">
+  <div class="container area-grid">
+    <div class="area-copy">
+      <div class="sec-head" style="margin-bottom:1.4rem">
+        <p class="kicker">02 &middot; Where we work</p>
+        <h2>Northwest Austin. 78726.</h2>
+      </div>
+      <p>We&rsquo;re not a dispatch desk three states away. The shop sits on Indigo Brush Drive, inside the 78726 &mdash; the Northwest Austin ZIP we&rsquo;ve worked out of for years.</p>
+      <p>If you&rsquo;re nearby, so are we. Elsewhere in Austin? Call anyway &mdash; we&rsquo;ll tell you straight whether we cover your street.</p>
+      <p class="addr">
+        <svg aria-hidden="true"><use href="#i-pin"/></svg>
+        <span>9805 Indigo Brush Dr<small>Austin, TX 78726</small></span>
+      </p>
+    </div>
+
+    <div class="map-block duo-lines" role="img" aria-label="Stylized map marking the 78726 ZIP code in Northwest Austin">
+      <svg viewBox="0 0 480 360" aria-hidden="true">
+        <line class="map-cross" x1="0" y1="168" x2="480" y2="168"/>
+        <line class="map-cross" x1="264" y1="0" x2="264" y2="360"/>
+        <circle class="map-ring"   cx="264" cy="168" r="42"/>
+        <circle class="map-ring-d" cx="264" cy="168" r="86"/>
+        <circle class="map-ring"   cx="264" cy="168" r="132" opacity=".55"/>
+        <circle class="map-ring-d" cx="264" cy="168" r="180" opacity=".4"/>
+        <path class="map-pin" d="M264 186c0 0-13-10.6-13-20.3a13 13 0 0 1 26 0c0 9.7-13 20.3-13 20.3Z"/>
+        <circle class="map-dot" cx="264" cy="165.5" r="3.4"/>
+      </svg>
+      <span class="map-tag">78726 &middot; Northwest Austin</span>
+    </div>
+  </div>
+</section>
+
+<section class="record" id="record">
+  <div class="container">
+    <div class="sec-head">
+      <p class="kicker">03 &middot; Why call us</p>
+      <h2>The record, not the pitch.</h2>
+    </div>
+
+    <div class="stats">
+      <div class="stat">
+        <b>2000</b>
+        <small>Operating in Austin since the turn of the millennium.</small>
+      </div>
+      <div class="stat">
+        <b>24<span>/</span>7</b>
+        <small>The hours we keep. Nights, weekends, holidays.</small>
+      </div>
+      <div class="stat">
+        <b>18</b>
+        <small>Customer reviews on Yelp &mdash; public and unedited.</small>
+      </div>
+      <div class="stat">
+        <b>2018</b>
+        <small>Listed in the Blue Book, the construction industry&rsquo;s directory, since.</small>
+      </div>
+    </div>
+
+    <p class="record-note">You won&rsquo;t find hand-picked testimonial cards on this page. Our 18 Yelp reviews are public &mdash; <em>go read them as customers wrote them.</em> That, a Blue Book listing, and a phone that&rsquo;s been answered since 2000 is the whole pitch.</p>
+  </div>
+</section>
+
+<section class="contact container" id="contact">
+  <div class="contact-panel duo-dots">
+    <div class="contact-call">
+      <p class="kicker">04 &middot; Contact</p>
+      <h2>Save the number before you need it.</h2>
+      <a class="big-tel" href="tel:+15127850304">(512) 785-0304</a>
+      <p class="sub">One call reaches the shop &mdash; day, night, and every hour in between.</p>
+    </div>
+    <div class="contact-facts">
+      <div class="fact">
+        <svg aria-hidden="true"><use href="#i-pin"/></svg>
+        <div>
+          <b>9805 Indigo Brush Dr</b>
+          <small>Austin, TX 78726 &mdash; Northwest Austin</small>
+        </div>
+      </div>
+      <div class="fact">
+        <svg aria-hidden="true"><use href="#i-clock"/></svg>
+        <div>
+          <b>Open 24 hours, 7 days</b>
+          <small>No after-hours voicemail wall &mdash; the line is live.</small>
+        </div>
+      </div>
+      <div class="fact">
+        <svg aria-hidden="true"><use href="#i-mark"/></svg>
+        <div>
+          <b>AC &middot; Heating &middot; Appliances</b>
+          <small>Ovens, refrigerators, washers, and dryers included.</small>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container foot">
+    <p class="foot-brand">
+      <svg aria-hidden="true"><use href="#i-mark"/></svg>
+      Mechanical Climate Control &middot; Austin, TX
+    </p>
+    <p class="studio">Website concept by Murrieta Web Studio</p>
+    <p class="concept">This is a design concept created for Mechanical Climate Control. Not yet the official website of Mechanical Climate Control.</p>
+  </div>
+</footer>
+
+<div class="callbar">
+  <a href="tel:+15127850304" aria-label="Call Mechanical Climate Control now — open 24/7">
+    <svg aria-hidden="true"><use href="#i-phone"/></svg>
+    Call now&nbsp;<small>&mdash; open 24/7</small>
+  </a>
+</div>
+
+<script>
+(function () {
+  var el = document.getElementById('austin-time');
+  if (!el || !window.Intl || !Intl.DateTimeFormat) return;
+  function tick() {
+    try {
+      var t = new Intl.DateTimeFormat('en-US', {
+        hour: 'numeric', minute: '2-digit', timeZone: 'America/Chicago'
+      }).format(new Date());
+      el.textContent = 'It’s ' + t + ' in Austin — and the phone is on.';
+    } catch (e) { /* keep fallback text */ }
+  }
+  tick();
+  setInterval(tick, 30000);
+})();
+</script>
+
+</body>
+</html>
