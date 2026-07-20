@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#05080f">
+<meta name="description" content="Just-In-Time Plumbing — 24/7 emergency plumbing, hydrojetting, sewer camera inspection, and water heaters for Buda, Kyle, and South Austin. Call (512) 652-8648 any hour.">
+<title>Just-In-Time Plumbing — 24/7 Emergency Plumber · Buda, Kyle &amp; South Austin</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders:opsz,wght@10..72,100..900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --night-0:#05080f;
+    --night-1:#0a101f;
+    --night-2:#0e1628;
+    --night-3:#131e33;
+    --line:rgba(148,168,205,.14);
+    --line-soft:rgba(148,168,205,.08);
+    --amber:#ffb320;
+    --amber-deep:#e79a0b;
+    --amber-dim:rgba(255,179,32,.14);
+    --text:#e9edf6;
+    --muted:#98a4ba;
+    --faint:#6b7690;
+    --display:"Big Shoulders","Arial Narrow","Helvetica Neue",sans-serif;
+    --body:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    --tick:repeating-linear-gradient(90deg,rgba(255,179,32,.5) 0 1px,transparent 1px 14px);
+    --tick-faint:repeating-linear-gradient(90deg,rgba(148,168,205,.22) 0 1px,transparent 1px 14px);
+    --hh:-52deg;
+    --mm:128deg;
+    --wrap:1180px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto}
+    *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+  }
+  body{
+    background:var(--night-0);
+    color:var(--text);
+    font-family:var(--body);
+    font-size:16px;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  ::selection{background:var(--amber);color:var(--night-0)}
+  a{color:inherit}
+  a:focus-visible,button:focus-visible{outline:2px solid var(--amber);outline-offset:3px;border-radius:2px}
+  img{max-width:100%;display:block}
+  .wrap{max-width:var(--wrap);margin:0 auto;padding:0 24px}
+  .display{font-family:var(--display);font-optical-sizing:auto;text-transform:uppercase}
+
+  /* ---------- header ---------- */
+  header{
+    position:absolute;top:0;left:0;right:0;z-index:40;
+    border-bottom:1px solid var(--line-soft);
+    background:linear-gradient(180deg,rgba(5,8,15,.75),rgba(5,8,15,0));
+  }
+  .bar{display:flex;align-items:center;justify-content:space-between;gap:24px;padding:18px 24px;max-width:var(--wrap);margin:0 auto}
+  .brand{display:flex;align-items:center;gap:12px;text-decoration:none}
+  .brand svg{flex:none}
+  .brand-name{font-family:var(--display);text-transform:uppercase;font-weight:800;font-size:20px;letter-spacing:.04em;line-height:1}
+  .brand-name small{display:block;font-weight:500;font-size:11px;letter-spacing:.42em;color:var(--amber);margin-top:3px}
+  nav{display:flex;align-items:center;gap:28px}
+  nav a.navlink{
+    text-decoration:none;color:var(--muted);
+    font-family:var(--display);font-weight:600;font-size:14px;letter-spacing:.18em;text-transform:uppercase;
+    transition:color .18s ease;
+  }
+  nav a.navlink:hover{color:var(--amber)}
+  .phone-pill{
+    display:inline-flex;align-items:center;gap:10px;text-decoration:none;
+    font-family:var(--display);font-weight:800;font-size:16px;letter-spacing:.06em;text-transform:uppercase;
+    color:var(--night-0);background:var(--amber);
+    padding:11px 20px;
+    clip-path:polygon(10px 0,100% 0,calc(100% - 10px) 100%,0 100%);
+    transition:background .18s ease;
+  }
+  .phone-pill:hover{background:#ffc247}
+  .dot{width:8px;height:8px;border-radius:50%;background:var(--night-0);animation:pulse 2s ease-in-out infinite}
+  @keyframes pulse{0%,100%{opacity:1}50%{opacity:.25}}
+  @media (max-width:860px){nav a.navlink{display:none}}
+  @media (max-width:560px){.phone-pill{display:none}}
+
+  /* ---------- hero ---------- */
+  .hero{
+    position:relative;
+    background:
+      radial-gradient(900px 520px at 78% 30%,rgba(255,179,32,.09),transparent 62%),
+      radial-gradient(700px 500px at 12% 85%,rgba(30,52,96,.35),transparent 65%),
+      var(--night-1);
+    border-bottom:1px solid var(--line);
+    overflow:hidden;
+  }
+  .hero::before{ /* faint vertical tick field, like a ruler wall */
+    content:"";position:absolute;inset:0;
+    background:repeating-linear-gradient(90deg,rgba(148,168,205,.05) 0 1px,transparent 1px 80px);
+    pointer-events:none;
+  }
+  .hero-grid{
+    position:relative;z-index:2;
+    display:grid;grid-template-columns:minmax(0,54fr) minmax(0,46fr);gap:48px;
+    align-items:center;
+    padding:150px 0 96px;
+  }
+  .ghost{
+    position:absolute;z-index:1;top:64px;right:-3%;
+    font-family:var(--display);font-weight:900;
+    font-size:clamp(180px,26vw,380px);line-height:.8;letter-spacing:-.02em;
+    color:transparent;-webkit-text-stroke:1px rgba(255,179,32,.13);
+    user-select:none;pointer-events:none;white-space:nowrap;
+  }
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:10px;
+    font-family:var(--display);font-weight:700;font-size:14px;letter-spacing:.26em;text-transform:uppercase;
+    color:var(--amber);background:var(--amber-dim);border:1px solid rgba(255,179,32,.32);
+    padding:8px 16px;transform:skewX(-8deg);
+  }
+  .eyebrow > *{transform:skewX(8deg)}
+  .eyebrow .dot{background:var(--amber)}
+  h1{
+    font-family:var(--display);font-weight:800;text-transform:uppercase;
+    font-size:clamp(52px,7.4vw,104px);
+    line-height:.92;letter-spacing:-.005em;
+    margin:26px 0 24px;
+  }
+  h1 .amber{color:var(--amber)}
+  h1 .strike{position:relative;white-space:nowrap}
+  h1 .strike::after{
+    content:"";position:absolute;left:-2%;right:-2%;top:54%;height:.075em;
+    background:var(--amber);transform:rotate(-2.2deg);
+  }
+  .lede{max-width:52ch;color:var(--muted);font-size:17px}
+  .lede strong{color:var(--text);font-weight:600}
+  .cta-row{display:flex;flex-wrap:wrap;align-items:center;gap:16px;margin-top:34px}
+  .btn-call{
+    display:inline-flex;align-items:center;gap:12px;text-decoration:none;
+    font-family:var(--display);font-weight:800;font-size:22px;letter-spacing:.05em;text-transform:uppercase;
+    color:var(--night-0);background:var(--amber);
+    padding:16px 28px;
+    clip-path:polygon(14px 0,100% 0,calc(100% - 14px) 100%,0 100%);
+    box-shadow:0 8px 40px rgba(255,179,32,.22);
+    transition:background .18s ease,transform .18s ease;
+  }
+  .btn-call:hover{background:#ffc247;transform:translateY(-2px)}
+  .btn-call svg{flex:none}
+  .btn-ghost{
+    display:inline-flex;align-items:center;gap:10px;text-decoration:none;
+    font-family:var(--display);font-weight:700;font-size:16px;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--text);border:1px solid var(--line);
+    padding:15px 24px;
+    clip-path:polygon(12px 0,100% 0,calc(100% - 12px) 100%,0 100%);
+    transition:border-color .18s ease,color .18s ease;
+  }
+  .btn-ghost:hover{border-color:var(--amber);color:var(--amber)}
+  /* live clock chip */
+  .now{
+    display:inline-flex;align-items:center;gap:14px;margin-top:36px;
+    border:1px solid var(--line);background:rgba(5,8,15,.55);
+    padding:12px 18px 12px 12px;
+  }
+  .now .dial{flex:none}
+  .dial-hand{transform-box:view-box;transform-origin:50% 50%}
+  .dial-hh{transform:rotate(var(--hh))}
+  .dial-mm{transform:rotate(var(--mm))}
+  .now-text{font-size:13.5px;color:var(--muted);letter-spacing:.02em}
+  .now-text strong{display:block;font-family:var(--display);font-weight:800;font-size:17px;letter-spacing:.08em;text-transform:uppercase;color:var(--text)}
+  .now-text strong em{font-style:normal;color:var(--amber)}
+
+  /* hero media: diagonal duotone block */
+  .media{position:relative;min-height:420px}
+  .media-edge{
+    position:absolute;inset:0;background:var(--amber);
+    clip-path:polygon(17% 0,100% 0,100% 100%,3% 100%);
+    transform:translate(-14px,14px);opacity:.9;
+  }
+  .media-frame{
+    position:relative;height:100%;
+    clip-path:polygon(17% 0,100% 0,100% 100%,3% 100%);
+    background:var(--night-2);
+  }
+  .media-frame img{
+    width:100%;height:100%;min-height:420px;object-fit:cover;object-position:62% 40%;
+    filter:grayscale(.55) contrast(1.1) brightness(.92) sepia(.08);
+  }
+  .media-frame::before{ /* amber into highlights */
+    content:"";position:absolute;inset:0;background:var(--amber);
+    mix-blend-mode:multiply;opacity:.5;pointer-events:none;
+  }
+  .media-frame::after{ /* navy into shadows */
+    content:"";position:absolute;inset:0;background:#0b1226;
+    mix-blend-mode:lighten;opacity:.85;pointer-events:none;
+  }
+  .media-caption{
+    position:absolute;left:0;right:0;bottom:0;z-index:3;
+    padding:44px 22px 16px 20%;
+    background:linear-gradient(180deg,transparent,rgba(5,8,15,.88));
+    font-family:var(--display);font-weight:600;font-size:13px;letter-spacing:.3em;text-transform:uppercase;
+    color:rgba(233,237,246,.85);
+  }
+  .media-caption b{color:var(--amber);font-weight:800}
+  .hero-ruler{
+    position:relative;z-index:2;height:12px;margin-bottom:-1px;
+    background:var(--tick-faint);
+    border-top:1px solid var(--line-soft);
+  }
+
+  /* ---------- hours marquee ---------- */
+  .hours{
+    background:var(--night-0);
+    border-bottom:1px solid var(--line);
+    overflow:hidden;position:relative;
+  }
+  .hours::before,.hours::after{
+    content:"";position:absolute;top:0;bottom:0;width:90px;z-index:2;pointer-events:none;
+  }
+  .hours::before{left:0;background:linear-gradient(90deg,var(--night-0),transparent)}
+  .hours::after{right:0;background:linear-gradient(270deg,var(--night-0),transparent)}
+  .hours-track{display:flex;width:max-content;animation:slide 46s linear infinite}
+  @keyframes slide{to{transform:translateX(-50%)}}
+  .hours-set{display:flex;align-items:center;flex:none}
+  .hours-set span{
+    display:inline-flex;align-items:center;gap:26px;
+    padding:20px 26px 20px 0;
+    font-family:var(--display);font-weight:700;font-size:19px;letter-spacing:.24em;text-transform:uppercase;
+    color:var(--muted);white-space:nowrap;
+  }
+  .hours-set span::before{content:"";width:7px;height:7px;background:var(--amber);transform:rotate(45deg);flex:none}
+  .hours-set span.open{color:var(--amber)}
+  @media (prefers-reduced-motion:reduce){
+    .hours{overflow-x:auto}
+    .hours-track{animation:none}
+  }
+
+  /* ---------- shared section chrome ---------- */
+  section{position:relative}
+  .section-pad{padding:clamp(80px,10vw,128px) 0}
+  .kicker{
+    display:inline-flex;align-items:center;gap:10px;
+    font-family:var(--display);font-weight:700;font-size:13px;letter-spacing:.3em;text-transform:uppercase;
+    color:var(--amber);border:1px solid rgba(255,179,32,.32);background:var(--amber-dim);
+    padding:7px 14px;transform:skewX(-8deg);margin-bottom:22px;
+  }
+  .kicker span{transform:skewX(8deg)}
+  h2{
+    font-family:var(--display);font-weight:800;text-transform:uppercase;
+    font-size:clamp(38px,5vw,64px);line-height:.95;letter-spacing:0;
+    max-width:18ch;
+  }
+  h2 .amber{color:var(--amber)}
+  .section-intro{color:var(--muted);max-width:58ch;margin-top:18px}
+
+  /* ---------- services ---------- */
+  .services{background:var(--night-1)}
+  .services-head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:24px;margin-bottom:56px}
+  .services-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+  .card{
+    background:var(--night-1);
+    padding:34px 28px 38px;position:relative;overflow:hidden;
+    transition:background .22s ease;
+  }
+  .card:hover{background:var(--night-2)}
+  .card::before{ /* tick strip that lights on hover */
+    content:"";position:absolute;top:0;left:0;right:0;height:8px;
+    background:var(--tick-faint);transition:background .22s ease;
+  }
+  .card:hover::before{background:var(--tick)}
+  .card-num{
+    font-family:var(--display);font-weight:800;font-size:15px;letter-spacing:.2em;
+    color:var(--faint);margin-bottom:26px;display:block;
+  }
+  .card:hover .card-num{color:var(--amber)}
+  .card-icon{color:var(--amber);margin-bottom:20px}
+  .card h3{
+    font-family:var(--display);font-weight:800;font-size:27px;letter-spacing:.02em;text-transform:uppercase;
+    line-height:1;margin-bottom:14px;
+  }
+  .card p{color:var(--muted);font-size:14.5px}
+  .card .tag{
+    display:inline-block;margin-top:18px;
+    font-family:var(--display);font-weight:700;font-size:12px;letter-spacing:.22em;text-transform:uppercase;
+    color:var(--amber);
+  }
+  .services-foot{
+    margin-top:40px;display:flex;flex-wrap:wrap;align-items:center;gap:14px 28px;
+    font-family:var(--display);font-weight:700;font-size:15px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);
+  }
+  .services-foot i{width:9px;height:9px;background:var(--amber);transform:rotate(45deg);font-style:normal;flex:none}
+  @media (max-width:1020px){.services-grid{grid-template-columns:repeat(2,1fr)}}
+  @media (max-width:560px){.services-grid{grid-template-columns:1fr}}
+
+  /* ---------- service area ---------- */
+  .area{
+    background:var(--night-0);
+    border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+    overflow:hidden;
+  }
+  .area-grid{display:grid;grid-template-columns:minmax(0,46fr) minmax(0,54fr);gap:64px;align-items:center}
+  .rings{position:absolute;left:-140px;bottom:-190px;color:rgba(255,179,32,.1);pointer-events:none;z-index:0}
+  .area .wrap{position:relative;z-index:2}
+  .area-note{margin-top:26px;color:var(--muted);font-size:15px}
+  .area-note b{color:var(--text);font-weight:600}
+  .area-list{list-style:none;counter-reset:city}
+  .area-list li{border-bottom:1px solid var(--line)}
+  .area-list li:first-child{border-top:1px solid var(--line)}
+  .area-list a{
+    display:flex;align-items:baseline;gap:22px;text-decoration:none;
+    padding:26px 10px;position:relative;
+    transition:background .2s ease,padding-left .2s ease;
+  }
+  .area-list a:hover{background:var(--night-2);padding-left:22px}
+  .area-list .city{
+    font-family:var(--display);font-weight:800;text-transform:uppercase;
+    font-size:clamp(34px,4.4vw,56px);line-height:1;letter-spacing:.01em;
+    transition:color .2s ease;
+  }
+  .area-list a:hover .city{color:var(--amber)}
+  .area-list .meta{
+    margin-left:auto;text-align:right;
+    font-family:var(--display);font-weight:600;font-size:13px;letter-spacing:.24em;text-transform:uppercase;color:var(--faint);
+  }
+  .area-list .meta b{display:block;color:var(--amber);font-weight:800}
+  .area-list .arrow{color:var(--faint);transition:color .2s ease,transform .2s ease;flex:none;align-self:center}
+  .area-list a:hover .arrow{color:var(--amber);transform:translateX(6px)}
+
+  /* ---------- trust ---------- */
+  .trust{background:var(--night-1);overflow:hidden}
+  .trust::before{ /* hard duotone block re-using the same night photo */
+    content:"";position:absolute;inset:0;
+    background:url("concept-art.jpg") center 30%/cover no-repeat;
+    filter:grayscale(1) contrast(1.15) brightness(.6);
+    opacity:.16;
+  }
+  .trust::after{
+    content:"";position:absolute;inset:0;
+    background:linear-gradient(105deg,var(--night-1) 34%,rgba(10,16,31,.72) 60%,rgba(10,16,31,.55));
+  }
+  .trust .wrap{position:relative;z-index:2}
+  .trust-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin-top:56px}
+  .proof{background:rgba(5,8,15,.82);padding:38px 32px 42px;backdrop-filter:blur(2px)}
+  .proof-top{display:flex;align-items:baseline;gap:14px}
+  .proof-big{
+    font-family:var(--display);font-weight:900;font-size:76px;line-height:.85;
+    color:var(--text);letter-spacing:-.01em;
+  }
+  .proof-big.amber{color:var(--amber)}
+  .stars{display:flex;gap:4px;margin:18px 0 12px;color:var(--amber)}
+  .proof h3{
+    font-family:var(--display);font-weight:800;font-size:24px;letter-spacing:.03em;text-transform:uppercase;line-height:1;
+    margin:16px 0 10px;
+  }
+  .proof p{color:var(--muted);font-size:14px}
+  .proof .src{
+    display:inline-block;margin-top:16px;
+    font-family:var(--display);font-weight:700;font-size:11.5px;letter-spacing:.26em;text-transform:uppercase;color:var(--faint);
+  }
+  .proof-icon{color:var(--amber);margin-bottom:18px}
+  @media (max-width:900px){.trust-grid{grid-template-columns:1fr}}
+
+  /* ---------- contact ---------- */
+  .contact{background:var(--night-0)}
+  .contact-band{
+    position:relative;border:1px solid var(--line);background:var(--night-1);
+    padding:clamp(44px,6vw,80px);overflow:hidden;
+  }
+  .contact-band::before{
+    content:"";position:absolute;top:0;left:0;right:0;height:10px;background:var(--tick);
+  }
+  .contact-band::after{
+    content:"";position:absolute;right:-70px;bottom:-110px;width:340px;height:340px;
+    border:1px solid rgba(255,179,32,.14);border-radius:50%;
+    box-shadow:0 0 0 60px rgba(255,179,32,.03),0 0 0 130px rgba(255,179,32,.02);
+    pointer-events:none;
+  }
+  .contact-grid{display:grid;grid-template-columns:minmax(0,58fr) minmax(0,42fr);gap:48px;align-items:center;position:relative;z-index:2}
+  .tel-big{
+    display:inline-block;text-decoration:none;margin-top:26px;
+    font-family:var(--display);font-weight:900;text-transform:uppercase;
+    font-size:clamp(42px,5.6vw,76px);line-height:1;letter-spacing:.01em;color:var(--amber);
+    transition:color .18s ease;
+  }
+  .tel-big:hover{color:#ffc247}
+  .contact-sub{margin-top:14px;color:var(--muted);font-size:15px}
+  .contact-facts{list-style:none;display:grid;gap:0;border-top:1px solid var(--line)}
+  .contact-facts li{
+    display:flex;gap:16px;align-items:flex-start;
+    padding:20px 4px;border-bottom:1px solid var(--line);
+  }
+  .contact-facts svg{flex:none;color:var(--amber);margin-top:3px}
+  .contact-facts .k{
+    font-family:var(--display);font-weight:700;font-size:12px;letter-spacing:.26em;text-transform:uppercase;color:var(--faint);
+    display:block;margin-bottom:3px;
+  }
+  .contact-facts a{color:var(--text);text-decoration:none;border-bottom:1px solid rgba(255,179,32,.4)}
+  .contact-facts a:hover{color:var(--amber)}
+
+  /* ---------- footer ---------- */
+  footer{border-top:1px solid var(--line);background:var(--night-0)}
+  .foot{
+    display:flex;flex-wrap:wrap;justify-content:space-between;gap:18px 40px;
+    padding:34px 24px 110px;max-width:var(--wrap);margin:0 auto;
+    color:var(--faint);font-size:13px;
+  }
+  .foot .fbrand{font-family:var(--display);font-weight:800;font-size:16px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+  .foot .fbrand span{color:var(--amber)}
+  .foot .legal{max-width:62ch}
+  .foot .legal b{color:var(--muted);font-weight:600}
+  @media (min-width:721px){.foot{padding-bottom:44px}}
+
+  /* ---------- sticky mobile call bar ---------- */
+  .callbar{
+    position:fixed;left:0;right:0;bottom:0;z-index:60;
+    display:none;align-items:center;justify-content:center;gap:12px;
+    background:var(--amber);color:var(--night-0);text-decoration:none;
+    font-family:var(--display);font-weight:800;font-size:19px;letter-spacing:.06em;text-transform:uppercase;
+    padding:16px 20px calc(16px + env(safe-area-inset-bottom));
+    box-shadow:0 -10px 40px rgba(0,0,0,.55);
+  }
+  .callbar b{font-weight:900}
+  .callbar .dot{background:var(--night-0)}
+  @media (max-width:720px){
+    .callbar{display:flex}
+    .bar{padding:14px 18px}
+    .hero-grid{grid-template-columns:1fr;gap:40px;padding:120px 0 72px}
+    .ghost{top:auto;bottom:36%;right:-8%;font-size:44vw;opacity:.7}
+    .media{min-height:0}
+    .media-frame img{min-height:300px}
+    .media-frame,.media-edge{clip-path:polygon(9% 0,100% 0,100% 100%,0 100%)}
+    .media-edge{transform:translate(-8px,8px)}
+    .media-caption{padding-left:12%}
+    .area-grid,.contact-grid{grid-template-columns:1fr;gap:44px}
+    .rings{left:auto;right:-180px;bottom:-220px}
+  }
+  @media (min-width:721px) and (max-width:1020px){
+    .hero-grid{grid-template-columns:1fr;gap:44px;padding:140px 0 80px}
+    .area-grid,.contact-grid{grid-template-columns:1fr;gap:48px}
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ HEADER ============ -->
+<header>
+  <div class="bar">
+    <a class="brand" href="#top" aria-label="Just-In-Time Plumbing — home">
+      <svg width="42" height="42" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+        <circle cx="24" cy="24" r="21" stroke="#ffb320" stroke-width="2.5"/>
+        <path d="M24 5v4M24 39v4M5 24h4M39 24h4M10.6 10.6l2.8 2.8M34.6 34.6l2.8 2.8M37.4 10.6l-2.8 2.8M13.4 34.6l-2.8 2.8" stroke="#ffb320" stroke-width="2" stroke-linecap="round" opacity=".55"/>
+        <line class="dial-hand dial-hh" x1="24" y1="24" x2="24" y2="14" stroke="#e9edf6" stroke-width="3" stroke-linecap="round"/>
+        <line class="dial-hand dial-mm" x1="24" y1="24" x2="24" y2="10" stroke="#ffb320" stroke-width="2" stroke-linecap="round"/>
+        <circle cx="24" cy="24" r="2" fill="#ffb320"/>
+      </svg>
+      <span class="brand-name">Just-In-Time<small>Plumbing</small></span>
+    </a>
+    <nav aria-label="Primary">
+      <a class="navlink" href="#services">Services</a>
+      <a class="navlink" href="#area">Service Area</a>
+      <a class="navlink" href="#contact">Contact</a>
+      <a class="phone-pill" href="tel:+15126528648"><span class="dot" aria-hidden="true"></span>(512) 652-8648</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- ============ HERO ============ -->
+  <section class="hero">
+    <div class="ghost" aria-hidden="true">24/7</div>
+    <div class="wrap">
+      <div class="hero-grid">
+        <div>
+          <span class="eyebrow"><span class="dot" aria-hidden="true"></span><span>24/7 Emergency Plumbing · Buda &middot; Kyle &middot; South Austin</span></span>
+          <h1>Pipes don&rsquo;t burst on a <span class="strike">schedule.</span><br><span class="amber">We answer anyway.</span></h1>
+          <p class="lede"><strong>Just-In-Time Plumbing</strong> keeps the line open around the clock &mdash; hydrojetting, sewer camera inspections, water heaters, and emergency repairs for homes and businesses across Buda, Kyle, and South Austin.</p>
+          <div class="cta-row">
+            <a class="btn-call" href="tel:+15126528648">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a12 12 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+              Call (512) 652-8648
+            </a>
+            <a class="btn-ghost" href="#services">What we do</a>
+          </div>
+          <div class="now">
+            <svg class="dial" width="46" height="46" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+              <circle cx="24" cy="24" r="21" stroke="rgba(148,168,205,.35)" stroke-width="1.5"/>
+              <path d="M24 5v4M24 39v4M5 24h4M39 24h4" stroke="rgba(255,179,32,.7)" stroke-width="1.5" stroke-linecap="round"/>
+              <line class="dial-hand dial-hh" x1="24" y1="24" x2="24" y2="14" stroke="#e9edf6" stroke-width="2.5" stroke-linecap="round"/>
+              <line class="dial-hand dial-mm" x1="24" y1="24" x2="24" y2="9" stroke="#ffb320" stroke-width="1.8" stroke-linecap="round"/>
+              <circle cx="24" cy="24" r="1.8" fill="#ffb320"/>
+            </svg>
+            <p class="now-text">
+              <strong id="now-line">Any hour, any day &mdash; <em>the line is open.</em></strong>
+              Nights, weekends, holidays. If water is where it shouldn&rsquo;t be, call.
+            </p>
+          </div>
+        </div>
+
+        <div class="media">
+          <div class="media-edge" aria-hidden="true"></div>
+          <figure class="media-frame">
+            <img src="concept-art.jpg" width="1600" height="893" loading="lazy"
+                 alt="A technician wearing a headlamp works on the pipes beneath a kitchen sink at night, lit by a warm work lamp against a dark blue kitchen.">
+            <figcaption class="media-caption"><b>02:00</b> &mdash; still business hours</figcaption>
+          </figure>
+        </div>
+      </div>
+    </div>
+    <div class="hero-ruler" aria-hidden="true"></div>
+  </section>
+
+  <!-- ============ HOURS MARQUEE ============ -->
+  <div class="hours" aria-label="Open every hour of the day">
+    <div class="hours-track">
+      <div class="hours-set">
+        <span>Midnight</span><span>3 AM</span><span>6 AM</span><span>9 AM</span><span>Noon</span><span>3 PM</span><span>6 PM</span><span>9 PM</span><span class="open">Every hour is a business hour</span>
+      </div>
+      <div class="hours-set" aria-hidden="true">
+        <span>Midnight</span><span>3 AM</span><span>6 AM</span><span>9 AM</span><span>Noon</span><span>3 PM</span><span>6 PM</span><span>9 PM</span><span class="open">Every hour is a business hour</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SERVICES ============ -->
+  <section class="services section-pad" id="services">
+    <div class="wrap">
+      <div class="services-head">
+        <div>
+          <span class="kicker"><span>What we do</span></span>
+          <h2>The right fix,<br><span class="amber">right on time.</span></h2>
+        </div>
+        <p class="section-intro">Four things, done properly &mdash; from a slow drain that finally quit to a main line that picked the worst possible night.</p>
+      </div>
+
+      <div class="services-grid">
+        <article class="card">
+          <span class="card-num">01 &mdash; DRAINS</span>
+          <div class="card-icon">
+            <svg width="44" height="44" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+              <circle cx="15" cy="24" r="9" stroke="currentColor" stroke-width="2"/>
+              <circle cx="15" cy="24" r="3.5" stroke="currentColor" stroke-width="2"/>
+              <path d="M27 17c6-3 12-3 16-1M27 24h17M27 31c6 3 12 3 16 1" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <h3>Hydrojetting</h3>
+          <p>High-pressure water jetting scours grease, scale, and root intrusion out of drain and sewer lines &mdash; a wall-to-wall clean, not a hole poked through the clog.</p>
+          <span class="tag">Deep-clean for stubborn lines</span>
+        </article>
+
+        <article class="card">
+          <span class="card-num">02 &mdash; DIAGNOSIS</span>
+          <div class="card-icon">
+            <svg width="44" height="44" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+              <circle cx="27" cy="21" r="12" stroke="currentColor" stroke-width="2"/>
+              <circle cx="27" cy="21" r="5" stroke="currentColor" stroke-width="2"/>
+              <circle cx="27" cy="21" r="1.4" fill="currentColor"/>
+              <path d="M18 30 6 42M6 42c-2-4-2-8 0-11" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <h3>Sewer Camera Inspection</h3>
+          <p>A camera down the line shows exactly what&rsquo;s wrong and exactly where &mdash; so the repair targets the problem instead of guessing at it from the surface.</p>
+          <span class="tag">See it before you dig</span>
+        </article>
+
+        <article class="card">
+          <span class="card-num">03 &mdash; HOT WATER</span>
+          <div class="card-icon">
+            <svg width="44" height="44" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+              <rect x="14" y="7" width="20" height="28" rx="6" stroke="currentColor" stroke-width="2"/>
+              <path d="M20 7V4M28 7V4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <circle cx="24" cy="17" r="3.5" stroke="currentColor" stroke-width="2"/>
+              <path d="M24 44c-3.4-2.4-4.4-5.4-2-8 .6 1.4 1.4 2 2.6 2.4-.8-2.6 0-4.6 2.6-6.2-.4 3.6 3 4.4 2.8 7.8-.2 2.2-2.6 3.6-6 4Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <h3>Water Heaters</h3>
+          <p>Service for the tank nobody thinks about until the shower runs cold &mdash; from no-hot-water mornings to aging units that are due for a swap.</p>
+          <span class="tag">Repair &amp; replacement</span>
+        </article>
+
+        <article class="card">
+          <span class="card-num">04 &mdash; RIGHT NOW</span>
+          <div class="card-icon">
+            <svg width="44" height="44" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+              <path d="M24 4C15 14 10 21 10 29a14 14 0 0 0 28 0c0-8-5-15-14-25Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+              <path d="M26 18l-6 9h5l-3 8 8-11h-5l3-6h-2Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <h3>24/7 Emergency</h3>
+          <p>Burst pipes, backed-up sewers, and no-water nights don&rsquo;t keep office hours. Neither does the emergency line &mdash; it rings straight through.</p>
+          <span class="tag">Day or night, call first</span>
+        </article>
+      </div>
+
+      <div class="services-foot">
+        <i aria-hidden="true"></i><span>Residential</span>
+        <i aria-hidden="true"></i><span>Commercial</span>
+        <i aria-hidden="true"></i><span>Homes, shops &amp; storefronts alike</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SERVICE AREA ============ -->
+  <section class="area section-pad" id="area">
+    <svg class="rings" width="620" height="620" viewBox="0 0 620 620" fill="none" aria-hidden="true">
+      <circle cx="310" cy="310" r="90" stroke="currentColor" stroke-width="1.5"/>
+      <circle cx="310" cy="310" r="170" stroke="currentColor" stroke-width="1.5"/>
+      <circle cx="310" cy="310" r="250" stroke="currentColor" stroke-width="1.5"/>
+      <circle cx="310" cy="310" r="308" stroke="currentColor" stroke-width="1.5"/>
+      <circle cx="310" cy="310" r="5" fill="#ffb320"/>
+      <path d="M310 310 470 150" stroke="#ffb320" stroke-width="1.5" opacity=".6"/>
+    </svg>
+    <div class="wrap">
+      <div class="area-grid">
+        <div>
+          <span class="kicker"><span>Where we work</span></span>
+          <h2>Based in Buda.<br><span class="amber">Awake all over.</span></h2>
+          <p class="area-note">Home base is <b>211 Ranger Dr, Buda, TX 78610</b> &mdash; with the porch light on for neighbors up and down the I-35 corridor. If you&rsquo;re nearby and not sure, call anyway.</p>
+        </div>
+        <ul class="area-list">
+          <li>
+            <a href="tel:+15126528648">
+              <span class="city">Buda</span>
+              <span class="meta"><b>Home base</b>TX 78610</span>
+              <svg class="arrow" width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12h15m0 0-6-6m6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+          </li>
+          <li>
+            <a href="tel:+15126528648">
+              <span class="city">Kyle</span>
+              <span class="meta"><b>Served 24/7</b>Texas</span>
+              <svg class="arrow" width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12h15m0 0-6-6m6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+          </li>
+          <li>
+            <a href="tel:+15126528648">
+              <span class="city">South Austin</span>
+              <span class="meta"><b>Served 24/7</b>Texas</span>
+              <svg class="arrow" width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12h15m0 0-6-6m6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ TRUST ============ -->
+  <section class="trust section-pad" id="trust">
+    <div class="wrap">
+      <span class="kicker"><span>On the record</span></span>
+      <h2>Strangers on the internet<br><span class="amber">already checked.</span></h2>
+
+      <div class="trust-grid">
+        <div class="proof">
+          <div class="proof-top">
+            <span class="proof-big amber">4.3</span>
+            <span class="proof-big" style="font-size:30px;color:var(--muted)">/ 5</span>
+          </div>
+          <div class="stars" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24"><polygon points="12 2 15 9 22 9.3 16.6 14 18.5 21 12 17 5.5 21 7.4 14 2 9.3 9 9" fill="currentColor"/></svg>
+            <svg width="22" height="22" viewBox="0 0 24 24"><polygon points="12 2 15 9 22 9.3 16.6 14 18.5 21 12 17 5.5 21 7.4 14 2 9.3 9 9" fill="currentColor"/></svg>
+            <svg width="22" height="22" viewBox="0 0 24 24"><polygon points="12 2 15 9 22 9.3 16.6 14 18.5 21 12 17 5.5 21 7.4 14 2 9.3 9 9" fill="currentColor"/></svg>
+            <svg width="22" height="22" viewBox="0 0 24 24"><polygon points="12 2 15 9 22 9.3 16.6 14 18.5 21 12 17 5.5 21 7.4 14 2 9.3 9 9" fill="currentColor"/></svg>
+            <svg width="22" height="22" viewBox="0 0 24 24">
+              <defs><linearGradient id="part-star" x1="0" x2="1" y1="0" y2="0"><stop offset="30%" stop-color="#ffb320"/><stop offset="30%" stop-color="rgba(148,168,205,.28)"/></linearGradient></defs>
+              <polygon points="12 2 15 9 22 9.3 16.6 14 18.5 21 12 17 5.5 21 7.4 14 2 9.3 9 9" fill="url(#part-star)"/>
+            </svg>
+          </div>
+          <h3>4.3 stars on Yelp</h3>
+          <p>Across 54 reviews from people who already made the call &mdash; and wrote about it afterward.</p>
+          <span class="src">Rating as listed on Yelp</span>
+        </div>
+
+        <div class="proof">
+          <div class="proof-icon">
+            <svg width="44" height="44" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+              <path d="M24 4 8 10v12c0 11 6.8 18.6 16 22 9.2-3.4 16-11 16-22V10L24 4Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+              <path d="M16.5 24.5 22 30l10-11" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <h3>Licensed &amp; Insured</h3>
+          <p>Just-In-Time Plumbing describes its work as licensed and insured &mdash; the paperwork side handled before the wrench side starts.</p>
+          <span class="src">As stated by the company</span>
+        </div>
+
+        <div class="proof">
+          <div class="proof-icon">
+            <svg width="44" height="44" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+              <path d="M40 24a16 16 0 1 0-6.2 12.7L42 40l-2.4-7.5A15.9 15.9 0 0 0 40 24Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+              <path d="M15 22h18M15 28h11" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <h3>Active on Facebook</h3>
+          <p>The company keeps a public Facebook page &mdash; a real, reachable local business, not just a number on a fridge magnet.</p>
+          <span class="src">Find them on Facebook</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CONTACT ============ -->
+  <section class="contact section-pad" id="contact">
+    <div class="wrap">
+      <div class="contact-band">
+        <div class="contact-grid">
+          <div>
+            <span class="kicker"><span>Reach us any hour</span></span>
+            <h2>One number.<br><span class="amber">Every hour.</span></h2>
+            <a class="tel-big" href="tel:+15126528648">(512)&nbsp;652-8648</a>
+            <p class="contact-sub">24 hours a day, 7 days a week. If it can&rsquo;t wait until morning, don&rsquo;t wait until morning.</p>
+          </div>
+          <ul class="contact-facts">
+            <li>
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a12 12 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+              <div><span class="k">Phone &mdash; 24/7</span><a href="tel:+15126528648">(512) 652-8648</a></div>
+            </li>
+            <li>
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" stroke-width="2"/><path d="m4 7 8 6 8-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <div><span class="k">Email</span><a href="mailto:justintimethrift@gmail.com">justintimethrift@gmail.com</a></div>
+            </li>
+            <li>
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 21s-7-6.1-7-11a7 7 0 1 1 14 0c0 4.9-7 11-7 11Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><circle cx="12" cy="10" r="2.5" stroke="currentColor" stroke-width="2"/></svg>
+              <div><span class="k">Home base</span>211 Ranger Dr, Buda, TX 78610</div>
+            </li>
+            <li>
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/><path d="M12 7v5l3.5 2.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <div><span class="k">Hours</span>Open now. Open later, too.</div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="foot">
+    <div>
+      <p class="fbrand">Just-In-Time <span>Plumbing</span></p>
+      <p>Buda &middot; Kyle &middot; South Austin &mdash; (512) 652-8648</p>
+    </div>
+    <div class="legal">
+      <p><b>Website concept by Murrieta Web Studio.</b></p>
+      <p>This is a design concept created for Just-In-Time Plumbing. Not yet the official website of Just-In-Time Plumbing.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- ============ STICKY MOBILE CALL BAR ============ -->
+<a class="callbar" href="tel:+15126528648">
+  <span class="dot" aria-hidden="true"></span>
+  <span>Open 24/7 &mdash; <b>Call (512) 652-8648</b></span>
+</a>
+
+<script>
+(function(){
+  function tick(){
+    var d;
+    try{d=new Date(new Date().toLocaleString("en-US",{timeZone:"America/Chicago"}));}
+    catch(e){d=new Date();}
+    var h=d.getHours(),m=d.getMinutes(),r=document.documentElement.style;
+    r.setProperty("--hh",((h%12)*30+m/2)+"deg");
+    r.setProperty("--mm",(m*6)+"deg");
+    var el=document.getElementById("now-line");
+    if(el){
+      var hr=h%12||12,ap=h<12?"AM":"PM",mm=(m<10?"0":"")+m;
+      el.innerHTML="It&rsquo;s "+hr+":"+mm+" "+ap+" in Buda &mdash; <em>the line is open.</em>";
+    }
+  }
+  tick();setInterval(tick,30000);
+})();
+</script>
+</body>
+</html>
