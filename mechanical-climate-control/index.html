@@ -394,6 +394,34 @@
   }
   .record-note em{color:var(--text);font-style:italic}
 
+  /* ---------- concept-art band ---------- */
+  .art-band{
+    position:relative;
+    margin:0;
+    border-top:1px solid var(--line);
+    background:var(--bg);
+    overflow:hidden;
+  }
+  .art-band img{
+    width:100%;
+    height:clamp(240px,40vw,430px);
+    object-fit:cover;
+    object-position:50% 42%;
+  }
+  .art-band::after{ /* knit the artwork into the surrounding sections */
+    content:"";position:absolute;inset:0;pointer-events:none;
+    background:linear-gradient(180deg,var(--bg-2) 0%,transparent 24%,transparent 76%,var(--bg) 100%);
+    opacity:.5;
+  }
+  .art-band figcaption{
+    position:absolute;left:1.1rem;bottom:1rem;z-index:2;
+    font-size:.72rem;font-weight:800;letter-spacing:.22em;text-transform:uppercase;
+    color:var(--cy);
+    background:rgba(4,20,26,.75);
+    border:1px solid var(--line-2);border-radius:6px;
+    padding:.42rem .7rem;
+  }
+
   /* ---------- contact ---------- */
   .contact{padding-block:clamp(4.2rem,9vw,7.5rem);border-top:1px solid var(--line)}
   .contact-panel{
@@ -660,6 +688,12 @@
     <p class="record-note">You won&rsquo;t find hand-picked testimonial cards on this page. Our 18 Yelp reviews are public &mdash; <em>go read them as customers wrote them.</em> That, a Blue Book listing, and a phone that&rsquo;s been answered since 2000 is the whole pitch.</p>
   </div>
 </section>
+
+<figure class="art-band">
+  <img src="concept-art.jpg" width="1600" height="914" loading="lazy" decoding="async"
+       alt="Abstract blueprint-style illustration: cyan radar sweep arcs, concentric rings, and a thin signal line over a dark navy technical grid">
+  <figcaption>Illustration &middot; the 24/7 sweep</figcaption>
+</figure>
 
 <section class="contact container" id="contact">
   <div class="contact-panel duo-dots">

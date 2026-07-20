@@ -143,6 +143,30 @@
       linear-gradient(var(--ember),var(--ember)) right bottom/58% 54% no-repeat;
   }
 
+  /* ---------- concept plate (editorial illustration band) ---------- */
+  .plate{
+    border-top:2px solid var(--ink);
+    border-bottom:2px solid var(--ink);
+    background:var(--paper);
+  }
+  .plate img{
+    width:100%;
+    height:clamp(12rem,34vw,21rem);
+    object-fit:cover;
+    object-position:center 35%;
+    mix-blend-mode:multiply; /* lets the print's white ground take on the paper tone */
+  }
+  .plate figcaption{
+    padding:.7rem 0 .85rem;
+    font-size:.78rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--ink-soft);
+    border-top:1px solid var(--line);
+  }
+  .plate figcaption .fig{
+    font-family:var(--slab);font-style:italic;font-weight:800;
+    letter-spacing:.06em;color:var(--ember);
+  }
+
   /* ---------- section scaffolding ---------- */
   section{padding:clamp(3.5rem,8vw,6.5rem) 0}
   .kicker{
@@ -316,6 +340,13 @@
       <p class="hero-note reveal d6">Prefer to look around first? <a href="https://www.yelp.com/search?find_desc=AM+HVAC&amp;find_loc=Austin%2C+TX">Find AM HVAC on Yelp</a> and tap &ldquo;Request a Quote.&rdquo;</p>
     </div>
   </section>
+
+  <!-- ============ CONCEPT PLATE ============ -->
+  <figure class="plate">
+    <img src="concept-art.jpg" width="1400" height="799" loading="lazy"
+         alt="Abstract linocut-style illustration in terracotta and cream: geometric suns radiating above rippling heat-wave lines">
+    <figcaption class="wrap"><span class="fig">Fig. 01</span> &mdash; The Texas sun, in linocut</figcaption>
+  </figure>
 
   <div class="duo duo-a" aria-hidden="true"></div>
 

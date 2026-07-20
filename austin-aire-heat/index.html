@@ -241,6 +241,55 @@
   }
   @media (max-width:840px){ .svc-grid{ grid-template-columns:1fr; } }
 
+  /* ============ Figure plate — tipped-in illustration ============ */
+  .plate{
+    position:relative;
+    margin:2.75rem auto 0;
+    max-width:880px;
+    background:var(--card);
+    border:1.5px solid var(--ink);
+    border-radius:var(--radius);
+    box-shadow:var(--shadow);
+    overflow:hidden;
+  }
+  /* same inner hairline as the hero card — drawn over the plate */
+  .plate::before{
+    content:""; position:absolute; inset:7px;
+    border:1px solid var(--line);
+    border-radius:5px;
+    pointer-events:none;
+    z-index:1;
+  }
+  .plate-meta{
+    display:flex; justify-content:space-between; gap:1rem;
+    padding:.85rem 1.5rem .75rem;
+    border-bottom:1px solid var(--line);
+    font-size:.74rem; font-weight:700; letter-spacing:.17em; text-transform:uppercase;
+    color:var(--ink-soft);
+  }
+  .plate-meta .fig{ color:var(--accent); flex:none; }
+  .plate img{
+    width:100%; height:auto;
+    aspect-ratio:1.9/1;      /* trims a sliver of empty paper top & bottom */
+    object-fit:cover;
+    object-position:center;
+  }
+  .plate figcaption{
+    display:flex; justify-content:space-between; align-items:baseline; gap:1rem;
+    padding:.85rem 1.5rem .95rem;
+    border-top:1px dashed var(--line-strong);
+    font-size:.95rem; font-style:italic; color:var(--ink-soft);
+  }
+  .plate figcaption .tag{
+    font-style:normal;
+    font-size:.72rem; font-weight:700; letter-spacing:.15em; text-transform:uppercase;
+    color:var(--accent); flex:none;
+  }
+  @media (max-width:620px){
+    .plate img{ aspect-ratio:4/3; }  /* crop side margins so the unit reads larger on phones */
+    .plate-meta, .plate figcaption{ padding-inline:1.1rem; }
+  }
+
   /* ============ Differentiator band ============ */
   .band{
     background:var(--accent);
@@ -628,6 +677,20 @@
             <span class="svc-tag">Household appliances</span>
           </article>
         </div>
+
+        <figure class="plate">
+          <div class="plate-meta" aria-hidden="true">
+            <span>Field reference — the outdoor unit</span>
+            <span class="fig">Fig. 01</span>
+          </div>
+          <img src="concept-art.jpg"
+               alt="Vintage-style technical line illustration of an outdoor AC condenser unit, drawn in ink on cream paper with a single burnt-clay accent across the fan"
+               width="1600" height="914" loading="lazy">
+          <figcaption>
+            <span>The outdoor condensing unit, rendered in the shop&rsquo;s colors.</span>
+            <span class="tag">Illustration</span>
+          </figcaption>
+        </figure>
       </div>
     </section>
 

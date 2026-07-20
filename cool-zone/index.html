@@ -380,6 +380,47 @@
   }
 
   /* ============================================================
+     INTERLUDE — concept plate, full-width diagonal band
+     Echoes the hero: same slant, same cold sliver along the edge
+     ============================================================ */
+
+  .interlude-fig { margin: 0; }
+
+  .interlude-shell {
+    background: linear-gradient(86deg, var(--cold-deep), var(--cold));
+    clip-path: polygon(0 var(--slant), 100% 0, 100% calc(100% - var(--slant)), 0 100%);
+  }
+
+  .interlude {
+    background: #f3f4f5; /* matches the illustration ground */
+    /* 2px cold hairline along the top diagonal, 8px sliver along the bottom —
+       same construction as the hero shell */
+    clip-path: polygon(
+      0 calc(var(--slant) + 2px), 100% 2px,
+      100% calc(100% - var(--slant) - 8px), 0 calc(100% - 8px)
+    );
+  }
+
+  .interlude img {
+    display: block;
+    width: 100%;
+    height: clamp(15rem, 38vw, 26rem);
+    object-fit: cover;
+    object-position: 50% 44%; /* keep the blue bar meeting the beam in frame */
+  }
+
+  .interlude-fig figcaption {
+    /* tucks into the triangular notch left by the bottom diagonal */
+    margin-top: calc(var(--slant) * -.45);
+    text-align: right;
+    font-size: .62rem;
+    font-weight: 620;
+    letter-spacing: .22em;
+    text-transform: uppercase;
+    color: var(--mut-l);
+  }
+
+  /* ============================================================
      SERVICE AREA — copy + abstract plat map
      ============================================================ */
 
@@ -884,6 +925,19 @@
     </div>
   </div>
 </section>
+
+<!-- ============================================================
+     INTERLUDE — concept plate
+     ============================================================ -->
+<figure class="interlude-fig">
+  <div class="interlude-shell">
+    <div class="interlude">
+      <img src="concept-art.jpg" width="1600" height="914" loading="lazy"
+           alt="Abstract editorial illustration: layered steel and slate planes rising diagonally, crossed by a single vertical glacial-blue bar, drawn with thin hairline rules.">
+    </div>
+  </div>
+  <figcaption class="wrap">Fig. &#183; one cold line through steel</figcaption>
+</figure>
 
 <!-- ============================================================
      SERVICE AREA

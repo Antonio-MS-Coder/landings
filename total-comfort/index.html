@@ -254,6 +254,44 @@
   .svc-call:hover{ color:var(--amber-hi); }
   .svc-call:hover::after{ transform:translateX(4px); }
 
+  /* ---- concept figure plate ---- */
+  .art-band{ padding-block:clamp(3.25rem, 7vw, 5.5rem); }
+  .fig-plate{
+    position:relative;
+    background:var(--ink-2);
+    border:1px solid var(--line);
+    padding:clamp(1rem, 1.8vw, 1.25rem);
+    box-shadow:0 0 0 6px var(--ink-2), 0 0 0 7px var(--line-soft), 0 32px 80px -40px rgba(0,0,0,.95);
+    background-image:
+      radial-gradient(circle 3px at 12px 12px,                             var(--amber-deep) 2.6px, transparent 3.4px),
+      radial-gradient(circle 3px at calc(100% - 12px) 12px,                var(--amber-deep) 2.6px, transparent 3.4px),
+      radial-gradient(circle 3px at 12px calc(100% - 12px),                var(--amber-deep) 2.6px, transparent 3.4px),
+      radial-gradient(circle 3px at calc(100% - 12px) calc(100% - 12px),  var(--amber-deep) 2.6px, transparent 3.4px);
+    background-repeat:no-repeat;
+  }
+  .fig-plate img{
+    width:100%; height:auto;
+    aspect-ratio:2.2 / 1;
+    object-fit:cover; object-position:center 25%;
+    border:1px solid var(--line-soft);
+  }
+  @media (max-width: 680px){
+    .fig-plate img{ aspect-ratio:4 / 3; object-position:72% 28%; }
+  }
+  .fig-plate figcaption{
+    display:flex; align-items:baseline; justify-content:space-between;
+    gap:.5rem 1.5rem; flex-wrap:wrap;
+    padding:.95rem .3rem .15rem;
+  }
+  .fig-plate figcaption b{
+    font-family:var(--slab); font-weight:600; font-size:.9rem;
+    color:var(--paper); letter-spacing:.04em;
+  }
+  .fig-plate figcaption span{
+    font-size:.62rem; font-weight:600; letter-spacing:.24em;
+    text-transform:uppercase; color:var(--muted);
+  }
+
   /* ---- service area ---- */
   .area-grid{ display:grid; gap:clamp(2.5rem, 6vw, 4rem); align-items:center; }
   @media (min-width: 900px){ .area-grid{ grid-template-columns:1fr 1fr; } }
@@ -519,6 +557,20 @@
         </article>
 
       </div>
+    </div>
+  </section>
+
+  <!-- ============ CONCEPT PLATE ============ -->
+  <section class="band art-band">
+    <div class="wrap">
+      <figure class="fig-plate">
+        <img src="concept-art.jpg" width="1400" height="799" loading="lazy"
+             alt="Abstract engraving-style illustration: a radial fan wheel and machined brass forms on dark charcoal. Decorative concept artwork, not a photograph of the business or its equipment.">
+        <figcaption>
+          <b>Fig. 01 &mdash; The machinery of moving air</b>
+          <span>Concept illustration</span>
+        </figcaption>
+      </figure>
     </div>
   </section>
 

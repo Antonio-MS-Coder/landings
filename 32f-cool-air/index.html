@@ -398,6 +398,57 @@ section{ scroll-margin-top:2rem; }
 .svc-meta .deg-sep{ color:var(--accent-deep); }
 
 /* ============================================================
+   INTERLUDE — editorial concept illustration
+   ============================================================ */
+.interlude{
+  padding:0 0 clamp(4rem, 8vw, 6.5rem);
+  background:var(--frost-2);
+}
+.ice-figure{
+  position:relative;
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+  overflow:hidden;
+  background:#fdfeff;
+  box-shadow:var(--shadow-card);
+}
+.ice-figure::before{ /* frosted top edge — same language as the cards */
+  content:""; position:absolute; inset:0 0 auto 0; height:3px;
+  background:linear-gradient(90deg, var(--accent), var(--glacier) 55%, transparent);
+  opacity:.85;
+}
+.ice-figure img{
+  width:100%; height:auto;
+  aspect-ratio:2.35 / 1;   /* cinematic crop of the 1600x914 source */
+  object-fit:cover;
+  object-position:50% 62%; /* favor the shard clusters, trim empty sky */
+}
+@media (max-width:720px){
+  .ice-figure img{ aspect-ratio:16 / 10; object-position:46% 62%; }
+}
+.ice-figure figcaption{
+  position:absolute; left:1.1rem; bottom:1.1rem;
+  max-width:calc(100% - 2.2rem);
+  display:inline-flex; align-items:center; gap:.55rem;
+  font-family:var(--display); font-weight:600;
+  font-size:.74rem; letter-spacing:.24em; text-transform:uppercase;
+  color:var(--steel-700);
+  padding:.5rem .95rem; border-radius:999px;
+  border:1px solid rgba(20,64,94,.16);
+  background:rgba(255,255,255,.72);
+  backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px);
+  white-space:nowrap;
+}
+.ice-figure figcaption::before{
+  content:""; width:7px; height:7px; border-radius:50%;
+  border:1.5px solid var(--accent-deep); flex:none; /* the degree mark */
+}
+.ice-figure .deg-sep{ color:var(--accent-deep); }
+@media (max-width:560px){
+  .ice-figure .cap-long{ display:none; } /* keep the chip on one line */
+}
+
+/* ============================================================
    SERVICE AREA
    ============================================================ */
 .area{
@@ -762,6 +813,17 @@ section{ scroll-margin-top:2rem; }
         <div class="svc-meta">Residential <span class="deg-sep">&deg;</span> Commercial</div>
       </article>
     </div>
+  </div>
+</section>
+
+<!-- ================= INTERLUDE ================= -->
+<section class="interlude" aria-label="Concept illustration">
+  <div class="wrap">
+    <figure class="ice-figure">
+      <img src="concept-art.jpg" width="1600" height="914" loading="lazy" decoding="async"
+           alt="Abstract geometric illustration of angular glacial ice forms in steel and glacier blues — concept artwork, not a photograph.">
+      <figcaption><span class="cap-long">The freezing point, abstracted <span class="deg-sep" aria-hidden="true">&deg;</span> </span>Concept illustration</figcaption>
+    </figure>
   </div>
 </section>
 
