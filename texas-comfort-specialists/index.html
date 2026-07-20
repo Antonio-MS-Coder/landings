@@ -1,0 +1,735 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<meta name="description" content="Texas Comfort Specialists LLC — licensed AC &amp; heating repair and installation for homes and businesses across Austin, TX. In business since 2011. Call (512) 524-2501.">
+<meta name="theme-color" content="#F6F4EF">
+<title>Texas Comfort Specialists — AC &amp; Heating, Austin TX</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  /* ============ FOUNDATIONS ============ */
+  :root{
+    --bg:        #F6F4EF;
+    --bg-alt:    #EFECE3;
+    --ink:       #1B1916;
+    --sub:       #5C564B;
+    --line:      #D9D2C3;
+    --ember:     #BC4515;
+    --ember-deep:#993A11;
+    --steel:     #3E6E8C;
+    --steel-deep:#2E5772;
+    --night:     #191713;
+    --night-ink: #F1EDE3;
+    --night-sub: #A79F8F;
+    --night-line:rgba(241,237,227,.16);
+    --ember-hi:  #E97040;
+    --steel-hi:  #8FB6D2;
+    --max: 72rem;
+    --gutter: clamp(1.25rem, 4.5vw, 3.5rem);
+  }
+  *,*::before,*::after{ box-sizing:border-box; margin:0; padding:0; }
+  html{ scroll-behavior:smooth; }
+  body{
+    font-family:"Archivo", "Helvetica Neue", Arial, sans-serif;
+    background:var(--bg);
+    color:var(--ink);
+    font-size:1rem;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    padding-bottom:0;
+  }
+  ::selection{ background:var(--ember); color:#fff; }
+  img,svg{ display:block; max-width:100%; }
+  a{ color:inherit; }
+  :focus-visible{ outline:2px solid var(--ember); outline-offset:3px; }
+  @media (prefers-reduced-motion: reduce){
+    *,*::before,*::after{ animation:none !important; transition:none !important; }
+    html{ scroll-behavior:auto; }
+  }
+
+  .wrap{ max-width:var(--max); margin-inline:auto; padding-inline:var(--gutter); }
+
+  /* Recurring hairline motif */
+  .rule{ border:0; border-top:1px solid var(--line); }
+
+  .label{
+    font-size:.7rem;
+    font-weight:600;
+    letter-spacing:.18em;
+    text-transform:uppercase;
+    color:var(--sub);
+  }
+  .num{ font-feature-settings:"tnum"; font-variant-numeric:tabular-nums; }
+
+  /* ============ TOP STRIP ============ */
+  .strip{
+    border-bottom:1px solid var(--line);
+    font-size:.68rem;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--sub);
+  }
+  .strip .wrap{
+    display:flex; justify-content:space-between; gap:1rem;
+    padding-block:.55rem;
+    white-space:nowrap; overflow:hidden;
+  }
+  .strip b{ font-weight:600; color:var(--ink); }
+  .strip .right{ text-align:right; }
+  @media (max-width:640px){
+    .strip .strip-long{ display:none; }
+  }
+
+  /* ============ MASTHEAD ============ */
+  .masthead{ border-bottom:1px solid var(--line); background:var(--bg); }
+  .masthead .wrap{
+    display:flex; align-items:center; justify-content:space-between;
+    gap:1rem; padding-block:1rem;
+  }
+  .brand{ display:flex; align-items:center; gap:.8rem; text-decoration:none; }
+  .brand-mark{ flex:0 0 auto; }
+  .brand-name{
+    font-size:.74rem; font-weight:700; letter-spacing:.2em;
+    text-transform:uppercase; line-height:1.45;
+  }
+  .brand-name span{ display:block; color:var(--sub); font-weight:500; }
+  .btn{
+    display:inline-flex; align-items:center; gap:.55rem;
+    padding:.78rem 1.35rem;
+    font:inherit; font-size:.85rem; font-weight:700;
+    letter-spacing:.06em; text-transform:uppercase;
+    text-decoration:none; border:1px solid transparent;
+    transition:background-color .18s ease, color .18s ease, border-color .18s ease;
+  }
+  .btn-ember{ background:var(--ember); color:#fff; }
+  .btn-ember:hover{ background:var(--ember-deep); }
+  .btn-ghost{ background:transparent; color:var(--ink); border-color:var(--ink); }
+  .btn-ghost:hover{ background:var(--ink); color:var(--bg); }
+  .btn svg{ width:1em; height:1em; }
+  .masthead .btn .btn-num{ display:inline; }
+  @media (max-width:540px){
+    .masthead .btn .btn-num{ display:none; }
+  }
+
+  /* ============ HERO ============ */
+  .hero{ overflow:clip; }
+  .hero .wrap{
+    display:grid; grid-template-columns:1.05fr .95fr;
+    gap:clamp(2rem, 5vw, 5rem);
+    align-items:center;
+    padding-block:clamp(3rem, 7vw, 6rem);
+  }
+  .hero-copy > *{ animation:rise .7s cubic-bezier(.22,.7,.3,1) both; }
+  .hero-copy > *:nth-child(2){ animation-delay:.08s; }
+  .hero-copy > *:nth-child(3){ animation-delay:.16s; }
+  .hero-copy > *:nth-child(4){ animation-delay:.24s; }
+  .hero-copy > *:nth-child(5){ animation-delay:.32s; }
+  @keyframes rise{
+    from{ opacity:0; transform:translateY(14px); }
+    to{ opacity:1; transform:none; }
+  }
+  .eyebrow{
+    display:flex; align-items:center; gap:.9rem;
+    font-size:.7rem; font-weight:600; letter-spacing:.18em;
+    text-transform:uppercase; color:var(--sub);
+    margin-bottom:1.6rem;
+  }
+  .eyebrow::before{ content:""; width:2.4rem; height:1px; background:var(--ink); }
+  .display{
+    font-size:clamp(2.5rem, 6.2vw, 4.4rem);
+    font-weight:800; line-height:1.02; letter-spacing:-.025em;
+    text-wrap:balance;
+    margin-bottom:1.4rem;
+  }
+  .display em{ font-style:normal; }
+  .display .hot{ color:var(--ember); }
+  .display .cold{ color:var(--steel); }
+  .lede{
+    font-size:clamp(1rem, 1.4vw, 1.125rem);
+    color:var(--sub); max-width:34em;
+    margin-bottom:2rem;
+  }
+  .hero-ctas{ display:flex; flex-wrap:wrap; gap:.75rem; margin-bottom:2.4rem; }
+  .facts{
+    display:flex; border-block:1px solid var(--line);
+  }
+  .facts li{
+    list-style:none; flex:1;
+    padding:.85rem 1rem .85rem 0;
+    font-size:.68rem; font-weight:600; letter-spacing:.12em;
+    text-transform:uppercase; color:var(--sub);
+    line-height:1.5;
+  }
+  .facts li + li{ border-left:1px solid var(--line); padding-left:1rem; }
+  .facts b{ display:block; color:var(--ink); font-weight:700; font-size:.82rem; letter-spacing:.06em; }
+  @media (max-width:560px){
+    .facts{ flex-direction:column; }
+    .facts li{ padding:.7rem 0; }
+    .facts li + li{ border-left:0; padding-left:0; border-top:1px solid var(--line); }
+  }
+
+  .hero-art{ position:relative; }
+  .hero-art svg{ width:100%; height:auto; }
+  .gauge-marker{
+    transform:translateY(318px);
+    animation:drift 9s ease-in-out infinite alternate;
+  }
+  @keyframes drift{
+    from{ transform:translateY(315px); }
+    to{ transform:translateY(349px); }
+  }
+  .svg-label{ font-size:11px; font-weight:600; letter-spacing:.18em; fill:var(--sub); }
+  .svg-tick-label{ font-size:12px; font-weight:500; fill:var(--sub); font-feature-settings:"tnum"; }
+  .svg-fig{ font-size:10px; font-weight:600; letter-spacing:.16em; fill:var(--sub); }
+
+  @media (max-width:900px){
+    .hero .wrap{ grid-template-columns:1fr; }
+    .hero-art{ max-width:30rem; }
+  }
+
+  /* ============ SECTION HEADER PATTERN ============ */
+  .section{ border-top:1px solid var(--line); }
+  .section-head{
+    display:grid; grid-template-columns:auto 1fr;
+    gap:1.25rem 2rem; align-items:baseline;
+    padding-block:clamp(2.5rem, 5vw, 4rem) clamp(1.75rem, 3vw, 2.5rem);
+  }
+  .section-no{
+    font-size:.8rem; font-weight:700; letter-spacing:.14em; color:var(--sub);
+    font-feature-settings:"tnum";
+  }
+  .section-title{
+    font-size:clamp(1.75rem, 3.6vw, 2.6rem);
+    font-weight:800; letter-spacing:-.02em; line-height:1.08;
+    text-wrap:balance;
+  }
+  .section-sub{
+    grid-column:2; max-width:36em; color:var(--sub); margin-top:.6rem;
+  }
+  @media (max-width:640px){
+    .section-head{ grid-template-columns:1fr; gap:.6rem; }
+    .section-sub{ grid-column:1; }
+  }
+
+  /* ============ SERVICES ============ */
+  .services{
+    display:grid; grid-template-columns:1fr 1fr;
+    gap:1px; background:var(--line);
+    border-block:1px solid var(--line);
+    margin-bottom:clamp(3rem, 6vw, 5rem);
+  }
+  .service{
+    background:var(--bg);
+    padding:clamp(1.6rem, 3vw, 2.4rem);
+  }
+  .service-tag{
+    display:flex; justify-content:space-between; align-items:center;
+    margin-bottom:1.5rem;
+  }
+  .service-tag .label{ letter-spacing:.16em; }
+  .service svg.icon{ width:2.25rem; height:2.25rem; stroke:var(--ink); transition:stroke .2s ease; }
+  .service:nth-child(odd):hover svg.icon{ stroke:var(--ember); }
+  .service:nth-child(even):hover svg.icon{ stroke:var(--steel); }
+  .service h3{
+    font-size:1.25rem; font-weight:700; letter-spacing:-.01em;
+    margin-bottom:.6rem;
+  }
+  .service p{ color:var(--sub); font-size:.95rem; max-width:32em; }
+  .service .temp{
+    margin-top:1.4rem; display:flex; gap:.5rem; align-items:center;
+    font-size:.66rem; font-weight:600; letter-spacing:.14em; text-transform:uppercase;
+  }
+  .temp .dot{ width:.5rem; height:.5rem; border-radius:50%; }
+  .dot-hot{ background:var(--ember); }
+  .dot-cold{ background:var(--steel); }
+  .temp span{ color:var(--sub); }
+  @media (max-width:700px){
+    .services{ grid-template-columns:1fr; }
+  }
+
+  /* ============ SERVICE AREA ============ */
+  .area{ background:var(--bg-alt); }
+  .area-grid{
+    display:grid; grid-template-columns:1fr 1fr;
+    gap:clamp(2rem, 5vw, 5rem);
+    align-items:center;
+    padding-bottom:clamp(3rem, 6vw, 5rem);
+  }
+  .area-copy p{ color:var(--sub); max-width:34em; margin-bottom:1.6rem; }
+  .address-card{
+    border:1px solid var(--line); background:var(--bg);
+    padding:1.4rem 1.6rem;
+    display:grid; gap:.35rem;
+    max-width:26rem;
+  }
+  .address-card .label{ margin-bottom:.25rem; }
+  .address-card address{
+    font-style:normal; font-weight:700; font-size:1.05rem; letter-spacing:-.01em;
+  }
+  .address-card small{ color:var(--sub); font-size:.82rem; }
+  .area-art{ max-width:26rem; justify-self:center; width:100%; }
+  .rings-pulse{
+    transform-origin:210px 210px;
+    animation:pulse 6s ease-out infinite;
+    opacity:0;
+  }
+  @keyframes pulse{
+    0%{ transform:scale(.25); opacity:.55; }
+    70%{ opacity:0; }
+    100%{ transform:scale(1); opacity:0; }
+  }
+  @media (max-width:820px){
+    .area-grid{ grid-template-columns:1fr; }
+    .area-art{ justify-self:start; }
+  }
+
+  /* ============ CREDENTIALS LEDGER ============ */
+  .ledger{ border-top:1px solid var(--line); margin-bottom:clamp(3rem, 6vw, 5rem); }
+  .ledger-row{
+    display:grid;
+    grid-template-columns:11rem 1fr 1.2fr;
+    gap:1rem 2rem;
+    padding-block:1.35rem;
+    border-bottom:1px solid var(--line);
+    align-items:baseline;
+  }
+  .ledger-row dt{ font-size:.7rem; font-weight:600; letter-spacing:.18em; text-transform:uppercase; color:var(--sub); }
+  .ledger-row .value{
+    font-size:clamp(1.05rem, 2vw, 1.35rem);
+    font-weight:700; letter-spacing:-.01em;
+    font-feature-settings:"tnum";
+  }
+  .ledger-row .value.v-hot{ color:var(--ember); }
+  .ledger-row .value.v-cold{ color:var(--steel); }
+  .ledger-row .note{ color:var(--sub); font-size:.9rem; }
+  @media (max-width:700px){
+    .ledger-row{ grid-template-columns:1fr; gap:.3rem; }
+    .ledger-row .note{ max-width:36em; }
+  }
+
+  /* ============ CONTACT ============ */
+  .contact{
+    background:var(--night); color:var(--night-ink);
+    border-top:1px solid var(--ember);
+    position:relative;
+  }
+  .contact::before{
+    content:""; position:absolute; top:5px; left:0; right:0;
+    height:1px; background:var(--steel);
+  }
+  .contact .section-no, .contact .label{ color:var(--night-sub); }
+  .contact .section-head{ padding-top:clamp(3rem, 6vw, 5rem); }
+  .contact-grid{
+    display:grid; grid-template-columns:1.3fr 1fr;
+    gap:clamp(2rem, 5vw, 5rem);
+    padding-bottom:clamp(3.5rem, 7vw, 6rem);
+    align-items:start;
+  }
+  .tel-big{
+    display:inline-block;
+    font-size:clamp(2rem, 5.4vw, 3.6rem);
+    font-weight:800; letter-spacing:-.02em; line-height:1.1;
+    color:var(--night-ink); text-decoration:none;
+    border-bottom:1px solid var(--night-line);
+    padding-bottom:.4rem; margin-top:.9rem;
+    font-feature-settings:"tnum";
+    transition:color .18s ease, border-color .18s ease;
+  }
+  .tel-big:hover{ color:var(--ember-hi); border-color:var(--ember-hi); }
+  .contact-note{ color:var(--night-sub); max-width:30em; margin-top:1.4rem; font-size:.95rem; }
+  .contact-side{ display:grid; gap:2rem; }
+  .contact-block address{ font-style:normal; line-height:1.65; margin-top:.8rem; font-weight:500; }
+  .contact-block .meta-list{ margin-top:.8rem; display:grid; gap:.45rem; }
+  .contact-block .meta-list li{
+    list-style:none; font-size:.8rem; color:var(--night-sub);
+    display:flex; gap:.6rem; align-items:baseline;
+    font-feature-settings:"tnum";
+  }
+  .contact-block .meta-list li::before{
+    content:""; width:.85rem; height:1px; background:var(--night-line);
+    align-self:center; flex:0 0 auto;
+  }
+
+  /* ============ FOOTER ============ */
+  footer{
+    background:var(--night); color:var(--night-sub);
+    border-top:1px solid var(--night-line);
+    font-size:.78rem;
+  }
+  footer .wrap{ padding-block:2rem 2.4rem; display:grid; gap:1.1rem; }
+  .foot-top{
+    display:flex; flex-wrap:wrap; gap:.4rem 1.6rem;
+    justify-content:space-between; align-items:baseline;
+  }
+  .foot-top b{ color:var(--night-ink); font-weight:700; letter-spacing:.04em; }
+  footer .split-line{
+    display:flex; gap:.75rem; flex-wrap:wrap;
+    font-feature-settings:"tnum";
+  }
+  footer .split-line span + span::before{ content:"·"; margin-right:.75rem; opacity:.6; }
+  .foot-rule{ border:0; border-top:1px solid var(--night-line); }
+  .concept{ line-height:1.7; }
+  .concept b{ color:var(--night-ink); font-weight:600; }
+
+  /* ============ STICKY MOBILE CALL BAR ============ */
+  .callbar{ display:none; }
+  @media (max-width:719px){
+    body{ padding-bottom:calc(3.8rem + env(safe-area-inset-bottom)); }
+    .callbar{
+      position:fixed; inset-inline:0; bottom:0; z-index:50;
+      display:flex; align-items:center; justify-content:center; gap:.6rem;
+      background:var(--ember); color:#fff;
+      text-decoration:none;
+      font-size:.95rem; font-weight:700; letter-spacing:.05em; text-transform:uppercase;
+      padding:1.05rem 1rem calc(1.05rem + env(safe-area-inset-bottom));
+      border-top:1px solid var(--ember-deep);
+      box-shadow:0 -6px 18px rgba(27,25,22,.18);
+      font-feature-settings:"tnum";
+    }
+    .callbar:active{ background:var(--ember-deep); }
+    .callbar svg{ width:1.05em; height:1.05em; }
+  }
+</style>
+</head>
+<body>
+
+  <!-- Top strip -->
+  <div class="strip" role="note" aria-label="License information">
+    <div class="wrap">
+      <p><span class="strip-long">Licensed TX A/C &amp; Refrigeration Contractor — </span><b class="num">TACLB00009404E</b></p>
+      <p class="right">Austin, Texas <span class="num">78757</span></p>
+    </div>
+  </div>
+
+  <!-- Masthead -->
+  <header class="masthead">
+    <div class="wrap">
+      <a class="brand" href="#top" aria-label="Texas Comfort Specialists — home">
+        <svg class="brand-mark" width="36" height="36" viewBox="0 0 36 36" aria-hidden="true">
+          <polygon points="1,1 35,1 1,35" fill="#BC4515"/>
+          <polygon points="35,3.8 35,35 3.8,35" fill="#3E6E8C"/>
+        </svg>
+        <span class="brand-name">Texas Comfort<span>Specialists</span></span>
+      </a>
+      <a class="btn btn-ember num" href="tel:+15125242501">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.08 4.18 2 2 0 0 1 4.06 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        Call&nbsp;<span class="btn-num">(512) 524-2501</span>
+      </a>
+    </div>
+  </header>
+
+  <main id="top">
+
+    <!-- ============ HERO ============ -->
+    <section class="hero" aria-labelledby="hero-h">
+      <div class="wrap">
+        <div class="hero-copy">
+          <p class="eyebrow">Residential &amp; Commercial HVAC · Austin, TX</p>
+          <h1 class="display" id="hero-h">Built for Austin&rsquo;s <em class="hot">hottest days</em> and its <em class="cold">coldest snaps</em>.</h1>
+          <p class="lede">Texas Comfort Specialists LLC has repaired and installed AC and heating systems across Austin since 2011 &mdash; residential and commercial, licensed by the State of Texas, and one phone call away.</p>
+          <div class="hero-ctas">
+            <a class="btn btn-ember num" href="tel:+15125242501">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.08 4.18 2 2 0 0 1 4.06 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              (512) 524-2501
+            </a>
+            <a class="btn btn-ghost" href="#services">What we do</a>
+          </div>
+          <ul class="facts">
+            <li><b>Est. 2011</b> 14+ years in Austin</li>
+            <li><b class="num">TACLB00009404E</b> Texas licensed</li>
+            <li><b>Top 24%</b> BuildZoom, Texas</li>
+          </ul>
+        </div>
+
+        <!-- Hero graphic: the comfort band, drawn like a spec sheet -->
+        <div class="hero-art" aria-hidden="true">
+          <svg viewBox="0 0 420 540" role="presentation">
+            <defs>
+              <linearGradient id="thermo" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#BC4515"/>
+                <stop offset=".5" stop-color="#C7BFAE"/>
+                <stop offset="1" stop-color="#3E6E8C"/>
+              </linearGradient>
+            </defs>
+
+            <!-- hairline frame -->
+            <rect x="20" y="20" width="380" height="500" fill="none" stroke="#D9D2C3"/>
+
+            <text class="svg-fig" x="40" y="52">FIG. 01 — THE JOB</text>
+            <text class="svg-label" x="380" y="52" text-anchor="end" fill="#BC4515">HEAT</text>
+            <text class="svg-label" x="380" y="500" text-anchor="end" fill="#3E6E8C">COOL</text>
+            <text class="svg-fig" x="40" y="500">SCALE °F</text>
+
+            <!-- gradient column -->
+            <rect x="120" y="60" width="8" height="420" fill="url(#thermo)"/>
+
+            <!-- major ticks + labels -->
+            <g stroke="#B9B0A0">
+              <line x1="94" y1="60"  x2="112" y2="60"/>
+              <line x1="94" y1="130" x2="112" y2="130"/>
+              <line x1="94" y1="200" x2="112" y2="200"/>
+              <line x1="94" y1="270" x2="112" y2="270"/>
+              <line x1="94" y1="340" x2="112" y2="340"/>
+              <line x1="94" y1="410" x2="112" y2="410"/>
+              <line x1="94" y1="480" x2="112" y2="480"/>
+            </g>
+            <!-- minor ticks -->
+            <g stroke="#D9D2C3">
+              <line x1="103" y1="95"  x2="112" y2="95"/>
+              <line x1="103" y1="165" x2="112" y2="165"/>
+              <line x1="103" y1="235" x2="112" y2="235"/>
+              <line x1="103" y1="305" x2="112" y2="305"/>
+              <line x1="103" y1="375" x2="112" y2="375"/>
+              <line x1="103" y1="445" x2="112" y2="445"/>
+            </g>
+            <g class="svg-tick-label" text-anchor="end">
+              <text x="86" y="64">110°</text>
+              <text x="86" y="134">100°</text>
+              <text x="86" y="204">90°</text>
+              <text x="86" y="274">80°</text>
+              <text x="86" y="344">70°</text>
+              <text x="86" y="414">60°</text>
+              <text x="86" y="484">50°</text>
+            </g>
+
+            <!-- the comfort band: 68–74° -->
+            <rect x="64" y="312" width="292" height="42" fill="#3E6E8C" opacity=".08"/>
+            <line x1="40" y1="312" x2="380" y2="312" stroke="#3E6E8C" opacity=".45"/>
+            <line x1="40" y1="354" x2="380" y2="354" stroke="#3E6E8C" opacity=".45"/>
+            <text x="352" y="332" text-anchor="end" font-size="16" font-weight="700" fill="#2E5772">68–74°</text>
+            <text x="352" y="347" text-anchor="end" font-size="10" letter-spacing="1.5" fill="#5C564B">THE COMFORT BAND</text>
+
+            <!-- drifting setpoint marker -->
+            <g class="gauge-marker">
+              <path d="M128 0 L142 -7 L142 7 Z" fill="#1B1916"/>
+              <line x1="142" y1="0" x2="252" y2="0" stroke="#1B1916"/>
+              <text x="150" y="-12" font-size="10" letter-spacing="1.5" fill="#5C564B">WHERE WE KEEP IT</text>
+            </g>
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ SERVICES ============ -->
+    <section class="section" id="services" aria-labelledby="services-h">
+      <div class="wrap">
+        <div class="section-head">
+          <span class="section-no num">01</span>
+          <h2 class="section-title" id="services-h">Repair, installation &mdash; homes and businesses.</h2>
+          <p class="section-sub">Both sides of the thermostat, both sides of the market. The same licensed contractor since 2011.</p>
+        </div>
+        <div class="services">
+          <article class="service">
+            <div class="service-tag">
+              <svg class="icon" viewBox="0 0 40 40" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="20" cy="22" r="13"/>
+                <line x1="20" y1="22" x2="28" y2="14"/>
+                <circle cx="20" cy="22" r="1.4" fill="currentColor" stroke="none"/>
+                <line x1="20" y1="9" x2="20" y2="12.5"/>
+                <line x1="7" y1="22" x2="10.5" y2="22"/>
+                <line x1="29.5" y1="22" x2="33" y2="22"/>
+              </svg>
+              <span class="label">Service 01</span>
+            </div>
+            <h3>AC &amp; Heating Repair</h3>
+            <p>A system that quits in a Texas July &mdash; or a January freeze &mdash; needs a diagnosis, not a guess. We troubleshoot and repair cooling and heating equipment and get it running the way it should.</p>
+            <p class="temp"><span class="dot dot-hot"></span><span class="dot dot-cold"></span><span>Heat + Cool</span></p>
+          </article>
+          <article class="service">
+            <div class="service-tag">
+              <svg class="icon" viewBox="0 0 40 40" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect x="8" y="10" width="24" height="22" rx="1"/>
+                <line x1="11" y1="14" x2="29" y2="14"/>
+                <circle cx="20" cy="23" r="6"/>
+                <circle cx="20" cy="23" r="1.2" fill="currentColor" stroke="none"/>
+              </svg>
+              <span class="label">Service 02</span>
+            </div>
+            <h3>System Installation</h3>
+            <p>New construction, replacement, or upgrade &mdash; we install AC and heating systems matched to the building they&rsquo;ll actually serve, and we stand behind the license on the work.</p>
+            <p class="temp"><span class="dot dot-hot"></span><span class="dot dot-cold"></span><span>Heat + Cool</span></p>
+          </article>
+          <article class="service">
+            <div class="service-tag">
+              <svg class="icon" viewBox="0 0 40 40" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M7 20 L20 9 L33 20"/>
+                <path d="M10.5 17.5 V32 H29.5 V17.5"/>
+                <path d="M17.5 32 V25 H22.5 V32"/>
+              </svg>
+              <span class="label">Service 03</span>
+            </div>
+            <h3>Residential</h3>
+            <p>In August, your house has one job: stay cool. In a cold snap, one job: stay warm. We keep the systems Austin homes depend on doing theirs, season after season.</p>
+            <p class="temp"><span class="dot dot-hot"></span><span class="dot dot-cold"></span><span>For the home</span></p>
+          </article>
+          <article class="service">
+            <div class="service-tag">
+              <svg class="icon" viewBox="0 0 40 40" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect x="12" y="8" width="16" height="24"/>
+                <rect x="16" y="4" width="8" height="4"/>
+                <line x1="16" y1="14" x2="19" y2="14"/><line x1="21" y1="14" x2="24" y2="14"/>
+                <line x1="16" y1="20" x2="19" y2="20"/><line x1="21" y1="20" x2="24" y2="20"/>
+                <line x1="16" y1="26" x2="19" y2="26"/><line x1="21" y1="26" x2="24" y2="26"/>
+                <line x1="8" y1="32" x2="32" y2="32"/>
+              </svg>
+              <span class="label">Service 04</span>
+            </div>
+            <h3>Commercial</h3>
+            <p>When the AC goes down, so does the workday. We repair and install heating and cooling for commercial spaces &mdash; the same phone number, the same license, bigger equipment.</p>
+            <p class="temp"><span class="dot dot-hot"></span><span class="dot dot-cold"></span><span>For the business</span></p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ SERVICE AREA ============ -->
+    <section class="section area" aria-labelledby="area-h">
+      <div class="wrap">
+        <div class="section-head">
+          <span class="section-no num">02</span>
+          <h2 class="section-title" id="area-h">Home base: <span class="num">78757</span>. Range: greater Austin.</h2>
+        </div>
+        <div class="area-grid">
+          <div class="area-copy">
+            <p>We work out of <span class="num">1901</span> Pequeno St in Austin&rsquo;s <span class="num">78757</span> &mdash; a central base that puts most of the city within a short drive. Homes and businesses across the greater Austin area, cooled and heated from right here.</p>
+            <div class="address-card">
+              <p class="label">The shop</p>
+              <address class="num">1901 Pequeno St<br>Austin, TX 78757</address>
+              <small>Texas Comfort Specialists LLC &mdash; serving greater Austin</small>
+            </div>
+          </div>
+          <div class="area-art" aria-hidden="true">
+            <svg viewBox="0 0 420 420" role="presentation">
+              <rect x="10" y="10" width="400" height="400" fill="none" stroke="#D9D2C3"/>
+              <text class="svg-fig" x="28" y="40">FIG. 02 — RANGE</text>
+              <text class="svg-fig" x="392" y="398" text-anchor="end">N ↑</text>
+              <!-- crosshairs -->
+              <line x1="210" y1="10" x2="210" y2="410" stroke="#D9D2C3"/>
+              <line x1="10" y1="210" x2="410" y2="210" stroke="#D9D2C3"/>
+              <!-- rings -->
+              <circle cx="210" cy="210" r="58"  fill="none" stroke="#B9B0A0"/>
+              <circle cx="210" cy="210" r="110" fill="none" stroke="#D9D2C3"/>
+              <circle cx="210" cy="210" r="162" fill="none" stroke="#D9D2C3" stroke-dasharray="3 5"/>
+              <!-- pulse -->
+              <circle class="rings-pulse" cx="210" cy="210" r="162" fill="none" stroke="#BC4515"/>
+              <!-- base point -->
+              <circle cx="210" cy="210" r="6" fill="#BC4515"/>
+              <circle cx="210" cy="210" r="12" fill="none" stroke="#BC4515" opacity=".4"/>
+              <line x1="216" y1="204" x2="268" y2="152" stroke="#1B1916"/>
+              <line x1="268" y1="152" x2="330" y2="152" stroke="#1B1916"/>
+              <text x="272" y="146" font-size="12" font-weight="700" fill="#1B1916" class="num">78757</text>
+              <text x="272" y="166" font-size="10" letter-spacing="1.5" fill="#5C564B">PEQUENO ST</text>
+              <text x="210" y="290" text-anchor="middle" font-size="10" letter-spacing="2" fill="#5C564B">AUSTIN</text>
+              <text x="210" y="342" text-anchor="middle" font-size="10" letter-spacing="2" fill="#5C564B">GREATER AUSTIN</text>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CREDENTIALS ============ -->
+    <section class="section" aria-labelledby="cred-h">
+      <div class="wrap">
+        <div class="section-head">
+          <span class="section-no num">03</span>
+          <h2 class="section-title" id="cred-h">On the record.</h2>
+          <p class="section-sub">Don&rsquo;t take a website&rsquo;s word for it. Every line below is public and checkable.</p>
+        </div>
+        <dl class="ledger">
+          <div class="ledger-row">
+            <dt>State license</dt>
+            <dd class="value num">TACLB00009404E</dd>
+            <dd class="note">Licensed Texas A/C &amp; Refrigeration Contractor &mdash; look it up before you hire anyone, including us.</dd>
+          </div>
+          <div class="ledger-row">
+            <dt>In business</dt>
+            <dd class="value v-hot">Since 2011</dd>
+            <dd class="note">14+ years of Austin summers and cold snaps &mdash; the same company, the same phone number.</dd>
+          </div>
+          <div class="ledger-row">
+            <dt>BuildZoom</dt>
+            <dd class="value v-cold">Top 24% in Texas</dd>
+            <dd class="note">Ranked in the top 24% of Texas contractors on BuildZoom, which scores licensed contractors on their permit and license history.</dd>
+          </div>
+          <div class="ledger-row">
+            <dt>Directories</dt>
+            <dd class="value">Yelp &amp; BBB</dd>
+            <dd class="note">Independently listed on Yelp and with the Better Business Bureau. Look us up &mdash; we&rsquo;re fine with that.</dd>
+          </div>
+          <div class="ledger-row">
+            <dt>Leadership</dt>
+            <dd class="value">Tyler Hill Miloy</dd>
+            <dd class="note">President, Texas Comfort Specialists LLC. A name on the work, not just a logo.</dd>
+          </div>
+        </dl>
+      </div>
+    </section>
+
+    <!-- ============ CONTACT ============ -->
+    <section class="contact" id="contact" aria-labelledby="contact-h">
+      <div class="wrap">
+        <div class="section-head">
+          <span class="section-no num">04</span>
+          <h2 class="section-title" id="contact-h">One call covers it.</h2>
+        </div>
+        <div class="contact-grid">
+          <div>
+            <p class="label">Phone &mdash; the fastest way to reach us</p>
+            <a class="tel-big" href="tel:+15125242501">(512) 524-2501</a>
+            <p class="contact-note">Tell us what the system is doing &mdash; or not doing &mdash; and we&rsquo;ll take it from there. Repair or installation, house or business, hot side or cold side.</p>
+          </div>
+          <div class="contact-side">
+            <div class="contact-block">
+              <p class="label">Address</p>
+              <address class="num">1901 Pequeno St<br>Austin, TX 78757</address>
+            </div>
+            <div class="contact-block">
+              <p class="label">At a glance</p>
+              <ul class="meta-list">
+                <li>Residential &amp; commercial</li>
+                <li>AC &amp; heating &mdash; repair &amp; installation</li>
+                <li>Licensed: TACLB00009404E</li>
+                <li>In business since 2011</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer>
+    <div class="wrap">
+      <div class="foot-top">
+        <p><b>Texas Comfort Specialists LLC</b> &mdash; Tyler Hill Miloy, President</p>
+        <p class="split-line num">
+          <span>1901 Pequeno St, Austin, TX 78757</span>
+          <span><a href="tel:+15125242501" style="text-decoration:none">(512) 524-2501</a></span>
+        </p>
+      </div>
+      <p class="split-line num">
+        <span>Licensed Texas A/C &amp; Refrigeration Contractor</span>
+        <span>TACLB00009404E</span>
+        <span>Est. 2011</span>
+      </p>
+      <hr class="foot-rule">
+      <p class="concept">
+        Website concept by <b>Murrieta Web Studio</b><br>
+        This is a design concept created for Texas Comfort Specialists LLC. Not yet the official website of Texas Comfort Specialists LLC.
+      </p>
+    </div>
+  </footer>
+
+  <!-- Sticky mobile call bar -->
+  <a class="callbar" href="tel:+15125242501" aria-label="Call Texas Comfort Specialists at (512) 524-2501">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.08 4.18 2 2 0 0 1 4.06 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+    Call (512) 524-2501
+  </a>
+
+</body>
+</html>

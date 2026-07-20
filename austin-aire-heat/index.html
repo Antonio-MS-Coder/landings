@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>Austin Aire &amp; Heat — AC, Heating &amp; Appliance Repair, Southwest Austin</title>
+<meta name="description" content="Owner-operated AC, heating, and appliance repair in Southwest Austin since 2003. Call Brad at (512) 301-0389.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Alegreya+Sans:ital,wght@0,400;0,500;0,700;0,800;1,400;1,500;1,700&display=swap" rel="stylesheet">
+<style>
+  /* ============ Foundations ============ */
+  :root{
+    --field:   #EFE7D6;   /* sand — the page field */
+    --card:    #FBF6EB;   /* cream — cards & panels */
+    --card-2:  #F6EFDF;   /* cream, one step down */
+    --ink:     #2B2418;   /* warm near-black */
+    --ink-soft:#6E6350;   /* secondary text */
+    --line:    rgba(43,36,24,.18);
+    --line-strong: rgba(43,36,24,.55);
+    --accent:  #B4491D;   /* burnt clay — the one accent */
+    --accent-deep:#96380F;
+    --accent-ink-on:#FFF6E8;
+    --radius: 10px;
+    --shadow: 0 1px 0 rgba(43,36,24,.08), 0 14px 34px -18px rgba(43,36,24,.28);
+    --font: "Alegreya Sans", "Gill Sans", "Segoe UI", system-ui, sans-serif;
+  }
+
+  *,*::before,*::after{ box-sizing:border-box; margin:0; padding:0; }
+
+  html{ scroll-behavior:smooth; }
+  @media (prefers-reduced-motion: reduce){
+    html{ scroll-behavior:auto; }
+    *,*::before,*::after{ animation:none !important; transition:none !important; }
+  }
+
+  body{
+    font-family:var(--font);
+    font-size:1.0625rem;
+    line-height:1.6;
+    color:var(--ink);
+    background:var(--field);
+    -webkit-font-smoothing:antialiased;
+  }
+
+  /* Paper grain over everything — non-interactive */
+  body::after{
+    content:"";
+    position:fixed; inset:0;
+    pointer-events:none;
+    z-index:2147483647;
+    opacity:.05;
+    mix-blend-mode:multiply;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  img,svg{ display:block; max-width:100%; }
+  a{ color:inherit; }
+  :focus-visible{ outline:2.5px solid var(--accent); outline-offset:3px; border-radius:2px; }
+
+  .wrap{ max-width:1120px; margin-inline:auto; padding-inline:clamp(1.1rem, 4vw, 2.5rem); }
+
+  /* ============ Type helpers ============ */
+  .eyebrow{
+    display:flex; align-items:center; gap:.75rem;
+    font-size:.78rem; font-weight:700;
+    letter-spacing:.18em; text-transform:uppercase;
+    color:var(--accent);
+  }
+  .eyebrow::before{
+    content:""; width:2rem; height:2px; background:var(--accent); flex:none;
+  }
+  h1,h2,h3{ line-height:1.12; text-wrap:balance; }
+  h2{ font-size:clamp(1.75rem, 3.4vw, 2.5rem); font-weight:800; letter-spacing:-.01em; }
+
+  /* ============ Buttons ============ */
+  .btn{
+    display:inline-flex; align-items:center; justify-content:center; gap:.6rem;
+    font:inherit; font-weight:700; font-size:1.05rem;
+    padding:.85rem 1.5rem;
+    border-radius:8px;
+    text-decoration:none;
+    border:1.5px solid transparent;
+    transition:transform .15s ease, background-color .15s ease, box-shadow .15s ease;
+  }
+  .btn svg{ width:1.15em; height:1.15em; flex:none; }
+  .btn-call{
+    background:var(--accent);
+    color:var(--accent-ink-on);
+    box-shadow:0 2px 0 var(--accent-deep), 0 12px 24px -12px rgba(150,56,15,.55);
+  }
+  .btn-call:hover{ background:var(--accent-deep); transform:translateY(-1px); }
+  .btn-call:active{ transform:translateY(1px); box-shadow:0 0 0 var(--accent-deep); }
+  .btn-ghost{
+    background:transparent; color:var(--ink);
+    border-color:var(--line-strong);
+  }
+  .btn-ghost:hover{ border-color:var(--ink); background:rgba(43,36,24,.045); }
+
+  /* ============ Header ============ */
+  .top{
+    padding-block:1.15rem;
+  }
+  .top .wrap{
+    display:flex; align-items:center; justify-content:space-between; gap:1rem;
+  }
+  .brand{
+    display:flex; align-items:center; gap:.8rem;
+    text-decoration:none;
+  }
+  .brand-mark{
+    width:44px; height:44px; flex:none;
+    display:grid; place-items:center;
+    background:var(--accent); color:var(--accent-ink-on);
+    border-radius:9px;
+    font-weight:800; font-size:.82rem; letter-spacing:.06em;
+    box-shadow:inset 0 0 0 2px rgba(255,246,232,.35);
+  }
+  .brand-name{ font-weight:800; font-size:1.18rem; line-height:1.1; letter-spacing:-.01em; }
+  .brand-sub{ font-size:.76rem; font-weight:500; letter-spacing:.14em; text-transform:uppercase; color:var(--ink-soft); }
+  .top-phone{
+    display:inline-flex; align-items:center; gap:.55rem;
+    font-weight:700; font-size:1rem; text-decoration:none;
+    padding:.55rem 1.1rem;
+    border:1.5px solid var(--line-strong); border-radius:999px;
+    transition:background-color .15s ease, border-color .15s ease;
+  }
+  .top-phone:hover{ background:var(--card); border-color:var(--ink); }
+  .top-phone svg{ width:1em; height:1em; color:var(--accent); }
+  @media (max-width:560px){ .top-phone span{ display:none; } .top-phone{ padding:.55rem .7rem; } }
+
+  /* ============ Hero — boxed card on the field ============ */
+  .hero{ padding-block:clamp(1.25rem,3.5vw,3rem) clamp(3rem,6vw,5rem); }
+  .hero-card{
+    position:relative;
+    background:var(--card);
+    border:1.5px solid var(--ink);
+    border-radius:var(--radius);
+    box-shadow:var(--shadow);
+  }
+  /* inner hairline, like a ruled invoice */
+  .hero-card::before{
+    content:""; position:absolute; inset:7px;
+    border:1px solid var(--line);
+    border-radius:5px;
+    pointer-events:none;
+  }
+  .hero-meta{
+    display:flex; justify-content:space-between; gap:1rem;
+    padding:1rem clamp(1.4rem,4vw,3rem) .9rem;
+    border-bottom:1px solid var(--line);
+    font-size:.76rem; font-weight:700; letter-spacing:.17em; text-transform:uppercase;
+    color:var(--ink-soft);
+  }
+  .hero-body{
+    display:grid; grid-template-columns:minmax(0,1.12fr) minmax(0,.88fr);
+    gap:clamp(1.5rem,4vw,3.5rem);
+    align-items:center;
+    padding:clamp(1.9rem,4.5vw,3.4rem) clamp(1.4rem,4vw,3rem) clamp(2rem,4.5vw,3.2rem);
+  }
+  .hero h1{
+    font-size:clamp(2.15rem, 5.2vw, 3.55rem);
+    font-weight:800;
+    letter-spacing:-.015em;
+    margin:.9rem 0 1.05rem;
+  }
+  .hero h1 em{ font-style:italic; color:var(--accent); }
+  .hero-lede{
+    font-size:clamp(1.08rem, 1.6vw, 1.22rem);
+    color:var(--ink-soft);
+    max-width:34em;
+    margin-bottom:1.7rem;
+  }
+  .hero-lede strong{ color:var(--ink); font-weight:700; }
+  .hero-ctas{ display:flex; flex-wrap:wrap; gap:.8rem; margin-bottom:1.6rem; }
+  .hero-proof{
+    display:flex; flex-wrap:wrap; align-items:center; gap:.45rem 1.1rem;
+    font-size:.94rem; font-weight:500; color:var(--ink-soft);
+    border-top:1px dashed var(--line-strong);
+    padding-top:1.1rem;
+  }
+  .hero-proof li{ list-style:none; display:inline-flex; align-items:center; gap:.42rem; }
+  .hero-proof svg{ width:.95em; height:.95em; color:var(--accent); flex:none; }
+  .hero-art{ position:relative; }
+  .hero-art > svg{ width:100%; height:auto; }
+
+  /* rubber-stamp roundel */
+  .stamp{
+    position:absolute; top:-34px; right:-18px;
+    width:clamp(108px, 12vw, 138px);
+    transform:rotate(-11deg);
+    color:var(--accent);
+    opacity:.92;
+    pointer-events:none;
+  }
+  @media (max-width:900px){ .stamp{ top:-26px; right:-6px; } }
+
+  @media (max-width:840px){
+    .hero-body{ grid-template-columns:1fr; }
+    .hero-art{ max-width:420px; margin-inline:auto; width:100%; }
+  }
+
+  /* ============ Section scaffolding ============ */
+  section{ padding-block:clamp(3rem,7vw,5.5rem); }
+  .sec-head{ max-width:38em; margin-bottom:clamp(1.8rem,4vw,2.8rem); }
+  .sec-head h2{ margin-top:.85rem; }
+  .sec-head p{ margin-top:.8rem; color:var(--ink-soft); font-size:1.08rem; }
+
+  /* ============ Services ============ */
+  .svc-grid{
+    display:grid; grid-template-columns:repeat(3, minmax(0,1fr));
+    gap:1.1rem;
+  }
+  .svc{
+    background:var(--card);
+    border:1px solid var(--line-strong);
+    border-radius:var(--radius);
+    padding:1.7rem 1.55rem 1.5rem;
+    display:flex; flex-direction:column; gap:.85rem;
+    box-shadow:0 1px 0 rgba(43,36,24,.06);
+    transition:transform .18s ease, box-shadow .18s ease;
+  }
+  .svc:hover{ transform:translateY(-3px); box-shadow:var(--shadow); }
+  .svc-icon{
+    width:52px; height:52px;
+    display:grid; place-items:center;
+    border:1.5px solid var(--ink);
+    border-radius:50%;
+    color:var(--accent);
+    background:var(--card-2);
+  }
+  .svc-icon svg{ width:26px; height:26px; }
+  .svc h3{ font-size:1.32rem; font-weight:800; letter-spacing:-.01em; }
+  .svc p{ color:var(--ink-soft); font-size:1rem; flex:1; }
+  .svc-tag{
+    font-size:.74rem; font-weight:700; letter-spacing:.15em; text-transform:uppercase;
+    color:var(--accent);
+    border-top:1px dashed var(--line-strong);
+    padding-top:.85rem;
+  }
+  @media (max-width:840px){ .svc-grid{ grid-template-columns:1fr; } }
+
+  /* ============ Differentiator band ============ */
+  .band{
+    background:var(--accent);
+    color:var(--accent-ink-on);
+    padding-block:clamp(2.8rem,6vw,4.2rem);
+    position:relative;
+    overflow:hidden;
+  }
+  .band::before{ /* faint oversized ampersand, the two-trades mark */
+    content:"&";
+    position:absolute; right:-1rem; top:50%;
+    transform:translateY(-52%);
+    font-size:clamp(16rem, 34vw, 26rem);
+    font-weight:800; font-style:italic;
+    color:rgba(255,246,232,.09);
+    line-height:1;
+    pointer-events:none;
+  }
+  .band .wrap{ position:relative; }
+  .band-kicker{
+    font-size:.78rem; font-weight:700; letter-spacing:.18em; text-transform:uppercase;
+    color:rgba(255,246,232,.75);
+    margin-bottom:.9rem;
+  }
+  .band p.big{
+    font-size:clamp(1.5rem, 3.1vw, 2.3rem);
+    font-weight:700; font-style:italic;
+    line-height:1.25;
+    max-width:24em;
+    letter-spacing:-.005em;
+  }
+  .band p.small{
+    margin-top:1.1rem;
+    max-width:44em;
+    font-size:1.08rem; font-weight:500;
+    color:rgba(255,246,232,.88);
+  }
+
+  /* ============ Service area ============ */
+  .area-grid{
+    display:grid; grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);
+    gap:clamp(2rem,5vw,4rem);
+    align-items:center;
+  }
+  .area-copy p{ color:var(--ink-soft); margin-top:.9rem; max-width:32em; }
+  .area-copy p strong{ color:var(--ink); }
+  .zips{ display:flex; flex-wrap:wrap; gap:.6rem; margin-top:1.4rem; padding:0; }
+  .zips li{
+    list-style:none;
+    font-weight:700; font-size:.98rem; letter-spacing:.04em;
+    padding:.45rem 1rem;
+    background:var(--card);
+    border:1.5px solid var(--ink);
+    border-radius:999px;
+  }
+  .zips li.accent{ background:var(--accent); border-color:var(--accent); color:var(--accent-ink-on); }
+  .area-note{
+    margin-top:1.5rem; font-size:.98rem; font-style:italic; color:var(--ink-soft);
+  }
+  .area-note a{ color:var(--accent); font-weight:700; font-style:normal; text-decoration-thickness:1.5px; text-underline-offset:3px; }
+  .area-map{
+    background:var(--card);
+    border:1.5px solid var(--ink);
+    border-radius:var(--radius);
+    box-shadow:var(--shadow);
+    padding:clamp(1rem,2.5vw,1.6rem);
+  }
+  .area-map svg{ width:100%; height:auto; }
+  @media (max-width:840px){
+    .area-grid{ grid-template-columns:1fr; }
+    .area-map{ max-width:440px; }
+  }
+
+  /* ============ Trust ============ */
+  .trust{ padding-top:0; }
+  .stats{
+    display:grid; grid-template-columns:repeat(4, minmax(0,1fr));
+    border:1.5px solid var(--ink);
+    border-radius:var(--radius);
+    background:var(--card);
+    box-shadow:var(--shadow);
+    overflow:hidden;
+  }
+  .stat{
+    padding:1.7rem 1.4rem 1.5rem;
+    border-left:1px solid var(--line);
+  }
+  .stat:first-child{ border-left:0; }
+  .stat-num{
+    font-size:clamp(2.1rem, 3.6vw, 2.8rem);
+    font-weight:800; letter-spacing:-.02em; line-height:1;
+    color:var(--accent);
+    display:flex; align-items:baseline; gap:.3rem;
+  }
+  .stat-num svg{ width:.62em; height:.62em; flex:none; align-self:center; }
+  .stat-label{
+    margin-top:.55rem;
+    font-size:.8rem; font-weight:700; letter-spacing:.13em; text-transform:uppercase;
+    color:var(--ink-soft);
+  }
+  .stat-src{ display:block; margin-top:.15rem; font-size:.86rem; font-weight:500; letter-spacing:0; text-transform:none; color:var(--ink-soft); }
+  @media (max-width:840px){
+    .stats{ grid-template-columns:repeat(2, minmax(0,1fr)); }
+    .stat{ border-top:1px solid var(--line); }
+    .stat:nth-child(-n+2){ border-top:0; }
+    .stat:nth-child(odd){ border-left:0; }
+    .stat:nth-child(even){ border-left:1px solid var(--line); }
+  }
+
+  .owner{
+    margin-top:1.1rem;
+    display:grid; grid-template-columns:auto minmax(0,1fr);
+    gap:1.4rem; align-items:center;
+    background:var(--card-2);
+    border:1px solid var(--line-strong);
+    border-radius:var(--radius);
+    padding:1.6rem 1.7rem;
+  }
+  .owner-badge{
+    width:74px; height:74px; flex:none;
+    border:2px solid var(--accent);
+    border-radius:50%;
+    display:grid; place-items:center;
+    font-weight:800; font-size:1.35rem; letter-spacing:.03em;
+    color:var(--accent);
+    background:var(--card);
+    box-shadow:0 0 0 5px var(--card-2), 0 0 0 6px var(--line);
+  }
+  .owner h3{ font-size:1.25rem; font-weight:800; }
+  .owner h3 span{ color:var(--accent); }
+  .owner p{ color:var(--ink-soft); margin-top:.35rem; max-width:52em; }
+  @media (max-width:600px){
+    .owner{ grid-template-columns:1fr; text-align:left; }
+  }
+
+  /* ============ Contact ============ */
+  .contact-card{
+    background:var(--card);
+    border:1.5px solid var(--ink);
+    border-radius:var(--radius);
+    box-shadow:var(--shadow);
+    position:relative;
+    text-align:center;
+    padding:clamp(2.4rem,6vw,4rem) clamp(1.4rem,4vw,3rem);
+  }
+  .contact-card::before{
+    content:""; position:absolute; inset:7px;
+    border:1px solid var(--line);
+    border-radius:5px; pointer-events:none;
+  }
+  .contact-card .eyebrow{ justify-content:center; }
+  .contact-card .eyebrow::after{
+    content:""; width:2rem; height:2px; background:var(--accent); flex:none;
+  }
+  .contact-card h2{ margin:.9rem auto .6rem; max-width:16em; }
+  .contact-card > p{ color:var(--ink-soft); max-width:36em; margin-inline:auto; }
+  .big-phone{
+    display:inline-block;
+    margin:1.6rem 0 .4rem;
+    font-size:clamp(2rem, 6vw, 3.4rem);
+    font-weight:800; letter-spacing:-.015em;
+    color:var(--ink);
+    text-decoration:none;
+    border-bottom:3px solid var(--accent);
+    padding-bottom:.1em;
+    transition:color .15s ease;
+  }
+  .big-phone:hover{ color:var(--accent); }
+  .contact-ctas{ display:flex; flex-wrap:wrap; justify-content:center; gap:.8rem; margin-top:1.6rem; }
+  .contact-alt{
+    margin-top:1.4rem; font-size:.98rem; color:var(--ink-soft);
+  }
+  .contact-alt a{ font-weight:700; color:var(--accent); text-underline-offset:3px; text-decoration-thickness:1.5px; }
+
+  /* ============ Footer ============ */
+  footer{
+    background:var(--ink);
+    color:#EDE4D2;
+    margin-top:clamp(3rem,7vw,5rem);
+    padding:clamp(2.6rem,5vw,3.6rem) 0 0;
+  }
+  .foot-grid{
+    display:grid; grid-template-columns:1.3fr 1fr 1fr;
+    gap:2rem;
+    padding-bottom:2.2rem;
+  }
+  .foot-brand .brand-mark{ margin-bottom:.9rem; }
+  .foot-brand p{ color:rgba(237,228,210,.72); font-size:.97rem; max-width:26em; }
+  footer h4{
+    font-size:.76rem; font-weight:700; letter-spacing:.17em; text-transform:uppercase;
+    color:rgba(237,228,210,.55);
+    margin-bottom:.85rem;
+  }
+  .foot-list{ list-style:none; display:grid; gap:.45rem; font-size:1rem; }
+  .foot-list a{ text-decoration:none; font-weight:500; }
+  .foot-list a:hover{ text-decoration:underline; text-underline-offset:3px; }
+  .foot-list .em{ font-weight:700; color:#fff; }
+  .foot-legal{
+    border-top:1px solid rgba(237,228,210,.18);
+    padding:1.3rem 0 calc(1.5rem + 66px);
+    font-size:.9rem;
+    color:rgba(237,228,210,.62);
+    display:grid; gap:.3rem;
+  }
+  .foot-legal .concept{ color:rgba(237,228,210,.85); font-weight:500; }
+  @media (min-width:761px){ .foot-legal{ padding-bottom:1.6rem; } }
+  @media (max-width:840px){ .foot-grid{ grid-template-columns:1fr; gap:1.7rem; } }
+
+  /* ============ Sticky mobile call bar ============ */
+  .call-bar{
+    display:none;
+    position:fixed; left:0; right:0; bottom:0;
+    z-index:60;
+    background:var(--accent);
+    color:var(--accent-ink-on);
+    text-decoration:none;
+    font-weight:800; font-size:1.12rem; letter-spacing:.01em;
+    padding:1rem 1rem calc(1rem + env(safe-area-inset-bottom));
+    text-align:center;
+    align-items:center; justify-content:center; gap:.6rem;
+    box-shadow:0 -6px 20px rgba(43,36,24,.28);
+    border-top:1.5px solid var(--accent-deep);
+  }
+  .call-bar svg{ width:1.15em; height:1.15em; flex:none; }
+  .call-bar:active{ background:var(--accent-deep); }
+  @media (max-width:760px){
+    .call-bar{ display:flex; }
+  }
+</style>
+</head>
+<body>
+
+  <!-- ================= Header ================= -->
+  <header class="top">
+    <div class="wrap">
+      <a class="brand" href="#top" aria-label="Austin Aire and Heat — home">
+        <span class="brand-mark" aria-hidden="true">AAHA</span>
+        <span>
+          <span class="brand-name">Austin Aire &amp; Heat</span><br>
+          <span class="brand-sub">Est. 2003 · Southwest Austin</span>
+        </span>
+      </a>
+      <a class="top-phone" href="tel:+15123010389" aria-label="Call Austin Aire and Heat at (512) 301-0389">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5.5 4h3.2L10 8.2 7.9 9.8a13.4 13.4 0 0 0 6.3 6.3l1.6-2.1 4.2 1.3v3.2a1.9 1.9 0 0 1-2.1 1.9A17.6 17.6 0 0 1 3.6 6.1 1.9 1.9 0 0 1 5.5 4Z"/></svg>
+        <span>(512) 301-0389</span>
+      </a>
+    </div>
+  </header>
+
+  <!-- ================= Hero ================= -->
+  <main id="top">
+    <section class="hero" aria-labelledby="hero-h">
+      <div class="wrap">
+        <article class="hero-card">
+          <div class="hero-meta" aria-hidden="true">
+            <span>Southwest Austin, Texas</span>
+            <span>Owner-operated · Est. 2003</span>
+          </div>
+          <div class="hero-body">
+            <div>
+              <p class="eyebrow">AC · Heating · Appliances</p>
+              <h1 id="hero-h">Your AC guy is also your <em>appliance</em> guy.</h1>
+              <p class="hero-lede">Austin Aire &amp; Heat is <strong>Brad Williams</strong> — repairing air conditioners, heaters, and household appliances across Southwest Austin <strong>since 2003</strong>. One owner. One truck. One number worth keeping.</p>
+              <div class="hero-ctas">
+                <a class="btn btn-call" href="tel:+15123010389">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5.5 4h3.2L10 8.2 7.9 9.8a13.4 13.4 0 0 0 6.3 6.3l1.6-2.1 4.2 1.3v3.2a1.9 1.9 0 0 1-2.1 1.9A17.6 17.6 0 0 1 3.6 6.1 1.9 1.9 0 0 1 5.5 4Z"/></svg>
+                  Call (512) 301-0389
+                </a>
+                <a class="btn btn-ghost" href="#services">See what we fix</a>
+              </div>
+              <ul class="hero-proof">
+                <li>
+                  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.6l2.8 5.9 6.4.8-4.7 4.4 1.2 6.3L12 16.9 6.3 20l1.2-6.3L2.8 9.3l6.4-.8L12 2.6z"/></svg>
+                  4.4 stars on Angi
+                </li>
+                <li>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.5 8.5 0 0 1-8.5 8.5c-1.6 0-3-.4-4.3-1.1L3 20l1.2-4.9A8.5 8.5 0 1 1 21 11.5Z"/></svg>
+                  33 reviews on Yelp
+                </li>
+                <li>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.2 2"/></svg>
+                  In business 20+ years
+                </li>
+              </ul>
+            </div>
+
+            <div class="hero-art" aria-hidden="true">
+              <!-- Line-art: a Southwest Austin house, its condenser, and a Texas sun -->
+              <svg viewBox="0 0 340 280" fill="none">
+                <!-- sun -->
+                <g stroke="#B4491D" stroke-width="2" stroke-linecap="round">
+                  <circle cx="54" cy="52" r="16"/>
+                  <path d="M54 24v-8M54 88v-8M26 52h-8M90 52h-8M33.5 31.5l-5.6-5.6M80.1 78.1l-5.6-5.6M33.5 72.5l-5.6 5.6M80.1 25.9l-5.6 5.6"/>
+                </g>
+                <!-- ground -->
+                <path d="M14 247h312" stroke="#2B2418" stroke-width="2" stroke-linecap="round" stroke-dasharray="1 9"/>
+                <!-- house body -->
+                <g stroke="#2B2418" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M72 124v123M212 124v123"/>
+                  <path d="M56 128 142 56l86 72"/>
+                  <!-- door -->
+                  <rect x="100" y="178" width="36" height="69" rx="1"/>
+                  <circle cx="129" cy="215" r="2" fill="#2B2418"/>
+                  <!-- window -->
+                  <rect x="158" y="150" width="40" height="34" rx="1"/>
+                  <path d="M178 150v34M158 167h40"/>
+                </g>
+                <!-- est plaque above door -->
+                <text x="118" y="168" text-anchor="middle" font-family="Alegreya Sans, sans-serif" font-size="11" font-weight="700" letter-spacing="2" fill="#6E6350">EST. 2003</text>
+                <!-- condenser unit -->
+                <g stroke="#2B2418" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="246" y="192" width="64" height="55" rx="4"/>
+                  <circle cx="278" cy="221" r="16"/>
+                  <circle cx="278" cy="221" r="2.5" fill="#2B2418"/>
+                  <path d="M278 205a16 16 0 0 1 13.9 8M278 237a16 16 0 0 1-13.9-8"/>
+                  <path d="M252 199h52" stroke-width="1.4"/>
+                </g>
+                <!-- cool air curls -->
+                <g stroke="#B4491D" stroke-width="2" stroke-linecap="round">
+                  <path d="M300 178c9-7 5-17-3-15"/>
+                  <path d="M283 170c7-9 0-18-8-14"/>
+                  <path d="M312 160c11-6 9-19-1-19"/>
+                </g>
+              </svg>
+
+              <!-- rubber stamp -->
+              <svg class="stamp" viewBox="0 0 160 160" fill="none" aria-hidden="true">
+                <circle cx="80" cy="80" r="76" stroke="currentColor" stroke-width="3"/>
+                <circle cx="80" cy="80" r="44" stroke="currentColor" stroke-width="1.5"/>
+                <path id="stamp-arc" d="M80 22a58 58 0 1 1-.001 0Z" fill="none"/>
+                <text font-family="Alegreya Sans, sans-serif" font-size="13.5" font-weight="700" letter-spacing="2.6" fill="currentColor">
+                  <textPath href="#stamp-arc">OWNER-OPERATED · EST. 2003 · SW AUSTIN</textPath>
+                </text>
+                <path d="M80 62l5.3 11.2 12.2 1.5-9 8.4 2.3 12.1L80 89.3l-10.8 5.9 2.3-12.1-9-8.4 12.2-1.5L80 62z" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/>
+              </svg>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ================= Services ================= -->
+    <section id="services" aria-labelledby="services-h">
+      <div class="wrap">
+        <header class="sec-head">
+          <p class="eyebrow">What we fix</p>
+          <h2 id="services-h">Three trades most shops split. We never did.</h2>
+          <p>Residential repair, done by the same hands for over two decades — from the condenser outside to the machines inside.</p>
+        </header>
+        <div class="svc-grid">
+          <article class="svc">
+            <span class="svc-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 3v18"/><path d="M4.2 7.5l15.6 9"/><path d="M19.8 7.5l-15.6 9"/>
+                <path d="M9.6 5.4 12 7.8l2.4-2.4"/><path d="M9.6 18.6 12 16.2l2.4 2.4"/>
+              </svg>
+            </span>
+            <h3>AC Repair</h3>
+            <p>Texas summers don't negotiate. When the air goes warm, weak, or quiet, you want a diagnosis from someone who has worked these same Southwest Austin systems for twenty-plus years.</p>
+            <span class="svc-tag">Residential cooling</span>
+          </article>
+          <article class="svc">
+            <span class="svc-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 3c1.1 2.9 2.8 4.3 4.6 6.3 1.6 1.8 2.6 3.4 2.6 5.5A7.2 7.2 0 0 1 12 21.8 7.2 7.2 0 0 1 4.8 14.8c0-2.5 1.3-4.2 2.7-6C9 6.8 11 5.5 12 3Z"/>
+                <path d="M12 21.8c-1.9 0-3.2-1.4-3.2-3.2 0-2 1.7-3.1 3.2-5 1.5 1.9 3.2 3 3.2 5 0 1.8-1.3 3.2-3.2 3.2Z"/>
+              </svg>
+            </span>
+            <h3>Heating Repair</h3>
+            <p>Austin only gets a few truly cold weeks a year — which is exactly why your heat has to work the first time it's asked to. Heating repair without the seasonal upsell.</p>
+            <span class="svc-tag">Residential heating</span>
+          </article>
+          <article class="svc">
+            <span class="svc-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3.5" y="2.8" width="17" height="18.4" rx="2"/>
+                <path d="M3.5 7.6h17"/>
+                <circle cx="6.6" cy="5.2" r=".4"/><circle cx="9.4" cy="5.2" r=".4"/>
+                <circle cx="12" cy="14.3" r="4.1"/>
+                <path d="M9.2 13.2c1.8 1.4 3.8 1.4 5.6 0"/>
+              </svg>
+            </span>
+            <h3>Appliance Repair</h3>
+            <p>The part of the job most HVAC companies won't touch. The household machines you count on every day, repaired under the same roof — and the same phone number — as your air and heat.</p>
+            <span class="svc-tag">Household appliances</span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= Differentiator band ================= -->
+    <aside class="band" aria-label="Why Austin Aire and Heat is different">
+      <div class="wrap">
+        <p class="band-kicker">The AAHA difference</p>
+        <p class="big">Most HVAC shops stop at the thermostat. Most appliance techs won't go near a condenser. Since 2003, Brad has done both.</p>
+        <p class="small">That's one number in your phone covering most of what can break in a house — and one person who already knows your home the second time you call.</p>
+      </div>
+    </aside>
+
+    <!-- ================= Service area ================= -->
+    <section id="area" aria-labelledby="area-h">
+      <div class="wrap area-grid">
+        <div class="area-copy">
+          <p class="eyebrow">Where we work</p>
+          <h2 id="area-h">Southwest Austin, based and rooted.</h2>
+          <p>Austin Aire &amp; Heat works out of the <strong>78736 / 78737</strong> area of Southwest Austin. That's not a service radius drawn on a marketing map — it's home.</p>
+          <p>Close matters. It means shorter waits when the house is 92 degrees, and a repairman whose reputation lives in the same neighborhoods as his customers.</p>
+          <ul class="zips">
+            <li class="accent">Southwest Austin, TX</li>
+            <li>78736</li>
+            <li>78737</li>
+          </ul>
+          <p class="area-note">On the edge of the area? <a href="tel:+15123010389">Call and ask</a> — you'll get a straight answer.</p>
+        </div>
+        <div class="area-map" aria-hidden="true">
+          <svg viewBox="0 0 400 340" fill="none">
+            <!-- compass -->
+            <g stroke="#2B2418" stroke-width="1.8" stroke-linecap="round">
+              <path d="M356 44v-20M356 34h0"/>
+              <path d="M350 30l6-8 6 8"/>
+            </g>
+            <text x="356" y="60" text-anchor="middle" font-family="Alegreya Sans, sans-serif" font-size="13" font-weight="700" fill="#2B2418">N</text>
+            <!-- radius rings -->
+            <circle cx="200" cy="178" r="132" stroke="#2B2418" stroke-width="1.4" stroke-dasharray="2 7" stroke-linecap="round"/>
+            <circle cx="200" cy="178" r="92" stroke="#2B2418" stroke-width="1.4" stroke-dasharray="2 7" stroke-linecap="round"/>
+            <circle cx="200" cy="178" r="52" stroke="#B4491D" stroke-width="1.8" stroke-dasharray="2 7" stroke-linecap="round"/>
+            <!-- pin -->
+            <path d="M200 196s-17-14.5-17-27a17 17 0 1 1 34 0c0 12.5-17 27-17 27z" fill="#B4491D" stroke="#96380F" stroke-width="1.5"/>
+            <circle cx="200" cy="168" r="6" fill="#FBF6EB"/>
+            <!-- labels -->
+            <text x="200" y="222" text-anchor="middle" font-family="Alegreya Sans, sans-serif" font-size="15" font-weight="800" letter-spacing="1.5" fill="#2B2418">SW AUSTIN</text>
+            <text x="200" y="242" text-anchor="middle" font-family="Alegreya Sans, sans-serif" font-size="13" font-weight="500" letter-spacing="2" fill="#6E6350">78736 · 78737</text>
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= Trust ================= -->
+    <section class="trust" aria-labelledby="trust-h">
+      <div class="wrap">
+        <header class="sec-head">
+          <p class="eyebrow">A record, not a promise</p>
+          <h2 id="trust-h">The number that stays on the fridge.</h2>
+          <p>No invented slogans here — just what the record actually says.</p>
+        </header>
+        <div class="stats">
+          <div class="stat">
+            <span class="stat-num">2003</span>
+            <span class="stat-label">Year the shop opened<span class="stat-src">and never closed</span></span>
+          </div>
+          <div class="stat">
+            <span class="stat-num">20+</span>
+            <span class="stat-label">Years in business<span class="stat-src">serving Southwest Austin</span></span>
+          </div>
+          <div class="stat">
+            <span class="stat-num">4.4
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.6l2.8 5.9 6.4.8-4.7 4.4 1.2 6.3L12 16.9 6.3 20l1.2-6.3L2.8 9.3l6.4-.8L12 2.6z"/></svg>
+            </span>
+            <span class="stat-label">Star rating<span class="stat-src">on Angi</span></span>
+          </div>
+          <div class="stat">
+            <span class="stat-num">33</span>
+            <span class="stat-label">Customer reviews<span class="stat-src">on Yelp</span></span>
+          </div>
+        </div>
+        <div class="owner">
+          <span class="owner-badge" aria-hidden="true">BW</span>
+          <div>
+            <h3>Owner &amp; operator — <span>Brad Williams</span></h3>
+            <p>There's no dispatch queue and no rotating crew. The person who answers the phone is the person who shows up, and he's been doing this work in Southwest Austin since 2003.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= Contact ================= -->
+    <section id="contact" aria-labelledby="contact-h">
+      <div class="wrap">
+        <div class="contact-card">
+          <p class="eyebrow">Get it fixed</p>
+          <h2 id="contact-h">The phone is the front door.</h2>
+          <p>AC blowing warm, heat not keeping up, or an appliance on strike — describe it to Brad and go from there.</p>
+          <a class="big-phone" href="tel:+15123010389">(512) 301-0389</a>
+          <div class="contact-ctas">
+            <a class="btn btn-call" href="tel:+15123010389">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5.5 4h3.2L10 8.2 7.9 9.8a13.4 13.4 0 0 0 6.3 6.3l1.6-2.1 4.2 1.3v3.2a1.9 1.9 0 0 1-2.1 1.9A17.6 17.6 0 0 1 3.6 6.1 1.9 1.9 0 0 1 5.5 4Z"/></svg>
+              Tap to call
+            </a>
+            <a class="btn btn-ghost" href="mailto:aahaservice@gmail.com">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3.5 7 8.5 6 8.5-6"/></svg>
+              Email instead
+            </a>
+          </div>
+          <p class="contact-alt">Prefer writing? <a href="mailto:aahaservice@gmail.com">aahaservice@gmail.com</a></p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ================= Footer ================= -->
+  <footer>
+    <div class="wrap">
+      <div class="foot-grid">
+        <div class="foot-brand">
+          <span class="brand-mark" aria-hidden="true">AAHA</span>
+          <p><strong>Austin Aire &amp; Heat</strong> — doing business as Austin Aire Heat &amp; Appliance (AAHA). Owner-operated residential AC, heating, and appliance repair, serving Southwest Austin since 2003.</p>
+        </div>
+        <div>
+          <h4>Contact</h4>
+          <ul class="foot-list">
+            <li><a class="em" href="tel:+15123010389">(512) 301-0389</a></li>
+            <li><a href="mailto:aahaservice@gmail.com">aahaservice@gmail.com</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Service area</h4>
+          <ul class="foot-list">
+            <li>Southwest Austin, TX</li>
+            <li>78736 · 78737</li>
+          </ul>
+        </div>
+      </div>
+      <div class="foot-legal">
+        <span class="concept">Website concept by Murrieta Web Studio</span>
+        <span>This is a design concept created for Austin Aire &amp; Heat. Not yet the official website of Austin Aire &amp; Heat.</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Sticky call bar (mobile) -->
+  <a class="call-bar" href="tel:+15123010389" aria-label="Call Austin Aire and Heat now at (512) 301-0389">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5.5 4h3.2L10 8.2 7.9 9.8a13.4 13.4 0 0 0 6.3 6.3l1.6-2.1 4.2 1.3v3.2a1.9 1.9 0 0 1-2.1 1.9A17.6 17.6 0 0 1 3.6 6.1 1.9 1.9 0 0 1 5.5 4Z"/></svg>
+    Call (512) 301-0389
+  </a>
+
+</body>
+</html>

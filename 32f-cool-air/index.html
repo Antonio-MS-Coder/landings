@@ -1,0 +1,967 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#0a1c2c">
+<meta name="description" content="Design concept — 32F Cool Air Conditioning and Heating. Residential and commercial AC and heating for Austin, Pflugerville, Round Rock, and Georgetown, TX.">
+<title>32°F Cool Air — Air Conditioning &amp; Heating · Austin, TX (Concept)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@500;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   32°F COOL AIR — design concept
+   Concept: the freezing point. Glacier & steel blues, degree-
+   mark motifs, condensed display type, glassy surfaces.
+   ============================================================ */
+
+:root{
+  --ink:        #061220;
+  --steel-900:  #0a1c2c;
+  --steel-800:  #0e2a40;
+  --steel-700:  #14405e;
+  --steel-600:  #1d5b82;
+  --steel-500:  #2e6e9e;
+  --glacier:    #7fb8dc;
+  --glacier-lt: #bfe2f4;
+  --frost:      #eaf4fb;
+  --frost-2:    #f6fafd;
+  --accent:     #4fc3e8;
+  --accent-deep:#2aa4cf;
+  --text:       #223a4e;
+  --muted:      #5c7488;
+  --line:       rgba(20, 64, 94, .14);
+  --line-light: rgba(191, 226, 244, .18);
+  --radius:     18px;
+  --display:    "Big Shoulders Display", "Arial Narrow", "Helvetica Neue", sans-serif;
+  --body:       -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --shadow-card:0 1px 2px rgba(10,28,44,.05), 0 12px 32px -12px rgba(10,28,44,.14);
+  --shadow-lift:0 2px 4px rgba(10,28,44,.06), 0 24px 48px -16px rgba(10,28,44,.22);
+  --ease:       cubic-bezier(.22,.61,.2,1);
+}
+
+*,*::before,*::after{ box-sizing:border-box; margin:0; padding:0; }
+
+html{ scroll-behavior:smooth; }
+@media (prefers-reduced-motion: reduce){
+  html{ scroll-behavior:auto; }
+  *,*::before,*::after{ animation:none !important; transition:none !important; }
+}
+
+body{
+  font-family:var(--body);
+  color:var(--text);
+  background:var(--frost-2);
+  line-height:1.6;
+  font-size:1rem;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+}
+
+::selection{ background:var(--accent); color:var(--ink); }
+
+a{ color:inherit; }
+:focus-visible{ outline:2px solid var(--accent); outline-offset:3px; border-radius:4px; }
+
+img,svg{ display:block; max-width:100%; }
+
+.skip-link{
+  position:absolute; left:-9999px; top:0; z-index:100;
+  background:var(--ink); color:#fff; padding:.75rem 1.25rem; border-radius:0 0 8px 0;
+  font-weight:600; text-decoration:none;
+}
+.skip-link:focus{ left:0; }
+
+.wrap{ width:min(1160px, 100% - 3rem); margin-inline:auto; }
+@media (max-width:640px){ .wrap{ width:calc(100% - 2.5rem); } }
+
+/* ---------- type helpers ---------- */
+.eyebrow{
+  font-family:var(--display);
+  font-weight:600;
+  font-size:.82rem;
+  letter-spacing:.34em;
+  text-transform:uppercase;
+  display:flex; align-items:center; gap:.75rem;
+  color:var(--steel-500);
+}
+.eyebrow::before{
+  content:""; width:22px; height:1px; background:currentColor; opacity:.6; flex:none;
+}
+.eyebrow .deg{ color:var(--accent-deep); }
+
+h1,h2,h3{
+  font-family:var(--display);
+  line-height:.94;
+  text-transform:uppercase;
+  letter-spacing:.005em;
+  color:var(--steel-900);
+  text-wrap:balance;
+}
+h2{ font-size:clamp(2.4rem, 5.2vw, 3.9rem); font-weight:700; }
+.section-head{ display:grid; gap:1.1rem; max-width:44ch; }
+.section-head p.lede{ color:var(--muted); font-size:1.06rem; max-width:52ch; }
+
+section{ scroll-margin-top:2rem; }
+
+/* ============================================================
+   HEADER
+   ============================================================ */
+.site-head{
+  position:absolute; inset:0 0 auto 0; z-index:10;
+  padding-top:clamp(1.1rem, 2.5vw, 1.9rem);
+}
+.site-head .wrap{
+  display:flex; align-items:center; justify-content:space-between; gap:1.5rem;
+}
+.logo{
+  display:flex; align-items:baseline; gap:.55rem;
+  text-decoration:none; color:#fff;
+  font-family:var(--display);
+  line-height:1;
+}
+.logo .mark{
+  font-weight:800; font-size:1.9rem; letter-spacing:.01em;
+  background:linear-gradient(165deg, #ffffff 20%, var(--glacier-lt) 85%);
+  -webkit-background-clip:text; background-clip:text; color:transparent;
+}
+.logo .mark sup{ font-size:.62em; vertical-align:.42em; letter-spacing:0; }
+.logo .word{
+  font-weight:600; font-size:.86rem; letter-spacing:.32em; text-transform:uppercase;
+  color:var(--glacier-lt); transform:translateY(-.1em);
+}
+.head-nav{ display:flex; align-items:center; gap:2rem; }
+.head-nav a.nav-link{
+  color:rgba(234,244,251,.82); text-decoration:none;
+  font-family:var(--display); font-weight:600; font-size:.88rem;
+  letter-spacing:.22em; text-transform:uppercase;
+  transition:color .25s var(--ease);
+}
+.head-nav a.nav-link:hover{ color:#fff; }
+.head-call{
+  display:inline-flex; align-items:center; gap:.6rem;
+  text-decoration:none; color:#fff;
+  font-weight:650; font-size:.95rem; letter-spacing:.01em;
+  padding:.62rem 1.15rem; border-radius:999px;
+  border:1px solid rgba(191,226,244,.38);
+  background:rgba(191,226,244,.08);
+  backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px);
+  transition:background .25s var(--ease), border-color .25s var(--ease);
+  white-space:nowrap;
+}
+.head-call:hover{ background:rgba(191,226,244,.16); border-color:rgba(191,226,244,.6); }
+.head-call svg{ width:16px; height:16px; }
+@media (max-width:860px){ .head-nav a.nav-link{ display:none; } }
+@media (max-width:480px){
+  .head-call span.num{ display:none; }
+  .head-call::after{ content:"Call"; }
+}
+
+/* ============================================================
+   HERO
+   ============================================================ */
+.hero{
+  position:relative;
+  min-height:100vh;
+  min-height:100svh;
+  display:flex; flex-direction:column;
+  color:var(--frost);
+  background:
+    linear-gradient(168deg,
+      #050f1a 0%,
+      #0a1c2c 26%,
+      #0e2a40 46%,
+      #14405e 66%,
+      #2b6a96 84%,
+      #6fa9cf 100%);
+  overflow:hidden;
+  isolation:isolate;
+}
+/* atmospheric glows — CSS only, glassy, no texture */
+.hero::before,
+.hero::after{
+  content:""; position:absolute; border-radius:50%; z-index:-1;
+  filter:blur(70px); pointer-events:none;
+}
+.hero::before{
+  width:58vw; height:58vw; min-width:520px; min-height:520px;
+  right:-16vw; top:-18vw;
+  background:radial-gradient(circle at 40% 45%, rgba(79,195,232,.34), rgba(79,195,232,0) 65%);
+  animation:drift 22s ease-in-out infinite;
+}
+.hero::after{
+  width:44vw; height:44vw; min-width:420px; min-height:420px;
+  left:-14vw; bottom:-8vw;
+  background:radial-gradient(circle at 55% 45%, rgba(127,184,220,.26), rgba(127,184,220,0) 66%);
+  animation:drift 26s ease-in-out infinite reverse;
+}
+@keyframes drift{
+  0%,100%{ transform:translate(0,0); }
+  50%{ transform:translate(3%, 4%); }
+}
+/* diagonal light shaft */
+.hero .shaft{
+  position:absolute; inset:0; z-index:-1; pointer-events:none;
+  background:linear-gradient(112deg,
+    transparent 42%,
+    rgba(191,226,244,.055) 50%,
+    rgba(191,226,244,.09) 56%,
+    rgba(191,226,244,.045) 63%,
+    transparent 72%);
+}
+/* the giant ghost numeral */
+.hero .big-num{
+  position:absolute; z-index:-1;
+  right:-2%; top:50%;
+  transform:translateY(-54%);
+  font-family:var(--display); font-weight:800; line-height:.78;
+  font-size:clamp(15rem, 38vw, 32rem);
+  letter-spacing:-.01em;
+  background:linear-gradient(180deg, rgba(191,226,244,.30) 0%, rgba(191,226,244,.10) 55%, rgba(191,226,244,.015) 100%);
+  -webkit-background-clip:text; background-clip:text; color:transparent;
+  user-select:none; pointer-events:none;
+  white-space:nowrap;
+}
+@media (max-width:860px){
+  .hero .big-num{
+    right:50%; transform:translate(50%,-50%);
+    top:44%;
+    font-size:clamp(17rem, 90vw, 26rem);
+    opacity:.55;
+  }
+}
+
+.hero-inner{
+  flex:1; display:flex; align-items:center;
+  width:100%;
+  padding:clamp(6.5rem, 12vh, 9rem) 0 clamp(3rem, 6vh, 5rem);
+}
+.hero-copy{ max-width:640px; display:grid; gap:1.6rem; }
+.hero-eyebrow{
+  font-family:var(--display); font-weight:600;
+  font-size:.85rem; letter-spacing:.4em; text-transform:uppercase;
+  color:var(--glacier-lt);
+  display:flex; align-items:center; gap:.9rem;
+  animation:rise .8s var(--ease) both;
+}
+.hero-eyebrow::before{ content:""; width:30px; height:1px; background:var(--accent); flex:none; }
+.hero h1{
+  color:#fff;
+  font-size:clamp(3.4rem, 9.4vw, 7rem);
+  font-weight:800;
+  line-height:.9;
+  animation:rise .8s .08s var(--ease) both;
+}
+.hero h1 .freeze{
+  background:linear-gradient(120deg, var(--glacier-lt) 10%, var(--accent) 55%, #8ed9f2 95%);
+  -webkit-background-clip:text; background-clip:text; color:transparent;
+}
+.hero .sub{
+  font-size:clamp(1.02rem, 1.6vw, 1.18rem);
+  color:rgba(234,244,251,.86);
+  max-width:46ch;
+  animation:rise .8s .16s var(--ease) both;
+}
+.hero-ctas{
+  display:flex; flex-wrap:wrap; gap:.9rem; align-items:center;
+  animation:rise .8s .24s var(--ease) both;
+}
+.btn{
+  display:inline-flex; align-items:center; gap:.65rem;
+  font-weight:700; text-decoration:none;
+  padding:1rem 1.7rem; border-radius:999px;
+  font-size:1.02rem; letter-spacing:.01em;
+  transition:transform .3s var(--ease), box-shadow .3s var(--ease), background .3s var(--ease), border-color .3s var(--ease);
+  will-change:transform;
+}
+.btn svg{ width:18px; height:18px; flex:none; }
+.btn-primary{
+  color:var(--ink);
+  background:linear-gradient(150deg, #dff3fc 0%, #9adcf2 45%, var(--accent) 100%);
+  box-shadow:0 2px 6px rgba(4,16,28,.35), 0 18px 40px -12px rgba(79,195,232,.55), inset 0 1px 0 rgba(255,255,255,.7);
+}
+.btn-primary:hover{
+  transform:translateY(-2px);
+  box-shadow:0 4px 10px rgba(4,16,28,.4), 0 26px 52px -12px rgba(79,195,232,.7), inset 0 1px 0 rgba(255,255,255,.8);
+}
+.btn-ghost{
+  color:#fff;
+  border:1px solid rgba(191,226,244,.4);
+  background:rgba(191,226,244,.07);
+  backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px);
+}
+.btn-ghost:hover{ background:rgba(191,226,244,.15); border-color:rgba(191,226,244,.62); transform:translateY(-2px); }
+
+.hero-chips{
+  display:flex; flex-wrap:wrap; gap:.6rem;
+  animation:rise .8s .32s var(--ease) both;
+}
+.chip{
+  font-family:var(--display); font-weight:600;
+  font-size:.8rem; letter-spacing:.2em; text-transform:uppercase;
+  color:var(--glacier-lt);
+  padding:.5rem .95rem; border-radius:999px;
+  border:1px solid var(--line-light);
+  background:rgba(10,28,44,.28);
+  backdrop-filter:blur(6px); -webkit-backdrop-filter:blur(6px);
+  display:inline-flex; align-items:center; gap:.55rem;
+}
+.chip::before{
+  content:""; width:7px; height:7px; border-radius:50%;
+  border:1.5px solid var(--accent); flex:none;  /* the degree mark */
+}
+@keyframes rise{
+  from{ opacity:0; transform:translateY(20px); }
+  to{ opacity:1; transform:none; }
+}
+
+/* hero bottom ticker */
+.hero-ticker{
+  border-top:1px solid rgba(191,226,244,.14);
+  background:rgba(6,18,32,.25);
+  backdrop-filter:blur(6px); -webkit-backdrop-filter:blur(6px);
+}
+.hero-ticker .wrap{
+  display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center;
+  gap:.35rem 1.5rem;
+  padding-block:1rem;
+  font-family:var(--display); font-weight:600;
+  font-size:.8rem; letter-spacing:.3em; text-transform:uppercase;
+  color:rgba(191,226,244,.75);
+}
+.hero-ticker .dot{ color:var(--accent); font-size:.6rem; transform:translateY(-.2em); }
+@media (max-width:640px){
+  .hero-ticker .wrap{ justify-content:center; text-align:center; }
+  .hero-ticker .t-hide{ display:none; }
+}
+
+/* ============================================================
+   SERVICES
+   ============================================================ */
+.services{
+  padding:clamp(4.5rem, 9vw, 7.5rem) 0 clamp(4rem, 8vw, 6.5rem);
+  background:
+    radial-gradient(900px 420px at 85% 0%, rgba(127,184,220,.14), transparent 65%),
+    var(--frost-2);
+}
+.services-grid{
+  margin-top:clamp(2.5rem, 5vw, 4rem);
+  display:grid; gap:1.4rem;
+  grid-template-columns:repeat(3, 1fr);
+}
+@media (max-width:920px){ .services-grid{ grid-template-columns:1fr; max-width:560px; } }
+
+.svc-card{
+  position:relative;
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+  padding:2rem 1.8rem 1.7rem;
+  display:flex; flex-direction:column; gap:1rem;
+  box-shadow:var(--shadow-card);
+  transition:transform .35s var(--ease), box-shadow .35s var(--ease);
+  overflow:hidden;
+}
+.svc-card::before{ /* frosted top edge */
+  content:""; position:absolute; inset:0 0 auto 0; height:3px;
+  background:linear-gradient(90deg, var(--accent), var(--glacier) 55%, transparent);
+  opacity:.85;
+}
+.svc-card:hover{ transform:translateY(-5px); box-shadow:var(--shadow-lift); }
+.svc-num{
+  position:absolute; top:1.1rem; right:1.3rem;
+  font-family:var(--display); font-weight:700; font-size:1rem;
+  letter-spacing:.12em; color:var(--glacier);
+}
+.svc-icon{
+  width:56px; height:56px; border-radius:14px;
+  display:grid; place-items:center;
+  background:linear-gradient(150deg, #e7f4fc, #cde8f6);
+  border:1px solid rgba(46,110,158,.14);
+  color:var(--steel-600);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.9);
+}
+.svc-icon svg{ width:28px; height:28px; }
+.svc-card h3{
+  font-size:1.7rem; font-weight:700; letter-spacing:.015em;
+}
+.svc-card p{ color:var(--muted); font-size:.97rem; flex:1; }
+.svc-meta{
+  display:flex; align-items:center; gap:.6rem;
+  padding-top:1rem; border-top:1px solid var(--line);
+  font-family:var(--display); font-weight:600;
+  font-size:.78rem; letter-spacing:.22em; text-transform:uppercase;
+  color:var(--steel-500);
+}
+.svc-meta .deg-sep{ color:var(--accent-deep); }
+
+/* ============================================================
+   SERVICE AREA
+   ============================================================ */
+.area{
+  padding:clamp(4.5rem, 9vw, 7.5rem) 0;
+  background:
+    radial-gradient(800px 400px at 12% 100%, rgba(79,195,232,.12), transparent 65%),
+    linear-gradient(165deg, #e2f0f9 0%, #d3e8f5 55%, #c6e1f2 100%);
+  border-block:1px solid var(--line);
+}
+.area .section-head{ margin-bottom:clamp(2.8rem, 6vw, 4.2rem); }
+
+.area-rail{ position:relative; padding-top:44px; }
+.area-rail::before{ /* the temperature rail */
+  content:""; position:absolute; top:0; left:0; right:0; height:3px; border-radius:3px;
+  background:linear-gradient(90deg, var(--accent) 0%, var(--glacier) 38%, var(--steel-500) 72%, var(--steel-700) 100%);
+}
+.cities{
+  list-style:none;
+  display:grid; grid-template-columns:repeat(4, 1fr); gap:1.2rem;
+}
+.city{
+  position:relative;
+  background:rgba(255,255,255,.72);
+  backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px);
+  border:1px solid rgba(20,64,94,.12);
+  border-radius:var(--radius);
+  padding:1.5rem 1.4rem 1.35rem;
+  display:grid; gap:.35rem;
+  box-shadow:var(--shadow-card);
+  transition:transform .35s var(--ease), box-shadow .35s var(--ease);
+}
+.city:hover{ transform:translateY(-4px); box-shadow:var(--shadow-lift); }
+.city::before{ /* tick down from the rail */
+  content:""; position:absolute; top:-44px; left:50%; width:1px; height:44px;
+  background:linear-gradient(180deg, rgba(20,64,94,.4), rgba(20,64,94,.08));
+}
+.city::after{ /* degree node on the rail */
+  content:""; position:absolute; top:-49px; left:50%; transform:translateX(-50%);
+  width:11px; height:11px; border-radius:50%;
+  background:var(--frost-2);
+  border:2.5px solid var(--steel-600);
+  box-shadow:0 0 0 4px rgba(246,250,253,.85);
+}
+.city .pin{ color:var(--steel-600); margin-bottom:.5rem; }
+.city .pin svg{ width:22px; height:22px; }
+.city h3{ font-size:1.55rem; font-weight:700; letter-spacing:.02em; }
+.city span{
+  font-family:var(--display); font-weight:600;
+  font-size:.74rem; letter-spacing:.3em; text-transform:uppercase;
+  color:var(--muted);
+}
+@media (max-width:840px){
+  .area-rail{ padding-top:0; padding-left:26px; }
+  .area-rail::before{ top:6px; bottom:6px; left:5px; right:auto; width:3px; height:auto;
+    background:linear-gradient(180deg, var(--accent) 0%, var(--glacier) 38%, var(--steel-500) 72%, var(--steel-700) 100%); }
+  .cities{ grid-template-columns:1fr; gap:1rem; max-width:460px; }
+  .city::before{ top:50%; left:-21px; width:21px; height:1px;
+    background:linear-gradient(90deg, rgba(20,64,94,.35), rgba(20,64,94,.08)); }
+  .city::after{ top:50%; left:-26px; transform:translate(-50%,-50%); }
+}
+.area-note{
+  margin-top:2.4rem;
+  color:var(--steel-700); font-size:.98rem;
+  display:flex; align-items:center; gap:.7rem; flex-wrap:wrap;
+}
+.area-note svg{ width:18px; height:18px; color:var(--steel-600); flex:none; }
+
+/* ============================================================
+   CREDENTIALS / TRUST
+   ============================================================ */
+.trust{
+  padding:clamp(4.5rem, 9vw, 7.5rem) 0;
+  background:var(--frost-2);
+}
+.trust-grid{
+  margin-top:clamp(2.5rem, 5vw, 4rem);
+  display:grid; grid-template-columns:repeat(3, 1fr); gap:1.4rem;
+}
+@media (max-width:920px){ .trust-grid{ grid-template-columns:1fr; max-width:560px; } }
+.trust-card{
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+  padding:2.1rem 1.8rem 1.9rem;
+  display:grid; gap:.55rem; align-content:start;
+  box-shadow:var(--shadow-card);
+  transition:transform .35s var(--ease), box-shadow .35s var(--ease);
+}
+.trust-card:hover{ transform:translateY(-5px); box-shadow:var(--shadow-lift); }
+.trust-figure{
+  font-family:var(--display); font-weight:800;
+  font-size:clamp(3.6rem, 7vw, 5rem); line-height:.9;
+  letter-spacing:.005em; text-transform:uppercase;
+  background:linear-gradient(160deg, var(--steel-800) 15%, var(--steel-500) 70%, var(--accent-deep) 110%);
+  -webkit-background-clip:text; background-clip:text; color:transparent;
+}
+.trust-figure sup{ font-size:.4em; vertical-align:.85em; }
+.trust-card h3{
+  font-size:1.05rem; font-weight:600;
+  letter-spacing:.24em; color:var(--steel-500);
+}
+.trust-card p{ color:var(--muted); font-size:.96rem; }
+.trust-card .icon-row{ color:var(--steel-600); margin-bottom:.4rem; }
+.trust-card .icon-row svg{ width:30px; height:30px; }
+.trust-fb-link{
+  margin-top:.6rem; justify-self:start;
+  display:inline-flex; align-items:center; gap:.5rem;
+  font-weight:650; font-size:.95rem; color:var(--steel-600);
+  text-decoration:none; border-bottom:1.5px solid rgba(46,110,158,.35);
+  padding-bottom:.15rem;
+  transition:color .25s var(--ease), border-color .25s var(--ease);
+}
+.trust-fb-link:hover{ color:var(--accent-deep); border-color:var(--accent-deep); }
+.trust-fb-link svg{ width:15px; height:15px; }
+
+/* the definitional callout */
+.freeze-line{
+  margin-top:clamp(3rem, 6vw, 4.5rem);
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+  background:
+    radial-gradient(600px 220px at 8% 0%, rgba(79,195,232,.1), transparent 60%),
+    linear-gradient(150deg, #ffffff, #eef6fb);
+  padding:clamp(1.8rem, 4vw, 2.6rem) clamp(1.6rem, 4vw, 3rem);
+  display:flex; align-items:center; gap:clamp(1.2rem, 3vw, 2.2rem);
+}
+.freeze-line .thermo{ color:var(--steel-600); flex:none; }
+.freeze-line .thermo svg{ width:44px; height:44px; }
+.freeze-line p{
+  font-family:var(--display); font-weight:600;
+  text-transform:uppercase; letter-spacing:.06em;
+  font-size:clamp(1.25rem, 2.6vw, 1.8rem); line-height:1.25;
+  color:var(--steel-800); text-wrap:balance;
+}
+.freeze-line p strong{ color:var(--accent-deep); font-weight:800; }
+@media (max-width:560px){ .freeze-line{ flex-direction:column; align-items:flex-start; } }
+
+/* ============================================================
+   CONTACT
+   ============================================================ */
+.contact{
+  position:relative; overflow:hidden; isolation:isolate;
+  color:var(--frost);
+  padding:clamp(5rem, 10vw, 8rem) 0;
+  background:linear-gradient(160deg, #071523 0%, var(--steel-900) 35%, var(--steel-800) 68%, var(--steel-700) 100%);
+}
+.contact::before{
+  content:""; position:absolute; z-index:-1; border-radius:50%;
+  width:52vw; height:52vw; min-width:480px; min-height:480px;
+  right:-14vw; bottom:-24vw;
+  background:radial-gradient(circle at 45% 40%, rgba(79,195,232,.24), transparent 65%);
+  filter:blur(70px);
+  animation:drift 24s ease-in-out infinite;
+}
+.contact .eyebrow{ color:var(--glacier-lt); }
+.contact h2{ color:#fff; margin-top:1.1rem; max-width:16ch; }
+.contact .sub{
+  margin-top:1.2rem; color:rgba(234,244,251,.82); max-width:52ch; font-size:1.05rem;
+}
+.contact-phone{
+  display:inline-block; margin-top:clamp(2rem, 4.5vw, 3rem);
+  font-family:var(--display); font-weight:800;
+  font-size:clamp(2.7rem, 8.5vw, 5.6rem); line-height:1;
+  letter-spacing:.015em; text-decoration:none;
+  background:linear-gradient(120deg, #ffffff 20%, var(--glacier-lt) 65%, var(--accent) 105%);
+  -webkit-background-clip:text; background-clip:text; color:transparent;
+  transition:filter .3s var(--ease);
+}
+.contact-phone:hover{ filter:brightness(1.15); }
+.contact-actions{
+  margin-top:clamp(1.8rem, 4vw, 2.6rem);
+  display:flex; flex-wrap:wrap; gap:.9rem;
+}
+.contact-cities{
+  margin-top:clamp(2.6rem, 5vw, 3.6rem);
+  padding-top:1.6rem;
+  border-top:1px solid rgba(191,226,244,.16);
+  display:flex; flex-wrap:wrap; gap:.4rem 1.4rem;
+  font-family:var(--display); font-weight:600;
+  font-size:.82rem; letter-spacing:.28em; text-transform:uppercase;
+  color:rgba(191,226,244,.72);
+}
+.contact-cities .dot{ color:var(--accent); }
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+.site-foot{
+  background:#050f1a; color:rgba(234,244,251,.7);
+  padding:3.2rem 0 2.6rem;
+  font-size:.92rem;
+}
+.foot-top{
+  display:flex; flex-wrap:wrap; justify-content:space-between; align-items:flex-start;
+  gap:1.6rem;
+  padding-bottom:1.8rem; margin-bottom:1.8rem;
+  border-bottom:1px solid rgba(191,226,244,.12);
+}
+.foot-logo{ color:#fff; }
+.foot-links{
+  display:flex; flex-wrap:wrap; gap:.5rem 1.8rem; align-items:center;
+}
+.foot-links a{
+  color:rgba(234,244,251,.78); text-decoration:none;
+  display:inline-flex; align-items:center; gap:.5rem;
+  transition:color .25s var(--ease);
+}
+.foot-links a:hover{ color:#fff; }
+.foot-links svg{ width:15px; height:15px; }
+.foot-disclaimer{
+  display:grid; gap:.45rem;
+  color:rgba(234,244,251,.52); font-size:.85rem; max-width:64ch;
+}
+.foot-disclaimer .studio{ color:rgba(191,226,244,.85); font-weight:600; }
+
+/* ============================================================
+   STICKY MOBILE CALL BAR
+   ============================================================ */
+.call-bar{
+  position:fixed; left:0; right:0; bottom:0; z-index:50;
+  display:none;
+  padding:.7rem .9rem calc(.7rem + env(safe-area-inset-bottom));
+  background:rgba(6,18,32,.82);
+  backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px);
+  border-top:1px solid rgba(191,226,244,.18);
+}
+.call-bar a{
+  display:flex; align-items:center; justify-content:center; gap:.6rem;
+  text-decoration:none;
+  font-weight:800; font-size:1.05rem; letter-spacing:.01em;
+  color:var(--ink);
+  padding:.95rem 1rem; border-radius:14px;
+  background:linear-gradient(150deg, #dff3fc 0%, #9adcf2 45%, var(--accent) 100%);
+  box-shadow:0 -2px 20px rgba(79,195,232,.25), inset 0 1px 0 rgba(255,255,255,.7);
+}
+.call-bar svg{ width:19px; height:19px; }
+@media (max-width:759px){
+  .call-bar{ display:block; }
+  body{ padding-bottom:calc(76px + env(safe-area-inset-bottom)); }
+}
+</style>
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<!-- ================= HEADER ================= -->
+<header class="site-head">
+  <div class="wrap">
+    <a class="logo" href="#top" aria-label="32°F Cool Air — home">
+      <span class="mark">32<sup>°</sup>F</span>
+      <span class="word">Cool&nbsp;Air</span>
+    </a>
+    <nav class="head-nav" aria-label="Primary">
+      <a class="nav-link" href="#services">Services</a>
+      <a class="nav-link" href="#area">Service&nbsp;Area</a>
+      <a class="nav-link" href="#credentials">Why&nbsp;32°F</a>
+      <a class="head-call" href="tel:+15126961891" aria-label="Call 32F Cool Air at (512) 696-1891">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M7.1 3.4c.6 0 1.1.4 1.3 1l.9 2.7c.2.6 0 1.2-.5 1.6l-1.4 1.1a13.7 13.7 0 0 0 6.8 6.8l1.1-1.4c.4-.5 1-.7 1.6-.5l2.7.9c.6.2 1 .7 1 1.3v2.2c0 1.1-.9 2-2 2C9.9 21.1 2.9 14.1 2.9 5.4c0-1.1.9-2 2-2Z"/>
+        </svg>
+        <span class="num">(512) 696-1891</span>
+      </a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+<!-- ================= HERO ================= -->
+<section class="hero" id="top" aria-label="Introduction">
+  <div class="shaft" aria-hidden="true"></div>
+  <div class="big-num" aria-hidden="true">32&deg;</div>
+
+  <div class="hero-inner">
+    <div class="wrap">
+      <div class="hero-copy">
+        <p class="hero-eyebrow">Air Conditioning &amp; Heating &mdash; Austin, TX</p>
+        <h1>Cool begins<br>at <span class="freeze">32&deg;</span></h1>
+        <p class="sub">Residential and commercial AC and heating for Central Texas &mdash; repair, service, and installation backed by 26&nbsp;years in the trade.</p>
+        <div class="hero-ctas">
+          <a class="btn btn-primary" href="tel:+15126961891" aria-label="Call 32F Cool Air at (512) 696-1891">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M7.1 3.4c.6 0 1.1.4 1.3 1l.9 2.7c.2.6 0 1.2-.5 1.6l-1.4 1.1a13.7 13.7 0 0 0 6.8 6.8l1.1-1.4c.4-.5 1-.7 1.6-.5l2.7.9c.6.2 1 .7 1 1.3v2.2c0 1.1-.9 2-2 2C9.9 21.1 2.9 14.1 2.9 5.4c0-1.1.9-2 2-2Z"/>
+            </svg>
+            Call (512) 696-1891
+          </a>
+          <a class="btn btn-ghost" href="#services">Explore services</a>
+        </div>
+        <div class="hero-chips" aria-label="Credentials">
+          <span class="chip">26 years experience</span>
+          <span class="chip">Class A HVAC license</span>
+          <span class="chip">Residential &amp; Commercial</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-ticker" aria-hidden="true">
+    <div class="wrap">
+      <span>AC Repair</span><span class="dot">&#9679;</span>
+      <span>Heating</span><span class="dot">&#9679;</span>
+      <span>Installation</span><span class="dot t-hide">&#9679;</span>
+      <span class="t-hide">Residential</span><span class="dot t-hide">&#9679;</span>
+      <span class="t-hide">Commercial</span>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SERVICES ================= -->
+<section class="services" id="services" aria-label="Services">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">01 <span class="deg">&deg;</span> Services</p>
+      <h2>Built for Texas heat.<br>Ready for the cold snaps.</h2>
+      <p class="lede">Every system we touch gets the same treatment &mdash; measured, methodical, and finished properly. Homes and businesses alike.</p>
+    </div>
+
+    <div class="services-grid">
+      <article class="svc-card">
+        <span class="svc-num" aria-hidden="true">/01</span>
+        <div class="svc-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2.5v19"/>
+            <path d="M3.77 7.25l16.46 9.5"/>
+            <path d="M20.23 7.25 3.77 16.75"/>
+            <path d="M9.3 4.7 12 6.9l2.7-2.2"/>
+            <path d="M9.3 19.3 12 17.1l2.7 2.2"/>
+            <circle cx="12" cy="12" r="1.7"/>
+          </svg>
+        </div>
+        <h3>AC Repair</h3>
+        <p>When the Texas sun is winning, we bring the temperature back down. Careful diagnosis and clean repairs on cooling systems for houses, offices, and storefronts.</p>
+        <div class="svc-meta">Residential <span class="deg-sep">&deg;</span> Commercial</div>
+      </article>
+
+      <article class="svc-card">
+        <span class="svc-num" aria-hidden="true">/02</span>
+        <div class="svc-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 3.2c2.9 3.3 5.8 6 5.8 9.6a5.8 5.8 0 0 1-11.6 0c0-3.6 2.9-6.3 5.8-9.6Z"/>
+            <path d="M12 17.9a2.4 2.4 0 0 1-2.4-2.4c0-1.5 1.2-2.4 2.4-3.6 1.2 1.2 2.4 2.1 2.4 3.6a2.4 2.4 0 0 1-2.4 2.4Z"/>
+          </svg>
+        </div>
+        <h3>Heating</h3>
+        <p>Central Texas winters are short &mdash; until the freeze rolls in. Service and repair that keeps furnaces and heating systems doing their job when it counts.</p>
+        <div class="svc-meta">Residential <span class="deg-sep">&deg;</span> Commercial</div>
+      </article>
+
+      <article class="svc-card">
+        <span class="svc-num" aria-hidden="true">/03</span>
+        <div class="svc-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3.5 11 12 4l8.5 7"/>
+            <path d="M5.8 9.3V20h12.4V9.3"/>
+            <path d="M12 12.2v4.6"/>
+            <path d="M9.7 14.5h4.6"/>
+          </svg>
+        </div>
+        <h3>Installation</h3>
+        <p>New systems and end-of-life replacements, specified and fitted with care &mdash; because comfort for the next decade starts with the install.</p>
+        <div class="svc-meta">Residential <span class="deg-sep">&deg;</span> Commercial</div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SERVICE AREA ================= -->
+<section class="area" id="area" aria-label="Service area">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">02 <span class="deg">&deg;</span> Service Area</p>
+      <h2>Austin, and up the<br>I&#8209;35 corridor.</h2>
+      <p class="lede">Four communities, one standard of comfort. If you're in or around any of these, you're in our territory.</p>
+    </div>
+
+    <div class="area-rail">
+      <ul class="cities">
+        <li class="city">
+          <span class="pin" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 21.4S5.2 15.6 5.2 10.2a6.8 6.8 0 0 1 13.6 0c0 5.4-6.8 11.2-6.8 11.2Z"/>
+              <circle cx="12" cy="10" r="2.3"/>
+            </svg>
+          </span>
+          <h3>Austin</h3>
+          <span>Texas</span>
+        </li>
+        <li class="city">
+          <span class="pin" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 21.4S5.2 15.6 5.2 10.2a6.8 6.8 0 0 1 13.6 0c0 5.4-6.8 11.2-6.8 11.2Z"/>
+              <circle cx="12" cy="10" r="2.3"/>
+            </svg>
+          </span>
+          <h3>Pflugerville</h3>
+          <span>Texas</span>
+        </li>
+        <li class="city">
+          <span class="pin" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 21.4S5.2 15.6 5.2 10.2a6.8 6.8 0 0 1 13.6 0c0 5.4-6.8 11.2-6.8 11.2Z"/>
+              <circle cx="12" cy="10" r="2.3"/>
+            </svg>
+          </span>
+          <h3>Round Rock</h3>
+          <span>Texas</span>
+        </li>
+        <li class="city">
+          <span class="pin" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 21.4S5.2 15.6 5.2 10.2a6.8 6.8 0 0 1 13.6 0c0 5.4-6.8 11.2-6.8 11.2Z"/>
+              <circle cx="12" cy="10" r="2.3"/>
+            </svg>
+          </span>
+          <h3>Georgetown</h3>
+          <span>Texas</span>
+        </li>
+      </ul>
+    </div>
+
+    <p class="area-note">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M7.1 3.4c.6 0 1.1.4 1.3 1l.9 2.7c.2.6 0 1.2-.5 1.6l-1.4 1.1a13.7 13.7 0 0 0 6.8 6.8l1.1-1.4c.4-.5 1-.7 1.6-.5l2.7.9c.6.2 1 .7 1 1.3v2.2c0 1.1-.9 2-2 2C9.9 21.1 2.9 14.1 2.9 5.4c0-1.1.9-2 2-2Z"/>
+      </svg>
+      Not sure if you're inside the lines? Call <a href="tel:+15126961891" style="font-weight:650; color:var(--steel-700);">(512)&nbsp;696&#8209;1891</a> and ask.
+    </p>
+  </div>
+</section>
+
+<!-- ================= CREDENTIALS ================= -->
+<section class="trust" id="credentials" aria-label="Credentials">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">03 <span class="deg">&deg;</span> Why 32&deg;F</p>
+      <h2>Experience you<br>can measure.</h2>
+      <p class="lede">No slogans doing the heavy lifting here &mdash; just the credentials that matter when someone works on your home or your building.</p>
+    </div>
+
+    <div class="trust-grid">
+      <article class="trust-card">
+        <div class="trust-figure">26</div>
+        <h3>Years in the trade</h3>
+        <p>Twenty-six years of hands-on HVAC industry experience &mdash; through every Austin summer and every hard freeze along the way.</p>
+      </article>
+
+      <article class="trust-card">
+        <div class="icon-row" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2.8 19 5.5v5.3c0 4.7-3 7.9-7 10-4-2.1-7-5.3-7-10V5.5Z"/>
+            <path d="m8.8 11.6 2.2 2.2 4.2-4.2"/>
+          </svg>
+        </div>
+        <div class="trust-figure">Class&nbsp;A</div>
+        <h3>HVAC licensed</h3>
+        <p>Licensed at the Class A level &mdash; qualified to take on residential and commercial systems of every size.</p>
+      </article>
+
+      <article class="trust-card">
+        <div class="icon-row" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M13.5 21.5v-7.1h2.38l.45-2.93H13.5V9.56c0-.85.24-1.43 1.45-1.43h1.55V5.51c-.27-.04-1.19-.12-2.26-.12-2.24 0-3.77 1.37-3.77 3.88v2.19H8.02v2.93h2.45v7.11Z"/>
+          </svg>
+        </div>
+        <div class="trust-figure">Find&nbsp;Us</div>
+        <h3>On Facebook</h3>
+        <p>We keep an active Facebook page &mdash; follow along, or send us a message there any time.</p>
+        <a class="trust-fb-link" href="https://www.facebook.com/32fcoolairaustin" target="_blank" rel="noopener">
+          facebook.com/32fcoolairaustin
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M7 17 17 7"/><path d="M9 7h8v8"/>
+          </svg>
+        </a>
+      </article>
+    </div>
+
+    <aside class="freeze-line" aria-label="About the name">
+      <span class="thermo" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M10.2 13.7V5.3a1.8 1.8 0 0 1 3.6 0v8.4a4.2 4.2 0 1 1-3.6 0Z"/>
+          <path d="M12 17.4V9.6"/>
+          <circle cx="12" cy="17.4" r=".4"/>
+        </svg>
+      </span>
+      <p>32&deg;F is where freezing begins. Around here, it's where <strong>comfort</strong> does too.</p>
+    </aside>
+  </div>
+</section>
+
+<!-- ================= CONTACT ================= -->
+<section class="contact" id="contact" aria-label="Contact">
+  <div class="wrap">
+    <p class="eyebrow">04 <span class="deg" style="color:var(--accent)">&deg;</span> Contact</p>
+    <h2>Set your home to comfortable.</h2>
+    <p class="sub">One call reaches us directly. Tell us what your system is doing &mdash; or not doing &mdash; and we'll take it from there.</p>
+
+    <a class="contact-phone" href="tel:+15126961891" aria-label="Call 32F Cool Air at (512) 696-1891">(512)&nbsp;696&#8209;1891</a>
+
+    <div class="contact-actions">
+      <a class="btn btn-primary" href="tel:+15126961891">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M7.1 3.4c.6 0 1.1.4 1.3 1l.9 2.7c.2.6 0 1.2-.5 1.6l-1.4 1.1a13.7 13.7 0 0 0 6.8 6.8l1.1-1.4c.4-.5 1-.7 1.6-.5l2.7.9c.6.2 1 .7 1 1.3v2.2c0 1.1-.9 2-2 2C9.9 21.1 2.9 14.1 2.9 5.4c0-1.1.9-2 2-2Z"/>
+        </svg>
+        Tap to call
+      </a>
+      <a class="btn btn-ghost" href="https://www.facebook.com/32fcoolairaustin" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M13.5 21.5v-7.1h2.38l.45-2.93H13.5V9.56c0-.85.24-1.43 1.45-1.43h1.55V5.51c-.27-.04-1.19-.12-2.26-.12-2.24 0-3.77 1.37-3.77 3.88v2.19H8.02v2.93h2.45v7.11Z"/>
+        </svg>
+        Message us on Facebook
+      </a>
+    </div>
+
+    <div class="contact-cities" aria-label="Cities served">
+      <span>Austin</span><span class="dot">&deg;</span>
+      <span>Pflugerville</span><span class="dot">&deg;</span>
+      <span>Round Rock</span><span class="dot">&deg;</span>
+      <span>Georgetown</span>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ================= FOOTER ================= -->
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="foot-top">
+      <a class="logo foot-logo" href="#top" aria-label="32°F Cool Air — back to top">
+        <span class="mark">32<sup>°</sup>F</span>
+        <span class="word">Cool&nbsp;Air</span>
+      </a>
+      <div class="foot-links">
+        <a href="tel:+15126961891" aria-label="Call (512) 696-1891">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M7.1 3.4c.6 0 1.1.4 1.3 1l.9 2.7c.2.6 0 1.2-.5 1.6l-1.4 1.1a13.7 13.7 0 0 0 6.8 6.8l1.1-1.4c.4-.5 1-.7 1.6-.5l2.7.9c.6.2 1 .7 1 1.3v2.2c0 1.1-.9 2-2 2C9.9 21.1 2.9 14.1 2.9 5.4c0-1.1.9-2 2-2Z"/>
+          </svg>
+          (512) 696-1891
+        </a>
+        <a href="https://www.facebook.com/32fcoolairaustin" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M13.5 21.5v-7.1h2.38l.45-2.93H13.5V9.56c0-.85.24-1.43 1.45-1.43h1.55V5.51c-.27-.04-1.19-.12-2.26-.12-2.24 0-3.77 1.37-3.77 3.88v2.19H8.02v2.93h2.45v7.11Z"/>
+          </svg>
+          Facebook
+        </a>
+        <span>Austin &middot; Pflugerville &middot; Round Rock &middot; Georgetown, TX</span>
+      </div>
+    </div>
+    <div class="foot-disclaimer">
+      <p class="studio">Website concept by Murrieta Web Studio</p>
+      <p>This is a design concept created for 32F Cool Air Conditioning and Heating. Not yet the official website of 32F Cool Air Conditioning and Heating.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- ================= STICKY MOBILE CALL BAR ================= -->
+<div class="call-bar">
+  <a href="tel:+15126961891" aria-label="Call 32F Cool Air at (512) 696-1891">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M7.1 3.4c.6 0 1.1.4 1.3 1l.9 2.7c.2.6 0 1.2-.5 1.6l-1.4 1.1a13.7 13.7 0 0 0 6.8 6.8l1.1-1.4c.4-.5 1-.7 1.6-.5l2.7.9c.6.2 1 .7 1 1.3v2.2c0 1.1-.9 2-2 2C9.9 21.1 2.9 14.1 2.9 5.4c0-1.1.9-2 2-2Z"/>
+    </svg>
+    Call (512) 696-1891
+  </a>
+</div>
+
+</body>
+</html>

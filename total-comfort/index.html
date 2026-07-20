@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<meta name="description" content="Total Comfort — a father-and-son HVAC shop serving North Austin for 35 years. AC repair, duct repair, residential and commercial HVAC. Call (512) 835-0267.">
+<title>Total Comfort — Family HVAC · North Austin, TX</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,600&display=swap" rel="stylesheet">
+<style>
+  /* ============ TOKENS ============ */
+  :root{
+    --ink:        #131110;   /* page ground */
+    --ink-2:      #1a1714;   /* raised panel */
+    --ink-3:      #211d19;   /* hover panel  */
+    --line:       rgba(233, 222, 199, .14);
+    --line-soft:  rgba(233, 222, 199, .08);
+    --paper:      #efe8d8;   /* warm near-white */
+    --body:       #c9c1b1;   /* body text */
+    --muted:      #948b7a;   /* captions */
+    --amber:      #d99b3c;   /* brass accent */
+    --amber-hi:   #e8b25e;
+    --amber-deep: #a8721f;
+    --on-amber:   #191207;
+    --slab: "Bitter", "Rockwell", "Roboto Slab", serif;
+    --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    --wide: .16em;
+    --maxw: 1140px;
+  }
+
+  /* ============ RESET / BASE ============ */
+  *,*::before,*::after{ box-sizing:border-box; margin:0; padding:0; }
+  html{ scroll-behavior:smooth; }
+  body{
+    background:var(--ink);
+    color:var(--body);
+    font-family:var(--sans);
+    font-size:1rem;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+  }
+  img,svg{ display:block; max-width:100%; }
+  a{ color:inherit; text-decoration:none; }
+  ::selection{ background:var(--amber); color:var(--on-amber); }
+  :focus-visible{ outline:2px solid var(--amber); outline-offset:3px; border-radius:2px; }
+
+  .wrap{ width:100%; max-width:var(--maxw); margin-inline:auto; padding-inline:clamp(1.25rem, 5vw, 2.5rem); }
+
+  h1,h2,h3{ font-family:var(--slab); color:var(--paper); line-height:1.08; font-weight:700; }
+  h1{ font-size:clamp(2.5rem, 6.4vw, 4.4rem); letter-spacing:-.01em; }
+  h2{ font-size:clamp(1.9rem, 4vw, 2.9rem); letter-spacing:-.005em; }
+  h3{ font-size:1.25rem; font-weight:600; }
+  em{ font-style:italic; color:var(--amber-hi); }
+
+  .eyebrow{
+    display:flex; align-items:center; gap:.75rem;
+    font-size:.72rem; font-weight:600; letter-spacing:var(--wide);
+    text-transform:uppercase; color:var(--amber);
+  }
+  .eyebrow::before{ content:""; width:2rem; height:1px; background:var(--amber); flex:none; }
+
+  .skip{
+    position:absolute; left:-9999px; top:0; z-index:200;
+    background:var(--amber); color:var(--on-amber);
+    padding:.6rem 1rem; font-family:var(--slab); font-weight:700;
+  }
+  .skip:focus{ left:0; }
+
+  /* ============ BUTTONS ============ */
+  .btn{
+    display:inline-flex; align-items:center; justify-content:center; gap:.6rem;
+    font-family:var(--slab); font-weight:700; font-size:1rem;
+    padding:.85rem 1.6rem; border:1px solid transparent;
+    transition:background-color .18s ease, border-color .18s ease, color .18s ease, transform .18s ease;
+  }
+  .btn svg{ width:1.05em; height:1.05em; flex:none; }
+  .btn--fill{ background:var(--amber); color:var(--on-amber); border-color:var(--amber); }
+  .btn--fill:hover{ background:var(--amber-hi); border-color:var(--amber-hi); transform:translateY(-1px); }
+  .btn--ghost{ color:var(--paper); border-color:var(--line); }
+  .btn--ghost:hover{ border-color:var(--amber); color:var(--amber-hi); }
+
+  /* ============ HEADER ============ */
+  .site-head{
+    position:sticky; top:0; z-index:100;
+    background:rgba(19,17,16,.92);
+    -webkit-backdrop-filter:blur(8px); backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  .head-row{ display:flex; align-items:center; gap:1.5rem; height:4.25rem; }
+  .brand{ display:flex; align-items:center; gap:.7rem; flex:none; }
+  .brand svg{ width:2rem; height:2rem; color:var(--amber); }
+  .brand-name{
+    font-family:var(--slab); font-weight:800; font-size:1.15rem;
+    color:var(--paper); letter-spacing:.01em; line-height:1;
+  }
+  .brand-name small{
+    display:block; font-family:var(--sans); font-weight:600; font-size:.58rem;
+    letter-spacing:.22em; text-transform:uppercase; color:var(--muted); margin-top:.28rem;
+  }
+  .site-nav{ display:none; margin-left:auto; }
+  .site-nav a{
+    font-size:.8rem; font-weight:600; letter-spacing:.1em; text-transform:uppercase;
+    color:var(--body); padding:.5rem .9rem; transition:color .15s ease;
+  }
+  .site-nav a:hover{ color:var(--amber-hi); }
+  .head-call{ margin-left:auto; padding:.6rem 1.1rem; font-size:.92rem; }
+  @media (min-width: 860px){
+    .site-nav{ display:flex; }
+    .head-call{ margin-left:0; }
+  }
+
+  /* ============ HERO ============ */
+  .hero{ border-bottom:1px solid var(--line); overflow:hidden; }
+  .hero-grid{
+    display:grid; gap:clamp(2.5rem, 6vw, 4.5rem);
+    padding-block:clamp(3.5rem, 8vw, 6.5rem);
+    align-items:center;
+  }
+  @media (min-width: 900px){
+    .hero-grid{ grid-template-columns:1.12fr .88fr; }
+  }
+  .hero-copy > * + *{ margin-top:1.5rem; }
+  .hero-copy .lede{
+    font-size:clamp(1.02rem, 1.5vw, 1.15rem); max-width:34rem; color:var(--body);
+  }
+  .hero-actions{ display:flex; flex-wrap:wrap; gap:.9rem; margin-top:2.2rem; }
+  .hero-loc{
+    display:flex; align-items:center; gap:.55rem;
+    font-size:.82rem; color:var(--muted); letter-spacing:.04em;
+  }
+  .hero-loc svg{ width:.95rem; height:.95rem; color:var(--amber); flex:none; }
+
+  /* staggered entrance */
+  @keyframes rise{ from{ opacity:0; transform:translateY(14px); } to{ opacity:1; transform:none; } }
+  .hero-copy > *, .plate{ animation:rise .7s cubic-bezier(.22,.7,.3,1) both; }
+  .hero-copy > *:nth-child(1){ animation-delay:.05s; }
+  .hero-copy > *:nth-child(2){ animation-delay:.14s; }
+  .hero-copy > *:nth-child(3){ animation-delay:.23s; }
+  .hero-copy > *:nth-child(4){ animation-delay:.32s; }
+  .hero-copy > *:nth-child(5){ animation-delay:.41s; }
+  .plate{ animation-delay:.28s; }
+
+  /* ---- the nameplate ---- */
+  .plate{
+    position:relative;
+    background:var(--ink-2);
+    border:1px solid var(--line);
+    box-shadow:0 0 0 6px var(--ink-2), 0 0 0 7px var(--line-soft), 0 24px 60px -30px rgba(0,0,0,.9);
+    padding:clamp(1.6rem, 3vw, 2.2rem);
+    max-width:26rem; width:100%;
+    justify-self:center;
+    background-image:
+      radial-gradient(circle 3px at 14px 14px,            var(--amber-deep) 2.6px, transparent 3.4px),
+      radial-gradient(circle 3px at calc(100% - 14px) 14px, var(--amber-deep) 2.6px, transparent 3.4px),
+      radial-gradient(circle 3px at 14px calc(100% - 14px), var(--amber-deep) 2.6px, transparent 3.4px),
+      radial-gradient(circle 3px at calc(100% - 14px) calc(100% - 14px), var(--amber-deep) 2.6px, transparent 3.4px);
+    background-repeat:no-repeat;
+  }
+  @media (min-width: 900px){ .plate{ justify-self:end; } }
+  .plate-head{
+    display:flex; align-items:center; gap:.9rem;
+    padding-bottom:1.1rem; border-bottom:1px solid var(--line);
+  }
+  .plate-head svg{ width:2.6rem; height:2.6rem; color:var(--amber); flex:none; }
+  .plate-title{
+    font-family:var(--slab); font-weight:800; font-size:1.2rem; color:var(--paper);
+    letter-spacing:.06em; text-transform:uppercase; line-height:1.15;
+  }
+  .plate-title small{
+    display:block; font-family:var(--sans); font-weight:600; font-size:.6rem;
+    letter-spacing:.26em; color:var(--muted); margin-top:.3rem;
+  }
+  .plate dl{ margin-top:.35rem; }
+  .plate dl > div{
+    display:flex; align-items:baseline; justify-content:space-between; gap:1rem;
+    padding:.78rem 0; border-bottom:1px solid var(--line-soft);
+  }
+  .plate dl > div:last-child{ border-bottom:none; }
+  .plate dt{
+    font-size:.66rem; font-weight:600; letter-spacing:.2em;
+    text-transform:uppercase; color:var(--muted);
+  }
+  .plate dd{
+    font-family:var(--slab); font-weight:600; font-size:.98rem;
+    color:var(--paper); text-align:right;
+  }
+  .plate dd a{ color:var(--amber-hi); }
+  .plate dd a:hover{ color:var(--amber); }
+  .plate-note{
+    margin-top:1.1rem; padding-top:1rem; border-top:1px solid var(--line);
+    font-size:.7rem; letter-spacing:.14em; text-transform:uppercase;
+    color:var(--muted); text-align:center;
+  }
+
+  /* ============ TICKER ============ */
+  .ticker{
+    border-bottom:1px solid var(--line);
+    overflow:hidden; white-space:nowrap;
+    padding-block:.85rem;
+    background:var(--ink-2);
+  }
+  .ticker-track{
+    display:inline-flex; align-items:center;
+    animation:slide 36s linear infinite;
+  }
+  .ticker-track span{
+    font-family:var(--slab); font-weight:600; font-size:.8rem;
+    letter-spacing:.24em; text-transform:uppercase; color:var(--muted);
+    padding-inline:1.4rem; display:inline-flex; align-items:center; gap:2.8rem;
+  }
+  .ticker-track span::after{
+    content:""; width:.42rem; height:.42rem; background:var(--amber);
+    transform:rotate(45deg); flex:none;
+  }
+  @keyframes slide{ to{ transform:translateX(-50%); } }
+
+  /* ============ SECTIONS ============ */
+  section{ scroll-margin-top:5rem; }
+  .band{ padding-block:clamp(4rem, 9vw, 7rem); }
+  .band + .band{ border-top:1px solid var(--line); }
+  .sec-head{ max-width:44rem; }
+  .sec-head h2{ margin-top:1.1rem; }
+  .sec-head p{ margin-top:1.1rem; }
+
+  /* ---- services ---- */
+  .svc-grid{
+    margin-top:clamp(2.5rem, 5vw, 3.5rem);
+    display:grid; gap:1px; background:var(--line);
+    border:1px solid var(--line);
+  }
+  @media (min-width: 680px){ .svc-grid{ grid-template-columns:1fr 1fr; } }
+  .svc{
+    background:var(--ink); padding:clamp(1.6rem, 3.5vw, 2.4rem);
+    position:relative; transition:background-color .2s ease;
+  }
+  .svc:hover{ background:var(--ink-2); }
+  .svc-top{ display:flex; align-items:flex-start; justify-content:space-between; gap:1rem; }
+  .svc-icon{ width:2.75rem; height:2.75rem; color:var(--amber); transition:color .2s ease; }
+  .svc:hover .svc-icon{ color:var(--amber-hi); }
+  .svc-num{
+    font-family:var(--slab); font-weight:600; font-size:.85rem;
+    color:var(--muted); letter-spacing:.1em;
+  }
+  .svc h3{ margin-top:1.4rem; }
+  .svc p{ margin-top:.7rem; font-size:.95rem; max-width:30rem; }
+  .svc-call{
+    display:inline-flex; align-items:center; gap:.5rem; margin-top:1.3rem;
+    font-family:var(--slab); font-weight:600; font-size:.9rem; color:var(--amber);
+  }
+  .svc-call::after{ content:"→"; transition:transform .18s ease; }
+  .svc-call:hover{ color:var(--amber-hi); }
+  .svc-call:hover::after{ transform:translateX(4px); }
+
+  /* ---- service area ---- */
+  .area-grid{ display:grid; gap:clamp(2.5rem, 6vw, 4rem); align-items:center; }
+  @media (min-width: 900px){ .area-grid{ grid-template-columns:1fr 1fr; } }
+  .area-copy p + p{ margin-top:1rem; }
+  .area-copy .addr{
+    margin-top:1.8rem; padding:1.1rem 1.3rem; border-left:2px solid var(--amber);
+    background:var(--ink-2);
+    font-family:var(--slab); font-weight:600; color:var(--paper); font-size:1.02rem;
+  }
+  .area-copy .addr small{
+    display:block; font-family:var(--sans); font-weight:600; font-size:.64rem;
+    letter-spacing:.2em; text-transform:uppercase; color:var(--muted); margin-bottom:.4rem;
+  }
+  .area-map{ justify-self:center; width:min(100%, 24rem); }
+  .area-map svg{ width:100%; height:auto; }
+
+  /* ---- trust ---- */
+  .trust-grid{ display:grid; gap:clamp(2.5rem, 6vw, 4rem); }
+  @media (min-width: 900px){ .trust-grid{ grid-template-columns:1.05fr .95fr; align-items:start; } }
+  .trust-copy blockquote{
+    margin-top:1.4rem;
+    font-family:var(--slab); font-style:italic; font-weight:400;
+    font-size:clamp(1.15rem, 2vw, 1.4rem); color:var(--paper); line-height:1.5;
+    border-left:2px solid var(--amber); padding-left:1.2rem;
+  }
+  .trust-copy .fine{ margin-top:1.4rem; font-size:.88rem; color:var(--muted); max-width:30rem; }
+  .stat-grid{ display:grid; grid-template-columns:1fr 1fr; gap:1rem; }
+  .stat{
+    border:1px solid var(--line); background:var(--ink-2);
+    padding:1.5rem 1.4rem 1.3rem; position:relative;
+  }
+  .stat::before{
+    content:""; position:absolute; top:-1px; left:1.3rem;
+    width:2.2rem; height:3px; background:var(--amber);
+  }
+  .stat b{
+    font-family:var(--slab); font-weight:800; font-size:clamp(2.2rem, 4vw, 3rem);
+    color:var(--paper); line-height:1; display:block;
+  }
+  .stat span{
+    display:block; margin-top:.6rem; font-size:.78rem; line-height:1.45; color:var(--muted);
+  }
+  .listed{
+    grid-column:1 / -1; display:flex; flex-wrap:wrap; align-items:center; gap:.7rem;
+    margin-top:.2rem;
+  }
+  .listed p{ font-size:.72rem; letter-spacing:.16em; text-transform:uppercase; color:var(--muted); margin-right:.3rem; }
+  .listed span{
+    font-family:var(--slab); font-weight:600; font-size:.85rem; color:var(--body);
+    border:1px solid var(--line); padding:.35rem .85rem;
+  }
+
+  /* ---- contact ---- */
+  .contact{ background:var(--ink-2); }
+  .contact-grid{ display:grid; gap:clamp(2.5rem, 6vw, 4rem); align-items:center; }
+  @media (min-width: 900px){ .contact-grid{ grid-template-columns:1.2fr .8fr; } }
+  .bigphone{
+    display:inline-block; margin-top:1.6rem;
+    font-family:var(--slab); font-weight:800; line-height:1;
+    font-size:clamp(2.2rem, 6.5vw, 4.2rem); color:var(--paper);
+    letter-spacing:.01em; transition:color .18s ease;
+  }
+  .bigphone:hover{ color:var(--amber-hi); }
+  .contact-sub{ margin-top:1.2rem; max-width:30rem; }
+  .contact-card{
+    border:1px solid var(--line); background:var(--ink);
+    padding:clamp(1.6rem, 3vw, 2.2rem);
+  }
+  .contact-card > div{ display:flex; gap:1rem; align-items:flex-start; }
+  .contact-card > div + div{ margin-top:1.4rem; padding-top:1.4rem; border-top:1px solid var(--line-soft); }
+  .contact-card svg{ width:1.35rem; height:1.35rem; color:var(--amber); flex:none; margin-top:.15rem; }
+  .contact-card h3{ font-size:.72rem; font-family:var(--sans); font-weight:600; letter-spacing:.2em; text-transform:uppercase; color:var(--muted); }
+  .contact-card p, .contact-card a{
+    font-family:var(--slab); font-weight:600; font-size:1.05rem; color:var(--paper); margin-top:.35rem; line-height:1.45;
+  }
+  .contact-card a:hover{ color:var(--amber-hi); }
+
+  /* ============ FOOTER ============ */
+  .site-foot{ border-top:1px solid var(--line); padding-block:2.6rem; }
+  .foot-row{
+    display:flex; flex-direction:column; gap:1.6rem;
+  }
+  @media (min-width: 780px){
+    .foot-row{ flex-direction:row; justify-content:space-between; align-items:flex-end; }
+  }
+  .foot-brand{ display:flex; align-items:center; gap:.6rem; color:var(--paper); }
+  .foot-brand svg{ width:1.5rem; height:1.5rem; color:var(--amber); }
+  .foot-brand b{ font-family:var(--slab); font-weight:800; font-size:1rem; }
+  .foot-meta{ font-size:.8rem; color:var(--muted); line-height:1.8; }
+  .foot-note{ font-size:.78rem; color:var(--muted); line-height:1.8; max-width:26rem; }
+  .foot-note a{ color:var(--body); border-bottom:1px solid var(--line); }
+  .foot-note a:hover{ color:var(--amber-hi); border-color:var(--amber); }
+
+  /* ============ MOBILE CALL BAR ============ */
+  .callbar{
+    position:fixed; left:0; right:0; bottom:0; z-index:110;
+    display:flex; align-items:center; justify-content:center; gap:.6rem;
+    background:var(--amber); color:var(--on-amber);
+    font-family:var(--slab); font-weight:800; font-size:1.05rem;
+    padding:.95rem 1rem calc(.95rem + env(safe-area-inset-bottom));
+    border-top:1px solid var(--amber-deep);
+    box-shadow:0 -12px 30px -12px rgba(0,0,0,.7);
+  }
+  .callbar svg{ width:1.1rem; height:1.1rem; }
+  .callbar:active{ background:var(--amber-hi); }
+  body{ padding-bottom:4.5rem; }
+  @media (min-width: 860px){
+    .callbar{ display:none; }
+    body{ padding-bottom:0; }
+  }
+
+  /* ============ MOTION SAFETY ============ */
+  @media (prefers-reduced-motion: reduce){
+    html{ scroll-behavior:auto; }
+    .hero-copy > *, .plate{ animation:none; }
+    .ticker-track{ animation:none; }
+    *{ transition-duration:.01ms !important; }
+  }
+</style>
+</head>
+<body>
+
+<a class="skip" href="#services">Skip to content</a>
+
+<!-- ============ HEADER ============ -->
+<header class="site-head">
+  <div class="wrap head-row">
+    <a class="brand" href="#top" aria-label="Total Comfort — home">
+      <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+        <circle cx="24" cy="24" r="20"/>
+        <circle cx="24" cy="24" r="3.5" fill="currentColor" stroke="none"/>
+        <path d="M24 8v9M24 31v9M8 24h9M31 24h9M12.7 12.7l6.4 6.4M28.9 28.9l6.4 6.4M35.3 12.7l-6.4 6.4M19.1 28.9l-6.4 6.4"/>
+      </svg>
+      <span class="brand-name">Total Comfort<small>Family HVAC · Austin</small></span>
+    </a>
+    <nav class="site-nav" aria-label="Primary">
+      <a href="#services">Services</a>
+      <a href="#area">Service Area</a>
+      <a href="#trust">Our Name</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a class="btn btn--fill head-call" href="tel:+15128350267">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.13.96.36 1.9.7 2.8a2 2 0 0 1-.45 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.27a2 2 0 0 1 2.1-.45c.9.34 1.84.57 2.8.7a2 2 0 0 1 1.7 2.03Z"/></svg>
+      (512) 835-0267
+    </a>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- ============ HERO ============ -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div class="hero-copy">
+        <p class="eyebrow">Family-run HVAC · North Austin, Texas</p>
+        <h1>Comfort is the <em>family</em> trade.</h1>
+        <p class="lede">Total Comfort is Don Koenig and his son — a father-and-son HVAC shop that has kept North Austin heating and cooling for some thirty-five years. No call center, no rotating crew of strangers. Just a family that answers its own phone.</p>
+        <div class="hero-actions">
+          <a class="btn btn--fill" href="tel:+15128350267">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.13.96.36 1.9.7 2.8a2 2 0 0 1-.45 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.27a2 2 0 0 1 2.1-.45c.9.34 1.84.57 2.8.7a2 2 0 0 1 1.7 2.03Z"/></svg>
+            Call (512) 835-0267
+          </a>
+          <a class="btn btn--ghost" href="#services">See what we do</a>
+        </div>
+        <p class="hero-loc">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+          11803 N Oaks Dr, Austin, TX 78753
+        </p>
+      </div>
+
+      <!-- The nameplate: styled after the data plate on a well-kept unit -->
+      <aside class="plate" aria-label="Total Comfort at a glance">
+        <div class="plate-head">
+          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+            <circle cx="24" cy="24" r="20"/>
+            <circle cx="24" cy="24" r="3.5" fill="currentColor" stroke="none"/>
+            <path d="M24 8v9M24 31v9M8 24h9M31 24h9M12.7 12.7l6.4 6.4M28.9 28.9l6.4 6.4M35.3 12.7l-6.4 6.4M19.1 28.9l-6.4 6.4"/>
+          </svg>
+          <p class="plate-title">Total Comfort<small>Service Nameplate</small></p>
+        </div>
+        <dl>
+          <div><dt>Operation</dt><dd>Father &amp; Son</dd></div>
+          <div><dt>In Service</dt><dd>35 Years</dd></div>
+          <div><dt>Home Base</dt><dd>North Austin · 78753</dd></div>
+          <div><dt>Trade</dt><dd>AC · HVAC · Ducts</dd></div>
+          <div><dt>Direct Line</dt><dd><a href="tel:+15128350267">(512) 835-0267</a></dd></div>
+        </dl>
+        <p class="plate-note">Operated by Don Koenig &amp; Son</p>
+      </aside>
+    </div>
+  </section>
+
+  <!-- ============ TICKER ============ -->
+  <div class="ticker" aria-hidden="true">
+    <div class="ticker-track">
+      <span>AC Repair</span><span>Duct Repair</span><span>Residential HVAC</span><span>Commercial HVAC</span><span>North Austin</span><span>Family-Run 35 Years</span>
+      <span>AC Repair</span><span>Duct Repair</span><span>Residential HVAC</span><span>Commercial HVAC</span><span>North Austin</span><span>Family-Run 35 Years</span>
+    </div>
+  </div>
+
+  <!-- ============ SERVICES ============ -->
+  <section class="band" id="services">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">What we do</p>
+        <h2>Four trades. One standard of workmanship.</h2>
+        <p>Thirty-five years in the same climate teaches you what Texas heat does to equipment — and what honest repair work looks like.</p>
+      </div>
+      <div class="svc-grid">
+
+        <article class="svc">
+          <div class="svc-top">
+            <svg class="svc-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M24 6v36M24 6l-5 5M24 6l5 5M24 42l-5-5M24 42l5-5"/>
+              <path d="M8.4 15l31.2 18M8.4 15l1.8 6.8M8.4 15l6.8-1.8M39.6 33l-1.8-6.8M39.6 33l-6.8 1.8"/>
+              <path d="M39.6 15L8.4 33M39.6 15l-6.8-1.8M39.6 15l-1.8 6.8M8.4 33l6.8 1.8M8.4 33l1.8-6.8"/>
+            </svg>
+            <span class="svc-num">/ 01</span>
+          </div>
+          <h3>AC Repair</h3>
+          <p>When the cooling quits in the middle of an Austin summer, that is the call we have answered for three and a half decades. Straight diagnosis, careful repair, no drama.</p>
+          <a class="svc-call" href="tel:+15128350267">Call about a repair</a>
+        </article>
+
+        <article class="svc">
+          <div class="svc-top">
+            <svg class="svc-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M6 14h14v20H6zM20 18h10M20 30h10M30 12h12v24H30z" stroke-linejoin="miter"/>
+              <path d="M10 20h6M10 24h6M10 28h6M35 18v12M39 18v12"/>
+            </svg>
+            <span class="svc-num">/ 02</span>
+          </div>
+          <h3>Duct Repair</h3>
+          <p>Leaky, crushed, or tired ductwork bleeds away the air you paid to cool. We track down the losses and put the system back to working the way it should.</p>
+          <a class="svc-call" href="tel:+15128350267">Call about ductwork</a>
+        </article>
+
+        <article class="svc">
+          <div class="svc-top">
+            <svg class="svc-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M8 22L24 8l16 14M12 19v21h24V19"/>
+              <path d="M19 32c1.5-1.4 3.5-1.4 5 0s3.5 1.4 5 0M19 26c1.5-1.4 3.5-1.4 5 0s3.5 1.4 5 0"/>
+            </svg>
+            <span class="svc-num">/ 03</span>
+          </div>
+          <h3>Residential HVAC</h3>
+          <p>Heating and cooling for the whole house, handled by people who have serviced North Austin homes since before some of those homes were built.</p>
+          <a class="svc-call" href="tel:+15128350267">Call about your home</a>
+        </article>
+
+        <article class="svc">
+          <div class="svc-top">
+            <svg class="svc-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M8 42V14h20v28M28 22h12v20M4 42h40" stroke-linejoin="miter"/>
+              <path d="M13 20h4M19 20h4M13 26h4M19 26h4M13 32h4M19 32h4M33 28h3M33 34h3"/>
+              <path d="M14 14V8h8v6"/>
+            </svg>
+            <span class="svc-num">/ 04</span>
+          </div>
+          <h3>Commercial HVAC</h3>
+          <p>Shops, offices, and working buildings need air that shows up every day. We keep commercial systems running so your business can do the same.</p>
+          <a class="svc-call" href="tel:+15128350267">Call about your building</a>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SERVICE AREA ============ -->
+  <section class="band" id="area">
+    <div class="wrap area-grid">
+      <div class="area-copy">
+        <p class="eyebrow">Where we work</p>
+        <h2 style="margin-top:1.1rem;">North Austin is home ground.</h2>
+        <p style="margin-top:1.1rem;">The shop sits on N Oaks Drive in the 78753 — and that is not an accident. Working close to home means we know these streets, these houses, and what this corner of Austin asks of a cooling system in August.</p>
+        <p>If you are in or around North Austin, you are in our territory.</p>
+        <div class="addr">
+          <small>The shop</small>
+          11803 N Oaks Dr, Austin, TX 78753
+        </div>
+      </div>
+      <div class="area-map" role="img" aria-label="Stylized range map centered on ZIP code 78753 in North Austin">
+        <svg viewBox="0 0 320 320" fill="none">
+          <circle cx="160" cy="160" r="150" stroke="rgba(233,222,199,.1)" stroke-width="1" stroke-dasharray="3 6"/>
+          <circle cx="160" cy="160" r="112" stroke="rgba(233,222,199,.16)" stroke-width="1"/>
+          <circle cx="160" cy="160" r="72" stroke="rgba(233,222,199,.24)" stroke-width="1"/>
+          <path d="M160 4v18M160 298v18M4 160h18M298 160h18" stroke="#d99b3c" stroke-width="1.5"/>
+          <path d="M160 88v144M88 160h144" stroke="rgba(233,222,199,.08)" stroke-width="1"/>
+          <circle cx="160" cy="160" r="34" fill="#1a1714" stroke="#d99b3c" stroke-width="1.5"/>
+          <circle cx="160" cy="160" r="5" fill="#d99b3c"/>
+          <text x="160" y="215" text-anchor="middle" fill="#efe8d8" font-family="Bitter, serif" font-weight="700" font-size="22" letter-spacing="2">78753</text>
+          <text x="160" y="238" text-anchor="middle" fill="#948b7a" font-family="Arial, sans-serif" font-size="10" letter-spacing="3">NORTH AUSTIN</text>
+          <text x="160" y="58" text-anchor="middle" fill="#948b7a" font-family="Arial, sans-serif" font-size="9" letter-spacing="2">SERVICE RANGE</text>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ TRUST ============ -->
+  <section class="band" id="trust">
+    <div class="wrap trust-grid">
+      <div class="trust-copy">
+        <p class="eyebrow">Our name, on the line</p>
+        <h2 style="margin-top:1.1rem;">Two Koenigs. Thirty-five years. One reputation.</h2>
+        <blockquote>A family business doesn&rsquo;t get thirty-five years in the same town by cutting corners. Every job carries our name &mdash; and our name is the whole company.</blockquote>
+        <p class="fine">We don&rsquo;t print testimonials we didn&rsquo;t earn. The reviews live where the neighbors wrote them &mdash; on Yelp, on Nextdoor, and on Angi &mdash; in their own words.</p>
+      </div>
+      <div class="stat-grid">
+        <div class="stat"><b>35</b><span>years family-run in Austin</span></div>
+        <div class="stat"><b>2</b><span>generations on the job &mdash; Don Koenig &amp; his son</span></div>
+        <div class="stat"><b>20</b><span>positive reviews from customers on Yelp</span></div>
+        <div class="stat"><b>27</b><span>neighbors have favorited us on Nextdoor</span></div>
+        <div class="listed">
+          <p>Find us on</p>
+          <span>Yelp</span><span>Nextdoor</span><span>Angi</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CONTACT ============ -->
+  <section class="band contact" id="contact">
+    <div class="wrap contact-grid">
+      <div>
+        <p class="eyebrow">Talk to the shop</p>
+        <h2 style="margin-top:1.1rem;">One number reaches us.</h2>
+        <a class="bigphone" href="tel:+15128350267">(512) 835&#8209;0267</a>
+        <p class="contact-sub">Call for AC repair, duct work, or residential and commercial HVAC service anywhere in North Austin.</p>
+      </div>
+      <div class="contact-card">
+        <div>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.13.96.36 1.9.7 2.8a2 2 0 0 1-.45 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.27a2 2 0 0 1 2.1-.45c.9.34 1.84.57 2.8.7a2 2 0 0 1 1.7 2.03Z"/></svg>
+          <div>
+            <h3>Phone</h3>
+            <a href="tel:+15128350267">(512) 835-0267</a>
+          </div>
+        </div>
+        <div>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+          <div>
+            <h3>Address</h3>
+            <p>11803 N Oaks Dr<br>Austin, TX 78753</p>
+          </div>
+        </div>
+        <div>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg>
+          <div>
+            <h3>Years in service</h3>
+            <p>Family-run for 35 years &mdash; Don Koenig &amp; Son</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="site-foot">
+  <div class="wrap foot-row">
+    <div>
+      <div class="foot-brand">
+        <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+          <circle cx="24" cy="24" r="20"/>
+          <circle cx="24" cy="24" r="3.5" fill="currentColor" stroke="none"/>
+          <path d="M24 8v9M24 31v9M8 24h9M31 24h9M12.7 12.7l6.4 6.4M28.9 28.9l6.4 6.4M35.3 12.7l-6.4 6.4M19.1 28.9l-6.4 6.4"/>
+        </svg>
+        <b>Total Comfort</b>
+      </div>
+      <p class="foot-meta" style="margin-top:.9rem;">
+        11803 N Oaks Dr, Austin, TX 78753<br>
+        <a href="tel:+15128350267" style="color:var(--body);">(512) 835-0267</a> &nbsp;&middot;&nbsp; AC Repair &middot; Duct Repair &middot; Residential &amp; Commercial HVAC
+      </p>
+    </div>
+    <div class="foot-note">
+      <p>Website concept by <a href="mailto:carlosantonio.murrieta@gmail.com">Murrieta Web Studio</a></p>
+      <p>This is a design concept created for Total Comfort. Not yet the official website of Total Comfort.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- ============ MOBILE STICKY CALL ============ -->
+<a class="callbar" href="tel:+15128350267" aria-label="Call Total Comfort at (512) 835-0267">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.13.96.36 1.9.7 2.8a2 2 0 0 1-.45 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.27a2 2 0 0 1 2.1-.45c.9.34 1.84.57 2.8.7a2 2 0 0 1 1.7 2.03Z"/></svg>
+  Call (512) 835-0267
+</a>
+
+</body>
+</html>

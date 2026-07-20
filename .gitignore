@@ -1,4 +1,5 @@
 .DS_Store
+.gstack/
 *.notes.md
 _internal/
 leads*.json

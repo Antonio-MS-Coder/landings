@@ -1,0 +1,471 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<meta name="description" content="AM HVAC — residential HVAC repairs, tune-ups and replacements in Austin, TX. Call or text (512) 577-5337. Servicio en español. Design concept.">
+<meta name="theme-color" content="#C1441E">
+<title>AM HVAC — Residential Heating &amp; Air, Austin TX</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#FAF5EF;
+    --paper-deep:#F2E7DA;
+    --ink:#2A1B10;
+    --ink-soft:#5C4936;
+    --ember:#C1441E;
+    --ember-hot:#A93712;
+    --clay:#8A2E0E;
+    --clay-deep:#6E240B;
+    --line:rgba(42,27,16,.16);
+    --line-strong:rgba(42,27,16,.35);
+    --slab:"Bitter",Georgia,"Times New Roman",serif;
+    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+  }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+  body{
+    font-family:var(--sans);
+    background:var(--paper);
+    color:var(--ink);
+    line-height:1.6;
+    font-size:1.0625rem;
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+  }
+  ::selection{background:var(--ember);color:#fff}
+  img,svg{max-width:100%;display:block}
+  a{color:var(--ember-hot)}
+  a:focus-visible,button:focus-visible{outline:3px solid var(--ember);outline-offset:3px;border-radius:2px}
+
+  .skip{
+    position:absolute;left:-9999px;top:0;background:var(--ink);color:#fff;
+    padding:.6rem 1rem;z-index:100;font-weight:600;text-decoration:none;
+  }
+  .skip:focus{left:.75rem;top:.75rem}
+
+  .wrap{width:min(100% - 2.5rem,68rem);margin-inline:auto}
+  .wrap-narrow{width:min(100% - 2.5rem,52rem);margin-inline:auto}
+
+  /* ---------- brand strip + header ---------- */
+  .topstrip{
+    height:.5rem;
+    background:linear-gradient(90deg,var(--ember) 0 66%,var(--clay-deep) 66% 100%);
+  }
+  .top{
+    display:flex;align-items:center;justify-content:space-between;gap:1rem;
+    padding:1.1rem 0;
+  }
+  .brand{
+    font-family:var(--slab);font-weight:900;font-size:1.35rem;letter-spacing:.01em;
+    color:var(--ink);text-decoration:none;display:flex;align-items:baseline;gap:.45rem;
+  }
+  .brand .dot{
+    width:.55rem;height:.55rem;background:var(--ember);display:inline-block;
+    transform:translateY(-.05rem);
+  }
+  .top nav{display:none;gap:1.75rem}
+  .top nav a{
+    color:var(--ink-soft);text-decoration:none;font-size:.9rem;font-weight:600;
+    letter-spacing:.02em;
+  }
+  .top nav a:hover{color:var(--ember-hot)}
+  .top-call{
+    font-family:var(--slab);font-weight:800;font-size:1rem;color:var(--ink);
+    text-decoration:none;border-bottom:3px solid var(--ember);padding-bottom:.1rem;
+    white-space:nowrap;
+  }
+  .top-call:hover{color:var(--ember-hot)}
+  @media (min-width:761px){.top nav{display:flex}}
+
+  /* ---------- hero ---------- */
+  .hero{padding:clamp(3rem,9vw,7.5rem) 0 clamp(3.5rem,8vw,6.5rem)}
+  .eyebrow{
+    font-size:.8rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;
+    color:var(--ember-hot);margin-bottom:1.4rem;
+  }
+  .eyebrow .sep{color:var(--line-strong);padding-inline:.35em}
+  .hero h1{
+    font-family:var(--slab);font-weight:900;
+    font-size:clamp(2.85rem,10.5vw,7.75rem);
+    line-height:.98;letter-spacing:-.02em;
+    margin-bottom:clamp(1.6rem,4vw,2.4rem);
+    max-width:14ch;
+  }
+  .hero h1 span{display:block}
+  .hero h1 .hollow{
+    color:var(--paper);
+    -webkit-text-stroke:2.5px var(--ember);
+    text-stroke:2.5px var(--ember);
+  }
+  @supports not ((-webkit-text-stroke:1px black) or (text-stroke:1px black)){
+    .hero h1 .hollow{color:var(--ember)}
+  }
+  .hero h1 em{font-style:italic;font-weight:800;color:var(--ember)}
+  .lede{
+    max-width:38rem;font-size:clamp(1.05rem,1.6vw,1.25rem);color:var(--ink-soft);
+    margin-bottom:.9rem;
+  }
+  .lede strong{color:var(--ink)}
+  .es-line{
+    font-family:var(--slab);font-style:italic;font-weight:600;
+    font-size:clamp(1rem,1.5vw,1.15rem);color:var(--clay);
+    margin-bottom:2.2rem;
+  }
+  .cta{display:flex;flex-wrap:wrap;gap:.9rem;align-items:center;margin-bottom:1.6rem}
+  .btn{
+    display:inline-block;text-decoration:none;font-family:var(--slab);font-weight:800;
+    font-size:1.05rem;padding:.95rem 1.6rem;border:2px solid var(--ember);
+    transition:transform .15s ease,background-color .15s ease,color .15s ease;
+  }
+  .btn:active{transform:translateY(2px)}
+  .btn-solid{background:var(--ember);color:#fff}
+  .btn-solid:hover{background:var(--ember-hot);border-color:var(--ember-hot)}
+  .btn-ghost{background:transparent;color:var(--ember-hot)}
+  .btn-ghost:hover{background:rgba(193,68,30,.08)}
+  .hero-note{font-size:.92rem;color:var(--ink-soft)}
+  .hero-note a{font-weight:600}
+
+  /* ---------- duotone dividers ---------- */
+  .duo{height:clamp(2.6rem,6vw,4.25rem)}
+  .duo-a{
+    background:
+      linear-gradient(var(--clay-deep),var(--clay-deep)) right bottom/100% 46% no-repeat,
+      linear-gradient(var(--ember),var(--ember)) left top/64% 54% no-repeat;
+  }
+  .duo-b{
+    background:
+      linear-gradient(var(--clay-deep),var(--clay-deep)) left top/100% 46% no-repeat,
+      linear-gradient(var(--ember),var(--ember)) right bottom/58% 54% no-repeat;
+  }
+
+  /* ---------- section scaffolding ---------- */
+  section{padding:clamp(3.5rem,8vw,6.5rem) 0}
+  .kicker{
+    font-size:.8rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;
+    color:var(--ember-hot);margin-bottom:1rem;
+  }
+  h2{
+    font-family:var(--slab);font-weight:900;letter-spacing:-.015em;
+    font-size:clamp(2rem,5.5vw,3.6rem);line-height:1.05;margin-bottom:1rem;
+  }
+  .section-intro{max-width:40rem;color:var(--ink-soft);margin-bottom:2.5rem}
+
+  /* ---------- services ---------- */
+  .svc{border-top:2px solid var(--ink)}
+  .svc-row{
+    display:grid;grid-template-columns:1fr;gap:1.1rem;
+    padding:clamp(1.8rem,4vw,2.6rem) 0;border-bottom:1px solid var(--line);
+  }
+  .svc-num{
+    font-family:var(--slab);font-weight:800;font-style:italic;
+    color:var(--ember);font-size:1.05rem;letter-spacing:.06em;
+  }
+  .svc-body h3{
+    font-family:var(--slab);font-weight:800;font-size:clamp(1.55rem,3.4vw,2.15rem);
+    letter-spacing:-.01em;line-height:1.1;margin-bottom:.55rem;
+  }
+  .svc-body p{color:var(--ink-soft);max-width:34rem}
+  .svc-icon{color:var(--clay);width:3rem;height:3rem}
+  .svc-icon svg{width:100%;height:100%}
+  @media (min-width:640px){
+    .svc-row{grid-template-columns:4.5rem 1fr auto;align-items:start}
+    .svc-num{padding-top:.5rem}
+    .svc-icon{width:3.4rem;height:3.4rem;margin-top:.3rem}
+  }
+  .svc-note{
+    margin-top:2.2rem;padding:1.1rem 1.3rem;background:var(--paper-deep);
+    border-left:4px solid var(--ember);max-width:44rem;
+  }
+  .svc-note p{font-size:.98rem;color:var(--ink)}
+  .svc-note .es{font-family:var(--slab);font-style:italic;font-weight:600;color:var(--clay)}
+
+  /* ---------- service area (dark duotone block) ---------- */
+  .area{
+    background:linear-gradient(var(--clay) 0 82%,var(--clay-deep) 82% 100%);
+    color:var(--paper);
+  }
+  .area .kicker{color:#F3B497}
+  .area h2{
+    color:var(--paper);font-size:clamp(3rem,12vw,8rem);letter-spacing:-.02em;
+    line-height:.95;margin-bottom:.4rem;
+  }
+  .area h2 .state{
+    font-style:italic;font-weight:800;color:transparent;
+    -webkit-text-stroke:2px #F3B497;text-stroke:2px #F3B497;
+  }
+  @supports not ((-webkit-text-stroke:1px black) or (text-stroke:1px black)){
+    .area h2 .state{color:#F3B497}
+  }
+  .coords{
+    font-size:.85rem;letter-spacing:.22em;text-transform:uppercase;
+    color:#F3B497;margin-bottom:1.8rem;
+  }
+  .area p{max-width:38rem;color:#F8E3D5}
+  .area p + p{margin-top:1rem}
+  .area a{color:#fff;font-weight:700;text-decoration-color:#F3B497;text-underline-offset:.2em}
+
+  /* ---------- trust ---------- */
+  .trust-grid{display:grid;gap:2.4rem;grid-template-columns:1fr}
+  @media (min-width:740px){.trust-grid{grid-template-columns:repeat(3,1fr);gap:2.2rem}}
+  .trust-item{border-top:2px solid var(--ink);padding-top:1.3rem}
+  .trust-item .t-icon{color:var(--ember);width:2rem;height:2rem;margin-bottom:.9rem}
+  .trust-item h3{
+    font-family:var(--slab);font-weight:800;font-size:1.3rem;margin-bottom:.5rem;
+    letter-spacing:-.01em;
+  }
+  .trust-item p{color:var(--ink-soft);font-size:.98rem}
+  .trust-item p + p{margin-top:.5rem}
+  .trust-item .es{font-family:var(--slab);font-style:italic;color:var(--clay)}
+  .trust-item a{font-weight:600}
+
+  /* ---------- contact ---------- */
+  .contact{background:var(--paper-deep)}
+  .contact h2{max-width:16ch}
+  .contact h2 em{font-style:italic;color:var(--ember)}
+  .bignum{
+    display:inline-block;font-family:var(--slab);font-weight:900;
+    font-size:clamp(2.1rem,8.5vw,5.5rem);letter-spacing:-.02em;line-height:1.05;
+    color:var(--ink);text-decoration:none;border-bottom:6px solid var(--ember);
+    margin:1.2rem 0 1.4rem;
+  }
+  .bignum:hover{color:var(--ember-hot)}
+  .contact .fine{max-width:36rem;color:var(--ink-soft);margin-bottom:1.8rem}
+  .contact .fine strong{color:var(--ink)}
+
+  /* ---------- footer ---------- */
+  footer{background:var(--ink);color:#D9C9BA;padding:2.6rem 0 3rem}
+  .foot-top{
+    display:flex;flex-wrap:wrap;gap:1rem;justify-content:space-between;align-items:baseline;
+    padding-bottom:1.4rem;margin-bottom:1.4rem;border-bottom:1px solid rgba(250,245,239,.18);
+  }
+  .foot-brand{font-family:var(--slab);font-weight:900;font-size:1.2rem;color:var(--paper)}
+  .foot-brand .dot{display:inline-block;width:.45rem;height:.45rem;background:var(--ember);margin:0 .35rem .05rem}
+  footer a{color:var(--paper)}
+  .foot-phone{font-family:var(--slab);font-weight:800;text-decoration:none;border-bottom:2px solid var(--ember)}
+  .credit{font-size:.9rem}
+  .concept-note{
+    margin-top:.6rem;font-size:.9rem;color:#B49B87;
+    border-left:3px solid var(--ember);padding-left:.85rem;max-width:44rem;
+  }
+
+  /* ---------- sticky mobile call bar ---------- */
+  .callbar{
+    position:fixed;left:0;right:0;bottom:0;z-index:60;display:flex;
+    box-shadow:0 -8px 28px rgba(42,27,16,.25);
+  }
+  .callbar a{
+    font-family:var(--slab);font-weight:800;font-size:1.02rem;text-decoration:none;
+    text-align:center;padding:1rem .5rem calc(1rem + env(safe-area-inset-bottom));
+    color:#fff;
+  }
+  .callbar .cb-call{flex:1;background:var(--ember)}
+  .callbar .cb-call:active{background:var(--ember-hot)}
+  .callbar .cb-text{flex:0 0 32%;background:var(--ink)}
+  body{padding-bottom:4.4rem}
+  @media (min-width:761px){
+    .callbar{display:none}
+    body{padding-bottom:0}
+  }
+
+  /* ---------- load-in reveal ---------- */
+  @media (prefers-reduced-motion:no-preference){
+    .reveal{opacity:0;transform:translateY(16px);animation:rise .75s cubic-bezier(.2,.6,.2,1) forwards}
+    .d1{animation-delay:.05s}.d2{animation-delay:.15s}.d3{animation-delay:.25s}
+    .d4{animation-delay:.35s}.d5{animation-delay:.45s}.d6{animation-delay:.55s}
+    @keyframes rise{to{opacity:1;transform:none}}
+  }
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<div class="topstrip" aria-hidden="true"></div>
+
+<header class="wrap top">
+  <a class="brand" href="#main">AM<span class="dot" aria-hidden="true"></span>HVAC</a>
+  <nav aria-label="Sections">
+    <a href="#services">Services</a>
+    <a href="#area">Service area</a>
+    <a href="#contact">Contact</a>
+  </nav>
+  <a class="top-call" href="tel:+15125775337">(512) 577-5337</a>
+</header>
+
+<main id="main">
+
+  <!-- ============ HERO ============ -->
+  <section class="hero">
+    <div class="wrap">
+      <p class="eyebrow reveal d1">AM HVAC<span class="sep">/</span>Residential heating + air<span class="sep">/</span>Austin, TX</p>
+      <h1>
+        <span class="reveal d2">Austin runs hot.</span>
+        <span class="hollow reveal d3">Your house</span>
+        <span class="reveal d4"><em>doesn&rsquo;t have to.</em></span>
+      </h1>
+      <p class="lede reveal d5">Repairs, tune-ups &amp; full replacements for Austin homes. One number, and it takes <strong>calls and texts</strong> &mdash; whichever suits you.</p>
+      <p class="es-line reveal d5">Servicio en espa&ntilde;ol &mdash; llame o mande texto al mismo n&uacute;mero.</p>
+      <div class="cta reveal d6">
+        <a class="btn btn-solid" href="tel:+15125775337">Call (512) 577-5337</a>
+        <a class="btn btn-ghost" href="sms:+15125775337">Or send a text</a>
+      </div>
+      <p class="hero-note reveal d6">Prefer to look around first? <a href="https://www.yelp.com/search?find_desc=AM+HVAC&amp;find_loc=Austin%2C+TX">Find AM HVAC on Yelp</a> and tap &ldquo;Request a Quote.&rdquo;</p>
+    </div>
+  </section>
+
+  <div class="duo duo-a" aria-hidden="true"></div>
+
+  <!-- ============ SERVICES ============ -->
+  <section id="services">
+    <div class="wrap">
+      <p class="kicker">What we do</p>
+      <h2>Three jobs. Done properly.</h2>
+      <p class="section-intro">Residential work only &mdash; your home, your comfort, your utility bill. No upsells dressed up as diagnostics.</p>
+
+      <div class="svc">
+        <article class="svc-row">
+          <p class="svc-num">01</p>
+          <div class="svc-body">
+            <h3>Repairs</h3>
+            <p>AC blowing warm, furnace short-cycling, a rattle you&rsquo;ve been pretending not to hear &mdash; we diagnose it, explain the fix in plain language, and repair it.</p>
+          </div>
+          <div class="svc-icon" aria-hidden="true">
+            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M29.4 12.6a1.9 1.9 0 0 0 0 2.7l3.3 3.3a1.9 1.9 0 0 0 2.7 0l7.5-7.5A11.4 11.4 0 0 1 27.8 26.2L14 40a4.1 4.1 0 0 1-5.8-5.8L22 20.4A11.4 11.4 0 0 1 37 5.3l-7.5 7.4Z"/>
+            </svg>
+          </div>
+        </article>
+
+        <article class="svc-row">
+          <p class="svc-num">02</p>
+          <div class="svc-body">
+            <h3>Tune-ups</h3>
+            <p>Seasonal maintenance that keeps your system honest &mdash; cleaned, checked, and tightened &mdash; so a 105&deg; week doesn&rsquo;t catch your equipment off guard.</p>
+          </div>
+          <div class="svc-icon" aria-hidden="true">
+            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M9.5 33A16 16 0 1 1 38.5 33"/>
+              <path d="M24 28.5 32 18"/>
+              <circle cx="24" cy="28.5" r="2.4" fill="currentColor" stroke="none"/>
+              <path d="M24 10.5v3M13.5 14.9l2.1 2.1M34.5 14.9l-2.1 2.1"/>
+            </svg>
+          </div>
+        </article>
+
+        <article class="svc-row">
+          <p class="svc-num">03</p>
+          <div class="svc-body">
+            <h3>Replacements</h3>
+            <p>When a repair stops making sense, we say so &mdash; then handle the full replacement, with equipment sized for your house instead of the biggest ticket.</p>
+          </div>
+          <div class="svc-icon" aria-hidden="true">
+            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="45 8 45 19 34 19"/>
+              <polyline points="3 40 3 29 14 29"/>
+              <path d="M7.6 18A18 18 0 0 1 37.2 11.3L45 19M3 29l7.8 7.7A18 18 0 0 0 40.4 30"/>
+            </svg>
+          </div>
+        </article>
+      </div>
+
+      <div class="svc-note">
+        <p>Every service, in English or Spanish. <span class="es">Todo nuestro trabajo, tambi&eacute;n en espa&ntilde;ol.</span></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SERVICE AREA ============ -->
+  <section class="area" id="area">
+    <div class="wrap">
+      <p class="kicker">Service area</p>
+      <h2>Austin, <span class="state">TX.</span></h2>
+      <p class="coords">30.27&deg; N &nbsp;&middot;&nbsp; 97.74&deg; W</p>
+      <p>That&rsquo;s the whole map. We work on homes in and around Austin &mdash; the city we&rsquo;re based in, the summers we know by heart.</p>
+      <p>Close by but not sure you&rsquo;re in range? <a href="tel:+15125775337">Call or text (512) 577-5337</a> and we&rsquo;ll tell you straight.</p>
+    </div>
+  </section>
+
+  <!-- ============ TRUST ============ -->
+  <section id="trust">
+    <div class="wrap">
+      <p class="kicker">Before you call</p>
+      <h2>No fluff. Just the facts.</h2>
+      <p class="section-intro">We&rsquo;d rather earn the call than talk you into it. Here&rsquo;s what you can check for yourself.</p>
+
+      <div class="trust-grid">
+        <article class="trust-item">
+          <div class="t-icon" aria-hidden="true">
+            <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round">
+              <path d="M16 4v24M6 10l20 12M26 10 6 22"/>
+            </svg>
+          </div>
+          <h3>We&rsquo;re on Yelp</h3>
+          <p>A real, active profile with a working &ldquo;Request a Quote&rdquo; button. Read up on us before you commit &mdash; we don&rsquo;t mind a bit.</p>
+          <p><a href="https://www.yelp.com/search?find_desc=AM+HVAC&amp;find_loc=Austin%2C+TX">AM HVAC on Yelp &rarr;</a></p>
+        </article>
+
+        <article class="trust-item">
+          <div class="t-icon" aria-hidden="true">
+            <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M27 5H5a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2h6l5 6 5-6h6a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2Z"/>
+              <path d="M9 12h14M9 17h9"/>
+            </svg>
+          </div>
+          <h3>English y espa&ntilde;ol</h3>
+          <p>Full service in either language, from first call to final walkthrough.</p>
+          <p class="es">Ll&aacute;menos en el idioma que prefiera &mdash; el servicio es el mismo.</p>
+        </article>
+
+        <article class="trust-item">
+          <div class="t-icon" aria-hidden="true">
+            <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M29 22.6v4a2.7 2.7 0 0 1-2.9 2.7 26.4 26.4 0 0 1-11.5-4.1 26 26 0 0 1-8-8A26.4 26.4 0 0 1 2.5 5.6 2.7 2.7 0 0 1 5.2 2.7h4a2.7 2.7 0 0 1 2.7 2.3c.17 1.28.48 2.54.93 3.75a2.7 2.7 0 0 1-.6 2.8l-1.7 1.7a21.3 21.3 0 0 0 8 8l1.7-1.7a2.7 2.7 0 0 1 2.8-.6c1.21.45 2.47.76 3.75.93A2.7 2.7 0 0 1 29 22.6Z"/>
+            </svg>
+          </div>
+          <h3>One number, calls &amp; texts</h3>
+          <p>No contact form on this page &mdash; just a number that answers both ways. Text a photo of the unit if that&rsquo;s easier; it all reaches us.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <div class="duo duo-b" aria-hidden="true"></div>
+
+  <!-- ============ CONTACT ============ -->
+  <section class="contact" id="contact">
+    <div class="wrap">
+      <p class="kicker">Get in touch</p>
+      <h2>Say hi. <em>O di hola.</em></h2>
+      <a class="bignum" href="tel:+15125775337">(512)&nbsp;577-5337</a>
+      <p class="fine"><strong>Call or text</strong> &mdash; the same number takes both, in English or Spanish. No public email, no address form, no runaround. Tell us what the system&rsquo;s doing and we&rsquo;ll take it from there.</p>
+      <div class="cta">
+        <a class="btn btn-solid" href="sms:+15125775337">Text us now</a>
+        <a class="btn btn-ghost" href="https://www.yelp.com/search?find_desc=AM+HVAC&amp;find_loc=Austin%2C+TX">Request a quote on Yelp</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <p class="foot-brand">AM<span class="dot" aria-hidden="true"></span>HVAC &mdash; Austin, TX</p>
+      <a class="foot-phone" href="tel:+15125775337">(512) 577-5337 &middot; call or text</a>
+    </div>
+    <p class="credit">Website concept by Murrieta Web Studio</p>
+    <p class="concept-note">This is a design concept created for AM HVAC. Not yet the official website of AM HVAC.</p>
+  </div>
+</footer>
+
+<div class="callbar">
+  <a class="cb-call" href="tel:+15125775337">Call (512) 577-5337</a>
+  <a class="cb-text" href="sms:+15125775337">Text us</a>
+</div>
+
+</body>
+</html>
