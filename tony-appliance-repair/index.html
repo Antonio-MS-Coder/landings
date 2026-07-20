@@ -1,0 +1,936 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#FCFCFD">
+<title>Tony Appliance Repair — Central Austin, TX</title>
+<meta name="description" content="Design concept for Tony Appliance Repair, Central Austin, TX. Same-day and next-day appliance repair with factory-certified parts.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&display=swap" rel="stylesheet">
+<style>
+  /* ============ RESET ============ */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  img { display: block; max-width: 100%; height: auto; }
+  a { color: inherit; }
+
+  /* ============ TOKENS ============ */
+  :root {
+    --porcelain:   #FCFCFD;   /* page ground                  */
+    --panel:       #F3F5F7;   /* cool grey panel              */
+    --graphite:    #16191D;   /* monument slab                */
+    --graphite-2:  #1D2126;   /* slab inner line              */
+    --ink:         #14171A;   /* primary text                 */
+    --steel:       #59616A;   /* secondary text               */
+    --steel-lt:    #8A929B;   /* tertiary / captions          */
+    --hairline:    #E0E4E8;   /* rules on light               */
+    --hairline-dk: #2B3138;   /* rules on graphite            */
+    --red:         #C8102E;   /* the one signal red           */
+    --red-deep:    #A50D26;   /* pressed state                */
+    --red-lit:     #FF3549;   /* same red, lit for dark bg    */
+    --font: "Archivo", "Helvetica Neue", Arial, sans-serif;
+    --measure: 34rem;
+    --gutter: clamp(1.25rem, 5vw, 4rem);
+    --maxw: 76rem;
+  }
+
+  ::selection { background: var(--red); color: #fff; }
+
+  html { scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after { animation: none !important; transition: none !important; }
+  }
+
+  body {
+    font-family: var(--font);
+    font-size: 1.0625rem;
+    line-height: 1.6;
+    color: var(--ink);
+    background: var(--porcelain);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  a:focus-visible, button:focus-visible {
+    outline: 2px solid var(--red);
+    outline-offset: 3px;
+  }
+
+  .skip {
+    position: absolute; left: -9999px; top: 0;
+    background: var(--ink); color: #fff;
+    padding: .6rem 1rem; z-index: 100; font-size: .85rem;
+  }
+  .skip:focus { left: 0; }
+
+  .wrap {
+    max-width: var(--maxw);
+    margin-inline: auto;
+    padding-inline: var(--gutter);
+  }
+
+  /* ============ SHARED TYPE ============ */
+  .kicker {
+    display: flex;
+    align-items: baseline;
+    gap: .75rem;
+    font-size: .72rem;
+    font-weight: 600;
+    letter-spacing: .22em;
+    text-transform: uppercase;
+    color: var(--steel);
+  }
+  .kicker .idx {
+    color: var(--red);
+    font-feature-settings: "tnum";
+    letter-spacing: .1em;
+  }
+  .kicker::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: var(--hairline);
+    transform: translateY(-.2em);
+  }
+  .dark .kicker { color: var(--steel-lt); }
+  .dark .kicker .idx { color: var(--red-lit); }
+  .dark .kicker::after { background: var(--hairline-dk); }
+
+  .display {
+    font-weight: 800;
+    font-stretch: 122%;
+    text-transform: uppercase;
+    line-height: .95;
+    letter-spacing: -.015em;
+    text-wrap: balance;
+  }
+
+  /* ============ HEADER ============ */
+  .site-head {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: color-mix(in srgb, var(--porcelain) 92%, transparent);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--hairline);
+  }
+  .site-head .wrap {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    height: 3.75rem;
+  }
+  .wordmark {
+    display: flex;
+    align-items: center;
+    gap: .6rem;
+    text-decoration: none;
+    font-size: .82rem;
+    font-weight: 700;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+  .wordmark .lamp {
+    width: .55rem; height: .55rem;
+    background: var(--red);
+    border-radius: 1px;
+    flex: none;
+  }
+  .wordmark span span { color: var(--steel); font-weight: 500; }
+  .head-tel {
+    text-decoration: none;
+    font-weight: 700;
+    font-size: .95rem;
+    font-feature-settings: "tnum";
+    white-space: nowrap;
+    border-bottom: 2px solid var(--red);
+    padding-bottom: .1rem;
+    transition: color .15s ease;
+  }
+  .head-tel:hover { color: var(--red); }
+
+  /* ============ HERO ============ */
+  .hero { padding-block: clamp(4rem, 11vh, 8.5rem) clamp(3rem, 8vh, 6rem); }
+  .hero .kicker { max-width: 40rem; }
+  .hero h1 {
+    font-size: clamp(3.3rem, 13.5vw, 10.5rem);
+    margin-top: clamp(1.5rem, 4vh, 2.75rem);
+  }
+  .hero h1 em {
+    font-style: normal;
+    color: var(--red);
+  }
+  .hero .lede {
+    max-width: var(--measure);
+    margin-top: clamp(1.5rem, 4vh, 2.5rem);
+    font-size: clamp(1.05rem, 1.6vw, 1.2rem);
+    line-height: 1.55;
+    color: var(--steel);
+    text-wrap: pretty;
+  }
+  .cta-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1rem 1.5rem;
+    margin-top: 2.25rem;
+  }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: .6rem;
+    background: var(--red);
+    color: #fff;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1rem;
+    font-feature-settings: "tnum";
+    letter-spacing: .01em;
+    padding: 1rem 1.75rem;
+    border-radius: 2px;
+    transition: background .15s ease, transform .15s ease;
+  }
+  .btn:hover { background: var(--red-deep); }
+  .btn:active { transform: translateY(1px); }
+  .btn svg { flex: none; }
+  .link-quiet {
+    font-weight: 600;
+    font-size: .95rem;
+    color: var(--steel);
+    text-decoration: none;
+    border-bottom: 1px solid var(--hairline);
+    padding-bottom: .15rem;
+    transition: color .15s ease, border-color .15s ease;
+  }
+  .link-quiet:hover { color: var(--ink); border-color: var(--red); }
+
+  .hero-strip {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    justify-content: start;
+    gap: .5rem 3rem;
+    margin-top: clamp(3rem, 8vh, 5rem);
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--hairline);
+  }
+  .hero-strip li {
+    font-size: .8rem;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    color: var(--steel);
+  }
+  .hero-strip strong {
+    display: block;
+    font-size: 1.05rem;
+    font-weight: 700;
+    letter-spacing: 0;
+    color: var(--ink);
+    font-feature-settings: "tnum";
+  }
+  .hero-strip .star { color: var(--red); }
+  @media (max-width: 620px) {
+    .hero-strip { grid-template-columns: 1fr; gap: 1.1rem; }
+  }
+
+  /* staggered load reveal */
+  @keyframes rise {
+    from { opacity: 0; transform: translateY(14px); }
+    to   { opacity: 1; transform: none; }
+  }
+  .hero > * { animation: rise .7s cubic-bezier(.2,.7,.2,1) backwards; }
+  .hero > *:nth-child(1) { animation-delay: .05s; }
+  .hero > *:nth-child(2) { animation-delay: .12s; }
+  .hero > *:nth-child(3) { animation-delay: .22s; }
+  .hero > *:nth-child(4) { animation-delay: .3s; }
+  .hero > *:nth-child(5) { animation-delay: .4s; }
+
+  /* ============ SECTION SHELL ============ */
+  section { scroll-margin-top: 4.5rem; }
+  .section-pad { padding-block: clamp(3.5rem, 9vh, 7rem); }
+  .section-head h2 {
+    font-size: clamp(1.9rem, 4.2vw, 3rem);
+    font-weight: 800;
+    font-stretch: 116%;
+    line-height: 1.05;
+    letter-spacing: -.01em;
+    margin-top: 1.4rem;
+    text-wrap: balance;
+  }
+  .section-head p.sub {
+    max-width: var(--measure);
+    margin-top: 1rem;
+    color: var(--steel);
+    text-wrap: pretty;
+  }
+
+  /* ============ SERVICES ============ */
+  .svc-list {
+    list-style: none;
+    margin-top: clamp(2rem, 5vh, 3.5rem);
+    border-top: 1px solid var(--hairline);
+  }
+  .svc-list li {
+    display: grid;
+    grid-template-columns: 3.2rem 3.4rem 1fr;
+    grid-template-areas: "num icon body";
+    gap: 1rem 1.25rem;
+    align-items: start;
+    padding-block: 1.75rem;
+    border-bottom: 1px solid var(--hairline);
+  }
+  .svc-num {
+    grid-area: num;
+    font-feature-settings: "tnum";
+    font-weight: 600;
+    font-size: .85rem;
+    color: var(--steel-lt);
+    padding-top: .35rem;
+    transition: color .15s ease;
+  }
+  .svc-list li:hover .svc-num { color: var(--red); }
+  .svc-icon { grid-area: icon; padding-top: .1rem; }
+  .svc-icon svg { width: 2.4rem; height: 2.4rem; stroke: var(--ink); }
+  .svc-body { grid-area: body; }
+  .svc-body h3 {
+    font-size: clamp(1.25rem, 2.4vw, 1.6rem);
+    font-weight: 700;
+    font-stretch: 112%;
+    letter-spacing: -.005em;
+  }
+  .svc-body p {
+    margin-top: .4rem;
+    max-width: var(--measure);
+    color: var(--steel);
+    font-size: .98rem;
+    text-wrap: pretty;
+  }
+  @media (max-width: 560px) {
+    .svc-list li {
+      grid-template-columns: 3.4rem 1fr;
+      grid-template-areas: "icon num" "icon body";
+      gap: .1rem 1.1rem;
+    }
+    .svc-num { padding-top: 0; }
+  }
+  .svc-note {
+    margin-top: 1.5rem;
+    font-size: .85rem;
+    letter-spacing: .04em;
+    color: var(--steel-lt);
+  }
+
+  /* ============ PROMISES ============ */
+  .promises { background: var(--panel); border-block: 1px solid var(--hairline); }
+  .promise-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2.5rem;
+    margin-top: clamp(2rem, 5vh, 3.5rem);
+  }
+  .promise {
+    border-top: 2px solid var(--ink);
+    padding-top: 1.25rem;
+  }
+  .promise svg { width: 2rem; height: 2rem; stroke: var(--ink); }
+  .promise h3 {
+    margin-top: .9rem;
+    font-size: 1.15rem;
+    font-weight: 700;
+    font-stretch: 112%;
+  }
+  .promise p {
+    margin-top: .5rem;
+    font-size: .95rem;
+    color: var(--steel);
+    text-wrap: pretty;
+  }
+  @media (max-width: 760px) {
+    .promise-grid { grid-template-columns: 1fr; gap: 1.75rem; }
+  }
+
+  /* ============ PHOTOGRAPH ============ */
+  .photo-band { padding-block: clamp(3.5rem, 9vh, 7rem); }
+  .photo-band figure {
+    border: 1px solid var(--hairline);
+    padding: clamp(.5rem, 1.5vw, 1rem);
+    background: #fff;
+  }
+  .photo-band img { width: 100%; }
+  .photo-band figcaption {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    padding-top: clamp(.6rem, 1.5vw, .9rem);
+    font-size: .75rem;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--steel-lt);
+  }
+  .photo-band figcaption .cap-dot::before {
+    content: "";
+    display: inline-block;
+    width: .45rem; height: .45rem;
+    background: var(--red);
+    border-radius: 1px;
+    margin-right: .55rem;
+    transform: translateY(.02rem);
+  }
+
+  /* ============ THE RECORD (monument) ============ */
+  .record {
+    background: var(--graphite);
+    color: var(--porcelain);
+  }
+  .record .section-head h2 { color: #fff; }
+  .record .section-head p.sub { color: var(--steel-lt); }
+
+  .monument {
+    margin-top: clamp(3rem, 8vh, 5.5rem);
+    border: 1px solid var(--hairline-dk);
+  }
+  .monu-top {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: clamp(2.5rem, 7vh, 5rem) var(--gutter) clamp(2.25rem, 6vh, 4rem);
+    border-bottom: 1px solid var(--hairline-dk);
+  }
+  .monu-rating {
+    display: flex;
+    align-items: baseline;
+    gap: clamp(.75rem, 2.5vw, 1.5rem);
+    font-weight: 800;
+    font-stretch: 118%;
+    font-feature-settings: "tnum";
+    font-size: clamp(5rem, 17vw, 12.5rem);
+    line-height: .9;
+    letter-spacing: -.03em;
+    color: #fff;
+  }
+  .monu-rating .star-lg {
+    width: clamp(2.6rem, 8vw, 6rem);
+    height: clamp(2.6rem, 8vw, 6rem);
+    fill: var(--red-lit);
+    transform: translateY(clamp(-.2rem, -.5vw, -.4rem));
+    flex: none;
+    align-self: center;
+  }
+  .monu-rating .of {
+    font-size: clamp(1.3rem, 3.6vw, 2.6rem);
+    font-weight: 500;
+    font-stretch: 100%;
+    letter-spacing: 0;
+    color: var(--steel-lt);
+  }
+  .monu-top .monu-label {
+    margin-top: 1.4rem;
+    font-size: .78rem;
+    font-weight: 600;
+    letter-spacing: .24em;
+    text-transform: uppercase;
+    color: var(--steel-lt);
+  }
+  .monu-top .monu-label strong { color: #fff; font-weight: 700; }
+
+  .monu-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+  .monu-cell {
+    padding: clamp(2rem, 5vh, 3.25rem) var(--gutter);
+    text-align: center;
+  }
+  .monu-cell + .monu-cell { border-left: 1px solid var(--hairline-dk); }
+  .monu-cell .num {
+    font-weight: 800;
+    font-stretch: 118%;
+    font-feature-settings: "tnum";
+    font-size: clamp(3.4rem, 10vw, 7rem);
+    line-height: 1;
+    letter-spacing: -.02em;
+    color: #fff;
+  }
+  .monu-cell .lbl {
+    margin-top: .9rem;
+    font-size: .74rem;
+    font-weight: 600;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: var(--steel-lt);
+  }
+  .monu-cell .lbl strong { color: #fff; font-weight: 700; }
+  @media (max-width: 560px) {
+    .monu-row { grid-template-columns: 1fr; }
+    .monu-cell + .monu-cell { border-left: 0; border-top: 1px solid var(--hairline-dk); }
+  }
+
+  .record-note {
+    max-width: 42rem;
+    margin: clamp(2rem, 5vh, 3rem) auto 0;
+    text-align: center;
+    color: var(--steel-lt);
+    font-size: 1rem;
+    text-wrap: pretty;
+  }
+  .record-note strong { color: #fff; font-weight: 600; }
+
+  /* ============ SERVICE AREA ============ */
+  .area .area-grid {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 2.5rem;
+    align-items: start;
+    margin-top: clamp(2rem, 5vh, 3rem);
+  }
+  .area-mark { padding-top: .4rem; }
+  .area-mark svg { width: 4rem; height: 4rem; }
+  .area h2.big-place {
+    font-size: clamp(2.6rem, 7.5vw, 5.5rem);
+    font-weight: 800;
+    font-stretch: 120%;
+    text-transform: uppercase;
+    line-height: .95;
+    letter-spacing: -.015em;
+  }
+  .area h2.big-place em { font-style: normal; color: var(--red); }
+  .area p {
+    max-width: var(--measure);
+    margin-top: 1.25rem;
+    color: var(--steel);
+    text-wrap: pretty;
+  }
+  @media (max-width: 560px) {
+    .area .area-grid { grid-template-columns: 1fr; gap: 1.25rem; }
+  }
+
+  /* ============ CONTACT ============ */
+  .contact { background: var(--panel); border-top: 1px solid var(--hairline); }
+  .tel-giant {
+    display: inline-block;
+    margin-top: clamp(1.75rem, 5vh, 3rem);
+    text-decoration: none;
+    font-weight: 800;
+    font-stretch: 118%;
+    font-feature-settings: "tnum";
+    font-size: clamp(2.1rem, 7.8vw, 6rem);
+    line-height: 1;
+    letter-spacing: -.02em;
+    border-bottom: 4px solid var(--red);
+    padding-bottom: .35rem;
+    transition: color .15s ease;
+  }
+  .tel-giant:hover { color: var(--red); }
+  .contact-rows {
+    margin-top: clamp(2.25rem, 6vh, 3.5rem);
+    border-top: 1px solid var(--hairline);
+    max-width: 44rem;
+  }
+  .contact-row {
+    display: grid;
+    grid-template-columns: 9rem 1fr;
+    gap: 1rem;
+    padding-block: 1.1rem;
+    border-bottom: 1px solid var(--hairline);
+    align-items: baseline;
+  }
+  .contact-row .lbl {
+    font-size: .72rem;
+    font-weight: 600;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: var(--steel-lt);
+  }
+  .contact-row a {
+    text-decoration: none;
+    font-weight: 600;
+    overflow-wrap: anywhere;
+    border-bottom: 1px solid transparent;
+    transition: color .15s ease;
+  }
+  .contact-row a:hover { color: var(--red); }
+  @media (max-width: 560px) {
+    .contact-row { grid-template-columns: 1fr; gap: .2rem; }
+  }
+  .contact .cta-row { margin-top: 2.5rem; }
+
+  /* ============ FOOTER ============ */
+  .site-foot {
+    background: var(--graphite);
+    color: var(--steel-lt);
+    padding-block: 2.5rem 3rem;
+    font-size: .84rem;
+  }
+  .site-foot .wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 1.1rem;
+  }
+  .foot-brand {
+    display: flex;
+    align-items: center;
+    gap: .6rem;
+    color: #fff;
+    font-weight: 700;
+    font-size: .8rem;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+  }
+  .foot-brand .lamp {
+    width: .5rem; height: .5rem;
+    background: var(--red-lit);
+    border-radius: 1px;
+  }
+  .site-foot hr {
+    border: 0;
+    border-top: 1px solid var(--hairline-dk);
+  }
+  .site-foot p { text-wrap: pretty; max-width: 52rem; }
+  .site-foot .concept-note { color: var(--steel-lt); }
+  .site-foot .studio { color: #fff; font-weight: 600; }
+
+  /* ============ STICKY CALL BAR (mobile) ============ */
+  .callbar {
+    display: none;
+    position: fixed;
+    inset: auto 0 0 0;
+    z-index: 60;
+    background: var(--red);
+    padding-bottom: env(safe-area-inset-bottom);
+    box-shadow: 0 -6px 24px rgba(20, 23, 26, .18);
+  }
+  .callbar a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: .65rem;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1.05rem;
+    font-feature-settings: "tnum";
+    letter-spacing: .01em;
+    padding: 1rem 1.25rem;
+  }
+  .callbar a:active { background: var(--red-deep); }
+  .callbar svg { flex: none; }
+  @media (max-width: 759px) {
+    .callbar { display: block; }
+    body { padding-bottom: calc(3.6rem + env(safe-area-inset-bottom)); }
+  }
+</style>
+</head>
+<body>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<!-- ================= HEADER ================= -->
+<header class="site-head">
+  <div class="wrap">
+    <a class="wordmark" href="#top" aria-label="Tony Appliance Repair — back to top">
+      <span class="lamp" aria-hidden="true"></span>
+      <span>Tony <span>Appliance Repair</span></span>
+    </a>
+    <a class="head-tel" href="tel:+15127887346">(512)&nbsp;788-7346</a>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- ================= HERO ================= -->
+  <section class="hero wrap" id="top" aria-labelledby="hero-h">
+    <p class="kicker"><span class="idx">Appliance repair</span> Central Austin, TX</p>
+    <h1 class="display" id="hero-h">Same-day.<br>Next-day.<br><em>Fixed.</em></h1>
+    <p class="lede">Refrigerators, washers and dryers, ovens and ranges, dishwashers &mdash; every
+      major brand, repaired with factory-certified parts.</p>
+    <div class="cta-row">
+      <a class="btn" href="tel:+15127887346">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.13.96.36 1.9.7 2.8a2 2 0 0 1-.45 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.45c.9.34 1.84.57 2.8.7a2 2 0 0 1 1.7 2.05Z"/></svg>
+        Call (512) 788-7346
+      </a>
+      <a class="link-quiet" href="mailto:tonyappliancerepair@yahoo.com">or email Tony</a>
+    </div>
+    <ul class="hero-strip" aria-label="Verified ratings summary">
+      <li><strong>4.5 <span class="star" aria-hidden="true">&#9733;</span> &middot; 427 reviews</strong> on Yelp</li>
+      <li><strong>383 recommendations</strong> on Nextdoor</li>
+      <li><strong>Central Austin</strong> service area</li>
+    </ul>
+  </section>
+
+  <!-- ================= SERVICES ================= -->
+  <section class="section-pad wrap" id="services" aria-labelledby="svc-h">
+    <div class="section-head">
+      <p class="kicker"><span class="idx">01</span> What we fix</p>
+      <h2 id="svc-h">Four machines. Every major brand.</h2>
+      <p class="sub">If it lives in your kitchen or laundry room and it has stopped doing its job,
+        it belongs on this list.</p>
+    </div>
+
+    <ul class="svc-list">
+      <li>
+        <span class="svc-num" aria-hidden="true">01</span>
+        <span class="svc-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round">
+            <rect x="6.5" y="2.75" width="11" height="18.5" rx="1.5"/>
+            <line x1="6.5" y1="9.5" x2="17.5" y2="9.5"/>
+            <line x1="9" y1="5" x2="9" y2="7.25"/>
+            <line x1="9" y1="12" x2="9" y2="16"/>
+            <circle cx="15" cy="5.25" r="1" fill="#C8102E" stroke="none"/>
+          </svg>
+        </span>
+        <span class="svc-body">
+          <h3>Refrigerators</h3>
+          <p>Not cooling, icing over, leaking, or running loud. Diagnosed at the machine and
+            repaired with factory-certified parts.</p>
+        </span>
+      </li>
+      <li>
+        <span class="svc-num" aria-hidden="true">02</span>
+        <span class="svc-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round">
+            <rect x="4.5" y="3" width="15" height="18" rx="1.5"/>
+            <circle cx="12" cy="13.5" r="4.25"/>
+            <path d="M8.6 12.4c1.1 1 2.2-1 3.4 0s2.3 1 3.4 0"/>
+            <line x1="7.25" y1="6" x2="10.25" y2="6"/>
+            <circle cx="16.75" cy="6" r="1" fill="#C8102E" stroke="none"/>
+          </svg>
+        </span>
+        <span class="svc-body">
+          <h3>Washers &amp; Dryers</h3>
+          <p>Won&rsquo;t drain, won&rsquo;t spin, won&rsquo;t heat, won&rsquo;t start. Front-load,
+            top-load, and stacked units across all major brands.</p>
+        </span>
+      </li>
+      <li>
+        <span class="svc-num" aria-hidden="true">03</span>
+        <span class="svc-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round">
+            <rect x="4" y="4" width="16" height="16.5" rx="1.5"/>
+            <line x1="4" y1="9" x2="20" y2="9"/>
+            <circle cx="7.25" cy="6.5" r="1"/>
+            <circle cx="10.75" cy="6.5" r="1"/>
+            <circle cx="16.75" cy="6.5" r="1" fill="#C8102E" stroke="none"/>
+            <line x1="7.5" y1="12" x2="16.5" y2="12"/>
+            <line x1="7.5" y1="16.5" x2="16.5" y2="16.5"/>
+          </svg>
+        </span>
+        <span class="svc-body">
+          <h3>Ovens &amp; Ranges</h3>
+          <p>Uneven heat, failed elements and igniters, dead burners, control faults. Repaired,
+            not worked around.</p>
+        </span>
+      </li>
+      <li>
+        <span class="svc-num" aria-hidden="true">04</span>
+        <span class="svc-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round">
+            <rect x="4.5" y="3" width="15" height="18" rx="1.5"/>
+            <line x1="4.5" y1="7.75" x2="19.5" y2="7.75"/>
+            <line x1="7.25" y1="5.4" x2="11.25" y2="5.4"/>
+            <circle cx="16.75" cy="5.4" r="1" fill="#C8102E" stroke="none"/>
+            <line x1="7.5" y1="11.5" x2="16.5" y2="11.5"/>
+            <line x1="9" y1="11.5" x2="9" y2="13.25"/>
+            <line x1="12" y1="11.5" x2="12" y2="13.25"/>
+            <line x1="15" y1="11.5" x2="15" y2="13.25"/>
+            <line x1="7.5" y1="16.5" x2="16.5" y2="16.5"/>
+            <line x1="9" y1="16.5" x2="9" y2="18.25"/>
+            <line x1="12" y1="16.5" x2="12" y2="18.25"/>
+            <line x1="15" y1="16.5" x2="15" y2="18.25"/>
+          </svg>
+        </span>
+        <span class="svc-body">
+          <h3>Dishwashers</h3>
+          <p>Not draining, not cleaning, leaking mid-cycle. Serviced, sealed, and back on
+            the rack.</p>
+        </span>
+      </li>
+    </ul>
+    <p class="svc-note">All major appliance brands. One number: (512) 788-7346.</p>
+  </section>
+
+  <!-- ================= PROMISES ================= -->
+  <section class="promises section-pad" id="promises" aria-labelledby="promise-h">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="kicker"><span class="idx">02</span> How we work</p>
+        <h2 id="promise-h">Two promises. Both kept.</h2>
+      </div>
+      <div class="promise-grid">
+        <div class="promise">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="9"/>
+            <line x1="12" y1="12" x2="12" y2="6.5"/>
+            <line x1="12" y1="12" x2="16" y2="14" stroke="#C8102E"/>
+          </svg>
+          <h3>Same-day / next-day service</h3>
+          <p>A dead refrigerator can&rsquo;t wait a week, so appointments run same-day and
+            next-day. Call in the morning; expect the doorbell soon after.</p>
+        </div>
+        <div class="promise">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M12 2.5l2.1 2.1h3l1.1 2.8 2.6 1.4-.5 3.2 1.7 2.5-1.7 2.5.5 3.2-2.6 1.4-1.1 2.8h-3L12 21.5l-2.1 2.9h-3l-1.1-2.8-2.6-1.4.5-3.2L2 14.5 3.7 12l-.5-3.2 2.6-1.4 1.1-2.8h3z" transform="scale(.92) translate(1 -1)"/>
+            <path d="M8.5 12.2l2.4 2.4 4.6-4.8" stroke="#C8102E"/>
+          </svg>
+          <h3>Factory-certified parts</h3>
+          <p>Repairs use factory-certified parts &mdash; the components the machine was built
+            with, not the closest thing on the shelf.</p>
+        </div>
+        <div class="promise">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" aria-hidden="true">
+            <rect x="3.5" y="3.5" width="7.5" height="7.5" rx="1"/>
+            <rect x="13" y="3.5" width="7.5" height="7.5" rx="1"/>
+            <rect x="3.5" y="13" width="7.5" height="7.5" rx="1"/>
+            <rect x="13" y="13" width="7.5" height="7.5" rx="1" stroke="#C8102E"/>
+          </svg>
+          <h3>All major brands</h3>
+          <p>Whatever the badge on the door says, one call covers it. No &ldquo;we don&rsquo;t
+            service that make&rdquo; runaround.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= PHOTOGRAPH ================= -->
+  <div class="photo-band wrap">
+    <figure>
+      <img src="concept-art.jpg" width="1600" height="893" loading="lazy"
+        alt="Gloved hands working on the wiring of an open dishwasher door in a white kitchen, with a red metal toolbox on the counter above">
+      <figcaption>
+        <span class="cap-dot">Photograph</span>
+        <span>Dishwasher, door open, mid-repair</span>
+      </figcaption>
+    </figure>
+  </div>
+
+  <!-- ================= THE RECORD ================= -->
+  <section class="record dark section-pad" id="record" aria-labelledby="record-h">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="kicker"><span class="idx">03</span> The record</p>
+        <h2 id="record-h">Don&rsquo;t take our word for it.</h2>
+        <p class="sub">A website says what a business wants it to say. Four hundred
+          twenty-seven public reviews say what actually happened.</p>
+      </div>
+
+      <div class="monument">
+        <div class="monu-top">
+          <div class="monu-rating">
+            <span>4.5</span>
+            <svg class="star-lg" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M12 1.7l3.1 6.9 7.2.8-5.4 5 1.5 7.4L12 18l-6.4 3.8 1.5-7.4-5.4-5 7.2-.8z"/>
+            </svg>
+            <span class="of">/ 5</span>
+          </div>
+          <p class="monu-label">Average rating &middot; <strong>Yelp</strong></p>
+        </div>
+        <div class="monu-row">
+          <div class="monu-cell">
+            <p class="num">427</p>
+            <p class="lbl">Reviews on <strong>Yelp</strong></p>
+          </div>
+          <div class="monu-cell">
+            <p class="num">383</p>
+            <p class="lbl">Recommendations on <strong>Nextdoor</strong></p>
+          </div>
+        </div>
+      </div>
+
+      <p class="record-note">Every figure above is public. Search <strong>Tony Appliance
+        Repair</strong> on Yelp or Nextdoor and read the reviews yourself &mdash; they were
+        there long before this page was.</p>
+    </div>
+  </section>
+
+  <!-- ================= SERVICE AREA ================= -->
+  <section class="area section-pad wrap" id="area" aria-labelledby="area-h">
+    <div class="section-head">
+      <p class="kicker"><span class="idx">04</span> Service area</p>
+    </div>
+    <div class="area-grid">
+      <div class="area-mark" aria-hidden="true">
+        <svg viewBox="0 0 48 48" fill="none" stroke="#14171A" stroke-width="1.5" stroke-linecap="round">
+          <circle cx="24" cy="24" r="14"/>
+          <line x1="24" y1="2" x2="24" y2="12"/>
+          <line x1="24" y1="36" x2="24" y2="46"/>
+          <line x1="2" y1="24" x2="12" y2="24"/>
+          <line x1="36" y1="24" x2="46" y2="24"/>
+          <circle cx="24" cy="24" r="3" fill="#C8102E" stroke="none"/>
+        </svg>
+      </div>
+      <div>
+        <h2 class="big-place" id="area-h">Central<br>Austin<em>.</em></h2>
+        <p>Based in Central Austin, working in Central Austin. Close enough to make same-day
+          and next-day service a schedule, not a slogan. If that&rsquo;s your neighborhood,
+          you&rsquo;re covered.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= CONTACT ================= -->
+  <section class="contact section-pad" id="contact" aria-labelledby="contact-h">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="kicker"><span class="idx">05</span> Contact</p>
+        <h2 id="contact-h">One call does it.</h2>
+      </div>
+
+      <a class="tel-giant" href="tel:+15127887346">(512)&nbsp;788-7346</a>
+
+      <div class="contact-rows">
+        <div class="contact-row">
+          <span class="lbl">Phone</span>
+          <a href="tel:+15127887346">(512) 788-7346</a>
+        </div>
+        <div class="contact-row">
+          <span class="lbl">Email</span>
+          <a href="mailto:tonyappliancerepair@yahoo.com">tonyappliancerepair@yahoo.com</a>
+        </div>
+        <div class="contact-row">
+          <span class="lbl">Facebook</span>
+          <a href="https://facebook.com/tonyappliancerepair" rel="noopener">facebook.com/tonyappliancerepair</a>
+        </div>
+        <div class="contact-row">
+          <span class="lbl">Area</span>
+          <span>Central Austin, TX</span>
+        </div>
+      </div>
+
+      <div class="cta-row">
+        <a class="btn" href="tel:+15127887346">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.13.96.36 1.9.7 2.8a2 2 0 0 1-.45 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.45c.9.34 1.84.57 2.8.7a2 2 0 0 1 1.7 2.05Z"/></svg>
+          Call now — same-day &amp; next-day service
+        </a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ================= FOOTER ================= -->
+<footer class="site-foot">
+  <div class="wrap">
+    <p class="foot-brand"><span class="lamp" aria-hidden="true"></span> Tony Appliance Repair &middot; Central Austin, TX</p>
+    <hr>
+    <p>Website concept by <span class="studio">Murrieta Web Studio</span></p>
+    <p class="concept-note">This is a design concept created for Tony Appliance Repair.
+      Not yet the official website of Tony Appliance Repair.</p>
+  </div>
+</footer>
+
+<!-- ================= STICKY CALL BAR (mobile) ================= -->
+<div class="callbar">
+  <a href="tel:+15127887346" aria-label="Call Tony Appliance Repair at (512) 788-7346">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.13.96.36 1.9.7 2.8a2 2 0 0 1-.45 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.45c.9.34 1.84.57 2.8.7a2 2 0 0 1 1.7 2.05Z"/></svg>
+    Call (512) 788-7346
+  </a>
+</div>
+
+</body>
+</html>

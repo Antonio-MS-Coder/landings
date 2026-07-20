@@ -1,0 +1,986 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>Henry Meyer Roofing, Inc. — Residential Roofing, Southwest Austin</title>
+<meta name="description" content="Henry Meyer Roofing, Inc. — an owner-named residential roofing contractor in Southwest Austin, TX. Call (512) 288-5644.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+<style>
+  /* ============================================================
+     HENRY MEYER ROOFING — "The Name on the Roof"
+     deep forest green · cedar brown · warm off-white · grain
+     ============================================================ */
+  :root {
+    --paper:        #f7f1e5;
+    --paper-deep:   #efe7d6;
+    --ink:          #26241c;
+    --ink-soft:     #56513f;
+    --forest:       #1e3b28;
+    --forest-deep:  #152a1c;
+    --forest-line:  #2c5238;
+    --cedar:        #7c4e28;
+    --cedar-bright: #a06a38;
+    --cedar-soft:   #c89a63;
+    --cream:        #f2ebd9;
+    --cream-dim:    #cfc6ab;
+    --slab: "Bitter", "Rockwell", "Courier New", serif;
+    --sans: "Helvetica Neue", Helvetica, "Segoe UI", Arial, sans-serif;
+    --measure: 34em;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after { animation: none !important; transition: none !important; }
+  }
+
+  body {
+    font-family: var(--sans);
+    font-size: 1rem;
+    line-height: 1.65;
+    color: var(--ink);
+    background-color: var(--paper);
+    background-image: linear-gradient(180deg, #f9f4ea 0%, var(--paper) 22%, var(--paper) 100%);
+    -webkit-font-smoothing: antialiased;
+    padding-bottom: 4.25rem; /* room for the sticky call bar on mobile */
+  }
+  @media (min-width: 720px) {
+    body { padding-bottom: 0; }
+  }
+
+  /* --- grain: the whole page prints on paper --------------------- */
+  body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 60;
+    pointer-events: none;
+    opacity: .34;
+    mix-blend-mode: multiply;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3CfeComponentTransfer%3E%3CfeFuncA type='linear' slope='0.11'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  ::selection { background: var(--cedar-soft); color: var(--forest-deep); }
+
+  .skip-link {
+    position: absolute;
+    left: -999px;
+    top: 0;
+    z-index: 100;
+    background: var(--forest);
+    color: var(--cream);
+    padding: .6rem 1rem;
+    font-family: var(--slab);
+  }
+  .skip-link:focus { left: 0; }
+
+  a { color: var(--cedar); }
+  a:focus-visible,
+  button:focus-visible {
+    outline: 2px dashed var(--cedar);
+    outline-offset: 3px;
+  }
+
+  .wrap {
+    width: min(72rem, 100% - 2.5rem);
+    margin-inline: auto;
+  }
+
+  /* ================= header ================= */
+  .site-head {
+    border-bottom: 1px solid rgba(124, 78, 40, .28);
+  }
+  .site-head .topline {
+    background: var(--forest);
+    color: var(--cream-dim);
+    font-size: .72rem;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    padding: .45rem 0;
+  }
+  .site-head .topline .wrap {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+  .site-head .topline span:last-child { display: none; }
+  @media (min-width: 640px) {
+    .site-head .topline span:last-child { display: inline; }
+  }
+
+  .masthead {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1.05rem 0;
+  }
+  .wordmark {
+    text-decoration: none;
+    color: var(--forest);
+    line-height: 1.05;
+  }
+  .wordmark .name {
+    font-family: var(--slab);
+    font-weight: 800;
+    font-size: clamp(1.25rem, 3.4vw, 1.55rem);
+    letter-spacing: -.01em;
+    display: block;
+  }
+  .wordmark .inc {
+    display: block;
+    font-family: var(--sans);
+    font-size: .68rem;
+    letter-spacing: .3em;
+    text-transform: uppercase;
+    color: var(--cedar);
+    margin-top: .25rem;
+  }
+  .head-call {
+    display: inline-flex;
+    align-items: center;
+    gap: .55rem;
+    text-decoration: none;
+    font-family: var(--slab);
+    font-weight: 700;
+    font-size: 1rem;
+    color: var(--forest);
+    border: 2px solid var(--forest);
+    padding: .5rem .95rem;
+    white-space: nowrap;
+    transition: background-color .18s ease, color .18s ease;
+  }
+  .head-call:hover { background: var(--forest); color: var(--cream); }
+  .head-call svg { flex: none; }
+  .head-call .num { display: none; }
+  @media (min-width: 560px) {
+    .head-call .num { display: inline; }
+    .head-call .say { display: none; }
+  }
+
+  /* ================= hero ================= */
+  .hero {
+    padding: clamp(2.5rem, 7vw, 5.5rem) 0 clamp(2.75rem, 7vw, 5.5rem);
+    overflow: hidden;
+  }
+  .hero .wrap {
+    display: grid;
+    gap: 3rem;
+    align-items: center;
+  }
+  @media (min-width: 900px) {
+    .hero .wrap {
+      grid-template-columns: minmax(0, 10fr) minmax(0, 9fr);
+      gap: clamp(2.5rem, 5vw, 5rem);
+    }
+  }
+
+  .kicker {
+    font-size: .74rem;
+    letter-spacing: .28em;
+    text-transform: uppercase;
+    color: var(--cedar);
+    display: flex;
+    align-items: center;
+    gap: .8rem;
+    margin-bottom: 1.4rem;
+  }
+  .kicker::before {
+    content: "";
+    width: 2.2rem;
+    height: 2px;
+    background: var(--cedar);
+    flex: none;
+  }
+
+  .hero h1 {
+    font-family: var(--slab);
+    font-weight: 900;
+    font-size: clamp(2.35rem, 6vw, 3.9rem);
+    line-height: 1.06;
+    letter-spacing: -.015em;
+    color: var(--forest);
+    max-width: 11em;
+  }
+  .hero h1 em {
+    font-style: italic;
+    font-weight: 600;
+    color: var(--cedar);
+  }
+  .hero .lede {
+    margin-top: 1.35rem;
+    max-width: var(--measure);
+    font-size: 1.06rem;
+    color: var(--ink-soft);
+  }
+  .hero .lede strong { color: var(--ink); font-weight: 600; }
+
+  .cta-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .8rem;
+    margin-top: 1.9rem;
+  }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: .6rem;
+    text-decoration: none;
+    font-family: var(--slab);
+    font-weight: 700;
+    font-size: 1.02rem;
+    padding: .85rem 1.35rem;
+    transition: transform .16s ease, background-color .18s ease, color .18s ease, box-shadow .18s ease;
+  }
+  .btn:active { transform: translateY(1px); }
+  .btn-primary {
+    background: var(--forest);
+    color: var(--cream);
+    box-shadow: 4px 4px 0 rgba(124, 78, 40, .55);
+  }
+  .btn-primary:hover { background: var(--forest-deep); box-shadow: 2px 2px 0 rgba(124, 78, 40, .55); }
+  .btn-ghost {
+    color: var(--cedar);
+    border: 2px solid rgba(124, 78, 40, .5);
+  }
+  .btn-ghost:hover { border-color: var(--cedar); background: rgba(124, 78, 40, .08); }
+
+  .hero-proof {
+    margin-top: 1.7rem;
+    font-size: .82rem;
+    color: var(--ink-soft);
+    display: flex;
+    flex-wrap: wrap;
+    gap: .35rem 1.4rem;
+  }
+  .hero-proof .stars { color: var(--cedar-bright); white-space: nowrap; }
+  .hero-proof b { color: var(--ink); font-weight: 600; }
+
+  /* staggered entrance */
+  @keyframes rise {
+    from { opacity: 0; transform: translateY(14px); }
+    to   { opacity: 1; transform: none; }
+  }
+  .hero .kicker,
+  .hero h1,
+  .hero .lede,
+  .hero .cta-row,
+  .hero .hero-proof { animation: rise .6s cubic-bezier(.22,.8,.35,1) both; }
+  .hero h1         { animation-delay: .06s; }
+  .hero .lede      { animation-delay: .14s; }
+  .hero .cta-row   { animation-delay: .22s; }
+  .hero .hero-proof{ animation-delay: .3s; }
+  .hero .photo     { animation: rise .7s cubic-bezier(.22,.8,.35,1) .12s both; }
+
+  /* --- framed photo panel --- */
+  .photo {
+    position: relative;
+    margin: 0 .5rem .5rem 0;
+  }
+  .photo .frame {
+    position: relative;
+    background: var(--forest-deep);
+    box-shadow: 14px 14px 0 rgba(30, 59, 40, .16);
+  }
+  .photo .frame::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    transform: translate(14px, 14px);
+    border: 2px solid var(--cedar);
+    pointer-events: none;
+    z-index: 0;
+  }
+  .photo img {
+    position: relative;
+    z-index: 1;
+    display: block;
+    width: 100%;
+    height: auto;
+    filter: saturate(.94) contrast(1.02);
+  }
+  .photo figcaption {
+    margin-top: 1.35rem;
+    font-size: .7rem;
+    letter-spacing: .22em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+  .photo figcaption::before {
+    content: "";
+    display: inline-block;
+    width: 1.4rem;
+    height: 1px;
+    background: var(--cedar);
+    vertical-align: middle;
+    margin-right: .7rem;
+  }
+
+  /* circular stamp overlapping the frame */
+  .stamp {
+    position: absolute;
+    z-index: 2;
+    left: -1.6rem;
+    bottom: -1.2rem;
+    width: clamp(5.6rem, 12vw, 7.2rem);
+    height: auto;
+    color: var(--cedar);
+    filter: drop-shadow(0 2px 3px rgba(38, 36, 28, .18));
+    animation: stamp-turn 40s linear infinite;
+    transform-origin: 50% 50%;
+  }
+  @keyframes stamp-turn { to { transform: rotate(360deg); } }
+  @media (prefers-reduced-motion: reduce) { .stamp { animation: none; } }
+
+  /* ================= shingle rule (section divider) ================= */
+  .shingle-rule {
+    height: 13px;
+    position: relative;
+    opacity: .55;
+    background:
+      repeating-linear-gradient(90deg, var(--cedar) 0 26px, transparent 26px 34px) 0 0 / auto 3px no-repeat,
+      repeating-linear-gradient(90deg, var(--cedar) 0 26px, transparent 26px 34px) 17px 5px / auto 3px no-repeat,
+      repeating-linear-gradient(90deg, var(--cedar) 0 26px, transparent 26px 34px) 0 10px / auto 3px no-repeat;
+    background-size: 100% 3px, 100% 3px, 100% 3px;
+  }
+  .shingle-rule.in-wrap { margin-inline: auto; width: min(72rem, 100% - 2.5rem); }
+
+  /* ================= signature band ================= */
+  .signature-band {
+    padding: clamp(3rem, 8vw, 5.5rem) 0;
+    text-align: center;
+  }
+  .signature-band .whose {
+    font-size: .74rem;
+    letter-spacing: .3em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin-bottom: 1.1rem;
+  }
+  .signature {
+    font-family: var(--slab);
+    font-style: italic;
+    font-weight: 600;
+    font-size: clamp(3rem, 10vw, 5.6rem);
+    line-height: 1;
+    letter-spacing: -.03em;
+    color: var(--forest);
+    transform: rotate(-1.5deg);
+    display: inline-block;
+  }
+  .signature-band .underline {
+    display: block;
+    width: min(26rem, 78%);
+    margin: .4rem auto 0;
+    color: var(--cedar);
+  }
+  .signature-band .title {
+    margin-top: 1.1rem;
+    font-family: var(--slab);
+    font-weight: 700;
+    font-size: .95rem;
+    color: var(--cedar);
+  }
+  .signature-band p.note {
+    margin: 1.6rem auto 0;
+    max-width: 36em;
+    color: var(--ink-soft);
+    font-size: 1.02rem;
+  }
+  .signature-band p.note strong { color: var(--ink); font-weight: 600; }
+
+  /* ================= sections, shared ================= */
+  section { position: relative; }
+  .section-pad { padding: clamp(3.25rem, 8vw, 6rem) 0; }
+
+  .sec-head { max-width: 40em; margin-bottom: clamp(2rem, 5vw, 3.25rem); }
+  .sec-head h2 {
+    font-family: var(--slab);
+    font-weight: 800;
+    font-size: clamp(1.7rem, 4.4vw, 2.5rem);
+    line-height: 1.12;
+    letter-spacing: -.01em;
+    color: var(--forest);
+  }
+  .sec-head p { margin-top: .9rem; color: var(--ink-soft); max-width: var(--measure); }
+
+  /* ================= services ================= */
+  .services { background: var(--paper-deep); border-block: 1px solid rgba(124, 78, 40, .22); }
+  .service-grid {
+    display: grid;
+    gap: 1.1rem;
+  }
+  @media (min-width: 760px) {
+    .service-grid { grid-template-columns: repeat(3, 1fr); gap: 1.4rem; }
+  }
+  .service {
+    background: var(--paper);
+    border: 1px solid rgba(124, 78, 40, .3);
+    border-top: 4px solid var(--forest);
+    padding: 1.7rem 1.5rem 1.6rem;
+    display: flex;
+    flex-direction: column;
+    gap: .85rem;
+    transition: transform .18s ease, box-shadow .18s ease;
+  }
+  .service:hover {
+    transform: translateY(-4px);
+    box-shadow: 8px 8px 0 rgba(30, 59, 40, .12);
+  }
+  .service .icon {
+    width: 3rem;
+    height: 3rem;
+    color: var(--cedar);
+    display: grid;
+    place-items: center;
+    border: 1.5px solid rgba(124, 78, 40, .4);
+    border-radius: 50%;
+  }
+  .service h3 {
+    font-family: var(--slab);
+    font-weight: 800;
+    font-size: 1.28rem;
+    color: var(--forest);
+  }
+  .service p { color: var(--ink-soft); font-size: .95rem; flex: 1; }
+  .service .talk {
+    font-family: var(--slab);
+    font-weight: 700;
+    font-size: .9rem;
+    text-decoration: none;
+    color: var(--cedar);
+    border-bottom: 2px solid rgba(124, 78, 40, .35);
+    align-self: flex-start;
+    padding-bottom: .1rem;
+    transition: border-color .15s ease;
+  }
+  .service .talk:hover { border-color: var(--cedar); }
+  .services .honest {
+    margin-top: 2rem;
+    font-size: .85rem;
+    color: var(--ink-soft);
+    max-width: 44em;
+  }
+
+  /* ================= service area ================= */
+  .area { overflow: hidden; }
+  .area .contours {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    color: var(--forest);
+    opacity: .07;
+    pointer-events: none;
+  }
+  .area .wrap {
+    position: relative;
+    display: grid;
+    gap: 2.25rem;
+    align-items: center;
+  }
+  @media (min-width: 860px) {
+    .area .wrap { grid-template-columns: minmax(0, 2fr) minmax(0, 3fr); gap: 4rem; }
+  }
+  .zip {
+    font-family: var(--slab);
+    font-weight: 900;
+    font-size: clamp(4.4rem, 14vw, 8.2rem);
+    line-height: .95;
+    letter-spacing: -.02em;
+    color: var(--forest);
+    position: relative;
+    display: inline-block;
+  }
+  .zip small {
+    display: block;
+    font-family: var(--sans);
+    font-weight: 400;
+    font-size: .78rem;
+    letter-spacing: .32em;
+    text-transform: uppercase;
+    color: var(--cedar);
+    margin-top: .6rem;
+  }
+  .area h2 {
+    font-family: var(--slab);
+    font-weight: 800;
+    font-size: clamp(1.6rem, 4vw, 2.3rem);
+    color: var(--forest);
+    line-height: 1.14;
+  }
+  .area p { margin-top: .95rem; color: var(--ink-soft); max-width: var(--measure); }
+  .area .addr {
+    margin-top: 1.4rem;
+    display: inline-flex;
+    align-items: center;
+    gap: .65rem;
+    font-family: var(--slab);
+    font-weight: 700;
+    font-size: .98rem;
+    color: var(--forest);
+    border: 1.5px solid rgba(124, 78, 40, .4);
+    padding: .65rem 1rem;
+    background: rgba(247, 241, 229, .8);
+  }
+  .area .addr svg { color: var(--cedar); flex: none; }
+
+  /* ================= trust ================= */
+  .trust {
+    background: var(--forest);
+    color: var(--cream);
+    border-block: 3px solid var(--cedar);
+  }
+  .trust .sec-head h2 { color: var(--cream); }
+  .trust .sec-head p { color: var(--cream-dim); }
+  .trust-grid {
+    display: grid;
+    gap: 1.2rem;
+  }
+  @media (min-width: 820px) {
+    .trust-grid { grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+  }
+  .rating-card {
+    border: 1px solid var(--forest-line);
+    background: var(--forest-deep);
+    padding: 1.7rem 1.6rem;
+  }
+  .rating-card .src {
+    font-size: .72rem;
+    letter-spacing: .26em;
+    text-transform: uppercase;
+    color: var(--cedar-soft);
+  }
+  .rating-card .score-row {
+    display: flex;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: .4rem 1rem;
+    margin-top: .8rem;
+  }
+  .rating-card .score {
+    font-family: var(--slab);
+    font-weight: 900;
+    font-size: 3.1rem;
+    line-height: 1;
+    color: var(--cream);
+  }
+  .rating-card .of { font-size: .95rem; color: var(--cream-dim); }
+  .rating-card .stars {
+    color: var(--cedar-soft);
+    display: inline-flex;
+    gap: .2rem;
+    margin-top: .9rem;
+  }
+  .rating-card .count { margin-top: .55rem; font-size: .88rem; color: var(--cream-dim); }
+  .trust .sourced {
+    margin-top: 1.4rem;
+    font-size: .78rem;
+    color: var(--cream-dim);
+  }
+  .accountability {
+    margin-top: clamp(2.25rem, 5vw, 3.25rem);
+    border-left: 3px solid var(--cedar);
+    padding-left: 1.4rem;
+    max-width: 42em;
+  }
+  .accountability h3 {
+    font-family: var(--slab);
+    font-weight: 800;
+    font-size: 1.3rem;
+    color: var(--cream);
+  }
+  .accountability p { margin-top: .7rem; color: var(--cream-dim); }
+  .accountability p strong { color: var(--cream); font-weight: 600; }
+
+  /* ================= contact ================= */
+  .contact .wrap {
+    display: grid;
+    gap: 2.5rem;
+  }
+  @media (min-width: 860px) {
+    .contact .wrap { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: start; gap: 4rem; }
+  }
+  .contact h2 {
+    font-family: var(--slab);
+    font-weight: 800;
+    font-size: clamp(1.8rem, 4.6vw, 2.6rem);
+    line-height: 1.1;
+    color: var(--forest);
+    max-width: 9em;
+  }
+  .contact .pitch { margin-top: 1rem; color: var(--ink-soft); max-width: var(--measure); }
+  .contact .cta-row { margin-top: 1.7rem; }
+
+  .contact-card {
+    border: 1.5px solid rgba(124, 78, 40, .4);
+    background: var(--paper-deep);
+    padding: 1.8rem 1.6rem;
+  }
+  .contact-card ul { list-style: none; }
+  .contact-card li {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    padding: 1rem 0;
+  }
+  .contact-card li + li { border-top: 1px dashed rgba(124, 78, 40, .4); }
+  .contact-card .ci {
+    color: var(--cedar);
+    flex: none;
+    margin-top: .2rem;
+  }
+  .contact-card .label {
+    display: block;
+    font-size: .68rem;
+    letter-spacing: .26em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin-bottom: .25rem;
+  }
+  .contact-card .value {
+    font-family: var(--slab);
+    font-weight: 700;
+    font-size: 1.12rem;
+    color: var(--forest);
+    text-decoration: none;
+    overflow-wrap: anywhere;
+  }
+  a.value:hover { color: var(--cedar); }
+
+  /* ================= footer ================= */
+  .site-foot {
+    background: var(--forest-deep);
+    color: var(--cream-dim);
+    padding: 2.6rem 0 2.8rem;
+    font-size: .84rem;
+  }
+  .site-foot .fm {
+    font-family: var(--slab);
+    font-weight: 800;
+    font-size: 1.05rem;
+    color: var(--cream);
+  }
+  .site-foot .fm span { color: var(--cedar-soft); font-weight: 600; font-style: italic; }
+  .site-foot .lines { margin-top: 1.1rem; display: grid; gap: .3rem; }
+  .site-foot .credit { margin-top: 1.5rem; padding-top: 1.2rem; border-top: 1px solid var(--forest-line); }
+  .site-foot .disclaimer { color: #a89f84; font-size: .78rem; margin-top: .35rem; max-width: 52em; }
+  .site-foot a { color: var(--cedar-soft); }
+
+  /* ================= sticky mobile call bar ================= */
+  .call-bar {
+    position: fixed;
+    left: 0; right: 0; bottom: 0;
+    z-index: 80;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: .7rem;
+    background: var(--forest);
+    color: var(--cream);
+    text-decoration: none;
+    font-family: var(--slab);
+    font-weight: 700;
+    font-size: 1.05rem;
+    padding: .95rem 1rem calc(.95rem + env(safe-area-inset-bottom, 0px));
+    border-top: 3px solid var(--cedar);
+    box-shadow: 0 -6px 18px rgba(21, 42, 28, .28);
+  }
+  .call-bar svg { flex: none; }
+  .call-bar:active { background: var(--forest-deep); }
+  @media (min-width: 720px) { .call-bar { display: none; } }
+</style>
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<!-- shared svg defs: star symbols + partial-fill gradient -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <symbol id="star" viewBox="0 0 24 24">
+      <path d="M12 2.6l2.9 5.9 6.5.94-4.7 4.58 1.1 6.46L12 17.42l-5.8 3.06 1.1-6.46-4.7-4.58 6.5-.94z"/>
+    </symbol>
+    <linearGradient id="fill-70" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="70%" stop-color="currentColor"/>
+      <stop offset="70%" stop-color="transparent"/>
+    </linearGradient>
+  </defs>
+</svg>
+
+<header class="site-head">
+  <div class="topline">
+    <div class="wrap">
+      <span>Residential Roofing Contractor</span>
+      <span>Southwest Austin, Texas &middot; 78737</span>
+    </div>
+  </div>
+  <div class="wrap masthead">
+    <a class="wordmark" href="#main" aria-label="Henry Meyer Roofing, Inc. — top of page">
+      <span class="name">Henry Meyer Roofing</span>
+      <span class="inc">Incorporated &middot; Austin TX</span>
+    </a>
+    <a class="head-call" href="tel:+15122885644">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.13.96.36 1.9.7 2.8a2 2 0 0 1-.45 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.27a2 2 0 0 1 2.1-.45c.9.34 1.84.57 2.8.7a2 2 0 0 1 1.7 2.02z"/></svg>
+      <span class="num">(512) 288-5644</span>
+      <span class="say">Call</span>
+    </a>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- ============ HERO ============ -->
+  <section class="hero">
+    <div class="wrap">
+      <div class="hero-copy">
+        <p class="kicker">Henry Meyer Roofing, Inc.</p>
+        <h1>The name on the roof <em>answers the phone.</em></h1>
+        <p class="lede">Henry Meyer Roofing is an owner-run residential roofing shop in Southwest Austin. The business carries the owner&rsquo;s own name &mdash; so does every roof it touches. <strong>Call, and you&rsquo;re dealing with the shop itself, not a call center.</strong></p>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="tel:+15122885644">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.13.96.36 1.9.7 2.8a2 2 0 0 1-.45 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.27a2 2 0 0 1 2.1-.45c.9.34 1.84.57 2.8.7a2 2 0 0 1 1.7 2.02z"/></svg>
+            (512) 288-5644
+          </a>
+          <a class="btn btn-ghost" href="mailto:HM9100@aol.com">Email the shop</a>
+        </div>
+        <p class="hero-proof">
+          <span><span class="stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span> <b>5/5</b> &middot; 11 reviews, ChamberofCommerce.com</span>
+          <span><b>4.7/5</b> &middot; 12 reviews, Birdeye</span>
+        </p>
+      </div>
+
+      <figure class="photo">
+        <div class="frame">
+          <img src="concept-art.jpg" width="1600" height="893" loading="lazy"
+               alt="A roofer kneeling on an asphalt shingle roof at sunset, with hill country landscape behind him.">
+          <svg class="stamp" viewBox="0 0 120 120" aria-hidden="true" focusable="false">
+            <defs>
+              <path id="stamp-arc" d="M60 12 a48 48 0 1 1 -0.01 0" fill="none"/>
+            </defs>
+            <circle cx="60" cy="60" r="57" fill="var(--paper)" stroke="currentColor" stroke-width="2"/>
+            <circle cx="60" cy="60" r="38" fill="none" stroke="currentColor" stroke-width="1"/>
+            <text font-size="10.5" letter-spacing="2.6" fill="currentColor" font-family="Helvetica, Arial, sans-serif">
+              <textPath href="#stamp-arc" startOffset="0">HENRY MEYER ROOFING &#183; AUSTIN TX &#183;</textPath>
+            </text>
+            <text x="60" y="70" text-anchor="middle" font-size="28" font-weight="800" font-style="italic"
+                  font-family="Bitter, serif" fill="currentColor">HM</text>
+          </svg>
+        </div>
+        <figcaption>Photograph &mdash; shingle work at last light</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <div class="shingle-rule in-wrap" role="presentation"></div>
+
+  <!-- ============ SIGNATURE BAND ============ -->
+  <section class="signature-band" aria-label="The owner's name">
+    <div class="wrap">
+      <p class="whose">Every job signed, the old way</p>
+      <p class="signature">Henry Meyer</p>
+      <svg class="underline" viewBox="0 0 300 22" aria-hidden="true" focusable="false">
+        <path d="M6 13 C 58 5, 128 19, 200 11 S 282 7, 295 12" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/>
+        <path d="M212 17 C 236 20, 252 15, 262 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" opacity=".65"/>
+      </svg>
+      <p class="title">Owner, Henry Meyer Roofing, Inc.</p>
+      <p class="note">Some companies put a brand between you and the work. This one puts a name on it &mdash; <strong>the owner&rsquo;s own</strong>. When the business is called Henry Meyer Roofing, the standard for the work isn&rsquo;t a slogan. It&rsquo;s a signature.</p>
+    </div>
+  </section>
+
+  <!-- ============ SERVICES ============ -->
+  <section class="services section-pad" aria-labelledby="services-h">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="kicker">What the shop does</p>
+        <h2 id="services-h">Residential roofing, plainly stated.</h2>
+        <p>The trade of a residential roofing contractor comes down to three honest jobs. No upsell theater &mdash; a look at the roof, a straight conversation, and the work.</p>
+      </div>
+
+      <div class="service-grid">
+        <article class="service">
+          <div class="icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.5 3.5 12 6l6 6 2.5-2.5a2.1 2.1 0 0 0 0-3L17.5 3.5a2.1 2.1 0 0 0-3 0z"/><path d="m13.5 7.5-9.2 9.2a2 2 0 0 0 0 2.9l.1.1a2 2 0 0 0 2.9 0l9.2-9.2"/></svg>
+          </div>
+          <h3>Roof Repair</h3>
+          <p>Leaks, missing shingles, wear around flashing and vents. When a roof has life left in it, the right answer is to fix what&rsquo;s failing &mdash; not to replace what isn&rsquo;t.</p>
+          <a class="talk" href="tel:+15122885644">Talk it through &rarr;</a>
+        </article>
+
+        <article class="service">
+          <div class="icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11.5 12 4l9 7.5"/><path d="M5.5 13.5 12 8l6.5 5.5"/><path d="M8 16.5l4-3.4 4 3.4"/></svg>
+          </div>
+          <h3>Roof Replacement</h3>
+          <p>When a roof is past patching, replacement is the honest recommendation. A new roof over your home, from a contractor whose own name rides on how it turns out.</p>
+          <a class="talk" href="tel:+15122885644">Talk it through &rarr;</a>
+        </article>
+
+        <article class="service">
+          <div class="icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m20.5 20.5-5.4-5.4"/><path d="M7.5 11 10.5 8.5l3 2.5"/></svg>
+          </div>
+          <h3>Roof Inspection</h3>
+          <p>An honest look at the condition of what&rsquo;s over your head &mdash; after rough weather, before a sale, or simply for peace of mind about what&rsquo;s up there.</p>
+          <a class="talk" href="tel:+15122885644">Talk it through &rarr;</a>
+        </article>
+      </div>
+
+      <p class="honest">Not sure which of the three you need? That&rsquo;s normal &mdash; it&rsquo;s the roofer&rsquo;s job to know. Call <a href="tel:+15122885644">(512) 288-5644</a> and describe what you&rsquo;re seeing.</p>
+    </div>
+  </section>
+
+  <!-- ============ SERVICE AREA ============ -->
+  <section class="area section-pad" aria-labelledby="area-h">
+    <svg class="contours" viewBox="0 0 1200 500" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false">
+      <g fill="none" stroke="currentColor" stroke-width="1.5">
+        <path d="M-20 420 C 180 340, 320 460, 520 380 S 900 300, 1220 400"/>
+        <path d="M-20 350 C 200 270, 360 390, 560 310 S 920 230, 1220 330"/>
+        <path d="M-20 280 C 220 210, 400 320, 600 250 S 940 170, 1220 260"/>
+        <path d="M-20 210 C 240 150, 440 250, 640 190 S 960 110, 1220 190"/>
+        <path d="M-20 140 C 260 90, 480 180, 680 130 S 980 60, 1220 120"/>
+        <path d="M300 470 C 420 430, 560 480, 700 440"/>
+        <path d="M760 90 C 880 60, 1000 100, 1120 70"/>
+      </g>
+    </svg>
+    <div class="wrap">
+      <div>
+        <p class="zip">78737<small>Southwest Austin</small></p>
+      </div>
+      <div>
+        <p class="kicker">Service area</p>
+        <h2 id="area-h">Up the road, not across town.</h2>
+        <p>Henry Meyer Roofing works out of 9100 Tara Ln in Southwest Austin &mdash; the hill-country side of town, in the 78737 zip code. A local roof problem gets a local answer, from a shop rooted in the same part of Austin as the homes it serves.</p>
+        <p class="addr">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          9100 Tara Ln, Austin, TX 78737
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ TRUST ============ -->
+  <section class="trust section-pad" aria-labelledby="trust-h">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="kicker" style="color:var(--cedar-soft)">On the record</p>
+        <h2 id="trust-h">A name is easy to check.</h2>
+        <p>An owner-named shop can&rsquo;t hide behind a rebrand. Here is how Henry Meyer Roofing rates where its customers have written it down.</p>
+      </div>
+
+      <div class="trust-grid">
+        <article class="rating-card">
+          <p class="src">ChamberofCommerce.com</p>
+          <p class="score-row"><span class="score">5.0</span> <span class="of">out of 5</span></p>
+          <p class="stars" aria-label="Five out of five stars">
+            <svg width="20" height="20" aria-hidden="true"><use href="#star" fill="currentColor"/></svg>
+            <svg width="20" height="20" aria-hidden="true"><use href="#star" fill="currentColor"/></svg>
+            <svg width="20" height="20" aria-hidden="true"><use href="#star" fill="currentColor"/></svg>
+            <svg width="20" height="20" aria-hidden="true"><use href="#star" fill="currentColor"/></svg>
+            <svg width="20" height="20" aria-hidden="true"><use href="#star" fill="currentColor"/></svg>
+          </p>
+          <p class="count">Across 11 customer reviews</p>
+        </article>
+
+        <article class="rating-card">
+          <p class="src">Birdeye</p>
+          <p class="score-row"><span class="score">4.7</span> <span class="of">out of 5</span></p>
+          <p class="stars" aria-label="4.7 out of five stars">
+            <svg width="20" height="20" aria-hidden="true"><use href="#star" fill="currentColor"/></svg>
+            <svg width="20" height="20" aria-hidden="true"><use href="#star" fill="currentColor"/></svg>
+            <svg width="20" height="20" aria-hidden="true"><use href="#star" fill="currentColor"/></svg>
+            <svg width="20" height="20" aria-hidden="true"><use href="#star" fill="currentColor"/></svg>
+            <svg width="20" height="20" aria-hidden="true"><use href="#star" fill="url(#fill-70)" stroke="currentColor" stroke-width="1.2"/></svg>
+          </p>
+          <p class="count">Across 12 customer reviews</p>
+        </article>
+      </div>
+
+      <p class="sourced">Ratings shown as published by each source at the time this page was prepared.</p>
+
+      <div class="accountability">
+        <h3>Accountability, spelled H-e-n-r-y.</h3>
+        <p>Big outfits route you through dispatch. Here, the number on this page rings a small, owner-run shop &mdash; <strong>the one that carries Henry Meyer&rsquo;s own name</strong>. When the man the business is named for stands behind the work, &ldquo;we&rsquo;ll make it right&rdquo; means somebody in particular.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CONTACT ============ -->
+  <section class="contact section-pad" aria-labelledby="contact-h">
+    <div class="wrap">
+      <div>
+        <p class="kicker">Contact</p>
+        <h2 id="contact-h">Put a roof problem to a name.</h2>
+        <p class="pitch">One phone number, one email, one address in Southwest Austin. Describe what you&rsquo;re seeing &mdash; a stain on the ceiling, shingles in the yard, a roof of unknown age &mdash; and go from there.</p>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="tel:+15122885644">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.13.96.36 1.9.7 2.8a2 2 0 0 1-.45 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.27a2 2 0 0 1 2.1-.45c.9.34 1.84.57 2.8.7a2 2 0 0 1 1.7 2.02z"/></svg>
+            Call (512) 288-5644
+          </a>
+        </div>
+      </div>
+
+      <div class="contact-card">
+        <ul>
+          <li>
+            <svg class="ci" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.13.96.36 1.9.7 2.8a2 2 0 0 1-.45 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.27a2 2 0 0 1 2.1-.45c.9.34 1.84.57 2.8.7a2 2 0 0 1 1.7 2.02z"/></svg>
+            <span>
+              <span class="label">Phone</span>
+              <a class="value" href="tel:+15122885644">(512) 288-5644</a>
+            </span>
+          </li>
+          <li>
+            <svg class="ci" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="4.5" width="19" height="15" rx="2"/><path d="m3.5 6.5 8.5 6.5 8.5-6.5"/></svg>
+            <span>
+              <span class="label">Email</span>
+              <a class="value" href="mailto:HM9100@aol.com">HM9100@aol.com</a>
+            </span>
+          </li>
+          <li>
+            <svg class="ci" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span>
+              <span class="label">Address</span>
+              <span class="value">9100 Tara Ln, Austin, TX 78737</span>
+            </span>
+          </li>
+          <li>
+            <svg class="ci" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11.5 12 4l9 7.5"/><path d="M5 10.2V20h14v-9.8"/></svg>
+            <span>
+              <span class="label">Trade</span>
+              <span class="value">Residential Roofing Contractor</span>
+            </span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <p class="fm">Henry Meyer Roofing, Inc. <span>&mdash; the name on the roof</span></p>
+    <div class="lines">
+      <p>(512) 288-5644 &middot; HM9100@aol.com</p>
+      <p>9100 Tara Ln, Austin, TX 78737 &middot; Southwest Austin</p>
+    </div>
+    <div class="credit">
+      <p>Website concept by Murrieta Web Studio</p>
+      <p class="disclaimer">This is a design concept created for Henry Meyer Roofing, Inc. Not yet the official website of Henry Meyer Roofing, Inc.</p>
+    </div>
+  </div>
+</footer>
+
+<a class="call-bar" href="tel:+15122885644" aria-label="Call Henry Meyer Roofing at (512) 288-5644">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.13.96.36 1.9.7 2.8a2 2 0 0 1-.45 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.27a2 2 0 0 1 2.1-.45c.9.34 1.84.57 2.8.7a2 2 0 0 1 1.7 2.02z"/></svg>
+  Call Henry &mdash; (512) 288-5644
+</a>
+
+</body>
+</html>
