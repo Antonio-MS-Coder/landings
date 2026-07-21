@@ -541,11 +541,16 @@
   .area-txt p{ color:var(--steel-500); font-size:.95rem; max-width:44ch; }
   .area-facts{ list-style:none; margin-top:1.5rem; display:grid; gap:0; }
   .area-facts li{
-    display:grid; grid-template-columns:8.4rem 1fr; gap:.8rem;
+    /* minmax(0,1fr) not 1fr: a bare 1fr floors at the min-content width of
+       the unbreakable email string, forcing horizontal scroll at 390px. */
+    display:grid; grid-template-columns:8.4rem minmax(0,1fr); gap:.8rem;
     padding:.62rem 0;
     border-top:1px solid var(--ice-300);
     font-size:.9rem;
   }
+  /* The email address is one unbreakable token; without this it overflows
+     its own span even inside a minmax(0,1fr) column. */
+  .area-facts li > span{ overflow-wrap:anywhere; }
   .area-facts li b{
     font-family:"Karla", Arial, sans-serif;
     font-weight:700; font-size:.62rem; letter-spacing:.2em; text-transform:uppercase;
