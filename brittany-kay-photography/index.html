@@ -1,0 +1,809 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Brittany Kay Photography — Murfreesboro, Tennessee</title>
+<meta name="description" content="Brittany Kay Photography, Murfreesboro, Tennessee. 59 reviews on Facebook, 100% recommended.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,300..800,0..100,0..1&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#17140f;
+    --ink-70:rgba(23,20,15,.70);
+    --ink-52:rgba(23,20,15,.52);
+    --rule:rgba(23,20,15,.20);
+    --rule-faint:rgba(23,20,15,.10);
+    --paper:#f6f2e9;
+    --paper-2:#efe9dc;
+    --ochre:#a86d12;
+    --ochre-soft:rgba(168,109,18,.14);
+    --measure:70rem;
+    --gutter:1.375rem;
+    --display:"Fraunces","Iowan Old Style",Georgia,"Times New Roman",serif;
+    --sans:ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  }
+
+  *,*::before,*::after{box-sizing:border-box;}
+
+  html{-webkit-text-size-adjust:100%;}
+
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:var(--sans);
+    font-size:17px;
+    line-height:1.62;
+    -webkit-font-smoothing:antialiased;
+    padding-bottom:5.25rem; /* clearance for the mobile action bar */
+  }
+
+  /* ---------- print furniture ---------- */
+
+  .sheet{
+    max-width:var(--measure);
+    margin:0 auto;
+    padding:0 var(--gutter);
+  }
+
+  .rule{border:0;border-top:1px solid var(--rule);margin:0;}
+  .rule--heavy{border-top-width:2px;border-top-color:var(--ink);}
+  .rule--faint{border-top-color:var(--rule-faint);}
+
+  .folio{
+    font-family:var(--sans);
+    font-size:.6875rem;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--ink-52);
+    font-weight:600;
+  }
+  .folio b{color:var(--ochre);font-weight:600;}
+
+  .deck{
+    font-size:1.0625rem;
+    line-height:1.66;
+    color:var(--ink-70);
+    max-width:44ch;
+  }
+  .deck strong{color:var(--ink);font-weight:600;}
+
+  /* ---------- display type ---------- */
+
+  .fr{
+    font-family:var(--display);
+    font-variation-settings:"SOFT" 0,"WONK" 1,"opsz" 144;
+    font-weight:400;
+    letter-spacing:-.022em;
+    line-height:.94;
+  }
+  .num{
+    font-family:var(--display);
+    font-variation-settings:"SOFT" 0,"WONK" 0,"opsz" 144;
+    font-weight:300;
+    font-variant-numeric:lining-nums tabular-nums;
+    letter-spacing:-.045em;
+    line-height:.8;
+  }
+
+  /* ---------- masthead ---------- */
+
+  .masthead{padding-top:1.125rem;}
+  .masthead-meta{
+    display:flex;
+    flex-wrap:wrap;
+    gap:.4rem .9rem;
+    padding:.6rem 0 .7rem;
+  }
+  .masthead-meta span{white-space:nowrap;}
+  .masthead-meta .sep{color:var(--rule);}
+
+  /* ---------- hero ---------- */
+
+  .hero{padding:1.5rem 0 0;}
+
+  .hero-folio{padding:0 0 1.6rem;}
+
+  .hero-name{
+    font-size:.6875rem;
+    letter-spacing:.2em;
+    text-transform:uppercase;
+    font-weight:600;
+    color:var(--ink);
+    margin:0 0 1.5rem;
+  }
+
+  h1{
+    margin:0;
+    font-size:clamp(3.05rem,15.5vw,8.75rem);
+  }
+  h1 .period{color:var(--ochre);}
+
+  .hero-deck{margin:1.6rem 0 0;}
+
+  /* the statistic — treated as a magazine figure, not a badge */
+  .stat{
+    margin-top:2.5rem;
+    border-top:2px solid var(--ink);
+  }
+  .stat-row{
+    display:flex;
+    align-items:baseline;
+    gap:1.1rem;
+    padding:1.1rem 0 1.15rem;
+    border-bottom:1px solid var(--rule);
+  }
+  .stat-row:last-child{border-bottom:2px solid var(--ink);}
+  .stat-fig{
+    font-size:clamp(3.75rem,20vw,7.5rem);
+    flex:none;
+    min-width:2.6ch;
+  }
+  .stat-fig--pct{color:var(--ochre);}
+  .stat-copy{padding-bottom:.4rem;}
+  .stat-lede{
+    font-family:var(--display);
+    font-variation-settings:"SOFT" 0,"WONK" 0,"opsz" 36;
+    font-weight:500;
+    font-size:1.1875rem;
+    line-height:1.25;
+    letter-spacing:-.01em;
+    display:block;
+  }
+  .stat-src{
+    display:block;
+    margin-top:.3rem;
+    font-size:.75rem;
+    letter-spacing:.09em;
+    text-transform:uppercase;
+    color:var(--ink-52);
+    font-weight:600;
+  }
+
+  /* ---------- actions ---------- */
+
+  .actions{
+    display:flex;
+    flex-direction:column;
+    gap:.7rem;
+    margin:1.75rem 0 0;
+  }
+
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:1rem;
+    padding:1.0625rem 1.25rem;
+    text-decoration:none;
+    font-weight:600;
+    font-size:.9375rem;
+    letter-spacing:.01em;
+    border:1px solid var(--ink);
+    transition:background-color .16s ease,color .16s ease;
+  }
+  .btn svg{flex:none;}
+  .btn-primary{background:var(--ink);color:var(--paper);}
+  .btn-primary:hover,.btn-primary:focus-visible{background:var(--ochre);border-color:var(--ochre);color:#fff;}
+  .btn-ghost{background:transparent;color:var(--ink);}
+  .btn-ghost:hover,.btn-ghost:focus-visible{background:var(--ink);color:var(--paper);}
+  .btn-note{
+    display:block;
+    font-size:.75rem;
+    font-weight:500;
+    letter-spacing:.02em;
+    text-transform:none;
+    opacity:.66;
+    margin-top:.12rem;
+  }
+
+  a:focus-visible,button:focus-visible{outline:2px solid var(--ochre);outline-offset:3px;}
+
+  /* ---------- sections ---------- */
+
+  section{padding:3.5rem 0 0;}
+
+  .sec-head{
+    display:flex;
+    align-items:baseline;
+    justify-content:space-between;
+    gap:1rem;
+    padding:.65rem 0 1.5rem;
+  }
+
+  h2{
+    margin:0;
+    font-size:clamp(2.15rem,9vw,3.9rem);
+    max-width:16ch;
+  }
+
+  /* ---------- listed work ---------- */
+
+  .listing{
+    list-style:none;
+    margin:1.9rem 0 0;
+    padding:0;
+    border-top:1px solid var(--rule);
+  }
+  .listing li{
+    display:flex;
+    align-items:baseline;
+    gap:1rem;
+    padding:.95rem .2rem 1rem;
+    border-bottom:1px solid var(--rule-faint);
+  }
+  .listing li:last-child{border-bottom:1px solid var(--rule);}
+  .listing .idx{
+    font-family:var(--display);
+    font-variation-settings:"opsz" 14;
+    font-weight:500;
+    font-variant-numeric:tabular-nums;
+    font-size:.8125rem;
+    color:var(--ochre);
+    flex:none;
+    width:2ch;
+  }
+  .listing .term{
+    font-family:var(--display);
+    font-variation-settings:"SOFT" 0,"WONK" 0,"opsz" 60;
+    font-weight:400;
+    font-size:1.5rem;
+    letter-spacing:-.015em;
+    line-height:1.15;
+  }
+
+  .attribution{
+    margin:1.4rem 0 0;
+    padding:.95rem 1.05rem;
+    background:var(--ochre-soft);
+    border-left:2px solid var(--ochre);
+    font-size:.9375rem;
+    line-height:1.58;
+    color:var(--ink-70);
+    max-width:52ch;
+  }
+  .attribution b{color:var(--ink);font-weight:600;}
+
+  /* ---------- where ---------- */
+
+  .place{margin-top:1.9rem;border-top:2px solid var(--ink);padding-top:1.35rem;}
+  .place-name{
+    display:block;
+    font-size:clamp(2.9rem,15vw,7rem);
+    margin-bottom:.35rem;
+  }
+  .place-sub{
+    display:flex;
+    flex-wrap:wrap;
+    gap:.35rem .8rem;
+    padding-bottom:1.2rem;
+    border-bottom:1px solid var(--rule);
+  }
+
+  /* ---------- the record (ledger) ---------- */
+
+  .ledger{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:1.9rem;
+    text-align:left;
+  }
+  .ledger caption{
+    caption-side:top;
+    text-align:left;
+    padding-bottom:.85rem;
+    font-size:.6875rem;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--ink-52);
+    font-weight:600;
+  }
+  .ledger tr{border-bottom:1px solid var(--rule-faint);}
+  .ledger tr:first-child{border-top:2px solid var(--ink);}
+  .ledger tr:last-child{border-bottom:2px solid var(--ink);}
+  .ledger th,.ledger td{padding:1rem .25rem 1.05rem;vertical-align:baseline;}
+  .ledger th{
+    font-family:var(--display);
+    font-variation-settings:"SOFT" 0,"WONK" 0,"opsz" 144;
+    font-weight:300;
+    font-variant-numeric:lining-nums tabular-nums;
+    font-size:clamp(2.1rem,10vw,3.1rem);
+    letter-spacing:-.04em;
+    line-height:.95;
+    width:4.4ch;
+    white-space:nowrap;
+  }
+  .ledger th.is-word{
+    font-size:clamp(1.15rem,5.5vw,1.55rem);
+    font-weight:400;
+    letter-spacing:-.01em;
+    width:auto;
+    padding-right:1rem;
+  }
+  .ledger td{font-size:.9375rem;line-height:1.5;color:var(--ink-70);}
+  .ledger td b{color:var(--ink);font-weight:600;}
+
+  .source-note{
+    margin:1.35rem 0 0;
+    font-size:.9375rem;
+    line-height:1.6;
+    color:var(--ink-70);
+    max-width:50ch;
+  }
+  .source-note b{color:var(--ink);font-weight:600;}
+
+  /* ---------- contact ---------- */
+
+  .contact-grid{margin-top:1.9rem;}
+
+  .subject-list{
+    list-style:none;
+    margin:0 0 1.6rem;
+    padding:0;
+    border-top:2px solid var(--ink);
+  }
+  .subject-list li{border-bottom:1px solid var(--rule-faint);}
+  .subject-list li:last-child{border-bottom:1px solid var(--rule);}
+  .subject-link{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:1rem;
+    padding:1.05rem .2rem 1.1rem;
+    text-decoration:none;
+    color:var(--ink);
+  }
+  .subject-link:hover .subject-term,
+  .subject-link:focus-visible .subject-term{color:var(--ochre);}
+  .subject-term{
+    font-family:var(--display);
+    font-variation-settings:"SOFT" 0,"WONK" 0,"opsz" 60;
+    font-weight:400;
+    font-size:1.4375rem;
+    letter-spacing:-.015em;
+    transition:color .16s ease;
+  }
+  .subject-arrow{
+    font-size:.6875rem;
+    letter-spacing:.13em;
+    text-transform:uppercase;
+    color:var(--ink-52);
+    font-weight:600;
+    white-space:nowrap;
+  }
+
+  .direct{
+    border-top:1px solid var(--rule);
+    padding-top:1.35rem;
+    display:grid;
+    gap:1.15rem;
+  }
+  .direct-item{display:block;}
+  .direct-label{
+    display:block;
+    font-size:.6875rem;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--ink-52);
+    font-weight:600;
+    margin-bottom:.3rem;
+  }
+  .direct-value{
+    font-family:var(--display);
+    font-variation-settings:"SOFT" 0,"WONK" 0,"opsz" 48;
+    font-weight:400;
+    font-size:1.3125rem;
+    letter-spacing:-.012em;
+    color:var(--ink);
+    text-decoration:none;
+    border-bottom:1px solid var(--rule);
+    word-break:break-word;
+  }
+  a.direct-value:hover,a.direct-value:focus-visible{color:var(--ochre);border-bottom-color:var(--ochre);}
+
+  /* ---------- footer ---------- */
+
+  footer{margin-top:4rem;border-top:2px solid var(--ink);background:var(--paper-2);}
+  .footer-inner{padding:1.9rem 0 2.5rem;}
+  .footer-mark{
+    font-family:var(--display);
+    font-variation-settings:"SOFT" 0,"WONK" 1,"opsz" 60;
+    font-weight:400;
+    font-size:1.5rem;
+    letter-spacing:-.02em;
+    margin:0 0 1.1rem;
+    line-height:1.1;
+  }
+  .disclaimer{
+    margin:0;
+    font-size:.8125rem;
+    line-height:1.6;
+    color:var(--ink-70);
+    max-width:46ch;
+  }
+  .disclaimer b{
+    display:block;
+    color:var(--ink);
+    font-weight:600;
+    letter-spacing:.02em;
+    margin-bottom:.25rem;
+  }
+
+  /* ---------- sticky mobile action bar ---------- */
+
+  .actionbar{
+    position:fixed;
+    left:0;right:0;bottom:0;
+    z-index:60;
+    display:grid;
+    grid-template-columns:1.55fr 1fr;
+    background:var(--ink);
+    border-top:2px solid var(--ink);
+    padding-bottom:env(safe-area-inset-bottom);
+  }
+  .actionbar a{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:.55rem;
+    min-height:3.5rem;
+    padding:.75rem .5rem;
+    text-decoration:none;
+    font-size:.9375rem;
+    font-weight:600;
+    letter-spacing:.02em;
+    color:var(--paper);
+  }
+  .actionbar a+a{border-left:1px solid rgba(246,242,233,.28);}
+  .actionbar .ab-mail{background:var(--ochre);color:#fff;}
+  .actionbar svg{flex:none;}
+
+  /* ---------- wider viewports ---------- */
+
+  @media (min-width:40rem){
+    body{font-size:17.5px;padding-bottom:0;}
+    :root{--gutter:2.5rem;}
+    .actionbar{display:none;}
+    .actions{flex-direction:row;flex-wrap:wrap;}
+    .btn{min-width:16.5rem;}
+    .stat-row{gap:2rem;padding:1.35rem 0 1.4rem;}
+    .stat-lede{font-size:1.3125rem;}
+    .listing .term{font-size:1.75rem;}
+    .direct{grid-template-columns:repeat(2,minmax(0,1fr));gap:1.5rem;}
+    .footer-inner{padding:2.25rem 0 3rem;}
+  }
+
+  @media (min-width:58rem){
+    :root{--gutter:3.25rem;}
+    body{font-size:18px;}
+
+    /* notebook-margin hairline: print furniture, desktop only */
+    .sheet{position:relative;}
+    .hero .sheet::before,
+    section .sheet::before{
+      content:"";
+      position:absolute;
+      top:0;bottom:0;
+      left:calc(var(--gutter) - 1.5rem);
+      border-left:1px solid var(--rule-faint);
+    }
+
+    .hero{padding-top:3.25rem;}
+    .hero-deck{font-size:1.1875rem;max-width:40ch;}
+
+    .stat-row{align-items:center;}
+    .stat-fig{min-width:3.4ch;}
+
+    section{padding:5.5rem 0 0;}
+    .sec-head{padding-bottom:2rem;}
+
+    .split{
+      display:grid;
+      grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);
+      gap:3.5rem;
+      align-items:start;
+    }
+    .listing{margin-top:0;}
+    .ledger{margin-top:0;}
+    .subject-list{margin-bottom:0;}
+    .contact-grid{
+      display:grid;
+      grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);
+      gap:3.5rem;
+      align-items:start;
+    }
+    .direct{border-top:2px solid var(--ink);grid-template-columns:1fr;gap:1.5rem;}
+    footer{margin-top:6rem;}
+    .footer-inner{
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-end;
+      gap:3rem;
+      padding:2.5rem 0 3.25rem;
+    }
+    .footer-mark{margin-bottom:0;}
+  }
+
+  @media (prefers-reduced-motion:reduce){
+    *{transition:none !important;}
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ MASTHEAD ============ -->
+<header class="masthead">
+  <div class="sheet">
+    <hr class="rule rule--heavy">
+    <div class="masthead-meta folio">
+      <span>Murfreesboro, Tennessee</span>
+      <span class="sep" aria-hidden="true">/</span>
+      <span>Photographer</span>
+      <span class="sep" aria-hidden="true">/</span>
+      <span>ZIP 37128</span>
+    </div>
+    <hr class="rule">
+  </div>
+</header>
+
+<!-- ============ 01 — HERO ============ -->
+<div class="hero">
+  <div class="sheet">
+    <div class="sec-head hero-folio">
+      <p class="folio" style="margin:0"><b>§ 01</b> &nbsp;The short version</p>
+      <p class="folio" style="margin:0">59 &middot; 100%</p>
+    </div>
+
+    <p class="hero-name">Brittany Kay Photography</p>
+
+    <h1 class="fr">Fifty-nine<br>stories<span class="period">.</span></h1>
+
+    <p class="deck hero-deck">
+      Fifty-nine people have left a recommendation on the Brittany Kay Photography
+      Facebook page. <strong>Not one of them said no.</strong> That record is the
+      whole pitch — everything below is just how to get in touch.
+    </p>
+
+    <div class="stat">
+      <div class="stat-row">
+        <span class="num stat-fig">59</span>
+        <span class="stat-copy">
+          <span class="stat-lede">Reviews left by people who booked the work</span>
+          <span class="stat-src">Source — Facebook</span>
+        </span>
+      </div>
+      <div class="stat-row">
+        <span class="num stat-fig stat-fig--pct">100<span style="font-size:.52em">%</span></span>
+        <span class="stat-copy">
+          <span class="stat-lede">Of those fifty-nine would recommend</span>
+          <span class="stat-src">Source — Facebook</span>
+        </span>
+      </div>
+    </div>
+
+    <div class="actions">
+      <a class="btn btn-primary" href="mailto:brittanykayphotog@gmail.com?subject=Photography%20inquiry">
+        <span>
+          Email Brittany
+          <span class="btn-note">brittanykayphotog@gmail.com</span>
+        </span>
+        <svg width="20" height="14" viewBox="0 0 20 14" fill="none" stroke="currentColor" stroke-width="1.25" aria-hidden="true">
+          <rect x=".625" y=".625" width="18.75" height="12.75"/>
+          <path d="M.9 1.1 10 7.6l9.1-6.5"/>
+        </svg>
+      </a>
+      <a class="btn btn-ghost" href="tel:+16154904994">
+        <span>
+          Call 615-490-4994
+          <span class="btn-note">If you'd rather just talk</span>
+        </span>
+        <svg width="17" height="17" viewBox="0 0 17 17" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linejoin="round" aria-hidden="true">
+          <path d="M5.1 1.1 1.9 2.4c-1 3.9 3.1 11.4 8.9 13.2l2.4-2.6-3-2.7-1.9 1.3c-1.4-1-2.6-2.6-3.2-4.2l1.9-1.3z"/>
+        </svg>
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- ============ 02 — LISTED WORK ============ -->
+<section id="work">
+  <div class="sheet">
+    <hr class="rule rule--heavy">
+    <div class="sec-head">
+      <p class="folio" style="margin:0"><b>§ 02</b> &nbsp;Listed work</p>
+      <p class="folio" style="margin:0">Five categories</p>
+    </div>
+
+    <div class="split">
+      <div>
+        <h2 class="fr">What the listing says</h2>
+        <p class="attribution">
+          <b>Attribution.</b> The five categories below come from a Bark directory listing
+          for Brittany Kay Photography. They describe how the business is listed —
+          not a portfolio, and not a claim about any particular booking. For what's
+          actually on the books right now, just ask.
+        </p>
+      </div>
+
+      <ol class="listing">
+        <li><span class="idx">01</span><span class="term">Family</span></li>
+        <li><span class="idx">02</span><span class="term">Wedding</span></li>
+        <li><span class="idx">03</span><span class="term">Engagement</span></li>
+        <li><span class="idx">04</span><span class="term">Boudoir</span></li>
+        <li><span class="idx">05</span><span class="term">Graduation</span></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 03 — WHERE ============ -->
+<section id="where">
+  <div class="sheet">
+    <hr class="rule rule--heavy">
+    <div class="sec-head">
+      <p class="folio" style="margin:0"><b>§ 03</b> &nbsp;Service area</p>
+      <p class="folio" style="margin:0">37128</p>
+    </div>
+
+    <h2 class="fr">One town, on the record.</h2>
+
+    <div class="place">
+      <span class="fr place-name">Murfreesboro</span>
+      <div class="place-sub folio">
+        <span>Tennessee</span>
+        <span class="sep" aria-hidden="true">/</span>
+        <span>ZIP 37128</span>
+        <span class="sep" aria-hidden="true">/</span>
+        <span>Listed service area</span>
+      </div>
+    </div>
+
+    <p class="source-note">
+      Murfreesboro is the service area on file. If your date is somewhere
+      outside it, that's a question worth asking rather than assuming — <b>put it in an
+      email and find out.</b>
+    </p>
+  </div>
+</section>
+
+<!-- ============ 04 — THE RECORD ============ -->
+<section id="record">
+  <div class="sheet">
+    <hr class="rule rule--heavy">
+    <div class="sec-head">
+      <p class="folio" style="margin:0"><b>§ 04</b> &nbsp;The record</p>
+      <p class="folio" style="margin:0">Publicly checkable</p>
+    </div>
+
+    <div class="split">
+      <div>
+        <h2 class="fr">Everything here can be verified.</h2>
+        <p class="source-note" style="margin-top:1.2rem">
+          Nothing on this page is a self-assessment. Every figure below is sitting in
+          public on the <b>Brittany Kay Photography page on Facebook</b>, where anyone
+          can count it. That is a rarer thing than it sounds — fifty-nine reviews is a
+          deep record for a photographer, and an unbroken one is rarer still.
+        </p>
+      </div>
+
+      <table class="ledger">
+        <caption>As shown on Facebook</caption>
+        <tbody>
+          <tr>
+            <th scope="row">59</th>
+            <td>Reviews on the Facebook page</td>
+          </tr>
+          <tr>
+            <th scope="row">100<span style="font-size:.6em">%</span></th>
+            <td><b>Recommended</b> — every one of the fifty-nine</td>
+          </tr>
+          <tr>
+            <th scope="row">6,800</th>
+            <td>Followers of that page</td>
+          </tr>
+          <tr>
+            <th scope="row" class="is-word">Photographer</th>
+            <td>The category the page is listed under</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 05 — CONTACT ============ -->
+<section id="contact">
+  <div class="sheet">
+    <hr class="rule rule--heavy">
+    <div class="sec-head">
+      <p class="folio" style="margin:0"><b>§ 05</b> &nbsp;Get in touch</p>
+      <p class="folio" style="margin:0">Start here</p>
+    </div>
+
+    <h2 class="fr">Pick a subject line.</h2>
+
+    <div class="contact-grid">
+      <ul class="subject-list">
+        <li>
+          <a class="subject-link" href="mailto:brittanykayphotog@gmail.com?subject=Wedding%20inquiry">
+            <span class="subject-term">Wedding inquiry</span>
+            <span class="subject-arrow">Email &rarr;</span>
+          </a>
+        </li>
+        <li>
+          <a class="subject-link" href="mailto:brittanykayphotog@gmail.com?subject=Family%20session%20inquiry">
+            <span class="subject-term">Family session</span>
+            <span class="subject-arrow">Email &rarr;</span>
+          </a>
+        </li>
+        <li>
+          <a class="subject-link" href="mailto:brittanykayphotog@gmail.com?subject=Engagement%20session%20inquiry">
+            <span class="subject-term">Engagement session</span>
+            <span class="subject-arrow">Email &rarr;</span>
+          </a>
+        </li>
+        <li>
+          <a class="subject-link" href="mailto:brittanykayphotog@gmail.com?subject=Graduation%20session%20inquiry">
+            <span class="subject-term">Graduation session</span>
+            <span class="subject-arrow">Email &rarr;</span>
+          </a>
+        </li>
+        <li>
+          <a class="subject-link" href="mailto:brittanykayphotog@gmail.com?subject=Photography%20inquiry">
+            <span class="subject-term">Something else</span>
+            <span class="subject-arrow">Email &rarr;</span>
+          </a>
+        </li>
+      </ul>
+
+      <div class="direct">
+        <span class="direct-item">
+          <span class="direct-label">Email</span>
+          <a class="direct-value" href="mailto:brittanykayphotog@gmail.com?subject=Photography%20inquiry">brittanykayphotog@gmail.com</a>
+        </span>
+        <span class="direct-item">
+          <span class="direct-label">Telephone</span>
+          <a class="direct-value" href="tel:+16154904994">615-490-4994</a>
+        </span>
+        <span class="direct-item">
+          <span class="direct-label">Based in</span>
+          <span class="direct-value" style="border-bottom-color:transparent">Murfreesboro, TN 37128</span>
+        </span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="sheet footer-inner">
+    <p class="footer-mark">Brittany Kay Photography</p>
+    <p class="disclaimer">
+      <b>Website concept by Murrieta Web Studio</b>
+      This is a design concept created for Brittany Kay Photography. Not yet the official website of Brittany Kay Photography.
+    </p>
+  </div>
+</footer>
+
+<!-- ============ STICKY MOBILE ACTION BAR ============ -->
+<nav class="actionbar" aria-label="Contact actions">
+  <a class="ab-mail" href="mailto:brittanykayphotog@gmail.com?subject=Photography%20inquiry">
+    <svg width="18" height="13" viewBox="0 0 20 14" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true">
+      <rect x=".7" y=".7" width="18.6" height="12.6"/>
+      <path d="M1 1.1 10 7.6l9-6.5"/>
+    </svg>
+    Email
+  </a>
+  <a href="tel:+16154904994">
+    <svg width="16" height="16" viewBox="0 0 17 17" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round" aria-hidden="true">
+      <path d="M5.1 1.1 1.9 2.4c-1 3.9 3.1 11.4 8.9 13.2l2.4-2.6-3-2.7-1.9 1.3c-1.4-1-2.6-2.6-3.2-4.2l1.9-1.3z"/>
+    </svg>
+    Call
+  </a>
+</nav>
+
+</body>
+</html>

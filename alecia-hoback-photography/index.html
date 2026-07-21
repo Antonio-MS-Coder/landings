@@ -1,0 +1,773 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#0B1626">
+<title>Alecia Hoback Photography — La Vergne, Tennessee</title>
+<meta name="description" content="Alecia Hoback Photography, based in La Vergne, Tennessee. Commissions begin with a short note: what you need photographed, when and where, and how the images will be used.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Chivo:wght@300;400;700;900&display=swap" rel="stylesheet">
+
+<style>
+/* ============================================================
+   ALECIA HOBACK PHOTOGRAPHY — design concept
+   Concept: craft over count. The page is built like a mat board
+   and a commission brief. Restraint carries the credibility.
+   Palette: deep navy ground / brass accent / bone type.
+   ============================================================ */
+
+:root{
+  --navy:      #0B1626;   /* ground */
+  --navy-2:    #102034;   /* duotone second tone */
+  --navy-3:    #16293F;   /* plate fill */
+  --navy-4:    #1D3450;   /* raised edge */
+  --brass:     #D9AD68;
+  --brass-dim: #A87F45;
+  --bone:      #EAE3D6;
+  --bone-62:   rgba(234,227,214,.62);
+  --bone-44:   rgba(234,227,214,.44);
+  --hair:      rgba(217,173,104,.26);
+  --hair-soft: rgba(234,227,214,.13);
+  --display:   "Chivo", Georgia, serif;
+  --text:      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+               Helvetica, Arial, sans-serif;
+  --gut:       clamp(20px, 5vw, 56px);
+  --plate-max: 1140px;
+}
+
+*,*::before,*::after{ box-sizing:border-box; }
+
+html{ -webkit-text-size-adjust:100%; }
+
+body{
+  margin:0;
+  background:var(--navy);
+  color:var(--bone);
+  font-family:var(--text);
+  font-size:16px;
+  line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+  /* clearance for the sticky mobile action bar */
+  padding-bottom:calc(76px + env(safe-area-inset-bottom));
+}
+@media (min-width:820px){ body{ padding-bottom:0; } }
+
+img{ max-width:100%; }
+
+a{ color:inherit; }
+
+::selection{ background:var(--brass); color:var(--navy); }
+
+:focus-visible{
+  outline:2px solid var(--brass);
+  outline-offset:3px;
+}
+
+.wrap{
+  max-width:var(--plate-max);
+  margin:0 auto;
+  padding-left:var(--gut);
+  padding-right:var(--gut);
+}
+
+.skip{
+  position:absolute; left:-9999px; top:0;
+  background:var(--brass); color:var(--navy);
+  padding:12px 18px; font-weight:700; z-index:99;
+}
+.skip:focus{ left:0; }
+
+/* ---------- shared type ---------- */
+
+.eyebrow{
+  font-family:var(--display);
+  font-weight:700;
+  font-size:10.5px;
+  letter-spacing:.26em;
+  text-transform:uppercase;
+  color:var(--brass);
+  margin:0;
+}
+
+h1,h2,h3{
+  font-family:var(--display);
+  font-weight:900;
+  line-height:1.03;
+  letter-spacing:-.028em;
+  margin:0;
+}
+
+.lede{
+  font-size:clamp(16.5px, 2.2vw, 19px);
+  line-height:1.6;
+  color:var(--bone-62);
+  max-width:46ch;
+}
+
+/* ---------- masthead ---------- */
+
+header.mast{
+  border-bottom:1px solid var(--hair-soft);
+  background:var(--navy);
+}
+.mast-in{
+  display:flex; align-items:center; justify-content:space-between;
+  gap:16px;
+  padding-top:16px; padding-bottom:16px;
+}
+.mark{
+  display:flex; align-items:center; gap:12px;
+  text-decoration:none;
+}
+.mono{
+  width:36px; height:36px; flex:none;
+  border:1px solid var(--brass-dim);
+  display:grid; place-items:center;
+  font-family:var(--display); font-weight:900;
+  font-size:13px; letter-spacing:.02em;
+  color:var(--brass);
+}
+.mark-txt{ line-height:1.15; }
+.mark-txt b{
+  display:block;
+  font-family:var(--display); font-weight:700;
+  font-size:14.5px; letter-spacing:.01em;
+}
+.mark-txt span{
+  display:block;
+  font-size:10px; letter-spacing:.19em; text-transform:uppercase;
+  color:var(--bone-44);
+}
+.mast-links{ display:none; gap:26px; align-items:center; }
+@media (min-width:820px){ .mast-links{ display:flex; } }
+.mast-links a{
+  font-size:12.5px; letter-spacing:.11em; text-transform:uppercase;
+  text-decoration:none; color:var(--bone-62);
+  padding:4px 0;
+  border-bottom:1px solid transparent;
+  transition:color .18s ease, border-color .18s ease;
+}
+.mast-links a:hover{ color:var(--brass); border-bottom-color:var(--hair); }
+
+/* ---------- the step wedge (photographic calibration strip) ---------- */
+
+.wedge{ display:flex; height:7px; width:100%; }
+.wedge span{ flex:1 1 0; display:block; }
+.wedge span:nth-child(1){  background:#0E1C2E; }
+.wedge span:nth-child(2){  background:#222B34; }
+.wedge span:nth-child(3){  background:#37393A; }
+.wedge span:nth-child(4){  background:#4B483F; }
+.wedge span:nth-child(5){  background:#605645; }
+.wedge span:nth-child(6){  background:#74654B; }
+.wedge span:nth-child(7){  background:#887351; }
+.wedge span:nth-child(8){  background:#9D8257; }
+.wedge span:nth-child(9){  background:#B1905C; }
+.wedge span:nth-child(10){ background:#C59F62; }
+.wedge span:nth-child(11){ background:#D9AD68; }
+
+/* ---------- hero: the mat plate ---------- */
+
+.hero{ padding:clamp(38px,7vw,84px) 0 clamp(30px,5vw,54px); }
+
+.plate-hold{ position:relative; }
+
+/* prepress crop marks at the plate corners */
+.crop{
+  position:absolute; width:13px; height:13px;
+  border-color:var(--brass-dim); border-style:solid; border-width:0;
+  pointer-events:none;
+}
+.crop.tl{ top:-9px;  left:-9px;  border-top-width:1px; border-left-width:1px; }
+.crop.tr{ top:-9px;  right:-9px; border-top-width:1px; border-right-width:1px; }
+.crop.bl{ bottom:-9px; left:-9px;  border-bottom-width:1px; border-left-width:1px; }
+.crop.br{ bottom:-9px; right:-9px; border-bottom-width:1px; border-right-width:1px; }
+@media (max-width:560px){ .crop{ display:none; } }
+
+/* the mat board */
+.mat{
+  border:1px solid var(--hair);
+  background:var(--navy-2);
+  padding:clamp(12px,2.4vw,26px);
+}
+/* the window cut into the mat, with a bevelled edge */
+.window{
+  background:var(--navy);
+  border:1px solid rgba(234,227,214,.08);
+  box-shadow:
+    inset 1px 1px 0 rgba(234,227,214,.09),
+    inset -1px -1px 0 rgba(0,0,0,.5);
+  padding:clamp(28px,6vw,68px) clamp(22px,5vw,60px);
+}
+
+.hero h1{
+  font-size:clamp(40px, 10.4vw, 104px);
+  margin:20px 0 0;
+}
+.hero h1 .ln{ display:block; }
+.hero h1 .ln--2{ color:var(--brass); }
+
+.hero-rule{
+  display:flex; align-items:center; gap:14px;
+  margin:26px 0 22px;
+}
+.hero-rule::after{
+  content:""; flex:1 1 auto; height:1px; background:var(--hair);
+}
+.hero-rule b{
+  font-family:var(--display); font-weight:400;
+  font-size:clamp(14px,2.4vw,17px);
+  letter-spacing:.03em;
+  color:var(--bone);
+}
+
+.hero-body{
+  display:grid; gap:clamp(24px,4vw,52px);
+  grid-template-columns:1fr;
+}
+@media (min-width:860px){
+  .hero-body{ grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr); align-items:stretch; }
+  /* right-hand caption rail, like the notes on the back of a print */
+  .hero-rail{
+    border-left:1px solid var(--hair-soft);
+    padding-left:clamp(28px,3.6vw,52px);
+  }
+}
+
+/* spec list — reads like the back of a print */
+.spec{ margin:0; font-size:13.5px; }
+.spec div{
+  display:flex; gap:14px; align-items:baseline;
+  padding:11px 0;
+  border-top:1px solid var(--hair-soft);
+}
+.spec div:last-child{ border-bottom:1px solid var(--hair-soft); }
+.spec dt{
+  flex:0 0 88px;
+  font-family:var(--display); font-weight:700;
+  font-size:10px; letter-spacing:.2em; text-transform:uppercase;
+  color:var(--bone-44);
+}
+.spec dd{ margin:0; color:var(--bone); }
+.spec dd a{ text-decoration:none; border-bottom:1px solid var(--hair); }
+.spec dd a:hover{ color:var(--brass); }
+
+/* ---------- buttons ---------- */
+
+.acts{ display:flex; flex-wrap:wrap; gap:12px; margin-top:clamp(26px,4vw,36px); }
+
+.btn{
+  display:inline-flex; align-items:center; justify-content:center; gap:10px;
+  min-height:52px;
+  padding:0 26px;
+  font-family:var(--display);
+  font-weight:700; font-size:13px;
+  letter-spacing:.13em; text-transform:uppercase;
+  text-decoration:none;
+  border:1px solid transparent;
+  border-radius:2px;
+  transition:background .18s ease, color .18s ease, border-color .18s ease;
+}
+.btn svg{ width:16px; height:16px; flex:none; }
+.btn--brass{
+  background:var(--brass); color:var(--navy); border-color:var(--brass);
+}
+.btn--brass:hover{ background:#EBC384; border-color:#EBC384; }
+.btn--ghost{
+  background:transparent; color:var(--bone); border-color:rgba(234,227,214,.28);
+}
+.btn--ghost:hover{ border-color:var(--brass); color:var(--brass); }
+.btn--wide{ flex:1 1 240px; }
+
+/* ---------- duotone bands ---------- */
+
+.band{ padding:clamp(52px,8vw,104px) 0; }
+
+/* flat two-tone panels, hard stops only — never a soft gradient.
+   The area band splits at exactly 50%, which lands dead centre of the
+   two-column gutter because .wrap is centred with symmetric padding. */
+.band--duo{ background:var(--navy-2); }
+.band--duo-r{ background:var(--navy); }
+@media (min-width:860px){
+  .band--duo-r{
+    background:linear-gradient(90deg, var(--navy) 0 50%, var(--navy-2) 50% 100%);
+  }
+}
+
+.sec-head{ max-width:60ch; }
+.sec-head h2{
+  font-size:clamp(27px,5vw,44px);
+  margin:16px 0 0;
+}
+.sec-head p{ margin:18px 0 0; }
+
+/* ---------- the brief: numbered plates ---------- */
+
+.brief{
+  display:grid; gap:1px;
+  margin-top:clamp(34px,5vw,56px);
+  background:var(--hair-soft);
+  border:1px solid var(--hair-soft);
+}
+@media (min-width:760px){ .brief{ grid-template-columns:repeat(3,1fr); } }
+
+.card{
+  background:var(--navy);
+  padding:clamp(24px,3.4vw,34px);
+  display:flex; flex-direction:column; gap:14px;
+}
+.card-top{
+  display:flex; align-items:center; justify-content:space-between;
+  color:var(--brass);
+}
+.card-top .num{
+  font-family:var(--display); font-weight:900;
+  font-size:12px; letter-spacing:.14em;
+}
+.card-top svg{ width:26px; height:26px; }
+.card h3{
+  font-size:clamp(18px,2.6vw,21px);
+  font-weight:700;
+  letter-spacing:-.012em;
+  line-height:1.22;
+}
+.card p{ margin:0; font-size:14.6px; color:var(--bone-62); }
+.card .hint{
+  margin-top:auto; padding-top:8px;
+  font-size:12px; letter-spacing:.07em;
+  color:var(--bone-44);
+  border-top:1px solid var(--hair-soft);
+}
+
+.prefill{
+  margin-top:clamp(28px,4vw,40px);
+  display:flex; flex-wrap:wrap; align-items:center; gap:16px 22px;
+}
+.prefill p{
+  margin:0; font-size:13.5px; color:var(--bone-44); max-width:36ch;
+}
+
+/* ---------- area ---------- */
+
+.area-grid{
+  display:grid; gap:clamp(28px,4.5vw,64px);
+  grid-template-columns:1fr;
+  align-items:start;
+}
+@media (min-width:860px){ .area-grid{ grid-template-columns:1fr 1fr; } }
+
+.pinbox{
+  border:1px solid var(--hair);
+  padding:clamp(22px,3.4vw,34px);
+  background:var(--navy);
+}
+.pinbox .eyebrow{ margin-bottom:18px; }
+.towns{
+  list-style:none; margin:0; padding:0;
+  font-family:var(--display);
+  font-size:clamp(17px,2.9vw,23px);
+  font-weight:400;
+  letter-spacing:-.01em;
+}
+.towns li{
+  display:flex; align-items:center; gap:14px;
+  padding:12px 0;
+  border-bottom:1px solid var(--hair-soft);
+}
+.towns li:last-child{ border-bottom:0; }
+.towns li::before{
+  content:""; flex:none;
+  width:7px; height:7px;
+  border:1px solid var(--brass);
+  transform:rotate(45deg);
+}
+.towns li.home{ color:var(--brass); }
+.towns li.home::before{ background:var(--brass); }
+.towns li small{
+  margin-left:auto;
+  font-family:var(--text);
+  font-size:10.5px; letter-spacing:.18em; text-transform:uppercase;
+  color:var(--bone-44);
+}
+
+/* ---------- contact ---------- */
+
+.contact{ padding:clamp(52px,8vw,104px) 0; background:var(--navy); }
+
+.contact-plate{
+  border:1px solid var(--hair);
+  background:var(--navy-2);
+  padding:clamp(12px,2.2vw,22px);
+}
+.contact-inner{
+  background:var(--navy);
+  border:1px solid rgba(234,227,214,.07);
+  padding:clamp(28px,5vw,58px);
+}
+.contact h2{ font-size:clamp(26px,4.6vw,40px); }
+
+.reach{
+  display:grid; gap:1px;
+  margin-top:clamp(28px,4vw,40px);
+  background:var(--hair-soft);
+  border:1px solid var(--hair-soft);
+}
+@media (min-width:700px){ .reach{ grid-template-columns:1fr 1fr; } }
+.reach a{
+  background:var(--navy);
+  padding:clamp(20px,3vw,28px);
+  text-decoration:none;
+  display:flex; flex-direction:column; gap:6px;
+  transition:background .18s ease;
+}
+.reach a:hover{ background:var(--navy-3); }
+.reach .k{
+  font-family:var(--display); font-weight:700;
+  font-size:10px; letter-spacing:.22em; text-transform:uppercase;
+  color:var(--brass);
+}
+.reach .v{
+  font-family:var(--display);
+  font-size:clamp(17px,3vw,24px);
+  font-weight:400;
+  letter-spacing:-.015em;
+  overflow-wrap:anywhere;
+}
+/* the address is long — let it sit a size down so it holds one line */
+.reach .v--email{ font-size:clamp(14px,2.1vw,19px); }
+.reach .m{ font-size:12.5px; color:var(--bone-44); }
+
+/* ---------- footer ---------- */
+
+footer.site{
+  border-top:1px solid var(--hair-soft);
+  padding:34px 0 40px;
+  background:var(--navy-2);
+}
+.foot-in{
+  display:flex; flex-wrap:wrap; gap:18px 40px;
+  align-items:flex-start; justify-content:space-between;
+}
+.foot-note{ font-size:12.5px; color:var(--bone-44); max-width:52ch; line-height:1.6; }
+.foot-note b{
+  display:block;
+  color:var(--bone-62);
+  font-family:var(--display);
+  font-weight:700;
+  font-size:12px;
+  letter-spacing:.13em;
+  text-transform:uppercase;
+  margin-bottom:6px;
+}
+
+/* ---------- sticky mobile action bar ---------- */
+
+.dock{
+  position:fixed; left:0; right:0; bottom:0; z-index:50;
+  display:grid; grid-template-columns:1fr 1fr; gap:1px;
+  background:var(--hair-soft);
+  border-top:1px solid var(--hair);
+  padding-bottom:env(safe-area-inset-bottom);
+}
+@media (min-width:820px){ .dock{ display:none; } }
+.dock a{
+  display:flex; align-items:center; justify-content:center; gap:9px;
+  min-height:60px;
+  text-decoration:none;
+  font-family:var(--display); font-weight:700;
+  font-size:12.5px; letter-spacing:.15em; text-transform:uppercase;
+}
+.dock a svg{ width:16px; height:16px; }
+.dock .d-mail{ background:var(--brass); color:var(--navy); }
+.dock .d-call{ background:var(--navy-2); color:var(--bone); }
+</style>
+
+<a class="skip" href="#brief">Skip to content</a>
+
+<header class="mast">
+  <div class="wrap mast-in">
+    <a class="mark" href="#top">
+      <span class="mono" aria-hidden="true">AH</span>
+      <span class="mark-txt">
+        <b>Alecia Hoback</b>
+        <span>Photography</span>
+      </span>
+    </a>
+    <nav class="mast-links" aria-label="Primary">
+      <a href="#brief">The brief</a>
+      <a href="#area">Where</a>
+      <a href="tel:+16155798399">615&#8202;·&#8202;579&#8202;·&#8202;8399</a>
+      <a href="mailto:aleciahobackphotography@gmail.com?subject=Photography%20inquiry">Email</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- ============ HERO — mat plate ============ -->
+  <section class="hero">
+    <div class="wrap">
+      <div class="plate-hold">
+        <span class="crop tl" aria-hidden="true"></span>
+        <span class="crop tr" aria-hidden="true"></span>
+        <span class="crop bl" aria-hidden="true"></span>
+        <span class="crop br" aria-hidden="true"></span>
+
+        <div class="mat">
+          <div class="window">
+            <p class="eyebrow">La Vergne, Tennessee &nbsp;·&nbsp; 37086</p>
+
+            <h1>
+              <span class="ln">Alecia</span>
+              <span class="ln ln--2">Hoback</span>
+            </h1>
+
+            <div class="hero-rule"><b>Photography, by commission</b></div>
+
+            <div class="hero-body">
+              <div>
+                <p class="lede">
+                  Say what you need photographed, when and where it happens,
+                  and where the pictures go afterward. That is the whole beginning
+                  &mdash; and it is the fastest way to find out whether the date is
+                  open and the work is a fit.
+                </p>
+
+                <div class="acts">
+                  <a class="btn btn--brass" href="mailto:aleciahobackphotography@gmail.com?subject=Photography%20inquiry">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                      <rect x="2.5" y="5" width="19" height="14"/>
+                      <path d="M2.5 6.2 12 13.2l9.5-7"/>
+                    </svg>
+                    Email Alecia
+                  </a>
+                  <a class="btn btn--ghost" href="tel:+16155798399">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                      <path d="M6.2 3.5h3.2l1.6 4-2 1.4a12.5 12.5 0 0 0 6.1 6.1l1.4-2 4 1.6v3.2a1.7 1.7 0 0 1-1.9 1.7C10.4 20 4 13.6 4.5 5.4A1.7 1.7 0 0 1 6.2 3.5Z"/>
+                    </svg>
+                    615 579 8399
+                  </a>
+                </div>
+              </div>
+
+              <div class="hero-rail">
+                <dl class="spec">
+                  <div>
+                    <dt>Based</dt>
+                    <dd>La Vergne, TN 37086</dd>
+                  </div>
+                  <div>
+                    <dt>Area</dt>
+                    <dd>Middle Tennessee</dd>
+                  </div>
+                  <div>
+                    <dt>Email</dt>
+                    <dd><a href="mailto:aleciahobackphotography@gmail.com?subject=Photography%20inquiry">aleciahobackphotography<wbr>@gmail.com</a></dd>
+                  </div>
+                  <div>
+                    <dt>Phone</dt>
+                    <dd><a href="tel:+16155798399">+1 615-579-8399</a></dd>
+                  </div>
+                </dl>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="wedge" aria-hidden="true">
+    <span></span><span></span><span></span><span></span><span></span><span></span>
+    <span></span><span></span><span></span><span></span><span></span>
+  </div>
+
+  <!-- ============ THE BRIEF ============ -->
+  <section class="band band--duo" id="brief">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">Before the shutter</p>
+        <h2>Three lines make a<br>workable brief.</h2>
+        <p class="lede">
+          A photography inquiry does not need to be long. It needs to be specific.
+          Answer these three and Alecia can tell you quickly whether the date is
+          open and what the work would involve.
+        </p>
+      </div>
+
+      <div class="brief">
+
+        <article class="card">
+          <div class="card-top">
+            <span class="num">01</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true">
+              <circle cx="12" cy="12" r="9"/>
+              <path d="M12 3 16.5 10.8"/>
+              <path d="M20.8 8.5H11.8"/>
+              <path d="M19.8 17 15.3 9.2"/>
+              <path d="M12 21 7.5 13.2"/>
+              <path d="M3.2 15.5h9"/>
+              <path d="M4.2 7 8.7 14.8"/>
+            </svg>
+          </div>
+          <h3>What needs photographing</h3>
+          <p>
+            The subject, plainly put &mdash; people, a place, a product, an
+            occasion. Say how many, and say if there is one shot the whole
+            thing hinges on.
+          </p>
+          <p class="hint">e.g. &ldquo;Four people, outdoors, about an hour.&rdquo;</p>
+        </article>
+
+        <article class="card">
+          <div class="card-top">
+            <span class="num">02</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true">
+              <path d="M3 8V3h5"/><path d="M21 8V3h-5"/>
+              <path d="M3 16v5h5"/><path d="M21 16v5h-5"/>
+              <circle cx="12" cy="12" r="2.6"/>
+            </svg>
+          </div>
+          <h3>When and where</h3>
+          <p>
+            A date, or a window of dates, and the address or general area.
+            Light and travel both depend on it, so an approximate time of day
+            helps more than you would think.
+          </p>
+          <p class="hint">e.g. &ldquo;A Saturday in the fall, near Smyrna.&rdquo;</p>
+        </article>
+
+        <article class="card">
+          <div class="card-top">
+            <span class="num">03</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true">
+              <circle cx="12" cy="12" r="6"/>
+              <path d="M12 1v6"/><path d="M12 17v6"/>
+              <path d="M1 12h6"/><path d="M17 12h6"/>
+              <circle cx="12" cy="12" r="1.6" fill="currentColor" stroke="none"/>
+            </svg>
+          </div>
+          <h3>Where the images end up</h3>
+          <p>
+            Prints on a wall, a website, a printed program, a phone screen.
+            The destination shapes how a frame is built, so it belongs in the
+            first message rather than the last.
+          </p>
+          <p class="hint">e.g. &ldquo;One large print, rest online.&rdquo;</p>
+        </article>
+
+      </div>
+
+      <div class="prefill">
+        <a class="btn btn--brass" href="mailto:aleciahobackphotography@gmail.com?subject=Photography%20inquiry&amp;body=Hi%20Alecia%2C%0A%0AWhat%20needs%20photographing%3A%20%0AWhen%20and%20where%3A%20%0AWhere%20the%20images%20end%20up%3A%20%0A%0AThanks%2C%0A">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+            <rect x="2.5" y="5" width="19" height="14"/>
+            <path d="M2.5 6.2 12 13.2l9.5-7"/>
+          </svg>
+          Open a brief, ready to fill
+        </a>
+        <p>Opens your email app with the three lines already laid out. Fill them in, send it.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ WHERE ============ -->
+  <section class="band band--duo-r" id="area">
+    <div class="wrap area-grid">
+
+      <div class="sec-head">
+        <p class="eyebrow">The ground covered</p>
+        <h2>La Vergne, and the<br>middle of Tennessee.</h2>
+        <p class="lede">
+          La Vergne sits on the seam between Nashville and Murfreesboro, with
+          Smyrna and Antioch a few minutes either side. A good deal of Middle
+          Tennessee is a short drive from that corner of the map.
+        </p>
+        <p class="lede" style="margin-top:14px">
+          If your date falls somewhere outside that circle, say so in your note
+          rather than assuming the answer. It is a question worth asking.
+        </p>
+      </div>
+
+      <div class="pinbox">
+        <p class="eyebrow">Nearest points</p>
+        <ul class="towns">
+          <li class="home">La Vergne <small>Based here</small></li>
+          <li>Smyrna</li>
+          <li>Antioch</li>
+          <li>Murfreesboro</li>
+          <li>Nashville</li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="wedge" aria-hidden="true">
+    <span></span><span></span><span></span><span></span><span></span><span></span>
+    <span></span><span></span><span></span><span></span><span></span>
+  </div>
+
+  <!-- ============ CONTACT ============ -->
+  <section class="contact" id="contact">
+    <div class="wrap">
+      <div class="contact-plate">
+        <div class="contact-inner">
+          <p class="eyebrow">Get in touch</p>
+          <h2 style="margin-top:16px">Send the note.</h2>
+          <p class="lede" style="margin-top:18px">
+            Email is the surest way to reach Alecia &mdash; a date and a sentence
+            about the subject is enough to start. If it is easier to say out loud,
+            the phone works just as well.
+          </p>
+
+          <div class="reach">
+            <a href="mailto:aleciahobackphotography@gmail.com?subject=Photography%20inquiry">
+              <span class="k">Email &mdash; preferred</span>
+              <span class="v v--email">aleciahobackphotography@gmail.com</span>
+              <span class="m">Opens with the subject line filled in</span>
+            </a>
+            <a href="tel:+16155798399">
+              <span class="k">Telephone</span>
+              <span class="v">+1 615-579-8399</span>
+              <span class="m">Tap to call from a phone</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site">
+  <div class="wrap foot-in">
+    <a class="mark" href="#top">
+      <span class="mono" aria-hidden="true">AH</span>
+      <span class="mark-txt">
+        <b>Alecia Hoback</b>
+        <span>La Vergne, TN</span>
+      </span>
+    </a>
+    <p class="foot-note">
+      <b>Website concept by Murrieta Web Studio</b>
+      This is a design concept created for Alecia Hoback Photography. Not yet the official website of Alecia Hoback Photography.
+    </p>
+  </div>
+</footer>
+
+<nav class="dock" aria-label="Contact actions">
+  <a class="d-mail" href="mailto:aleciahobackphotography@gmail.com?subject=Photography%20inquiry">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+      <rect x="2.5" y="5" width="19" height="14"/>
+      <path d="M2.5 6.2 12 13.2l9.5-7"/>
+    </svg>
+    Email
+  </a>
+  <a class="d-call" href="tel:+16155798399">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+      <path d="M6.2 3.5h3.2l1.6 4-2 1.4a12.5 12.5 0 0 0 6.1 6.1l1.4-2 4 1.6v3.2a1.7 1.7 0 0 1-1.9 1.7C10.4 20 4 13.6 4.5 5.4A1.7 1.7 0 0 1 6.2 3.5Z"/>
+    </svg>
+    Call
+  </a>
+</nav>

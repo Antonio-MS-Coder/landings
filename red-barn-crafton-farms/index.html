@@ -1,0 +1,1178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>The Red Barn at Crafton Farms — Portland, Tennessee</title>
+<meta name="description" content="A working farm that hosts weddings. Strawberries, vegetables and a double-door barn at 209 Crafton Road, Portland, Tennessee.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+/* ─────────────────────────────────────────────
+   THE RED BARN AT CRAFTON FARMS
+   Broadside / agricultural almanac
+   Clay + deep field green on warm oat
+   ───────────────────────────────────────────── */
+
+*,*::before,*::after{box-sizing:border-box}
+
+:root{
+  --oat:#EFE5D1;
+  --oat-2:#E6D9BF;
+  --oat-3:#DCCCAC;
+  --clay:#A23A20;
+  --clay-2:#872E17;
+  --clay-3:#C25336;
+  --field:#20362A;
+  --field-2:#2E4B39;
+  --field-3:#3D6049;
+  --ink:#1A2820;
+  --ink-soft:#4A5A50;
+  --rule:rgba(32,54,42,.26);
+  --rule-hard:rgba(32,54,42,.55);
+  --slab:"Zilla Slab",Georgia,"Times New Roman",serif;
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+}
+
+html{-webkit-text-size-adjust:100%}
+
+body{
+  margin:0;
+  background:var(--oat);
+  color:var(--ink);
+  font-family:var(--sans);
+  font-size:16px;
+  line-height:1.62;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+
+/* ── CSS grain ── */
+body::before{
+  content:"";
+  position:fixed;
+  inset:-50%;
+  z-index:9999;
+  pointer-events:none;
+  opacity:.30;
+  mix-blend-mode:multiply;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='260' height='260'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E");
+}
+/* a second, coarser fiber pass — paper tooth */
+body::after{
+  content:"";
+  position:fixed;
+  inset:0;
+  z-index:9998;
+  pointer-events:none;
+  opacity:.16;
+  mix-blend-mode:multiply;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='700' height='700'%3E%3Cfilter id='f'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.03 0.11' numOctaves='2'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23f)'/%3E%3C/svg%3E");
+}
+
+h1,h2,h3,h4{font-family:var(--slab);font-weight:600;margin:0;letter-spacing:-.012em;line-height:1.06}
+p{margin:0 0 1.05em}
+a{color:inherit}
+
+.wrap{max-width:1140px;margin:0 auto;padding:0 22px}
+
+/* ── small-caps utility label ── */
+.label{
+  font-family:var(--sans);
+  font-size:10.5px;
+  font-weight:700;
+  letter-spacing:.20em;
+  text-transform:uppercase;
+  line-height:1.4;
+}
+
+/* ═══════════ MASTHEAD ═══════════ */
+.masthead{
+  border-bottom:1px solid var(--rule-hard);
+  background:var(--oat);
+}
+.masthead-in{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:16px;
+  padding:11px 22px;
+  max-width:1140px;
+  margin:0 auto;
+}
+.mast-mark{
+  display:flex;align-items:center;gap:10px;
+  color:var(--field);
+}
+.mast-mark svg{display:block;flex:none}
+.mast-name{
+  font-family:var(--slab);
+  font-weight:600;
+  font-size:15px;
+  letter-spacing:.01em;
+  white-space:nowrap;
+}
+.mast-place{
+  color:var(--clay);
+}
+.mast-link{
+  text-decoration:none;
+  color:var(--field);
+  border-bottom:1.5px solid var(--clay);
+  padding-bottom:1px;
+}
+.mast-link:hover{color:var(--clay)}
+@media(max-width:720px){ .mast-hide{display:none} }
+
+/* ═══════════ HERO — asymmetric split ═══════════ */
+/* full-bleed split: gutters computed off the viewport so the green panel
+   runs to the right edge while type stays on the 1140 measure */
+.hero{
+  display:grid;
+  grid-template-columns:minmax(0,1.42fr) minmax(0,1fr);
+  border-bottom:3px double var(--rule-hard);
+  --gutter:max(22px, calc((100vw - 1140px) / 2 + 22px));
+}
+.hero-type{
+  padding:52px 44px 46px var(--gutter);
+  border-right:1px solid var(--rule);
+  position:relative;
+}
+.hero-eyebrow{
+  color:var(--clay);
+  margin-bottom:26px;
+  display:flex;align-items:center;gap:12px;
+}
+.hero-eyebrow::after{
+  content:"";flex:1;height:1px;background:var(--clay);opacity:.4;
+}
+h1{
+  font-size:clamp(40px,6.4vw,74px);
+  font-weight:600;
+  line-height:.99;
+  letter-spacing:-.026em;
+  margin-bottom:22px;
+  max-width:12ch;
+}
+h1 em{
+  font-style:italic;
+  font-weight:400;
+  color:var(--clay);
+}
+.hero-deck{
+  font-size:clamp(16.5px,1.6vw,18.5px);
+  line-height:1.6;
+  color:var(--ink-soft);
+  max-width:46ch;
+  margin-bottom:30px;
+}
+.hero-deck strong{color:var(--ink);font-weight:600}
+.hero-rule{
+  height:1px;background:var(--rule);margin:0 0 26px;max-width:46ch;
+}
+.hero-actions{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+
+/* buttons */
+.btn{
+  display:inline-flex;align-items:center;gap:9px;
+  font-family:var(--sans);
+  font-size:14.5px;
+  font-weight:650;
+  letter-spacing:.01em;
+  text-decoration:none;
+  padding:13px 21px;
+  border:1.5px solid var(--field);
+  transition:background .16s,color .16s,transform .16s;
+}
+.btn svg{flex:none}
+.btn-primary{
+  background:var(--clay);
+  border-color:var(--clay);
+  color:var(--oat);
+  border-radius:2px 14px 2px 14px;
+}
+.btn-primary:hover{background:var(--clay-2);border-color:var(--clay-2);transform:translateY(-1px)}
+.btn-ghost{
+  background:transparent;
+  color:var(--field);
+  border-radius:14px 2px 14px 2px;
+}
+.btn-ghost:hover{background:var(--field);color:var(--oat)}
+
+/* hero data panel */
+.hero-data{
+  background:var(--field);
+  color:var(--oat);
+  padding:44px var(--gutter) 40px 38px;
+}
+.hero-data .label{color:rgba(239,229,209,.5)}
+.data-head{
+  padding-bottom:14px;
+  border-bottom:1px solid rgba(239,229,209,.28);
+  margin-bottom:4px;
+}
+.drow{
+  display:grid;
+  grid-template-columns:78px 1fr;
+  gap:14px;
+  padding:15px 0;
+  border-bottom:1px solid rgba(239,229,209,.15);
+  align-items:baseline;
+}
+.drow:last-of-type{border-bottom:0}
+.dkey{
+  font-size:9.5px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;
+  color:rgba(239,229,209,.48);
+  padding-top:4px;
+}
+.dval{
+  font-family:var(--slab);
+  font-size:18px;
+  line-height:1.34;
+  font-weight:400;
+  color:#F5EEE0;
+}
+.dval a{text-decoration:none;border-bottom:1px solid rgba(194,83,54,.9);padding-bottom:1px}
+.dval a:hover{color:#F0A98F}
+.dnote{
+  display:block;
+  font-family:var(--sans);
+  font-size:11.5px;
+  line-height:1.45;
+  letter-spacing:.005em;
+  color:rgba(239,229,209,.52);
+  margin-top:5px;
+  font-style:normal;
+}
+.dstars{display:flex;align-items:center;gap:5px;margin-top:3px}
+.dstars svg{display:block}
+
+@media(max-width:900px){
+  .hero{grid-template-columns:1fr;border-bottom-width:1px}
+  .hero-type{padding:38px var(--gutter) 34px;border-right:0}
+  .hero-data{padding:32px var(--gutter) 30px}
+  h1{max-width:none}
+}
+
+/* ═══════════ SECTION SCAFFOLD ═══════════ */
+section{padding:66px 0}
+.sec-head{
+  display:flex;align-items:baseline;gap:16px;
+  border-bottom:1px solid var(--rule-hard);
+  padding-bottom:11px;
+  margin-bottom:34px;
+}
+.sec-num{
+  font-family:var(--slab);
+  font-size:13px;
+  font-weight:600;
+  color:var(--clay);
+  letter-spacing:.04em;
+}
+.sec-head h2{
+  font-size:clamp(25px,3.4vw,36px);
+  font-weight:600;
+  letter-spacing:-.02em;
+  flex:1;
+}
+.sec-kicker{
+  font-family:var(--sans);
+  font-size:10.5px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--ink-soft);
+  text-align:right;
+  display:none;
+}
+@media(min-width:820px){.sec-kicker{display:block}}
+
+.lede{
+  font-family:var(--slab);
+  font-size:clamp(19px,2.2vw,23px);
+  line-height:1.45;
+  font-weight:400;
+  max-width:34ch;
+  color:var(--field);
+}
+
+/* ═══════════ 01 · THE VENUE ═══════════ */
+.venue{background:var(--oat-2);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+.venue-grid{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);
+  gap:56px;
+  align-items:start;
+}
+.cap{
+  border:1.5px solid var(--field);
+  border-radius:3px 26px 3px 26px;
+  background:var(--oat);
+  padding:26px 26px 22px;
+  position:relative;
+}
+.cap .label{color:var(--clay);margin-bottom:2px}
+.cap-fig{
+  font-family:var(--slab);
+  font-size:clamp(72px,11vw,116px);
+  font-weight:600;
+  line-height:.86;
+  letter-spacing:-.045em;
+  color:var(--field);
+  display:block;
+  margin:6px 0 2px;
+}
+.cap-fig sup{
+  font-size:.24em;
+  font-weight:600;
+  color:var(--clay);
+  vertical-align:super;
+  letter-spacing:0;
+}
+.cap-sub{
+  font-family:var(--slab);
+  font-size:17px;
+  line-height:1.34;
+  color:var(--field-2);
+  border-top:1px solid var(--rule);
+  padding-top:13px;
+  margin-top:12px;
+}
+.cap-attr{
+  font-size:12px;
+  line-height:1.5;
+  color:var(--ink-soft);
+  margin-top:11px;
+}
+.cap-attr b{color:var(--clay);font-weight:700}
+
+/* spec sheet — ruled definition list, not cards */
+.spec{border-top:1px solid var(--rule-hard)}
+.spec-row{
+  display:grid;
+  grid-template-columns:26px 1fr;
+  gap:16px;
+  padding:19px 0;
+  border-bottom:1px solid var(--rule);
+  align-items:start;
+}
+.spec-ico{color:var(--clay);padding-top:3px}
+.spec-ico svg{display:block}
+.spec h3{
+  font-size:20px;
+  font-weight:600;
+  margin-bottom:5px;
+  letter-spacing:-.01em;
+}
+.spec p{
+  font-size:15px;
+  line-height:1.58;
+  color:var(--ink-soft);
+  margin:0;
+  max-width:48ch;
+}
+.spec p em{font-style:normal;color:var(--clay);font-weight:600}
+
+@media(max-width:860px){
+  .venue-grid{grid-template-columns:1fr;gap:34px}
+}
+
+/* ═══════════ 02 · THE ALMANAC ═══════════ */
+.almanac-sec{background:var(--oat)}
+.alm-intro{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) minmax(0,1fr);
+  gap:48px;
+  margin-bottom:38px;
+  align-items:end;
+}
+.alm-intro p{font-size:15.5px;color:var(--ink-soft);margin:0;max-width:52ch}
+@media(max-width:860px){.alm-intro{grid-template-columns:1fr;gap:22px}}
+
+.almanac{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  border-top:2px solid var(--field);
+  border-left:1px solid var(--rule);
+}
+.alm-col{
+  border-right:1px solid var(--rule);
+  border-bottom:1px solid var(--rule);
+  padding:20px 18px 24px;
+  min-height:212px;
+  display:flex;
+  flex-direction:column;
+}
+.alm-season{
+  display:flex;align-items:baseline;justify-content:space-between;gap:8px;
+  margin-bottom:16px;
+}
+.alm-season .label{color:var(--field-2)}
+.alm-season i{
+  font-style:normal;
+  color:var(--clay);
+  font-family:var(--slab);
+  font-size:12px;
+  font-weight:600;
+  letter-spacing:.03em;
+}
+.alm-crop{
+  font-family:var(--slab);
+  font-size:clamp(22px,2.5vw,28px);
+  font-weight:600;
+  line-height:1.04;
+  letter-spacing:-.02em;
+  color:var(--clay);
+  margin-bottom:9px;
+}
+.alm-body{
+  font-size:13.5px;
+  line-height:1.55;
+  color:var(--ink-soft);
+  margin:0 0 auto;
+}
+.alm-foot{
+  font-size:11px;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+  font-weight:700;
+  color:var(--field-3);
+  padding-top:14px;
+  margin-top:14px;
+  border-top:1px solid var(--rule);
+}
+/* the unpublished columns */
+.alm-col.open .alm-crop{
+  color:var(--field-3);
+  font-weight:300;
+  font-style:italic;
+  opacity:.62;
+}
+.alm-col.open{
+  background:
+    repeating-linear-gradient(
+      -45deg,
+      transparent 0 9px,
+      rgba(32,54,42,.055) 9px 10px
+    );
+}
+.alm-ask{
+  display:inline-flex;align-items:center;gap:6px;
+  font-size:11px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;
+  color:var(--clay);
+  text-decoration:none;
+  border-bottom:1.5px solid rgba(162,58,32,.35);
+  padding-bottom:2px;
+  margin-top:14px;
+  align-self:flex-start;
+}
+.alm-ask:hover{border-bottom-color:var(--clay)}
+.alm-ask svg{flex:none}
+
+/* the spanning venue bar — the constant beneath the changing year */
+.alm-span{
+  grid-column:1 / -1;
+  background:var(--field);
+  color:var(--oat);
+  padding:20px 22px;
+  display:flex;
+  align-items:center;
+  gap:22px;
+  flex-wrap:wrap;
+  border-right:1px solid var(--rule);
+}
+.alm-span .label{color:rgba(239,229,209,.5);flex:none}
+.alm-span p{
+  margin:0;
+  font-family:var(--slab);
+  font-size:clamp(17px,2vw,21px);
+  line-height:1.32;
+  color:#F5EEE0;
+  flex:1;
+  min-width:240px;
+}
+.alm-span span{color:#E5A98F}
+
+@media(max-width:860px){
+  .almanac{grid-template-columns:repeat(2,1fr)}
+  .alm-col{min-height:0}
+}
+@media(max-width:520px){
+  .almanac{grid-template-columns:1fr}
+}
+
+/* margin note */
+.marginalia{
+  margin-top:24px;
+  padding-left:16px;
+  border-left:2px solid var(--clay);
+  font-size:13px;
+  line-height:1.6;
+  color:var(--ink-soft);
+  max-width:62ch;
+}
+.marginalia b{color:var(--field);font-weight:700}
+
+/* ═══════════ 03 · LOCATION ═══════════ */
+.loc{background:var(--field);color:var(--oat);border-top:1px solid var(--rule)}
+.loc .sec-head{border-bottom-color:rgba(239,229,209,.32)}
+.loc .sec-num{color:var(--clay-3)}
+.loc .sec-kicker{color:rgba(239,229,209,.5)}
+.loc-grid{
+  display:grid;
+  grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);
+  gap:52px;
+  align-items:start;
+}
+.addr{
+  font-family:var(--slab);
+  font-size:clamp(26px,3.6vw,38px);
+  font-weight:400;
+  line-height:1.22;
+  letter-spacing:-.018em;
+  color:#F7F1E4;
+  margin-bottom:20px;
+}
+.addr b{display:block;font-weight:600}
+.loc p{color:rgba(239,229,209,.72);font-size:15px;max-width:46ch}
+.loc-links{display:flex;flex-wrap:wrap;gap:12px;margin-top:24px}
+.loc .btn-ghost{color:var(--oat);border-color:rgba(239,229,209,.55)}
+.loc .btn-ghost:hover{background:var(--oat);color:var(--field);border-color:var(--oat)}
+.area{
+  border-top:1px solid rgba(239,229,209,.28);
+}
+.area-row{
+  display:flex;justify-content:space-between;gap:18px;
+  padding:13px 0;
+  border-bottom:1px solid rgba(239,229,209,.14);
+  font-size:14.5px;
+}
+.area-row dt{color:rgba(239,229,209,.55);font-size:10.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;padding-top:4px}
+.area-row dd{margin:0;font-family:var(--slab);font-size:17px;color:#F5EEE0;text-align:right}
+@media(max-width:860px){.loc-grid{grid-template-columns:1fr;gap:34px}}
+
+/* ═══════════ 04 · REPUTATION ═══════════ */
+.rep{background:var(--oat-2);border-bottom:1px solid var(--rule)}
+.rep-grid{
+  display:grid;
+  grid-template-columns:auto 1px minmax(0,1fr);
+  gap:40px;
+  align-items:center;
+}
+.score{text-align:left}
+.score-num{
+  font-family:var(--slab);
+  font-size:clamp(64px,9vw,96px);
+  font-weight:600;
+  line-height:.86;
+  letter-spacing:-.045em;
+  color:var(--clay);
+}
+.score-num small{font-size:.32em;font-weight:500;color:var(--field-3);letter-spacing:0}
+.score-stars{display:flex;gap:4px;margin:12px 0 8px}
+.score .label{color:var(--field-2)}
+.rep-div{background:var(--rule);width:1px;align-self:stretch}
+.rep-body p{font-size:15.5px;color:var(--ink-soft);max-width:54ch}
+.rep-body p:last-child{margin-bottom:0}
+.rep-big{
+  font-family:var(--slab);
+  font-size:clamp(20px,2.4vw,26px);
+  line-height:1.36;
+  color:var(--field);
+  font-weight:400;
+  margin-bottom:16px !important;
+  max-width:28ch !important;
+}
+.rep-big b{font-weight:600;color:var(--clay)}
+.attr{
+  font-size:12px;
+  line-height:1.55;
+  color:var(--ink-soft);
+  border-left:2px solid var(--clay);
+  padding-left:13px;
+  max-width:52ch;
+}
+@media(max-width:860px){
+  .rep-grid{grid-template-columns:1fr;gap:26px}
+  .rep-div{display:none}
+}
+
+/* ═══════════ 05 · CONTACT ═══════════ */
+.contact{background:var(--oat)}
+.contact-grid{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) minmax(0,1fr);
+  gap:52px;
+  align-items:start;
+}
+.contact h2{
+  font-size:clamp(30px,4.6vw,50px);
+  line-height:1.02;
+  letter-spacing:-.026em;
+  margin-bottom:18px;
+  max-width:14ch;
+}
+.contact h2 em{font-style:italic;font-weight:400;color:var(--clay)}
+.contact-lede{font-size:16px;color:var(--ink-soft);max-width:44ch}
+.owner{
+  margin-top:26px;
+  padding-top:18px;
+  border-top:1px solid var(--rule);
+  font-size:13.5px;
+  color:var(--ink-soft);
+  max-width:44ch;
+}
+.owner b{font-family:var(--slab);font-size:16px;color:var(--field);font-weight:600}
+
+.ccard{
+  border:1.5px solid var(--field);
+  border-radius:3px 30px 3px 30px;
+  overflow:hidden;
+}
+.ccard-top{
+  background:var(--field);
+  color:var(--oat);
+  padding:22px 24px 20px;
+}
+.ccard-top .label{color:rgba(239,229,209,.5);margin-bottom:9px}
+.ccard-top .big{
+  font-family:var(--slab);
+  font-size:clamp(20px,3vw,27px);
+  font-weight:500;
+  letter-spacing:-.015em;
+  line-height:1.2;
+  word-break:break-word;
+}
+.ccard-top .big a{text-decoration:none;border-bottom:2px solid var(--clay-3);padding-bottom:2px}
+.ccard-top .big a:hover{color:#F0A98F}
+.ccard-body{padding:22px 24px 24px;background:var(--oat)}
+.ccard-body .btn{width:100%;justify-content:center}
+.ccard-body .btn+.btn{margin-top:11px}
+.ccard-note{
+  font-size:12.5px;
+  color:var(--ink-soft);
+  line-height:1.55;
+  margin:16px 0 0;
+  padding-top:14px;
+  border-top:1px solid var(--rule);
+}
+@media(max-width:860px){.contact-grid{grid-template-columns:1fr;gap:34px}}
+
+/* ═══════════ FOOTER ═══════════ */
+footer{
+  background:var(--field);
+  color:rgba(239,229,209,.62);
+  padding:34px 0 40px;
+  font-size:12.5px;
+  line-height:1.6;
+}
+.foot-rule{height:1px;background:rgba(239,229,209,.22);margin-bottom:22px}
+.foot-in{display:flex;flex-wrap:wrap;gap:20px;justify-content:space-between;align-items:flex-start}
+.foot-mark{
+  font-family:var(--slab);
+  font-size:15px;
+  color:#F5EEE0;
+  font-weight:600;
+  letter-spacing:.01em;
+}
+.foot-legal{max-width:56ch}
+.foot-legal b{
+  display:block;
+  color:#F5EEE0;
+  font-family:var(--slab);
+  font-size:14px;
+  font-weight:600;
+  margin-bottom:4px;
+}
+
+/* ═══════════ MOBILE STICKY BAR ═══════════ */
+.dock{
+  position:fixed;
+  left:0;right:0;bottom:0;
+  z-index:200;
+  display:none;
+  background:var(--field);
+  border-top:1px solid rgba(239,229,209,.25);
+  padding:9px 10px calc(9px + env(safe-area-inset-bottom));
+  gap:9px;
+  box-shadow:0 -8px 26px rgba(26,40,32,.24);
+}
+.dock a{
+  flex:1;
+  display:flex;align-items:center;justify-content:center;gap:8px;
+  text-decoration:none;
+  font-size:14.5px;
+  font-weight:700;
+  letter-spacing:.01em;
+  padding:14px 8px;
+  min-height:52px;
+}
+.dock-mail{background:var(--clay);color:var(--oat);border-radius:2px 13px 2px 13px}
+.dock-call{background:transparent;color:var(--oat);border:1.5px solid rgba(239,229,209,.55);border-radius:13px 2px 13px 2px}
+@media(max-width:760px){
+  .dock{display:flex}
+  body{padding-bottom:76px}
+  section{padding:48px 0}
+}
+
+@media(prefers-reduced-motion:reduce){
+  *{transition:none !important}
+}
+</style>
+</head>
+<body>
+
+<!-- ══ MASTHEAD ══ -->
+<header class="masthead">
+  <div class="masthead-in">
+    <div class="mast-mark">
+      <!-- barn glyph -->
+      <svg width="22" height="20" viewBox="0 0 22 20" fill="none" aria-hidden="true">
+        <path d="M1 8.2 11 2l10 6.2V19H1V8.2Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/>
+        <path d="M11 8.6V19M6.6 11.4h8.8" stroke="#A23A20" stroke-width="1.4"/>
+      </svg>
+      <span class="mast-name">The Red Barn <span class="mast-hide">at Crafton Farms</span></span>
+    </div>
+    <div class="label mast-mark" style="gap:14px">
+      <span class="mast-place mast-hide">Portland, Tennessee</span>
+      <a class="mast-link" href="mailto:jpcraftjr@aol.com?subject=Wedding%20date%20inquiry">Email the farm</a>
+    </div>
+  </div>
+</header>
+
+<!-- ══ HERO — asymmetric split ══ -->
+<div class="hero-bleed">
+  <div class="hero">
+
+    <div class="hero-type">
+      <div class="label hero-eyebrow">Sumner County · Est. season by season</div>
+      <h1>A working farm that hosts <em>weddings.</em></h1>
+      <p class="hero-deck">
+        Most of the year, Crafton Farms grows things — <strong>strawberries, vegetables,
+        rows you can walk and pick yourself</strong>. The rest of the year, the same ground
+        holds a ceremony. The barn does not stop being a barn on your wedding day.
+        That is the whole point of it.
+      </p>
+      <div class="hero-rule"></div>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="mailto:jpcraftjr@aol.com?subject=Wedding%20date%20inquiry">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <rect x="1" y="3" width="14" height="10" rx="1.2" stroke="currentColor" stroke-width="1.5"/>
+            <path d="M1.6 3.8 8 8.6l6.4-4.8" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+          </svg>
+          Ask about a date
+        </a>
+        <a class="btn btn-ghost" href="tel:+16159696264">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <path d="M5.2 1.9 6.9 5 5.5 6.6c.7 1.7 2.2 3.2 3.9 3.9L11 9.1l3.1 1.7-.6 2.4c-.2.6-.8 1-1.4.9C6.6 13.4 2.6 9.4 1.9 3.9c-.1-.6.3-1.2.9-1.4l2.4-.6Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+          </svg>
+          615-969-6264
+        </a>
+      </div>
+    </div>
+
+    <aside class="hero-data">
+      <div class="data-head"><span class="label">The particulars</span></div>
+
+      <div class="drow">
+        <div class="dkey">Where</div>
+        <div class="dval">
+          209 Crafton Road<br>Portland, TN 37148
+          <span class="dnote">Sumner County, Tennessee</span>
+        </div>
+      </div>
+
+      <div class="drow">
+        <div class="dkey">Capacity</div>
+        <div class="dval">
+          Up to 350
+          <span class="dnote">Listed at up to 350 across the barn and the outdoor space. Directory figure — confirm with the farm.</span>
+        </div>
+      </div>
+
+      <div class="drow">
+        <div class="dkey">Season</div>
+        <div class="dval">
+          Spring · Summer<br>Fall · Winter
+          <span class="dnote">Listed as operating in all four seasons.</span>
+        </div>
+      </div>
+
+      <div class="drow">
+        <div class="dkey">Rated</div>
+        <div class="dval">
+          4.7 <small style="font-size:.65em;color:rgba(239,229,209,.55)">/ 5</small>
+          <div class="dstars">
+            <svg width="13" height="13" viewBox="0 0 14 14" aria-hidden="true"><path d="M7 .9 8.9 5l4.4.5-3.3 3 .9 4.4L7 10.7 3.1 12.9l.9-4.4-3.3-3L5.1 5 7 .9Z" fill="#C25336"/></svg>
+            <svg width="13" height="13" viewBox="0 0 14 14" aria-hidden="true"><path d="M7 .9 8.9 5l4.4.5-3.3 3 .9 4.4L7 10.7 3.1 12.9l.9-4.4-3.3-3L5.1 5 7 .9Z" fill="#C25336"/></svg>
+            <svg width="13" height="13" viewBox="0 0 14 14" aria-hidden="true"><path d="M7 .9 8.9 5l4.4.5-3.3 3 .9 4.4L7 10.7 3.1 12.9l.9-4.4-3.3-3L5.1 5 7 .9Z" fill="#C25336"/></svg>
+            <svg width="13" height="13" viewBox="0 0 14 14" aria-hidden="true"><path d="M7 .9 8.9 5l4.4.5-3.3 3 .9 4.4L7 10.7 3.1 12.9l.9-4.4-3.3-3L5.1 5 7 .9Z" fill="#C25336"/></svg>
+            <svg width="13" height="13" viewBox="0 0 14 14" aria-hidden="true">
+              <defs><linearGradient id="hs"><stop offset="70%" stop-color="#C25336"/><stop offset="70%" stop-color="rgba(239,229,209,.22)"/></linearGradient></defs>
+              <path d="M7 .9 8.9 5l4.4.5-3.3 3 .9 4.4L7 10.7 3.1 12.9l.9-4.4-3.3-3L5.1 5 7 .9Z" fill="url(#hs)"/>
+            </svg>
+          </div>
+          <span class="dnote">36 reviewers on a venue directory listing. Not a Google rating.</span>
+        </div>
+      </div>
+
+      <div class="drow">
+        <div class="dkey">Ask</div>
+        <div class="dval">
+          <a href="mailto:jpcraftjr@aol.com?subject=Wedding%20date%20inquiry">jpcraftjr@aol.com</a>
+          <span class="dnote">Email reaches the farm directly.</span>
+        </div>
+      </div>
+    </aside>
+
+  </div>
+</div>
+
+<!-- ══ 01 · THE VENUE ══ -->
+<section class="venue">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-num">01</span>
+      <h2>The barn, and what fits in it</h2>
+      <span class="sec-kicker">Event facilities</span>
+    </div>
+
+    <div class="venue-grid">
+
+      <div class="cap">
+        <span class="label">Listed capacity</span>
+        <span class="cap-fig">350<sup>†</sup></span>
+        <div class="cap-sub">between the barn<br>and the outdoor space</div>
+        <p class="cap-attr">
+          <b>†</b> This figure is published on a venue directory listing for the farm.
+          It has not been confirmed by the farm itself. Treat it as a starting point
+          for a conversation, not a guarantee — ask before you plan a guest list around it.
+        </p>
+      </div>
+
+      <div class="spec">
+        <div class="spec-row">
+          <div class="spec-ico">
+            <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true">
+              <path d="M2 8.4 11 2.5l9 5.9V20H2V8.4Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+              <path d="M8 20v-7.6h6V20M11 12.4V20" stroke="currentColor" stroke-width="1.5"/>
+            </svg>
+          </div>
+          <div>
+            <h3>A double-door barn</h3>
+            <p>The listing describes a barn with double doors — the kind that open wide
+              enough to make the entrance part of the ceremony, and wide enough to move
+              tables, staging and equipment without dismantling anything.</p>
+          </div>
+        </div>
+
+        <div class="spec-row">
+          <div class="spec-ico">
+            <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true">
+              <path d="M3 19h16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              <path d="M6 19V9.5M16 19V9.5M6 9.5h10" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+              <path d="M11 9.5V4.2M8.4 6.2c0-1.5 1.2-2.7 2.6-2.7s2.6 1.2 2.6 2.7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div>
+            <h3>An outdoor ceremony area</h3>
+            <p>Listed as a separate outdoor ceremony space, distinct from the barn.
+              Which means the two do not have to compete for the same hours —
+              <em>vows outside, reception in</em>, without a room flip in between.</p>
+          </div>
+        </div>
+
+        <div class="spec-row">
+          <div class="spec-ico">
+            <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true">
+              <circle cx="11" cy="11" r="8.2" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M11 5.6V11l3.6 2.2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div>
+            <h3>Open in all four seasons</h3>
+            <p>The Tennessee Agritourism listing shows the farm operating spring, summer,
+              fall and winter. A December date and a June date are both on the table —
+              what changes is what is growing outside the doors.</p>
+          </div>
+        </div>
+
+        <div class="spec-row" style="border-bottom:0">
+          <div class="spec-ico">
+            <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true">
+              <path d="M4 3h14v16l-7-3.6L4 19V3Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div>
+            <h3>What is not on this page</h3>
+            <p>No pricing, no package list, no claim about what a booking includes.
+              None of that has been published, so none of it is written here.
+              Ask the farm and you will get the real answer instead of a guess.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══ 02 · THE ALMANAC ══ -->
+<section class="almanac-sec">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-num">02</span>
+      <h2>The almanac</h2>
+      <span class="sec-kicker">Strawberries · Vegetables · Pick-your-own</span>
+    </div>
+
+    <div class="alm-intro">
+      <p class="lede">The venue is the constant. The farm is what moves.</p>
+      <p>Two businesses share one address here, and they run on different clocks.
+        Below is the year as the farm publishes it — what is named on the record,
+        and what is not. Dates move with the weather every single year, so nothing
+        here is a promise. It is a map of what to ask about.</p>
+    </div>
+
+    <div class="almanac">
+
+      <div class="alm-col">
+        <div class="alm-season"><span class="label">Spring</span><i>I</i></div>
+        <div class="alm-crop">Strawberries</div>
+        <p class="alm-body">Named on the Tennessee Agritourism listing. Pick-your-own rows
+          and produce from the farm. Opening depends entirely on the berries, which do not
+          consult a calendar.</p>
+        <div class="alm-foot">On the record</div>
+      </div>
+
+      <div class="alm-col">
+        <div class="alm-season"><span class="label">Summer</span><i>II</i></div>
+        <div class="alm-crop">Vegetables</div>
+        <p class="alm-body">Also named on the listing. Vegetables and produce sales from
+          the farm, alongside a full event season under the same roof.</p>
+        <div class="alm-foot">On the record</div>
+      </div>
+
+      <div class="alm-col open">
+        <div class="alm-season"><span class="label">Fall</span><i>III</i></div>
+        <div class="alm-crop">Not published</div>
+        <p class="alm-body">The farm is listed as operating in fall, but what it grows or
+          sells then is not published anywhere we can point to. So this square stays empty.</p>
+        <a class="alm-ask" href="mailto:jpcraftjr@aol.com?subject=Fall%20at%20the%20farm%20%E2%80%94%20what%27s%20available%3F">
+          <svg width="11" height="11" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M1 3.2h10v6.4H1V3.2Z" stroke="currentColor" stroke-width="1.4"/><path d="M1.4 3.6 6 6.9l4.6-3.3" stroke="currentColor" stroke-width="1.4"/></svg>
+          Ask the farm
+        </a>
+      </div>
+
+      <div class="alm-col open">
+        <div class="alm-season"><span class="label">Winter</span><i>IV</i></div>
+        <div class="alm-crop">Not published</div>
+        <p class="alm-body">Listed as a winter season too. The fields rest; the barn does
+          not have to. What is open in January is a question for the farm, not for a
+          website to invent.</p>
+        <a class="alm-ask" href="mailto:jpcraftjr@aol.com?subject=Winter%20dates%20at%20the%20barn">
+          <svg width="11" height="11" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M1 3.2h10v6.4H1V3.2Z" stroke="currentColor" stroke-width="1.4"/><path d="M1.4 3.6 6 6.9l4.6-3.3" stroke="currentColor" stroke-width="1.4"/></svg>
+          Ask the farm
+        </a>
+      </div>
+
+      <div class="alm-span">
+        <span class="label">Running beneath all four</span>
+        <p>The barn, the double doors and the outdoor ceremony area —
+          <span>available across every season on the listing.</span></p>
+      </div>
+
+    </div>
+
+    <p class="marginalia">
+      <b>Why two squares are blank.</b> An almanac that invents a harvest is not an almanac.
+      Crafton Farms has published strawberries and vegetables; it has not published a fall
+      or winter crop. Rather than fill the gaps with plausible-sounding produce, this page
+      leaves them open and points you at the person who actually knows.
+    </p>
+  </div>
+</section>
+
+<!-- ══ 03 · LOCATION ══ -->
+<section class="loc">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-num">03</span>
+      <h2>Where the road ends</h2>
+      <span class="sec-kicker">Portland · Sumner County</span>
+    </div>
+
+    <div class="loc-grid">
+      <div>
+        <div class="addr">
+          <b>209 Crafton Road</b>
+          Portland, Tennessee 37148
+        </div>
+        <p>Sumner County, in the top edge of Middle Tennessee near the Kentucky line.
+          The road carries the family name, which tends to make directions easier than
+          most rural venues manage.</p>
+        <div class="loc-links">
+          <a class="btn btn-ghost" href="https://www.google.com/maps/dir/?api=1&destination=209+Crafton+Road,+Portland,+TN+37148" target="_blank" rel="noopener">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="M8 14.6s5.2-4.4 5.2-8.1A5.2 5.2 0 0 0 2.8 6.5c0 3.7 5.2 8.1 5.2 8.1Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+              <circle cx="8" cy="6.4" r="1.9" stroke="currentColor" stroke-width="1.5"/>
+            </svg>
+            Get directions
+          </a>
+          <a class="btn btn-ghost" href="mailto:jpcraftjr@aol.com?subject=Visiting%20the%20farm%20%E2%80%94%20when%20can%20we%20come%20see%20it%3F">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <rect x="1" y="3" width="14" height="10" rx="1.2" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M1.6 3.8 8 8.6l6.4-4.8" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+            </svg>
+            Arrange a walk-through
+          </a>
+        </div>
+      </div>
+
+      <dl class="area">
+        <div class="area-row"><dt>County</dt><dd>Sumner</dd></div>
+        <div class="area-row"><dt>Town</dt><dd>Portland, TN</dd></div>
+        <div class="area-row"><dt>Region</dt><dd>Middle Tennessee</dd></div>
+        <div class="area-row"><dt>Listed under</dt><dd>TN Agritourism</dd></div>
+        <div class="area-row" style="border-bottom:0"><dt>Owner</dt><dd>John Crafton</dd></div>
+      </dl>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 04 · REPUTATION ══ -->
+<section class="rep">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-num">04</span>
+      <h2>What the record says</h2>
+      <span class="sec-kicker">Verifiable only</span>
+    </div>
+
+    <div class="rep-grid">
+      <div class="score">
+        <div class="score-num">4.7<small>/5</small></div>
+        <div class="score-stars">
+          <svg width="19" height="19" viewBox="0 0 14 14" aria-hidden="true"><path d="M7 .9 8.9 5l4.4.5-3.3 3 .9 4.4L7 10.7 3.1 12.9l.9-4.4-3.3-3L5.1 5 7 .9Z" fill="#A23A20"/></svg>
+          <svg width="19" height="19" viewBox="0 0 14 14" aria-hidden="true"><path d="M7 .9 8.9 5l4.4.5-3.3 3 .9 4.4L7 10.7 3.1 12.9l.9-4.4-3.3-3L5.1 5 7 .9Z" fill="#A23A20"/></svg>
+          <svg width="19" height="19" viewBox="0 0 14 14" aria-hidden="true"><path d="M7 .9 8.9 5l4.4.5-3.3 3 .9 4.4L7 10.7 3.1 12.9l.9-4.4-3.3-3L5.1 5 7 .9Z" fill="#A23A20"/></svg>
+          <svg width="19" height="19" viewBox="0 0 14 14" aria-hidden="true"><path d="M7 .9 8.9 5l4.4.5-3.3 3 .9 4.4L7 10.7 3.1 12.9l.9-4.4-3.3-3L5.1 5 7 .9Z" fill="#A23A20"/></svg>
+          <svg width="19" height="19" viewBox="0 0 14 14" aria-hidden="true">
+            <defs><linearGradient id="hs2"><stop offset="70%" stop-color="#A23A20"/><stop offset="70%" stop-color="rgba(32,54,42,.2)"/></linearGradient></defs>
+            <path d="M7 .9 8.9 5l4.4.5-3.3 3 .9 4.4L7 10.7 3.1 12.9l.9-4.4-3.3-3L5.1 5 7 .9Z" fill="url(#hs2)"/>
+          </svg>
+        </div>
+        <div class="label">36 reviewers · 96% recommend</div>
+      </div>
+
+      <div class="rep-div"></div>
+
+      <div class="rep-body">
+        <p class="rep-big">Thirty-six people rated it, and <b>ninety-six percent</b> would tell
+          someone else to book it.</p>
+        <p>That is the entire body of evidence, reproduced without embellishment. There are no
+          testimonials on this page because no one has been quoted with permission, and a
+          venue that hosts a wedding does not need invented praise to make the case.</p>
+        <p class="attr">
+          Rating, reviewer count and recommendation rate as published on the venue directory
+          listing at nears.me. This is a directory rating — it is not a Google rating and
+          should not be read as one. Figures reflect that listing at the time this page was
+          written.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 05 · CONTACT ══ -->
+<section class="contact">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-num">05</span>
+      <h2>Ask about a date</h2>
+      <span class="sec-kicker">Email first</span>
+    </div>
+
+    <div class="contact-grid">
+      <div>
+        <h2>The calendar lives in <em>one inbox.</em></h2>
+        <p class="contact-lede">Whether you are asking when the strawberries open or whether
+          the third Saturday in October is still free, it goes to the same place. Email is the
+          better first move — it gives the farm a written date to check against, and gives you
+          an answer you can keep.</p>
+        <p class="contact-lede">If you would rather talk it through, the phone works too.</p>
+        <div class="owner">
+          <b>John Crafton</b><br>
+          Owner and contact, as published on the Tennessee Agritourism Association listing
+          for The Red Barn at Crafton Farms.
+        </div>
+      </div>
+
+      <div class="ccard">
+        <div class="ccard-top">
+          <div class="label">Email — the fastest way in</div>
+          <div class="big"><a href="mailto:jpcraftjr@aol.com?subject=Wedding%20date%20inquiry">jpcraftjr@aol.com</a></div>
+        </div>
+        <div class="ccard-body">
+          <a class="btn btn-primary" href="mailto:jpcraftjr@aol.com?subject=Wedding%20date%20inquiry&body=Hello%2C%0A%0AI%27m%20interested%20in%20The%20Red%20Barn%20at%20Crafton%20Farms%20for%20a%20wedding.%0A%0ADate%20we%27re%20considering%3A%20%0AApproximate%20guest%20count%3A%20%0ACeremony%20outdoors%2C%20indoors%2C%20or%20both%3A%20%0A%0AThank%20you%2C%0A">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <rect x="1" y="3" width="14" height="10" rx="1.2" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M1.6 3.8 8 8.6l6.4-4.8" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+            </svg>
+            Email about a wedding date
+          </a>
+          <a class="btn btn-ghost" href="mailto:jpcraftjr@aol.com?subject=Pick-your-own%20%E2%80%94%20what%27s%20ready%3F">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="M8 14.5c3 0 5-2 5-4.6C13 7.6 11 6 8 6S3 7.6 3 9.9c0 2.6 2 4.6 5 4.6Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+              <path d="M8 6V3.2M8 3.2c1.6 0 2.6-.9 2.9-2.2-1.7-.2-2.6.6-2.9 2.2Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+            </svg>
+            Email about pick-your-own
+          </a>
+          <a class="btn btn-ghost" href="tel:+16159696264">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="M5.2 1.9 6.9 5 5.5 6.6c.7 1.7 2.2 3.2 3.9 3.9L11 9.1l3.1 1.7-.6 2.4c-.2.6-.8 1-1.4.9C6.6 13.4 2.6 9.4 1.9 3.9c-.1-.6.3-1.2.9-1.4l2.4-.6Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+            </svg>
+            Call 615-969-6264
+          </a>
+          <p class="ccard-note">Include the date you are considering and a rough guest count —
+            that is usually enough for a first answer on whether it is possible.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FOOTER ══ -->
+<footer>
+  <div class="wrap">
+    <div class="foot-rule"></div>
+    <div class="foot-in">
+      <div>
+        <div class="foot-mark">The Red Barn at Crafton Farms</div>
+        <div>209 Crafton Road, Portland, TN 37148 · 615-969-6264</div>
+      </div>
+      <div class="foot-legal">
+        <b>Website concept by Murrieta Web Studio</b>
+        This is a design concept created for The Red Barn at Crafton Farms. Not yet the official website of The Red Barn at Crafton Farms.
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ══ MOBILE DOCK ══ -->
+<nav class="dock" aria-label="Contact the farm">
+  <a class="dock-mail" href="mailto:jpcraftjr@aol.com?subject=Wedding%20date%20inquiry">
+    <svg width="17" height="17" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+      <rect x="1" y="3" width="14" height="10" rx="1.2" stroke="currentColor" stroke-width="1.5"/>
+      <path d="M1.6 3.8 8 8.6l6.4-4.8" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+    </svg>
+    Email
+  </a>
+  <a class="dock-call" href="tel:+16159696264">
+    <svg width="17" height="17" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+      <path d="M5.2 1.9 6.9 5 5.5 6.6c.7 1.7 2.2 3.2 3.9 3.9L11 9.1l3.1 1.7-.6 2.4c-.2.6-.8 1-1.4.9C6.6 13.4 2.6 9.4 1.9 3.9c-.1-.6.3-1.2.9-1.4l2.4-.6Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+    </svg>
+    Call
+  </a>
+</nav>
+
+</body>
+</html>

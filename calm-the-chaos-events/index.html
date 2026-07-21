@@ -1,0 +1,1094 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<meta name="description" content="Calm the Chaos Event Planning — Kelsey Johnson. Wedding planning, officiating and day-of coordination, plus decor and signage, for Middle Tennessee and the Nashville area. Based in Pleasant View, TN.">
+<title>Calm the Chaos Event Planning — Planning, Officiating &amp; Coordination · Middle Tennessee</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,300..800;1,300..600&display=swap" rel="stylesheet">
+<style>
+  /* =========================================================
+     CALM THE CHAOS EVENT PLANNING — design concept
+     Concept: the page IS a run-of-show. Disorder at the top,
+     a clean ordered sequence by the bottom. Glacier / steel /
+     deep slate, one warm brass accent.
+     ========================================================= */
+
+  :root{
+    --slate-900:#0b1117;
+    --slate-800:#121d26;
+    --slate-700:#1a2a36;
+    --slate-600:#243a4a;
+    --steel-500:#3f5a6d;
+    --steel-400:#67819a;
+    --steel-300:#8fa6b6;
+    --ice-300:#bccfdc;
+    --ice-200:#d7e4ed;
+    --ice-100:#e9f1f6;
+    --ice-050:#f4f9fb;
+    /* Cool glacial accent. Deliberately NOT brass/gold: the navy+brass
+       combination is assigned to another page in this batch, and no two
+       pages may share both palette and texture. */
+    --brass:#4a9db0;
+    --brass-hi:#84c8d8;
+    --brass-lo:#2d6b7c;
+
+    --gut: clamp(1.15rem, 5vw, 3.25rem);
+    --maxw: 1120px;
+  }
+
+  *,*::before,*::after{ box-sizing:border-box; margin:0; padding:0; }
+
+  html{ scroll-behavior:smooth; -webkit-text-size-adjust:100%; }
+  @media (prefers-reduced-motion: reduce){
+    html{ scroll-behavior:auto; }
+    *,*::before,*::after{ transition:none !important; animation:none !important; }
+  }
+
+  body{
+    background:var(--ice-050);
+    color:var(--slate-800);
+    font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-size:1rem;
+    line-height:1.62;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+    padding-bottom:4.6rem; /* room for the mobile mail bar */
+  }
+  @media (min-width:840px){ body{ padding-bottom:0; } }
+
+  .k{ font-family:"Karla", -apple-system, "Segoe UI", Arial, sans-serif; }
+
+  .wrap{
+    width:100%;
+    max-width:var(--maxw);
+    margin-inline:auto;
+    padding-inline:var(--gut);
+  }
+
+  a{ color:inherit; }
+
+  /* ---------- label / micro type ---------- */
+  .lab{
+    font-family:"Karla", Arial, sans-serif;
+    font-weight:700;
+    font-size:.66rem;
+    letter-spacing:.24em;
+    text-transform:uppercase;
+    line-height:1.3;
+  }
+
+  /* =========================================================
+     MASTHEAD
+     ========================================================= */
+  .mast{
+    background:var(--slate-900);
+    color:var(--ice-100);
+    position:sticky; top:0; z-index:60;
+    border-bottom:1px solid rgba(143,166,182,.16);
+  }
+  .mast-in{
+    display:flex; align-items:center; justify-content:space-between;
+    gap:1rem;
+    padding-block:.72rem;
+  }
+  .mark{ text-decoration:none; display:flex; align-items:center; gap:.62rem; min-width:0; }
+  .mark svg{ flex:none; }
+  .mark-t{ line-height:1.08; min-width:0; }
+  .mark-t b{
+    font-family:"Karla", Arial, sans-serif;
+    display:block;
+    font-weight:800;
+    font-size:.94rem;
+    letter-spacing:-.005em;
+    white-space:nowrap;
+  }
+  .mark-t span{
+    display:block;
+    font-family:"Karla", Arial, sans-serif;
+    font-weight:600;
+    font-size:.56rem;
+    letter-spacing:.3em;
+    text-transform:uppercase;
+    color:var(--steel-400);
+    white-space:nowrap;
+  }
+  .mast-mail{
+    font-family:"Karla", Arial, sans-serif;
+    font-weight:700;
+    font-size:.72rem;
+    letter-spacing:.16em;
+    text-transform:uppercase;
+    text-decoration:none;
+    color:var(--slate-900);
+    background:var(--ice-100);
+    padding:.55rem .85rem;
+    white-space:nowrap;
+    transition:background .18s ease;
+  }
+  .mast-mail:hover{ background:var(--brass-hi); }
+  @media (max-width:479px){ .mast-mail{ display:none; } }
+
+  /* =========================================================
+     HERO — full-bleed gradient field
+     ========================================================= */
+  .hero{
+    position:relative;
+    color:var(--ice-100);
+    background:
+      radial-gradient(115% 78% at 82% 4%, rgba(160,186,204,.20), rgba(160,186,204,0) 62%),
+      radial-gradient(90% 60% at 4% 96%, rgba(184,129,63,.12), rgba(184,129,63,0) 58%),
+      linear-gradient(168deg, #0a1015 0%, #101c25 26%, #172833 50%, #1f3746 76%, #2b4859 100%);
+    overflow:hidden;
+  }
+  /* thin ruled grid — a document field, not decoration for its own sake */
+  .hero::before{
+    content:"";
+    position:absolute; inset:0;
+    background-image:linear-gradient(to right, rgba(143,166,182,.085) 1px, transparent 1px);
+    background-size:calc(100% / 6) 100%;
+    pointer-events:none;
+  }
+  .hero-in{
+    position:relative; z-index:2;
+    padding-block: clamp(2.4rem, 8vw, 5rem) clamp(2.6rem, 8vw, 5.2rem);
+    display:grid;
+    gap:clamp(2.2rem, 6vw, 3.4rem);
+  }
+  @media (min-width:920px){
+    .hero-in{ grid-template-columns: 1.06fr .94fr; align-items:start; gap:3.6rem; }
+  }
+
+  .hero-eyebrow{ color:var(--steel-300); margin-bottom:1.5rem; }
+  .hero-eyebrow i{ font-style:normal; color:var(--brass-hi); }
+
+  h1{
+    font-family:"Karla", Arial, sans-serif;
+    font-weight:800;
+    font-size:clamp(2.6rem, 10.5vw, 5.1rem);
+    line-height:.93;
+    letter-spacing:-.035em;
+    margin-bottom:1.1rem;
+  }
+  h1 em{
+    font-style:normal;
+    display:block;
+    color:var(--steel-300);
+    font-weight:300;
+  }
+  .hero-deck{
+    font-size:clamp(1.02rem, 2.6vw, 1.17rem);
+    line-height:1.55;
+    color:var(--ice-200);
+    max-width:33ch;
+    margin-bottom:1.7rem;
+  }
+  .hero-deck b{ color:#fff; font-weight:600; }
+
+  /* attributed claim chips */
+  .claims{ list-style:none; display:flex; flex-wrap:wrap; gap:.5rem; margin-bottom:1.9rem; }
+  .claims li{
+    font-family:"Karla", Arial, sans-serif;
+    font-size:.74rem;
+    font-weight:600;
+    letter-spacing:.01em;
+    color:var(--ice-200);
+    border:1px solid rgba(143,166,182,.35);
+    border-radius:999px;
+    padding:.34rem .78rem;
+  }
+  .claims li span{ color:var(--steel-400); font-weight:500; }
+
+  .cta{
+    display:inline-flex; align-items:center; gap:.6rem;
+    font-family:"Karla", Arial, sans-serif;
+    font-weight:800;
+    font-size:.94rem;
+    letter-spacing:.02em;
+    text-decoration:none;
+    color:var(--slate-900);
+    background:var(--brass-hi);
+    padding:.92rem 1.35rem;
+    border:0;
+    transition:transform .16s ease, background .16s ease;
+  }
+  .cta:hover{ background:#fff; transform:translateY(-1px); }
+  .cta svg{ flex:none; }
+  .cta-sub{
+    display:block;
+    margin-top:.8rem;
+    font-size:.78rem;
+    color:var(--steel-300);
+    max-width:34ch;
+  }
+
+  /* ---------- the transform: scatter → sequence ---------- */
+  .tf{ display:grid; gap:0; }
+  .tf-pane{ padding:1.15rem 1.2rem 1.3rem; }
+  .tf-cap{
+    display:flex; align-items:center; justify-content:space-between;
+    font-family:"Karla", Arial, sans-serif;
+    font-weight:700; font-size:.6rem; letter-spacing:.26em; text-transform:uppercase;
+    padding-bottom:.85rem;
+  }
+
+  .tf-before{
+    background:rgba(11,17,23,.42);
+    border:1px solid rgba(143,166,182,.22);
+  }
+  .tf-before .tf-cap{ color:var(--steel-400); }
+  .scatter{ list-style:none; display:flex; flex-wrap:wrap; gap:.4rem .35rem; }
+  .scatter li{
+    font-size:.78rem;
+    line-height:1.35;
+    color:var(--ice-300);
+    background:rgba(143,166,182,.10);
+    border:1px solid rgba(143,166,182,.18);
+    padding:.3rem .55rem;
+    transform-origin:center;
+  }
+  .scatter li:nth-child(1){ transform:rotate(-2.2deg); }
+  .scatter li:nth-child(2){ transform:rotate(1.6deg) translateY(3px); opacity:.86; }
+  .scatter li:nth-child(3){ transform:rotate(-1.1deg) translateY(-2px); }
+  .scatter li:nth-child(4){ transform:rotate(2.7deg) translateY(4px); opacity:.78; }
+  .scatter li:nth-child(5){ transform:rotate(-3.1deg); opacity:.9; }
+  .scatter li:nth-child(6){ transform:rotate(1.1deg) translateY(2px); opacity:.72; }
+  .scatter li:nth-child(7){ transform:rotate(-1.8deg) translateY(-3px); opacity:.82; }
+  .scatter li:nth-child(8){ transform:rotate(2.1deg); opacity:.66; }
+
+  .tf-mid{
+    display:flex; align-items:center; gap:.7rem;
+    padding:.85rem 1.2rem;
+    color:var(--brass-hi);
+    font-family:"Karla", Arial, sans-serif;
+    font-weight:700; font-size:.6rem; letter-spacing:.26em; text-transform:uppercase;
+    border-inline:1px solid rgba(143,166,182,.22);
+    background:rgba(11,17,23,.24);
+  }
+  .tf-mid svg{ flex:none; }
+  .tf-mid span{ flex:1 1 auto; height:1px; background:rgba(184,129,63,.4); }
+
+  .tf-after{
+    background:var(--ice-100);
+    color:var(--slate-800);
+    border:1px solid var(--ice-100);
+  }
+  .tf-after .tf-cap{ color:var(--steel-500); }
+  .ordered{ list-style:none; }
+  .ordered li{
+    display:grid;
+    grid-template-columns:4.1rem 1fr;
+    gap:.9rem;
+    align-items:baseline;
+    padding:.52rem 0;
+    border-top:1px solid var(--ice-300);
+    font-size:.88rem;
+  }
+  .ordered li:first-child{ border-top:0; }
+  .ordered b{
+    font-family:"Karla", Arial, sans-serif;
+    font-weight:800;
+    font-variant-numeric:tabular-nums;
+    letter-spacing:-.01em;
+    color:var(--brass-lo);
+  }
+  .tf-note{
+    margin-top:.7rem;
+    font-size:.68rem;
+    color:var(--steel-400);
+    line-height:1.45;
+  }
+
+  /* =========================================================
+     SECTION FURNITURE
+     ========================================================= */
+  section[id]{ scroll-margin-top:4rem; }
+  .sec-head{
+    display:flex; align-items:baseline; gap:1rem;
+    padding-top:clamp(2.6rem, 7vw, 4.4rem);
+    padding-bottom:1.5rem;
+  }
+  .sec-num{
+    font-family:"Karla", Arial, sans-serif;
+    font-weight:800;
+    font-size:.72rem;
+    letter-spacing:.1em;
+    color:var(--brass);
+    flex:none;
+    padding-top:.35rem;
+  }
+  .sec-head h2{
+    font-family:"Karla", Arial, sans-serif;
+    font-weight:800;
+    font-size:clamp(1.62rem, 5.6vw, 2.5rem);
+    line-height:1.02;
+    letter-spacing:-.028em;
+    color:var(--slate-800);
+  }
+  .sec-head h2 span{ display:block; font-weight:300; color:var(--steel-500); }
+  .sec-rule{ height:1px; background:var(--ice-300); }
+  .sec-intro{
+    max-width:56ch;
+    color:var(--steel-500);
+    font-size:1rem;
+    padding-block:1.35rem 0;
+  }
+
+  /* =========================================================
+     01 · THE THREE ROLES — duotone blocks
+     ========================================================= */
+  .roles{ padding-top:1.9rem; padding-bottom:.6rem; display:grid; gap:1px; background:var(--ice-200); }
+
+  .role{ display:grid; background:var(--ice-100); }
+  @media (min-width:840px){
+    .role{ grid-template-columns:312px 1fr; }
+    .role.flip{ grid-template-columns:1fr 312px; }
+    .role.flip .role-block{ order:2; }
+    .role.flip .role-body{ order:1; }
+  }
+
+  .role-block{
+    background:var(--slate-800);
+    color:var(--ice-200);
+    padding:.95rem 1.4rem 1rem;
+    display:flex; flex-direction:row; align-items:baseline; justify-content:space-between;
+    gap:1rem;
+    min-height:100%;
+  }
+  .role-num{
+    font-family:"Karla", Arial, sans-serif;
+    font-weight:800;
+    font-size:2.1rem;
+    line-height:.8;
+    letter-spacing:-.05em;
+    color:var(--steel-500);
+  }
+  .role-kicker{ color:var(--brass-hi); text-align:right; }
+  .role-body{ padding:1.4rem 1.4rem 1.8rem; }
+  @media (min-width:840px){
+    .role-block{
+      flex-direction:column; align-items:stretch; justify-content:space-between;
+      gap:1.6rem;
+      padding:1.9rem 1.7rem;
+    }
+    .role-num{ font-size:4.2rem; }
+    .role-kicker{ text-align:left; }
+    .role-body{ padding:1.9rem 2.2rem 2.2rem; }
+  }
+  .role-body h3{
+    font-family:"Karla", Arial, sans-serif;
+    font-weight:800;
+    font-size:clamp(1.3rem, 4.6vw, 1.75rem);
+    line-height:1.06;
+    letter-spacing:-.022em;
+    margin-bottom:.7rem;
+  }
+  .role-body p{ color:var(--steel-500); max-width:52ch; font-size:.95rem; }
+  .role-list{ list-style:none; margin-top:1.1rem; display:grid; gap:.42rem; }
+  .role-list li{
+    display:flex; gap:.6rem; align-items:flex-start;
+    font-size:.88rem;
+    color:var(--slate-700);
+  }
+  .role-list li::before{
+    content:"";
+    flex:none;
+    width:9px; height:9px;
+    margin-top:.5rem;
+    background:var(--brass);
+  }
+  .role-when{
+    margin-top:1.3rem;
+    padding-top:.85rem;
+    border-top:1px solid var(--ice-300);
+    font-family:"Karla", Arial, sans-serif !important;
+    font-weight:700;
+    font-size:.68rem !important;
+    letter-spacing:.16em;
+    text-transform:uppercase;
+    color:var(--steel-400) !important;
+  }
+
+  /* the inverted middle role — the ceremony is the still point */
+  .role.invert{ background:var(--slate-900); }
+  .role.invert .role-block{ background:var(--brass); color:var(--slate-900); }
+  .role.invert .role-num{ color:rgba(11,17,23,.42); }
+  .role.invert .role-kicker{ color:var(--slate-900); }
+  .role.invert .role-body h3{ color:var(--ice-100); }
+  .role.invert .role-body p{ color:var(--ice-300); }
+  .role.invert .role-list li{ color:var(--ice-200); }
+  .role.invert .role-list li::before{ background:var(--brass-hi); }
+  .role.invert .role-when{ border-top-color:rgba(143,166,182,.28); color:var(--steel-400) !important; }
+
+  /* ---------- decor & signage strip ---------- */
+  .mats{
+    display:grid; gap:1px;
+    background:var(--ice-200);
+    margin-top:1px;
+  }
+  @media (min-width:700px){ .mats{ grid-template-columns:1fr 1fr; } }
+  .mat{
+    background:var(--ice-050);
+    padding:1.5rem 1.4rem 1.7rem;
+    display:flex; gap:1rem;
+  }
+  @media (min-width:840px){ .mat{ padding:1.9rem 2rem; } }
+  .mat svg{ flex:none; color:var(--steel-400); margin-top:.15rem; }
+  .mat h4{
+    font-family:"Karla", Arial, sans-serif;
+    font-weight:800; font-size:1.05rem; letter-spacing:-.012em;
+    margin-bottom:.35rem;
+  }
+  .mat p{ font-size:.89rem; color:var(--steel-500); }
+
+  /* =========================================================
+     02 · RUN OF SHOW
+     ========================================================= */
+  .ros-band{
+    background:var(--slate-900);
+    color:var(--ice-200);
+    margin-top:clamp(2.6rem, 7vw, 4.4rem);
+    padding-bottom:clamp(2.4rem, 7vw, 3.8rem);
+  }
+  .ros-band .sec-head h2{ color:var(--ice-100); }
+  .ros-band .sec-head h2 span{ color:var(--steel-400); }
+  .ros-band .sec-rule{ background:rgba(143,166,182,.2); }
+  .ros-band .sec-intro{ color:var(--steel-300); }
+
+  .ros-doc{ margin-top:1.9rem; }
+  .ros-part + .ros-part{ margin-top:2.2rem; }
+  .ros-part-cap{
+    display:flex; align-items:center; gap:.85rem;
+    color:var(--brass-hi);
+    margin-bottom:.9rem;
+  }
+  .ros-part-cap span{ flex:1 1 auto; height:1px; background:rgba(184,129,63,.32); }
+
+  .ros-row{
+    display:grid;
+    grid-template-columns:5.1rem 1fr;
+    gap:0 .95rem;
+    padding:.72rem 0;
+    border-top:1px solid rgba(143,166,182,.16);
+    align-items:start;
+  }
+  @media (min-width:760px){
+    .ros-row{ grid-template-columns:7rem 1fr 11.5rem; gap:0 1.4rem; align-items:baseline; }
+  }
+  .ros-t{
+    font-family:"Karla", Arial, sans-serif;
+    font-weight:800;
+    font-size:.84rem;
+    font-variant-numeric:tabular-nums;
+    letter-spacing:-.01em;
+    color:var(--ice-100);
+    white-space:nowrap;
+    padding-top:.1rem;
+  }
+  .ros-e{ font-size:.94rem; color:var(--ice-200); line-height:1.45; }
+  .ros-e small{ display:block; font-size:.78rem; color:var(--steel-400); margin-top:.12rem; }
+  .ros-who{
+    grid-column:2;
+    margin-top:.45rem;
+    display:inline-flex; align-self:start;
+    font-family:"Karla", Arial, sans-serif;
+    font-weight:700; font-size:.58rem; letter-spacing:.2em; text-transform:uppercase;
+    padding:.24rem .55rem;
+    border:1px solid rgba(143,166,182,.3);
+    color:var(--steel-300);
+    width:max-content;
+  }
+  @media (min-width:760px){
+    .ros-who{ grid-column:3; margin-top:0; justify-self:start; }
+  }
+  .ros-who.w-plan{ border-color:rgba(143,166,182,.45); color:var(--ice-300); }
+  .ros-who.w-off{ border-color:var(--brass); color:var(--brass-hi); background:rgba(184,129,63,.1); }
+  .ros-who.w-coord{ border-color:rgba(63,90,109,.9); color:var(--steel-300); background:rgba(63,90,109,.22); }
+  .ros-who.w-decor{ border-color:rgba(143,166,182,.28); color:var(--steel-400); }
+
+  .ros-row.key{ background:rgba(184,129,63,.07); }
+  .ros-row.key .ros-t{ color:var(--brass-hi); }
+
+  .ros-foot{
+    margin-top:1.8rem;
+    padding-top:1rem;
+    border-top:1px solid rgba(143,166,182,.16);
+    font-size:.76rem;
+    color:var(--steel-400);
+    max-width:62ch;
+    line-height:1.55;
+  }
+
+  /* =========================================================
+     03 · SERVICE AREA
+     ========================================================= */
+  .area-grid{
+    display:grid; gap:0;
+    margin-top:1.8rem;
+    border:1px solid var(--ice-200);
+  }
+  @media (min-width:820px){ .area-grid{ grid-template-columns:1fr 1fr; } }
+  .area-txt{ padding:1.6rem 1.4rem 1.9rem; background:var(--ice-100); }
+  @media (min-width:820px){ .area-txt{ padding:2.2rem 2.2rem 2.4rem; } }
+  .area-txt h3{
+    font-family:"Karla", Arial, sans-serif;
+    font-weight:800; font-size:1.35rem; letter-spacing:-.02em;
+    margin-bottom:.65rem;
+  }
+  .area-txt p{ color:var(--steel-500); font-size:.95rem; max-width:44ch; }
+  .area-facts{ list-style:none; margin-top:1.5rem; display:grid; gap:0; }
+  .area-facts li{
+    display:grid; grid-template-columns:8.4rem 1fr; gap:.8rem;
+    padding:.62rem 0;
+    border-top:1px solid var(--ice-300);
+    font-size:.9rem;
+  }
+  .area-facts li b{
+    font-family:"Karla", Arial, sans-serif;
+    font-weight:700; font-size:.62rem; letter-spacing:.2em; text-transform:uppercase;
+    color:var(--steel-400);
+    padding-top:.28rem;
+  }
+  .area-viz{
+    background:var(--slate-800);
+    display:flex; align-items:center; justify-content:center;
+    padding:2rem 1.4rem;
+    min-height:230px;
+  }
+  .area-viz svg{ width:100%; max-width:340px; height:auto; }
+
+  /* =========================================================
+     04 · CONTACT
+     ========================================================= */
+  .contact-band{
+    background:
+      linear-gradient(168deg, #0a1015 0%, #14212b 46%, #22394a 100%);
+    color:var(--ice-100);
+    margin-top:clamp(2.6rem, 7vw, 4.4rem);
+    padding-bottom:clamp(2.6rem, 7vw, 4rem);
+  }
+  .contact-band .sec-head h2{ color:var(--ice-100); }
+  .contact-band .sec-head h2 span{ color:var(--steel-400); }
+  .contact-band .sec-rule{ background:rgba(143,166,182,.2); }
+
+  .ct-grid{ display:grid; gap:2rem; margin-top:1.9rem; }
+  @media (min-width:860px){ .ct-grid{ grid-template-columns:1fr 1fr; gap:3rem; } }
+
+  .ct-lead{ font-size:1.05rem; color:var(--ice-200); max-width:40ch; margin-bottom:1.5rem; }
+  .ct-mail{
+    display:inline-block;
+    font-family:"Karla", Arial, sans-serif;
+    font-weight:800;
+    font-size:clamp(1.05rem, 4.4vw, 1.5rem);
+    letter-spacing:-.025em;
+    color:var(--brass-hi);
+    text-decoration:none;
+    border-bottom:2px solid rgba(184,129,63,.5);
+    padding-bottom:.15rem;
+    word-break:break-word;
+  }
+  .ct-mail:hover{ color:#fff; border-bottom-color:#fff; }
+  .ct-nophone{
+    margin-top:1.3rem;
+    font-size:.82rem;
+    color:var(--steel-300);
+    max-width:40ch;
+    line-height:1.55;
+    border-left:2px solid var(--steel-500);
+    padding-left:.85rem;
+  }
+
+  .ct-routes{ display:grid; gap:1px; background:rgba(143,166,182,.18); border:1px solid rgba(143,166,182,.18); }
+  .ct-route{
+    display:flex; align-items:center; justify-content:space-between; gap:1rem;
+    background:rgba(11,17,23,.42);
+    padding:1.05rem 1.15rem;
+    text-decoration:none;
+    color:var(--ice-100);
+    transition:background .18s ease;
+  }
+  .ct-route:hover{ background:rgba(184,129,63,.16); }
+  .ct-route div{ min-width:0; }
+  .ct-route b{
+    font-family:"Karla", Arial, sans-serif;
+    display:block; font-weight:800; font-size:1rem; letter-spacing:-.015em;
+  }
+  .ct-route span{ display:block; font-size:.78rem; color:var(--steel-300); margin-top:.1rem; }
+  .ct-route svg{ flex:none; color:var(--brass-hi); }
+
+  /* =========================================================
+     FOOTER
+     ========================================================= */
+  footer{
+    background:var(--slate-900);
+    color:var(--steel-400);
+    border-top:1px solid rgba(143,166,182,.14);
+    padding-block:1.8rem 2.2rem;
+  }
+  .foot-in{ display:grid; gap:1.1rem; }
+  @media (min-width:760px){ .foot-in{ grid-template-columns:auto 1fr; gap:2.5rem; align-items:start; } }
+  .foot-brand{
+    font-family:"Karla", Arial, sans-serif;
+    font-weight:800; font-size:.9rem; letter-spacing:-.005em;
+    color:var(--ice-200);
+    line-height:1.35;
+  }
+  .foot-brand span{
+    display:block;
+    font-weight:600; font-size:.58rem; letter-spacing:.28em; text-transform:uppercase;
+    color:var(--steel-500);
+    margin-top:.25rem;
+  }
+  .foot-note{ font-size:.76rem; line-height:1.6; max-width:64ch; }
+  .foot-note b{ color:var(--ice-200); font-weight:600; display:block; }
+
+  /* =========================================================
+     MOBILE MAIL BAR
+     ========================================================= */
+  .mailbar{
+    position:fixed; left:0; right:0; bottom:0; z-index:70;
+    display:flex; align-items:center; justify-content:center; gap:.6rem;
+    background:var(--brass-hi);
+    color:var(--slate-900);
+    font-family:"Karla", Arial, sans-serif;
+    font-weight:800; font-size:.95rem; letter-spacing:.01em;
+    text-decoration:none;
+    padding:1rem .9rem calc(1rem + env(safe-area-inset-bottom, 0px));
+    box-shadow:0 -10px 26px rgba(10,16,21,.24);
+  }
+  .mailbar svg{ flex:none; }
+  @media (min-width:840px){ .mailbar{ display:none; } }
+
+  ::selection{ background:var(--brass-hi); color:var(--slate-900); }
+  :focus-visible{ outline:2px solid var(--brass-hi); outline-offset:2px; }
+</style>
+</head>
+<body>
+
+<header class="mast">
+  <div class="wrap mast-in">
+    <a class="mark" href="#top" aria-label="Calm the Chaos Event Planning">
+      <svg width="26" height="26" viewBox="0 0 26 26" fill="none" aria-hidden="true">
+        <rect x="1" y="1" width="24" height="24" stroke="#3f5a6d" stroke-width="1.2"/>
+        <path d="M5 7.5h7M5 11h11M5 14.5h5" stroke="#8fa6b6" stroke-width="1.2" stroke-linecap="round"/>
+        <path d="M5 18.5h16" stroke="#dcab68" stroke-width="1.6" stroke-linecap="round"/>
+      </svg>
+      <span class="mark-t">
+        <b>Calm the Chaos</b>
+        <span>Event Planning</span>
+      </span>
+    </a>
+    <a class="mast-mail" href="mailto:calmthechaosevents@gmail.com?subject=Wedding%20planning%20inquiry">Email Kelsey</a>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- ============== HERO ============== -->
+  <section class="hero">
+    <div class="wrap hero-in">
+
+      <div>
+        <p class="lab hero-eyebrow">Pleasant View, Tennessee <i>&middot;</i> Serving Middle&nbsp;TN</p>
+
+        <h1>The day,<br>in order.<em>Every hour of it.</em></h1>
+
+        <p class="hero-deck">
+          <b>Kelsey Johnson</b> plans weddings, officiates them, and coordinates them —
+          three jobs that usually get split between three vendors, or quietly handed
+          back to the couple.
+        </p>
+
+        <ul class="claims">
+          <li><span>Kelsey describes</span> 15+ years in the event industry</li>
+          <li><span>Listed as</span> currently booking for 2026</li>
+        </ul>
+
+        <a class="cta" href="mailto:calmthechaosevents@gmail.com?subject=Wedding%20planning%20inquiry">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="4.5" width="19" height="15"/><path d="m2.5 6 9.5 7 9.5-7"/></svg>
+          Start with an email
+        </a>
+        <small class="cta-sub">Goes to calmthechaosevents@gmail.com with the subject line already filled in.</small>
+      </div>
+
+      <figure class="tf" aria-label="Illustration: scattered wedding-day questions resolving into an ordered schedule">
+        <div class="tf-pane tf-before">
+          <span class="tf-cap"><span>The group chat</span></span>
+          <ul class="scatter">
+            <li>what time does the cake arrive</li>
+            <li>who has the rings</li>
+            <li>shuttle — two trips or three?</li>
+            <li>photographer wants golden hour</li>
+            <li>grandmother needs a seat up front</li>
+            <li>toasts before dinner or after</li>
+            <li>when does the DJ load in</li>
+            <li>is anyone flipping the ceremony space</li>
+          </ul>
+        </div>
+
+        <div class="tf-mid">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v16M6 14l6 6 6-6"/></svg>
+          One document
+          <span></span>
+        </div>
+
+        <div class="tf-pane tf-after">
+          <span class="tf-cap"><span>Run of show</span></span>
+          <ol class="ordered">
+            <li><b>3:15</b> Shuttle, trip one</li>
+            <li><b>3:40</b> Guests seated</li>
+            <li><b>4:00</b> Ceremony begins</li>
+            <li><b>4:32</b> Space flipped for dinner</li>
+          </ol>
+          <p class="tf-note">Illustrative. A generic wedding-day shape — not a real client's schedule.</p>
+        </div>
+      </figure>
+
+    </div>
+  </section>
+
+  <!-- ============== 01 · ROLES ============== -->
+  <section id="roles">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="sec-num">01</span>
+        <h2>Three roles, kept separate<span>because they are three different jobs</span></h2>
+      </div>
+      <div class="sec-rule"></div>
+      <p class="sec-intro">
+        Most couples hire a planner, then a separate officiant, then discover in month nine
+        that nobody actually owns the day itself. Calm the Chaos lists all three. Here is what
+        each one is, and when it happens.
+      </p>
+    </div>
+
+    <div class="wrap roles">
+
+      <article class="role">
+        <div class="role-block">
+          <span class="role-num">01</span>
+          <span class="lab role-kicker">Full-service planning</span>
+        </div>
+        <div class="role-body">
+          <h3>The long stretch, before anyone else is involved</h3>
+          <p>
+            Planning is the months of decisions that happen well before a guest ever sees a
+            venue: what the day is supposed to feel like, what it costs, who is hired, and in
+            what order everything has to be locked in.
+          </p>
+          <ul class="role-list">
+            <li>Shape of the day, budget, and priorities set early</li>
+            <li>Vendor shortlisting, bookings, and contract dates tracked</li>
+            <li>Floor plan, seating, and the master timeline drafted</li>
+            <li>One person holding the whole file, start to finish</li>
+          </ul>
+          <p class="lab role-when">Runs: earliest planning &rarr; the week of</p>
+        </div>
+      </article>
+
+      <article class="role invert flip">
+        <div class="role-block">
+          <span class="role-num">02</span>
+          <span class="lab role-kicker">Officiating</span>
+        </div>
+        <div class="role-body">
+          <h3>The twenty minutes the whole day is built around</h3>
+          <p>
+            Officiating is the ceremony itself — the part every other hour on the schedule is
+            arranged in service of. Because Calm the Chaos also offers officiating, the person
+            who wrote the timeline can be the person standing at the front of it.
+          </p>
+          <ul class="role-list">
+            <li>The ceremony performed, start to finish</li>
+            <li>Processional and recessional cues built into the run of show</li>
+            <li>No hand-off between the planner and a vendor meeting you that morning</li>
+          </ul>
+          <p class="lab role-when">Runs: one fixed point on the schedule</p>
+        </div>
+      </article>
+
+      <article class="role">
+        <div class="role-block">
+          <span class="role-num">03</span>
+          <span class="lab role-kicker">Day-of coordination</span>
+        </div>
+        <div class="role-body">
+          <h3>Somebody has to run the actual day</h3>
+          <p>
+            Coordination is execution: holding the schedule on the day, cueing vendors,
+            absorbing the questions that would otherwise reach the couple, and quietly
+            rebuilding the timeline when something runs late — because something always does.
+          </p>
+          <ul class="role-list">
+            <li>Vendor arrivals, load-in, and load-out sequenced</li>
+            <li>Every cue called against a written run of show</li>
+            <li>Problems intercepted before they reach the couple or the family</li>
+            <li>The plan adjusted live when the schedule slips</li>
+          </ul>
+          <p class="lab role-when">Runs: load-in &rarr; last car out</p>
+        </div>
+      </article>
+
+      <div class="mats">
+        <div class="mat">
+          <svg width="26" height="26" viewBox="0 0 26 26" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M4 23V9.5a9 9 0 0 1 18 0V23"/>
+            <path d="M8.5 23v-9.6a4.5 4.5 0 0 1 9 0V23"/>
+            <path d="M2 23h22"/>
+          </svg>
+          <div>
+            <h4>Decor</h4>
+            <p>
+              Listed as part of what Calm the Chaos provides — so the look of the room and the
+              schedule that builds it are handled by the same person, not negotiated between two.
+            </p>
+          </div>
+        </div>
+        <div class="mat">
+          <svg width="26" height="26" viewBox="0 0 26 26" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="2.5" y="4" width="21" height="12.5"/>
+            <path d="M7 8.5h9M7 12h6"/>
+            <path d="M13 16.5V23M9 23h8"/>
+          </svg>
+          <div>
+            <h4>Signage</h4>
+            <p>
+              Welcome boards, seating charts, bar menus, directions. The pieces that answer a
+              guest's question before they have to find someone to ask.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== 02 · RUN OF SHOW ============== -->
+  <section class="ros-band" id="run-of-show">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="sec-num">02</span>
+        <h2>What a run of show is<span>and why the business is named after it</span></h2>
+      </div>
+      <div class="sec-rule"></div>
+      <p class="sec-intro">
+        A run of show is one document that says what happens, at what minute, and who is
+        responsible for it — issued to every vendor so nobody is guessing. Below is the shape
+        of a generic wedding day, with the active role marked on the right.
+      </p>
+
+      <div class="ros-doc">
+
+        <div class="ros-part">
+          <p class="lab ros-part-cap">Before the day <span></span></p>
+
+          <div class="ros-row">
+            <div class="ros-t">Early on</div>
+            <div class="ros-e">Date, venue, budget and guest count settled<small>The four numbers every later decision depends on</small></div>
+            <div class="ros-who w-plan">Planning</div>
+          </div>
+          <div class="ros-row">
+            <div class="ros-t">Mid-stretch</div>
+            <div class="ros-e">Vendors shortlisted, booked and diarised<small>Photography, catering, florals, music, rentals</small></div>
+            <div class="ros-who w-plan">Planning</div>
+          </div>
+          <div class="ros-row">
+            <div class="ros-t">Later</div>
+            <div class="ros-e">Ceremony written, decor and signage specified<small>What is said, and what the room looks like when it is said</small></div>
+            <div class="ros-who w-decor">Officiating &middot; Decor</div>
+          </div>
+          <div class="ros-row key">
+            <div class="ros-t">Week of</div>
+            <div class="ros-e">Run of show finalised and sent to every vendor<small>This is the hand-off point — planning becomes coordination</small></div>
+            <div class="ros-who w-coord">Coordination</div>
+          </div>
+        </div>
+
+        <div class="ros-part">
+          <p class="lab ros-part-cap">The day itself <span></span></p>
+
+          <div class="ros-row">
+            <div class="ros-t">9:00</div>
+            <div class="ros-e">Vendor load-in begins<small>Rentals, catering, sound</small></div>
+            <div class="ros-who w-coord">Coordination</div>
+          </div>
+          <div class="ros-row">
+            <div class="ros-t">10:30</div>
+            <div class="ros-e">Decor installed, signage placed<small>Welcome board, seating chart, bar</small></div>
+            <div class="ros-who w-decor">Decor &middot; Signage</div>
+          </div>
+          <div class="ros-row">
+            <div class="ros-t">12:00</div>
+            <div class="ros-e">Getting ready, portraits, first look</div>
+            <div class="ros-who w-coord">Coordination</div>
+          </div>
+          <div class="ros-row">
+            <div class="ros-t">3:15</div>
+            <div class="ros-e">Guest transport arrives<small>Trip counts confirmed, not improvised</small></div>
+            <div class="ros-who w-coord">Coordination</div>
+          </div>
+          <div class="ros-row">
+            <div class="ros-t">3:40</div>
+            <div class="ros-e">Guests seated, processional lined up</div>
+            <div class="ros-who w-coord">Coordination</div>
+          </div>
+          <div class="ros-row key">
+            <div class="ros-t">4:00</div>
+            <div class="ros-e">Ceremony<small>The fixed point. Everything above and below moves around this line.</small></div>
+            <div class="ros-who w-off">Officiating</div>
+          </div>
+          <div class="ros-row">
+            <div class="ros-t">4:30</div>
+            <div class="ros-e">Cocktail hour &middot; family portraits &middot; room flipped</div>
+            <div class="ros-who w-coord">Coordination</div>
+          </div>
+          <div class="ros-row">
+            <div class="ros-t">6:00</div>
+            <div class="ros-e">Dinner, then toasts in a called order</div>
+            <div class="ros-who w-coord">Coordination</div>
+          </div>
+          <div class="ros-row">
+            <div class="ros-t">8:00</div>
+            <div class="ros-e">Dances, cake, open floor</div>
+            <div class="ros-who w-coord">Coordination</div>
+          </div>
+          <div class="ros-row">
+            <div class="ros-t">10:00</div>
+            <div class="ros-e">Send-off, load-out, venue returned<small>The part nobody photographs and someone still has to run</small></div>
+            <div class="ros-who w-coord">Coordination</div>
+          </div>
+        </div>
+
+        <p class="ros-foot">
+          Illustrative structure only. The times above are a generic wedding-day shape used to
+          explain how a run of show works — they are not a real client's schedule, and every
+          real one is built around the couple's own day.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== 03 · SERVICE AREA ============== -->
+  <section id="area">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="sec-num">03</span>
+        <h2>Where the work happens<span>Middle Tennessee and the Nashville area</span></h2>
+      </div>
+      <div class="sec-rule"></div>
+
+      <div class="area-grid">
+        <div class="area-txt">
+          <h3>Based in Pleasant View</h3>
+          <p>
+            Calm the Chaos Event Planning is based in Pleasant View, Tennessee, in Cheatham
+            County — north-west of Nashville, with the wider Middle Tennessee region as the
+            service area.
+          </p>
+          <ul class="area-facts">
+            <li><b>Based in</b><span>Pleasant View, TN &middot; Cheatham County</span></li>
+            <li><b>Serving</b><span>Middle Tennessee and the Nashville area</span></li>
+            <li><b>Owner</b><span>Kelsey Johnson, owner and operator</span></li>
+            <li><b>Contact</b><span>Email &mdash; calmthechaosevents@gmail.com</span></li>
+          </ul>
+        </div>
+        <div class="area-viz" aria-hidden="true">
+          <svg viewBox="0 0 340 240" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="128" cy="120" r="104" stroke="#243a4a" stroke-width="1"/>
+            <circle cx="128" cy="120" r="74" stroke="#3f5a6d" stroke-width="1"/>
+            <circle cx="128" cy="120" r="44" stroke="#67819a" stroke-width="1"/>
+            <circle cx="128" cy="120" r="16" stroke="#8fa6b6" stroke-width="1"/>
+            <path d="M128 4v232M12 120h232" stroke="#243a4a" stroke-width="1" stroke-dasharray="3 5"/>
+            <circle cx="128" cy="120" r="4.5" fill="#dcab68"/>
+            <path d="M128 120h84" stroke="#b8813f" stroke-width="1.4"/>
+            <circle cx="212" cy="120" r="3" fill="#8fa6b6"/>
+            <text x="140" y="112" fill="#dcab68" font-family="Karla, Arial, sans-serif" font-size="11" font-weight="700" letter-spacing="1.6">PLEASANT VIEW</text>
+            <text x="220" y="124" fill="#8fa6b6" font-family="Karla, Arial, sans-serif" font-size="11" font-weight="700" letter-spacing="1.6">NASHVILLE</text>
+            <text x="14" y="228" fill="#3f5a6d" font-family="Karla, Arial, sans-serif" font-size="9.5" font-weight="700" letter-spacing="2.4">MIDDLE TENNESSEE — DIAGRAM, NOT TO SCALE</text>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== 04 · CONTACT ============== -->
+  <section class="contact-band" id="contact">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="sec-num">04</span>
+        <h2>Start the file<span>one email, and the ordering begins</span></h2>
+      </div>
+      <div class="sec-rule"></div>
+
+      <div class="ct-grid">
+        <div>
+          <p class="ct-lead">
+            Send the date, roughly where, and roughly how many people. That is enough
+            to start a real conversation.
+          </p>
+          <a class="ct-mail" href="mailto:calmthechaosevents@gmail.com?subject=Wedding%20planning%20inquiry">calmthechaosevents@gmail.com</a>
+          <p class="ct-nophone">
+            Email is the contact channel Calm the Chaos publishes. There is no phone line
+            listed, so everything starts in writing — which is, appropriately, how a run of
+            show starts too.
+          </p>
+        </div>
+
+        <div class="ct-routes">
+          <a class="ct-route" href="mailto:calmthechaosevents@gmail.com?subject=Wedding%20planning%20inquiry">
+            <div>
+              <b>Full-service planning</b>
+              <span>The long stretch, from early decisions to the week of</span>
+            </div>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+          <a class="ct-route" href="mailto:calmthechaosevents@gmail.com?subject=Officiant%20inquiry">
+            <div>
+              <b>Officiating</b>
+              <span>The ceremony itself</span>
+            </div>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+          <a class="ct-route" href="mailto:calmthechaosevents@gmail.com?subject=Day-of%20coordination%20inquiry">
+            <div>
+              <b>Day-of coordination</b>
+              <span>Someone running the schedule on the day</span>
+            </div>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+          <a class="ct-route" href="mailto:calmthechaosevents@gmail.com?subject=Decor%20and%20signage%20inquiry">
+            <div>
+              <b>Decor &amp; signage</b>
+              <span>The look of the room and the boards guests read</span>
+            </div>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap foot-in">
+    <div class="foot-brand">
+      Calm the Chaos Event Planning
+      <span>Pleasant View, TN &middot; Middle Tennessee</span>
+    </div>
+    <p class="foot-note">
+      <b>Website concept by Murrieta Web Studio</b>
+      This is a design concept created for Calm the Chaos Event Planning. Not yet the official website of Calm the Chaos Event Planning.
+    </p>
+  </div>
+</footer>
+
+<a class="mailbar" href="mailto:calmthechaosevents@gmail.com?subject=Wedding%20planning%20inquiry">
+  <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="4.5" width="19" height="15"/><path d="m2.5 6 9.5 7 9.5-7"/></svg>
+  Email Kelsey
+</a>
+
+</body>
+</html>
