@@ -73,8 +73,10 @@
     position:fixed; inset:-40px;
     background-image:var(--grain);
     background-size:180px 180px;
-    opacity:.035;
-    mix-blend-mode:overlay;
+    opacity:.045;
+    /* screen, not overlay: on a near-black ground overlay renders invisible,
+       so this layer and its animation were painting every frame for nothing. */
+    mix-blend-mode:screen;
     pointer-events:none;
     z-index:79;
     animation:jitter 1.1s steps(3) infinite;
