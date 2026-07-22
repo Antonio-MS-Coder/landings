@@ -297,22 +297,20 @@
     pointer-events: none;
     z-index: 0;
   }
-  /* Tight crop: the roof plane, the tool at hand, and the hill-country
-     light carry the frame. No face is the subject of this image. */
+  /* The roof plane, the tool at hand, and the hill-country light carry the
+     frame. The source file itself is cropped to exactly this region — no
+     person and no face exists anywhere in the image data. */
   .photo .crop {
     position: relative;
     z-index: 1;
-    overflow: hidden;
-    aspect-ratio: 768 / 595;
+    aspect-ratio: 720 / 558;
   }
   .photo img {
-    position: absolute;
+    position: static;
     display: block;
-    width: 208.333%;   /* 1600 / 768  */
-    max-width: none;
-    height: auto;
-    left: -108.333%;   /*  -832 / 768 */
-    top: -50.084%;     /*  -298 / 595 */
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
     filter: saturate(.94) contrast(1.02);
   }
   .photo figcaption {
@@ -772,7 +770,7 @@
       <figure class="photo">
         <div class="frame">
           <div class="crop">
-            <img src="concept-art.jpg" width="1600" height="893" loading="lazy"
+            <img src="concept-art.jpg" width="720" height="558" loading="lazy"
                  alt="AI-generated concept illustration: an asphalt shingle roof plane at golden hour, a claw hammer within reach, oak and hill country beyond the eave.">
           </div>
           <svg class="stamp" viewBox="0 0 120 120" aria-hidden="true" focusable="false">
