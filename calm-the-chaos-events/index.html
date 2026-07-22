@@ -12,9 +12,14 @@
 <style>
   /* =========================================================
      CALM THE CHAOS EVENT PLANNING — design concept
-     Concept: the page IS a run-of-show. Disorder at the top,
-     a clean ordered sequence by the bottom. Glacier / steel /
-     deep slate, one warm brass accent.
+     Concept: order out of chaos. The signature artifact is a
+     day-of timeline — the run of show made visible: mono times
+     down a hairline spine, event bars filling on scroll. It is
+     the planner's core value drawn as a diagram (orchestrating
+     time). Palette: glacier / steel / deep slate + ONE cool
+     glacial accent. No gold, no brass — deliberately cool.
+     Type: Karla (one Google Font) for voice; a system mono
+     carries the wayfinding (times, labels, numbers).
      ========================================================= */
 
   :root{
@@ -32,9 +37,11 @@
     /* Cool glacial accent. Deliberately NOT brass/gold: the navy+brass
        combination is assigned to another page in this batch, and no two
        pages may share both palette and texture. */
-    --brass:#4a9db0;
-    --brass-hi:#84c8d8;
-    --brass-lo:#2d6b7c;
+    --accent:#4a9db0;
+    --accent-hi:#84c8d8;
+    --accent-lo:#2d6b7c;
+
+    --mono: ui-monospace, "SF Mono", "Cascadia Code", "Roboto Mono", Menlo, Consolas, monospace;
 
     --gut: clamp(1.15rem, 5vw, 3.25rem);
     --maxw: 1120px;
@@ -61,6 +68,7 @@
   @media (min-width:840px){ body{ padding-bottom:0; } }
 
   .k{ font-family:"Karla", -apple-system, "Segoe UI", Arial, sans-serif; }
+  .mono{ font-family:var(--mono); }
 
   .wrap{
     width:100%;
@@ -70,15 +78,56 @@
   }
 
   a{ color:inherit; }
+  img{ max-width:100%; }
 
-  /* ---------- label / micro type ---------- */
+  /* ---------- label / micro type (mono wayfinding) ---------- */
   .lab{
-    font-family:"Karla", Arial, sans-serif;
-    font-weight:700;
-    font-size:.66rem;
-    letter-spacing:.24em;
+    font-family:var(--mono);
+    font-weight:600;
+    font-size:.64rem;
+    letter-spacing:.22em;
     text-transform:uppercase;
     line-height:1.3;
+  }
+
+  /* =========================================================
+     SCROLL PROGRESS HAIRLINE — cool, CSS-native
+     ========================================================= */
+  .scrollbar{
+    position:fixed; top:0; left:0;
+    height:2px; width:100%;
+    transform:scaleX(0); transform-origin:0 50%;
+    background:var(--accent-hi);
+    z-index:100;
+    pointer-events:none;
+  }
+  @supports (animation-timeline: scroll()){
+    @media (prefers-reduced-motion: no-preference){
+      .scrollbar{ animation:progress linear both; animation-timeline:scroll(root); }
+    }
+  }
+  @keyframes progress{ to{ transform:scaleX(1); } }
+
+  /* =========================================================
+     MOTION PRIMITIVES — blur-to-focus reveal (§5)
+     Default state is the finished state, so non-supporting
+     browsers and reduced-motion users see everything.
+     ========================================================= */
+  @keyframes revealIn{
+    from{ opacity:0; filter:blur(9px); transform:translateY(1.7rem); }
+    to{ opacity:1; filter:blur(0); transform:none; }
+  }
+  @media (prefers-reduced-motion: no-preference){
+    @supports (animation-timeline: view()){
+      .reveal{ animation:revealIn linear both; animation-timeline:view(); animation-range:entry 2% cover 26%; }
+    }
+  }
+
+  /* grain — light texture over dark fields */
+  .grain{
+    position:absolute; inset:0; z-index:1; pointer-events:none;
+    opacity:.07; mix-blend-mode:screen;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   }
 
   /* =========================================================
@@ -108,19 +157,19 @@
   }
   .mark-t span{
     display:block;
-    font-family:"Karla", Arial, sans-serif;
-    font-weight:600;
-    font-size:.56rem;
-    letter-spacing:.3em;
+    font-family:var(--mono);
+    font-weight:500;
+    font-size:.54rem;
+    letter-spacing:.26em;
     text-transform:uppercase;
     color:var(--steel-400);
     white-space:nowrap;
   }
   .mast-mail{
-    font-family:"Karla", Arial, sans-serif;
-    font-weight:700;
-    font-size:.72rem;
-    letter-spacing:.16em;
+    font-family:var(--mono);
+    font-weight:600;
+    font-size:.7rem;
+    letter-spacing:.14em;
     text-transform:uppercase;
     text-decoration:none;
     color:var(--slate-900);
@@ -129,18 +178,18 @@
     white-space:nowrap;
     transition:background .18s ease;
   }
-  .mast-mail:hover{ background:var(--brass-hi); }
+  .mast-mail:hover{ background:var(--accent-hi); }
   @media (max-width:479px){ .mast-mail{ display:none; } }
 
   /* =========================================================
-     HERO — full-bleed gradient field
+     HERO — full-bleed glacier field + timeline artifact
      ========================================================= */
   .hero{
     position:relative;
     color:var(--ice-100);
     background:
       radial-gradient(115% 78% at 82% 4%, rgba(160,186,204,.20), rgba(160,186,204,0) 62%),
-      radial-gradient(90% 60% at 4% 96%, rgba(184,129,63,.12), rgba(184,129,63,0) 58%),
+      radial-gradient(90% 62% at 2% 98%, rgba(74,157,176,.16), rgba(74,157,176,0) 60%),
       linear-gradient(168deg, #0a1015 0%, #101c25 26%, #172833 50%, #1f3746 76%, #2b4859 100%);
     overflow:hidden;
   }
@@ -156,14 +205,14 @@
     position:relative; z-index:2;
     padding-block: clamp(2.4rem, 8vw, 5rem) clamp(2.6rem, 8vw, 5.2rem);
     display:grid;
-    gap:clamp(2.2rem, 6vw, 3.4rem);
+    gap:clamp(2.4rem, 6vw, 3.4rem);
   }
   @media (min-width:920px){
-    .hero-in{ grid-template-columns: 1.06fr .94fr; align-items:start; gap:3.6rem; }
+    .hero-in{ grid-template-columns: 1.02fr .98fr; align-items:center; gap:3.4rem; }
   }
 
   .hero-eyebrow{ color:var(--steel-300); margin-bottom:1.5rem; }
-  .hero-eyebrow i{ font-style:normal; color:var(--brass-hi); }
+  .hero-eyebrow i{ font-style:normal; color:var(--accent-hi); }
 
   h1{
     font-family:"Karla", Arial, sans-serif;
@@ -172,6 +221,7 @@
     line-height:.93;
     letter-spacing:-.035em;
     margin-bottom:1.1rem;
+    text-wrap:balance;
   }
   h1 em{
     font-style:normal;
@@ -183,7 +233,7 @@
     font-size:clamp(1.02rem, 2.6vw, 1.17rem);
     line-height:1.55;
     color:var(--ice-200);
-    max-width:33ch;
+    max-width:34ch;
     margin-bottom:1.7rem;
   }
   .hero-deck b{ color:#fff; font-weight:600; }
@@ -210,7 +260,7 @@
     letter-spacing:.02em;
     text-decoration:none;
     color:var(--slate-900);
-    background:var(--brass-hi);
+    background:var(--accent-hi);
     padding:.92rem 1.35rem;
     border:0;
     transition:transform .16s ease, background .16s ease;
@@ -225,81 +275,139 @@
     max-width:34ch;
   }
 
-  /* ---------- the transform: scatter → sequence ---------- */
-  .tf{ display:grid; gap:0; }
-  .tf-pane{ padding:1.15rem 1.2rem 1.3rem; }
-  .tf-cap{
-    display:flex; align-items:center; justify-content:space-between;
-    font-family:"Karla", Arial, sans-serif;
-    font-weight:700; font-size:.6rem; letter-spacing:.26em; text-transform:uppercase;
-    padding-bottom:.85rem;
-  }
-
-  .tf-before{
-    background:rgba(11,17,23,.42);
-    border:1px solid rgba(143,166,182,.22);
-  }
-  .tf-before .tf-cap{ color:var(--steel-400); }
-  .scatter{ list-style:none; display:flex; flex-wrap:wrap; gap:.4rem .35rem; }
-  .scatter li{
-    font-size:.78rem;
-    line-height:1.35;
-    color:var(--ice-300);
-    background:rgba(143,166,182,.10);
-    border:1px solid rgba(143,166,182,.18);
-    padding:.3rem .55rem;
-    transform-origin:center;
-  }
-  .scatter li:nth-child(1){ transform:rotate(-2.2deg); }
-  .scatter li:nth-child(2){ transform:rotate(1.6deg) translateY(3px); opacity:.86; }
-  .scatter li:nth-child(3){ transform:rotate(-1.1deg) translateY(-2px); }
-  .scatter li:nth-child(4){ transform:rotate(2.7deg) translateY(4px); opacity:.78; }
-  .scatter li:nth-child(5){ transform:rotate(-3.1deg); opacity:.9; }
-  .scatter li:nth-child(6){ transform:rotate(1.1deg) translateY(2px); opacity:.72; }
-  .scatter li:nth-child(7){ transform:rotate(-1.8deg) translateY(-3px); opacity:.82; }
-  .scatter li:nth-child(8){ transform:rotate(2.1deg); opacity:.66; }
-
-  .tf-mid{
-    display:flex; align-items:center; gap:.7rem;
-    padding:.85rem 1.2rem;
-    color:var(--brass-hi);
-    font-family:"Karla", Arial, sans-serif;
-    font-weight:700; font-size:.6rem; letter-spacing:.26em; text-transform:uppercase;
-    border-inline:1px solid rgba(143,166,182,.22);
-    background:rgba(11,17,23,.24);
-  }
-  .tf-mid svg{ flex:none; }
-  .tf-mid span{ flex:1 1 auto; height:1px; background:rgba(184,129,63,.4); }
-
-  .tf-after{
+  /* =========================================================
+     SIGNATURE ARTIFACT — the day-of timeline
+     Mono times down a hairline spine; event bars in themed
+     flat glacier tones; each bar fills on scroll. Labelled
+     illustrative — a generic shape, not a real client's day.
+     ========================================================= */
+  .tl{
     background:var(--ice-100);
+    border:1px solid var(--ice-200);
+    border-radius:3px;
+    padding:clamp(1.1rem, 3.4vw, 1.65rem);
     color:var(--slate-800);
-    border:1px solid var(--ice-100);
+    box-shadow:0 26px 64px -34px rgba(3,9,14,.75);
   }
-  .tf-after .tf-cap{ color:var(--steel-500); }
-  .ordered{ list-style:none; }
-  .ordered li{
-    display:grid;
-    grid-template-columns:4.1rem 1fr;
-    gap:.9rem;
-    align-items:baseline;
-    padding:.52rem 0;
-    border-top:1px solid var(--ice-300);
-    font-size:.88rem;
+  .tl-head{
+    display:flex; flex-direction:column; gap:.18rem;
+    padding-bottom:1rem; margin-bottom:1.1rem;
+    border-bottom:1px solid var(--ice-300);
   }
-  .ordered li:first-child{ border-top:0; }
-  .ordered b{
-    font-family:"Karla", Arial, sans-serif;
-    font-weight:800;
+  .tl-kicker{ color:var(--accent-lo); }
+  .tl-sub{ font-size:.82rem; color:var(--steel-500); }
+
+  .tl-body{ position:relative; }
+  /* the spine */
+  .tl-body::before{
+    content:"";
+    position:absolute; top:.55rem; bottom:.55rem;
+    left:calc(3.1rem + .525rem);
+    width:1px; background:var(--ice-300);
+  }
+  .tl-row{
+    position:relative;
+    display:grid; grid-template-columns:3.1rem 1fr;
+    column-gap:1.05rem;
+    padding:.5rem 0;
+  }
+  /* the node on the spine */
+  .tl-row::before{
+    content:"";
+    position:absolute; top:.5rem;
+    left:calc(3.1rem + .525rem - 3.5px);
+    width:7px; height:7px; border-radius:50%;
+    background:var(--c, var(--steel-400));
+    box-shadow:0 0 0 2px var(--ice-100);
+  }
+  .tl-time{
+    font-family:var(--mono);
+    font-weight:600; font-size:.8rem;
     font-variant-numeric:tabular-nums;
+    color:var(--slate-700);
     letter-spacing:-.01em;
-    color:var(--brass-lo);
+    text-align:right;
+    padding-top:.06rem;
   }
-  .tf-note{
-    margin-top:.7rem;
-    font-size:.68rem;
-    color:var(--steel-400);
+  .tl-lane{ min-width:0; }
+  .tl-name{
+    display:block;
+    font-family:var(--mono);
+    font-weight:600; font-size:.6rem; letter-spacing:.16em; text-transform:uppercase;
+    color:var(--steel-500);
+    margin-bottom:.42rem;
+  }
+  .tl-bar{
+    display:block;
+    width:var(--w, 60%); max-width:100%;
+    height:10px; border-radius:2px;
+    background:rgba(63,90,109,.14);
+    overflow:hidden;
+  }
+  .tl-fill{
+    display:block; height:100%; width:100%;
+    background:var(--c, var(--steel-400));
+    transform-origin:left center;
+    transform:scaleX(1);
+  }
+  /* ceremony — the fixed point */
+  .tl-row.key .tl-time{ color:var(--accent-lo); }
+  .tl-row.key .tl-name{ color:var(--accent-lo); }
+  .tl-row.key::before{
+    width:11px; height:11px;
+    top:.42rem;
+    left:calc(3.1rem + .525rem - 5.5px);
+    box-shadow:0 0 0 2px var(--ice-100), 0 0 0 5px rgba(74,157,176,.2);
+  }
+  .tl-foot{
+    margin-top:1.1rem; padding-top:.9rem;
+    border-top:1px solid var(--ice-300);
+    font-size:.68rem; color:var(--steel-400);
     line-height:1.45;
+  }
+
+  /* bars fill on scroll — staggered cascade. Static state (above)
+     is the filled bar, so nothing is ever stuck empty. */
+  @keyframes fillbar{ from{ transform:scaleX(0); } to{ transform:scaleX(1); } }
+  @media (prefers-reduced-motion: no-preference){
+    @supports (animation-timeline: view()){
+      .tl-fill{ transform:scaleX(0); animation:fillbar linear both; animation-timeline:view(); animation-range:entry 6% cover 42%; }
+      .tl-row:nth-child(1) .tl-fill{ animation-range:entry 4% cover 26%; }
+      .tl-row:nth-child(2) .tl-fill{ animation-range:entry 8% cover 30%; }
+      .tl-row:nth-child(3) .tl-fill{ animation-range:entry 12% cover 34%; }
+      .tl-row:nth-child(4) .tl-fill{ animation-range:entry 16% cover 38%; }
+      .tl-row:nth-child(5) .tl-fill{ animation-range:entry 20% cover 42%; }
+      .tl-row:nth-child(6) .tl-fill{ animation-range:entry 24% cover 46%; }
+    }
+  }
+
+  /* =========================================================
+     ATMOSPHERE BAND — the one photographic field (light study)
+     ========================================================= */
+  .atmos{
+    position:relative; width:100%; margin:0;
+    background:var(--slate-900); overflow:hidden;
+  }
+  .atmos img{
+    display:block; width:100%;
+    height:clamp(240px, 44vh, 440px);
+    object-fit:cover; object-position:center;
+  }
+  .atmos-cap{
+    position:absolute;
+    left:clamp(1rem, 5vw, 2.2rem);
+    bottom:clamp(1rem, 4vw, 1.6rem);
+    max-width:min(90%, 540px);
+    padding:.66rem .95rem .72rem;
+    background:rgba(11,17,23,.66);
+    -webkit-backdrop-filter:blur(2px); backdrop-filter:blur(2px);
+    color:var(--ice-100);
+    border-left:2px solid var(--accent);
+  }
+  .atmos-cap .lab{ display:block; color:var(--accent-hi); }
+  .atmos-cap .atmos-line{
+    display:block; margin-top:.3rem;
+    font-size:.86rem; line-height:1.42; color:var(--ice-200);
   }
 
   /* =========================================================
@@ -312,13 +420,13 @@
     padding-bottom:1.5rem;
   }
   .sec-num{
-    font-family:"Karla", Arial, sans-serif;
-    font-weight:800;
+    font-family:var(--mono);
+    font-weight:600;
     font-size:.72rem;
     letter-spacing:.1em;
-    color:var(--brass);
+    color:var(--accent);
     flex:none;
-    padding-top:.35rem;
+    padding-top:.4rem;
   }
   .sec-head h2{
     font-family:"Karla", Arial, sans-serif;
@@ -327,6 +435,7 @@
     line-height:1.02;
     letter-spacing:-.028em;
     color:var(--slate-800);
+    text-wrap:balance;
   }
   .sec-head h2 span{ display:block; font-weight:300; color:var(--steel-500); }
   .sec-rule{ height:1px; background:var(--ice-300); }
@@ -359,14 +468,14 @@
     min-height:100%;
   }
   .role-num{
-    font-family:"Karla", Arial, sans-serif;
-    font-weight:800;
-    font-size:2.1rem;
-    line-height:.8;
-    letter-spacing:-.05em;
+    font-family:var(--mono);
+    font-weight:600;
+    font-size:1.7rem;
+    line-height:.9;
+    letter-spacing:-.02em;
     color:var(--steel-500);
   }
-  .role-kicker{ color:var(--brass-hi); text-align:right; }
+  .role-kicker{ color:var(--accent-hi); text-align:right; }
   .role-body{ padding:1.4rem 1.4rem 1.8rem; }
   @media (min-width:840px){
     .role-block{
@@ -374,7 +483,7 @@
       gap:1.6rem;
       padding:1.9rem 1.7rem;
     }
-    .role-num{ font-size:4.2rem; }
+    .role-num{ font-size:3.4rem; }
     .role-kicker{ text-align:left; }
     .role-body{ padding:1.9rem 2.2rem 2.2rem; }
   }
@@ -398,15 +507,15 @@
     flex:none;
     width:9px; height:9px;
     margin-top:.5rem;
-    background:var(--brass);
+    background:var(--accent);
   }
   .role-when{
     margin-top:1.3rem;
     padding-top:.85rem;
     border-top:1px solid var(--ice-300);
-    font-family:"Karla", Arial, sans-serif !important;
-    font-weight:700;
-    font-size:.68rem !important;
+    font-family:var(--mono) !important;
+    font-weight:600;
+    font-size:.64rem !important;
     letter-spacing:.16em;
     text-transform:uppercase;
     color:var(--steel-400) !important;
@@ -414,13 +523,13 @@
 
   /* the inverted middle role — the ceremony is the still point */
   .role.invert{ background:var(--slate-900); }
-  .role.invert .role-block{ background:var(--brass); color:var(--slate-900); }
+  .role.invert .role-block{ background:var(--accent); color:var(--slate-900); }
   .role.invert .role-num{ color:rgba(11,17,23,.42); }
   .role.invert .role-kicker{ color:var(--slate-900); }
   .role.invert .role-body h3{ color:var(--ice-100); }
   .role.invert .role-body p{ color:var(--ice-300); }
   .role.invert .role-list li{ color:var(--ice-200); }
-  .role.invert .role-list li::before{ background:var(--brass-hi); }
+  .role.invert .role-list li::before{ background:var(--accent-hi); }
   .role.invert .role-when{ border-top-color:rgba(143,166,182,.28); color:var(--steel-400) !important; }
 
   /* ---------- decor & signage strip ---------- */
@@ -448,24 +557,27 @@
      02 · RUN OF SHOW
      ========================================================= */
   .ros-band{
+    position:relative;
     background:var(--slate-900);
     color:var(--ice-200);
     margin-top:clamp(2.6rem, 7vw, 4.4rem);
     padding-bottom:clamp(2.4rem, 7vw, 3.8rem);
+    overflow:hidden;
   }
   .ros-band .sec-head h2{ color:var(--ice-100); }
   .ros-band .sec-head h2 span{ color:var(--steel-400); }
   .ros-band .sec-rule{ background:rgba(143,166,182,.2); }
   .ros-band .sec-intro{ color:var(--steel-300); }
+  .ros-band > .wrap{ position:relative; z-index:2; }
 
   .ros-doc{ margin-top:1.9rem; }
   .ros-part + .ros-part{ margin-top:2.2rem; }
   .ros-part-cap{
     display:flex; align-items:center; gap:.85rem;
-    color:var(--brass-hi);
+    color:var(--accent-hi);
     margin-bottom:.9rem;
   }
-  .ros-part-cap span{ flex:1 1 auto; height:1px; background:rgba(184,129,63,.32); }
+  .ros-part-cap span{ flex:1 1 auto; height:1px; background:rgba(74,157,176,.32); }
 
   .ros-row{
     display:grid;
@@ -479,9 +591,9 @@
     .ros-row{ grid-template-columns:7rem 1fr 11.5rem; gap:0 1.4rem; align-items:baseline; }
   }
   .ros-t{
-    font-family:"Karla", Arial, sans-serif;
-    font-weight:800;
-    font-size:.84rem;
+    font-family:var(--mono);
+    font-weight:600;
+    font-size:.82rem;
     font-variant-numeric:tabular-nums;
     letter-spacing:-.01em;
     color:var(--ice-100);
@@ -494,8 +606,8 @@
     grid-column:2;
     margin-top:.45rem;
     display:inline-flex; align-self:start;
-    font-family:"Karla", Arial, sans-serif;
-    font-weight:700; font-size:.58rem; letter-spacing:.2em; text-transform:uppercase;
+    font-family:var(--mono);
+    font-weight:600; font-size:.56rem; letter-spacing:.16em; text-transform:uppercase;
     padding:.24rem .55rem;
     border:1px solid rgba(143,166,182,.3);
     color:var(--steel-300);
@@ -505,12 +617,12 @@
     .ros-who{ grid-column:3; margin-top:0; justify-self:start; }
   }
   .ros-who.w-plan{ border-color:rgba(143,166,182,.45); color:var(--ice-300); }
-  .ros-who.w-off{ border-color:var(--brass); color:var(--brass-hi); background:rgba(184,129,63,.1); }
+  .ros-who.w-off{ border-color:var(--accent); color:var(--accent-hi); background:rgba(74,157,176,.12); }
   .ros-who.w-coord{ border-color:rgba(63,90,109,.9); color:var(--steel-300); background:rgba(63,90,109,.22); }
   .ros-who.w-decor{ border-color:rgba(143,166,182,.28); color:var(--steel-400); }
 
-  .ros-row.key{ background:rgba(184,129,63,.07); }
-  .ros-row.key .ros-t{ color:var(--brass-hi); }
+  .ros-row.key{ background:rgba(74,157,176,.08); }
+  .ros-row.key .ros-t{ color:var(--accent-hi); }
 
   .ros-foot{
     margin-top:1.8rem;
@@ -552,10 +664,10 @@
      its own span even inside a minmax(0,1fr) column. */
   .area-facts li > span{ overflow-wrap:anywhere; }
   .area-facts li b{
-    font-family:"Karla", Arial, sans-serif;
-    font-weight:700; font-size:.62rem; letter-spacing:.2em; text-transform:uppercase;
+    font-family:var(--mono);
+    font-weight:600; font-size:.6rem; letter-spacing:.16em; text-transform:uppercase;
     color:var(--steel-400);
-    padding-top:.28rem;
+    padding-top:.3rem;
   }
   .area-viz{
     background:var(--slate-800);
@@ -589,9 +701,9 @@
     font-weight:800;
     font-size:clamp(1.05rem, 4.4vw, 1.5rem);
     letter-spacing:-.025em;
-    color:var(--brass-hi);
+    color:var(--accent-hi);
     text-decoration:none;
-    border-bottom:2px solid rgba(184,129,63,.5);
+    border-bottom:2px solid rgba(74,157,176,.55);
     padding-bottom:.15rem;
     word-break:break-word;
   }
@@ -615,14 +727,14 @@
     color:var(--ice-100);
     transition:background .18s ease;
   }
-  .ct-route:hover{ background:rgba(184,129,63,.16); }
+  .ct-route:hover{ background:rgba(74,157,176,.16); }
   .ct-route div{ min-width:0; }
   .ct-route b{
     font-family:"Karla", Arial, sans-serif;
     display:block; font-weight:800; font-size:1rem; letter-spacing:-.015em;
   }
   .ct-route span{ display:block; font-size:.78rem; color:var(--steel-300); margin-top:.1rem; }
-  .ct-route svg{ flex:none; color:var(--brass-hi); }
+  .ct-route svg{ flex:none; color:var(--accent-hi); }
 
   /* =========================================================
      FOOTER
@@ -643,9 +755,10 @@
   }
   .foot-brand span{
     display:block;
-    font-weight:600; font-size:.58rem; letter-spacing:.28em; text-transform:uppercase;
+    font-family:var(--mono);
+    font-weight:500; font-size:.56rem; letter-spacing:.22em; text-transform:uppercase;
     color:var(--steel-500);
-    margin-top:.25rem;
+    margin-top:.3rem;
   }
   .foot-note{ font-size:.76rem; line-height:1.6; max-width:64ch; }
   .foot-note b{ color:var(--ice-200); font-weight:600; display:block; }
@@ -656,7 +769,7 @@
   .mailbar{
     position:fixed; left:0; right:0; bottom:0; z-index:70;
     display:flex; align-items:center; justify-content:center; gap:.6rem;
-    background:var(--brass-hi);
+    background:var(--accent-hi);
     color:var(--slate-900);
     font-family:"Karla", Arial, sans-serif;
     font-weight:800; font-size:.95rem; letter-spacing:.01em;
@@ -667,11 +780,13 @@
   .mailbar svg{ flex:none; }
   @media (min-width:840px){ .mailbar{ display:none; } }
 
-  ::selection{ background:var(--brass-hi); color:var(--slate-900); }
-  :focus-visible{ outline:2px solid var(--brass-hi); outline-offset:2px; }
+  ::selection{ background:var(--accent-hi); color:var(--slate-900); }
+  :focus-visible{ outline:2px solid var(--accent-hi); outline-offset:2px; }
 </style>
 </head>
 <body>
+
+<div class="scrollbar" aria-hidden="true"></div>
 
 <header class="mast">
   <div class="wrap mast-in">
@@ -679,7 +794,7 @@
       <svg width="26" height="26" viewBox="0 0 26 26" fill="none" aria-hidden="true">
         <rect x="1" y="1" width="24" height="24" stroke="#3f5a6d" stroke-width="1.2"/>
         <path d="M5 7.5h7M5 11h11M5 14.5h5" stroke="#8fa6b6" stroke-width="1.2" stroke-linecap="round"/>
-        <path d="M5 18.5h16" stroke="#dcab68" stroke-width="1.6" stroke-linecap="round"/>
+        <path d="M5 18.5h16" stroke="#4a9db0" stroke-width="1.6" stroke-linecap="round"/>
       </svg>
       <span class="mark-t">
         <b>Calm the Chaos</b>
@@ -693,10 +808,11 @@
 <main id="top">
 
   <!-- ============== HERO ============== -->
-  <section class="hero">
+  <section class="hero" id="hero">
+    <span class="grain" aria-hidden="true"></span>
     <div class="wrap hero-in">
 
-      <div>
+      <div class="hero-copy">
         <p class="lab hero-eyebrow">Pleasant View, Tennessee <i>&middot;</i> Serving Middle&nbsp;TN</p>
 
         <h1>The day,<br>in order.<em>Every hour of it.</em></h1>
@@ -719,46 +835,81 @@
         <small class="cta-sub">Goes to calmthechaosevents@gmail.com with the subject line already filled in.</small>
       </div>
 
-      <figure class="tf" aria-label="Illustration: scattered wedding-day questions resolving into an ordered schedule">
-        <div class="tf-pane tf-before">
-          <span class="tf-cap"><span>The group chat</span></span>
-          <ul class="scatter">
-            <li>what time does the cake arrive</li>
-            <li>who has the rings</li>
-            <li>shuttle — two trips or three?</li>
-            <li>photographer wants golden hour</li>
-            <li>grandmother needs a seat up front</li>
-            <li>toasts before dinner or after</li>
-            <li>when does the DJ load in</li>
-            <li>is anyone flipping the ceremony space</li>
-          </ul>
+      <!-- signature artifact: the day-of timeline (illustrative) -->
+      <figure class="tl reveal" aria-label="Illustrative example of a day-of wedding timeline — a generic shape, not a real client's schedule">
+        <figcaption class="tl-head">
+          <span class="lab tl-kicker">Day-of timeline</span>
+          <span class="tl-sub">One run of show, hour by hour</span>
+        </figcaption>
+
+        <div class="tl-body">
+          <div class="tl-row" style="--c:#67819a;--w:70%">
+            <span class="tl-time">12:00</span>
+            <div class="tl-lane">
+              <span class="tl-name">Getting ready</span>
+              <span class="tl-bar"><i class="tl-fill"></i></span>
+            </div>
+          </div>
+          <div class="tl-row" style="--c:#8fa6b6;--w:44%">
+            <span class="tl-time">2:30</span>
+            <div class="tl-lane">
+              <span class="tl-name">First look</span>
+              <span class="tl-bar"><i class="tl-fill"></i></span>
+            </div>
+          </div>
+          <div class="tl-row key" style="--c:#4a9db0;--w:34%">
+            <span class="tl-time">4:00</span>
+            <div class="tl-lane">
+              <span class="tl-name">Ceremony</span>
+              <span class="tl-bar"><i class="tl-fill"></i></span>
+            </div>
+          </div>
+          <div class="tl-row" style="--c:#84c8d8;--w:40%">
+            <span class="tl-time">6:15</span>
+            <div class="tl-lane">
+              <span class="tl-name">Golden hour</span>
+              <span class="tl-bar"><i class="tl-fill"></i></span>
+            </div>
+          </div>
+          <div class="tl-row" style="--c:#3f5a6d;--w:86%">
+            <span class="tl-time">7:00</span>
+            <div class="tl-lane">
+              <span class="tl-name">Reception</span>
+              <span class="tl-bar"><i class="tl-fill"></i></span>
+            </div>
+          </div>
+          <div class="tl-row" style="--c:#243a4a;--w:28%">
+            <span class="tl-time">10:00</span>
+            <div class="tl-lane">
+              <span class="tl-name">Send-off</span>
+              <span class="tl-bar"><i class="tl-fill"></i></span>
+            </div>
+          </div>
         </div>
 
-        <div class="tf-mid">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v16M6 14l6 6 6-6"/></svg>
-          One document
-          <span></span>
-        </div>
-
-        <div class="tf-pane tf-after">
-          <span class="tf-cap"><span>Run of show</span></span>
-          <ol class="ordered">
-            <li><b>3:15</b> Shuttle, trip one</li>
-            <li><b>3:40</b> Guests seated</li>
-            <li><b>4:00</b> Ceremony begins</li>
-            <li><b>4:32</b> Space flipped for dinner</li>
-          </ol>
-          <p class="tf-note">Illustrative. A generic wedding-day shape — not a real client's schedule.</p>
-        </div>
+        <p class="tl-foot">
+          Illustrative example — a generic wedding-day shape used to show how a run of show
+          reads. Not a real client's schedule; every real one is built around the couple's own day.
+        </p>
       </figure>
 
     </div>
   </section>
 
+  <!-- ============== ATMOSPHERE BAND ============== -->
+  <figure class="atmos">
+    <img src="atmosphere.jpg" width="1600" height="893" loading="eager" decoding="async"
+         alt="Abstract calm light study — concept illustration">
+    <figcaption class="atmos-cap">
+      <span class="lab">Atmosphere — concept illustration</span>
+      <span class="atmos-line">A study in ice and steel light — the quiet a well-run schedule is meant to leave in the room.</span>
+    </figcaption>
+  </figure>
+
   <!-- ============== 01 · ROLES ============== -->
   <section id="roles">
     <div class="wrap">
-      <div class="sec-head">
+      <div class="sec-head reveal">
         <span class="sec-num">01</span>
         <h2>Three roles, kept separate<span>because they are three different jobs</span></h2>
       </div>
@@ -772,7 +923,7 @@
 
     <div class="wrap roles">
 
-      <article class="role">
+      <article class="role reveal">
         <div class="role-block">
           <span class="role-num">01</span>
           <span class="lab role-kicker">Full-service planning</span>
@@ -794,7 +945,7 @@
         </div>
       </article>
 
-      <article class="role invert flip">
+      <article class="role invert flip reveal">
         <div class="role-block">
           <span class="role-num">02</span>
           <span class="lab role-kicker">Officiating</span>
@@ -815,7 +966,7 @@
         </div>
       </article>
 
-      <article class="role">
+      <article class="role reveal">
         <div class="role-block">
           <span class="role-num">03</span>
           <span class="lab role-kicker">Day-of coordination</span>
@@ -837,7 +988,7 @@
         </div>
       </article>
 
-      <div class="mats">
+      <div class="mats reveal">
         <div class="mat">
           <svg width="26" height="26" viewBox="0 0 26 26" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <path d="M4 23V9.5a9 9 0 0 1 18 0V23"/>
@@ -872,8 +1023,9 @@
 
   <!-- ============== 02 · RUN OF SHOW ============== -->
   <section class="ros-band" id="run-of-show">
+    <span class="grain" aria-hidden="true"></span>
     <div class="wrap">
-      <div class="sec-head">
+      <div class="sec-head reveal">
         <span class="sec-num">02</span>
         <h2>What a run of show is<span>and why the business is named after it</span></h2>
       </div>
@@ -886,7 +1038,7 @@
 
       <div class="ros-doc">
 
-        <div class="ros-part">
+        <div class="ros-part reveal">
           <p class="lab ros-part-cap">Before the day <span></span></p>
 
           <div class="ros-row">
@@ -911,7 +1063,7 @@
           </div>
         </div>
 
-        <div class="ros-part">
+        <div class="ros-part reveal">
           <p class="lab ros-part-cap">The day itself <span></span></p>
 
           <div class="ros-row">
@@ -978,13 +1130,13 @@
   <!-- ============== 03 · SERVICE AREA ============== -->
   <section id="area">
     <div class="wrap">
-      <div class="sec-head">
+      <div class="sec-head reveal">
         <span class="sec-num">03</span>
         <h2>Where the work happens<span>Middle Tennessee and the Nashville area</span></h2>
       </div>
       <div class="sec-rule"></div>
 
-      <div class="area-grid">
+      <div class="area-grid reveal">
         <div class="area-txt">
           <h3>Based in Pleasant View</h3>
           <p>
@@ -1006,12 +1158,12 @@
             <circle cx="128" cy="120" r="44" stroke="#67819a" stroke-width="1"/>
             <circle cx="128" cy="120" r="16" stroke="#8fa6b6" stroke-width="1"/>
             <path d="M128 4v232M12 120h232" stroke="#243a4a" stroke-width="1" stroke-dasharray="3 5"/>
-            <circle cx="128" cy="120" r="4.5" fill="#dcab68"/>
-            <path d="M128 120h84" stroke="#b8813f" stroke-width="1.4"/>
+            <circle cx="128" cy="120" r="4.5" fill="#4a9db0"/>
+            <path d="M128 120h84" stroke="#2d6b7c" stroke-width="1.4"/>
             <circle cx="212" cy="120" r="3" fill="#8fa6b6"/>
-            <text x="140" y="112" fill="#dcab68" font-family="Karla, Arial, sans-serif" font-size="11" font-weight="700" letter-spacing="1.6">PLEASANT VIEW</text>
-            <text x="220" y="124" fill="#8fa6b6" font-family="Karla, Arial, sans-serif" font-size="11" font-weight="700" letter-spacing="1.6">NASHVILLE</text>
-            <text x="14" y="228" fill="#3f5a6d" font-family="Karla, Arial, sans-serif" font-size="9.5" font-weight="700" letter-spacing="2.4">MIDDLE TENNESSEE — DIAGRAM, NOT TO SCALE</text>
+            <text x="140" y="112" fill="#84c8d8" font-family="ui-monospace, Menlo, monospace" font-size="11" font-weight="700" letter-spacing="1.6">PLEASANT VIEW</text>
+            <text x="220" y="124" fill="#8fa6b6" font-family="ui-monospace, Menlo, monospace" font-size="11" font-weight="700" letter-spacing="1.6">NASHVILLE</text>
+            <text x="14" y="228" fill="#3f5a6d" font-family="ui-monospace, Menlo, monospace" font-size="9.5" font-weight="700" letter-spacing="2.4">MIDDLE TENNESSEE — DIAGRAM, NOT TO SCALE</text>
           </svg>
         </div>
       </div>
@@ -1021,7 +1173,7 @@
   <!-- ============== 04 · CONTACT ============== -->
   <section class="contact-band" id="contact">
     <div class="wrap">
-      <div class="sec-head">
+      <div class="sec-head reveal">
         <span class="sec-num">04</span>
         <h2>Start the file<span>one email, and the ordering begins</span></h2>
       </div>
@@ -1042,7 +1194,7 @@
         </div>
 
         <div class="ct-routes">
-          <a class="ct-route" href="mailto:calmthechaosevents@gmail.com?subject=Wedding%20planning%20inquiry">
+          <a class="ct-route" href="mailto:calmthechaosevents@gmail.com?subject=Full-service%20planning%20inquiry">
             <div>
               <b>Full-service planning</b>
               <span>The long stretch, from early decisions to the week of</span>
