@@ -11,30 +11,38 @@
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   /* ==============================================================
-     VALUARTE PHOTOGRAPHY & FILM — design concept
+     VALUARTE PHOTOGRAPHY & FILM — design concept  ·  "Late Reception" cut
      Concept: DOS MEDIOS, UN SOLO CUADRO / TWO MEDIUMS, ONE FRAME.
-     Near-black cinema ground · bone type · one accent (brass).
-     Diagonal seam splits still-plane from motion-plane.
-     Spanish is the picture. English is the subtitle.
+     Deep near-black cinema ground · bone type.
+     Two luminous accents, mapped to the two mediums:
+        persimmon = the still (warm)   ·   teal = the motion (cool).
+     Full-bleed light study behind the hero. Spanish is the picture,
+     English the subtitle. One display face: Space Grotesk.
      ============================================================== */
 
   :root{
-    --ink:       #0a0a0b;
-    --ink-2:     #0f0f12;
-    --ink-3:     #141418;
-    --ink-4:     #1a1a1f;
-    --line:      #26262d;
-    --line-2:    #33333c;
+    --ink:       #060709;
+    --ink-2:     #0a0c0f;
+    --ink-3:     #0f1216;
+    --ink-4:     #15181d;
+    --line:      #23272e;
+    --line-2:    #333944;
     --bone:      #ece7dd;
-    --bone-dim:  #c8c2b7;
-    --muted:     #918c83;
-    --faint:     #5f5b55;
+    --bone-dim:  #c6c1b7;
+    --muted:     #8f8a82;
+    --faint:     #5c5952;
 
-    /* the ONE accent — tungsten brass */
-    --brass:     #e0b062;
-    --brass-hi:  #f4d6a4;
-    --brass-lo:  #8a6a30;
-    --brass-dk:  #4a3819;
+    /* the STILL — warm persimmon */
+    --pers:      #e2795a;
+    --pers-hi:   #f4a683;
+    --pers-lo:   #a44e33;
+    --pers-dk:   #40201a;
+
+    /* the MOTION — cool teal */
+    --teal:      #54b9ae;
+    --teal-hi:   #8fe0d6;
+    --teal-lo:   #2e7c74;
+    --teal-dk:   #123c3a;
 
     --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='260' height='260'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='260' height='260' filter='url(%23n)' opacity='0.6'/%3E%3C/svg%3E");
 
@@ -45,6 +53,7 @@
   *,*::before,*::after{ box-sizing:border-box; margin:0; padding:0; }
 
   html{ scroll-behavior:smooth; -webkit-text-size-adjust:100%; }
+  section[id]{ scroll-margin-top:82px; }
 
   body{
     background:var(--ink);
@@ -67,15 +76,13 @@
     pointer-events:none;
     z-index:80;
   }
-  /* second, slower grain pass — gives the noise depth, not a flat sheet */
+  /* second, slower grain pass — depth, not a flat sheet. screen on near-black. */
   body::before{
     content:"";
     position:fixed; inset:-40px;
     background-image:var(--grain);
     background-size:180px 180px;
     opacity:.045;
-    /* screen, not overlay: on a near-black ground overlay renders invisible,
-       so this layer and its animation were painting every frame for nothing. */
     mix-blend-mode:screen;
     pointer-events:none;
     z-index:79;
@@ -92,16 +99,53 @@
     *,*::before,*::after{ animation:none !important; transition-duration:.01ms !important; }
   }
 
-  ::selection{ background:var(--brass); color:var(--ink); }
+  ::selection{ background:var(--pers); color:var(--ink); }
 
   a{ color:inherit; text-decoration:none; }
   a:focus-visible, button:focus-visible{
-    outline:2px solid var(--brass);
+    outline:2px solid var(--teal);
     outline-offset:3px;
     border-radius:1px;
   }
 
   .wrap{ width:min(1180px, calc(100% - 2.25rem)); margin-inline:auto; }
+
+  /* ==============================================================
+     SCROLL-PROGRESS HAIRLINE — the single persimmon signature line
+     ============================================================== */
+  .progress{ display:none; }
+  @supports (animation-timeline: scroll()){
+    @media (prefers-reduced-motion: no-preference){
+      .progress{
+        display:block;
+        position:fixed; inset:0 0 auto 0;
+        height:2px; z-index:95;
+        background:linear-gradient(90deg, var(--pers-lo), var(--pers) 55%, var(--pers-hi));
+        transform-origin:0 50%;
+        transform:scaleX(0);
+        animation:grow linear both;
+        animation-timeline:scroll(root);
+      }
+    }
+  }
+  @keyframes grow{ from{ transform:scaleX(0); } to{ transform:scaleX(1); } }
+
+  /* ==============================================================
+     SCROLL REVEALS — blur-to-focus, gated & visible-by-default
+     ============================================================== */
+  @media (prefers-reduced-motion: no-preference){
+    @supports (animation-timeline: view()){
+      .reveal{
+        animation:rise linear both;
+        animation-timeline:view();
+        animation-range:entry 6% cover 34%;
+      }
+    }
+  }
+  @keyframes rise{
+    from{ opacity:0; transform:translateY(1.1rem); filter:blur(9px); }
+    to  { opacity:1; transform:none;               filter:blur(0);   }
+  }
 
   /* ==============================================================
      BILINGUAL LAYER
@@ -125,8 +169,7 @@
   }
   html[data-lang="es"] .en{ display:none !important; }
   html[data-lang="en"] .es{ display:none !important; }
-  /* In EN mode the subtitle is promoted to the picture: it must shed every
-     subtitle treatment, including those set by more specific rules below. */
+  /* EN mode promotes the subtitle to the picture — shed every subtitle treatment */
   html[data-lang="en"] .en{
     color:inherit !important;
     font-family:inherit !important;
@@ -140,17 +183,20 @@
     border-left:0 !important;
     padding-left:0 !important;
   }
-  /* blocks where the subtitle must sit on its own line under the picture */
+  /* blocks where the subtitle sits on its own line under the picture */
   h1 .es, h1 .en, h2 .es, h2 .en, h3 .es, h3 .en,
   .lede .es, .lede .en, .medium p .es, .medium p .en,
   .joint p .es, .joint p .en, .place-card p .es, .place-card p .en,
   .stat .lab .es, .stat .lab .en, .stat .src .es, .stat .src .en,
   .record-note .es, .record-note .en,
   .direct .k .es, .direct .k .en,
+  .frame .fl .es, .frame .fl .en, .frame .fs .es, .frame .fs .en,
   .kicker .es, .kicker .en,
   .btn .lbl .es, .btn .lbl .en{ display:block; }
 
-  /* the slate and inline nav pairs stay on one line */
+  h1 .line{ display:block; }
+
+  /* the slate, inline nav and figure captions stay on one line */
   .slate .es, .slate .en{ display:inline; }
   .inl .es{ display:inline; }
   .inl .en{
@@ -171,26 +217,26 @@
     font-family:var(--display);
     font-weight:600;
     font-size:.7rem;
-    letter-spacing:.28em;
+    letter-spacing:.26em;
     text-transform:uppercase;
-    color:var(--brass);
+    color:var(--teal);
     display:flex;
     align-items:center;
     gap:.7rem;
+    flex-wrap:wrap;
   }
-  .kicker{ flex-wrap:wrap; }
   .kicker::before{
     content:"";
     width:1.9rem; height:1px;
-    background:var(--brass-lo);
+    background:var(--teal-lo);
     flex:none;
   }
   .kicker .en{
     flex-basis:100%;
     margin-left:2.6rem;
     margin-top:.5em;
-    letter-spacing:.22em;
-    color:var(--brass-lo);
+    letter-spacing:.2em;
+    color:var(--teal-lo);
     font-size:.9em;
     border:0; padding-left:0;
   }
@@ -210,6 +256,7 @@
     font-size:clamp(1.02rem, 1.6vw, 1.19rem);
     line-height:1.62;
     max-width:52ch;
+    text-wrap:pretty;
   }
 
   /* shot-list slate: 01 / 02 / 03 */
@@ -230,7 +277,7 @@
     font-size:1.55rem;
     font-weight:700;
     letter-spacing:-.02em;
-    color:var(--brass);
+    color:var(--teal);
     line-height:1;
   }
   .slate span{ flex:1; }
@@ -239,7 +286,7 @@
   html[data-lang="en"] .slate .en::before{ content:""; }
 
   /* ==============================================================
-     FILM PERFORATION RAIL — the recurring structural motif
+     FILM PERFORATION RAIL — recurring structural motif
      ============================================================== */
   .rail{
     height:30px;
@@ -257,11 +304,7 @@
   }
   .rail::before{ top:5px; }
   .rail::after{ bottom:5px; }
-  .rail.brass{ background:var(--ink-4); }
-  .rail.brass::before, .rail.brass::after{
-    background:repeating-linear-gradient(90deg,
-      var(--ink) 0 10px, transparent 10px 26px);
-  }
+  .rail.warm{ background:var(--ink-4); }
 
   /* vertical perforation strip used beside panels */
   .perf-v{
@@ -281,12 +324,12 @@
      ============================================================== */
   .topline{
     height:2px;
-    background:linear-gradient(90deg, var(--brass-dk), var(--brass) 40%, var(--brass-hi) 50%, var(--brass) 60%, var(--brass-dk));
+    background:linear-gradient(90deg, var(--teal-dk), var(--teal) 26%, var(--bone) 50%, var(--pers) 74%, var(--pers-dk));
   }
   header.site{
     position:sticky; top:0; z-index:60;
-    background:rgba(10,10,11,.88);
-    backdrop-filter:blur(10px);
+    background:rgba(6,7,9,.82);
+    backdrop-filter:blur(11px);
     border-bottom:1px solid var(--line);
   }
   .bar{
@@ -295,7 +338,7 @@
     padding-block:.6rem;
   }
   .brand{ display:flex; align-items:center; gap:.7rem; margin-right:auto; }
-  .brand .mark{ width:30px; height:30px; color:var(--brass); flex:none; }
+  .brand .mark{ width:30px; height:30px; color:var(--teal); flex:none; }
   .brand-name{
     font-family:var(--display);
     font-weight:700;
@@ -341,7 +384,7 @@
   .langbar button:last-child{ border-right:0; }
   .langbar button:hover{ color:var(--bone); }
   .langbar button[aria-pressed="true"]{
-    background:var(--brass);
+    background:var(--teal);
     color:var(--ink);
   }
 
@@ -361,8 +404,8 @@
     letter-spacing:.13em;
     text-transform:uppercase;
     padding:1.02rem 1.7rem;
-    border:1px solid var(--brass-lo);
-    color:var(--brass-hi);
+    border:1px solid var(--teal-lo);
+    color:var(--teal-hi);
     background:transparent;
     border-radius:2px;
     line-height:1.15;
@@ -370,13 +413,13 @@
     transition:background .2s, color .2s, border-color .2s, transform .2s;
   }
   .btn svg{ width:17px; height:17px; flex:none; }
-  .btn:hover{ border-color:var(--brass); color:var(--ink); background:var(--brass); }
+  .btn:hover{ border-color:var(--teal); color:var(--ink); background:var(--teal); }
   .btn-primary{
-    background:var(--brass);
+    background:var(--pers);
     color:var(--ink);
-    border-color:var(--brass);
+    border-color:var(--pers);
   }
-  .btn-primary:hover{ background:var(--brass-hi); border-color:var(--brass-hi); color:var(--ink); }
+  .btn-primary:hover{ background:var(--pers-hi); border-color:var(--pers-hi); color:var(--ink); }
   .btn-ghost{ border-color:var(--line-2); color:var(--bone); }
   .btn-ghost:hover{ background:var(--bone); border-color:var(--bone); color:var(--ink); }
   .btn .lbl{ display:flex; flex-direction:column; align-items:flex-start; gap:0; }
@@ -385,72 +428,48 @@
   .cta-row{ display:flex; flex-wrap:wrap; gap:.85rem; }
 
   /* ==============================================================
-     HERO — diagonal clip: still plane above, motion plane below
+     HERO — full-bleed light study, type anchored low-left
      ============================================================== */
   .hero{
     position:relative;
     isolation:isolate;
     overflow:hidden;
     background:var(--ink);
-    padding-block:clamp(4.5rem, 11vw, 8.5rem) clamp(4.5rem, 10vw, 7.5rem);
+    min-height:min(100svh, 880px);
+    display:flex;
+    align-items:flex-end;
+    padding-block:clamp(6rem, 15vh, 10rem) clamp(3rem, 7vh, 5.5rem);
   }
-  /* the still plane texture — perfectly static, fine vertical tooth */
-  .hero .plane-still{
+  .hero-img{
     position:absolute; inset:0; z-index:-3;
-    background:
-      radial-gradient(120% 90% at 18% 6%, rgba(224,176,98,.10), transparent 58%),
-      var(--ink);
+    width:100%; height:100%;
+    object-fit:cover;
+    object-position:68% 22%;
   }
-  /* 1px brass seam, then the motion plane clipped just inside it.
-     The wedge lives to the RIGHT of the type column, so the diagonal
-     never slices a line of text. */
-  .hero .plane-seam{
+  /* scrim: darken the lower-left where the type lives; let the light breathe top-right */
+  .hero-scrim{
     position:absolute; inset:0; z-index:-2;
-    background:linear-gradient(160deg, var(--brass-dk) 0%, var(--brass) 34%, var(--brass-hi) 55%, var(--brass) 76%, var(--brass-dk) 100%);
-    clip-path:polygon(38% 100%, 100% 14%, 100% 100%);
-  }
-  .hero .plane-motion{
-    position:absolute; inset:0; z-index:-1;
-    clip-path:polygon(calc(38% + 2px) 100%, 100% calc(14% + 2px), 100% 100%);
     background:
-      repeating-linear-gradient(0deg, rgba(236,231,221,.05) 0 1px, transparent 1px 4px),
-      linear-gradient(215deg, rgba(224,176,98,.13), transparent 46%),
-      var(--ink-2);
+      linear-gradient(180deg, rgba(6,7,9,.34) 0%, rgba(6,7,9,.06) 30%, rgba(6,7,9,.80) 90%),
+      linear-gradient(100deg, rgba(6,7,9,.88) 0%, rgba(6,7,9,.5) 42%, rgba(6,7,9,0) 76%);
   }
-  /* faint aperture watermark riding the still plane's empty upper right */
-  .hero .watermark{
-    position:absolute;
-    top:9%; right:4.5%;
-    width:clamp(160px, 19vw, 280px);
-    height:auto;
-    color:var(--brass);
-    opacity:.07;
-    z-index:-1;
-    pointer-events:none;
-  }
-  /* Narrow screens: the type runs full width, so the wedge is anchored to the
-     hero's bottom edge in px — it can never cut across a line or a button,
-     whatever the content height turns out to be. */
-  @media (max-width:1050px){
-    .hero{ padding-bottom:9rem; }
-    .hero .plane-seam{
-      clip-path:polygon(0 calc(100% - 50px), 100% calc(100% - 130px), 100% 100%, 0 100%);
-    }
-    .hero .plane-motion{
-      clip-path:polygon(0 calc(100% - 48px), 100% calc(100% - 128px), 100% 100%, 0 100%);
-    }
-    .hero .watermark{ display:none; }
+  /* a faint teal halo bleeding off the top-left seam of the frame */
+  .hero-scrim::after{
+    content:"";
+    position:absolute; inset:0;
+    background:radial-gradient(60% 42% at 84% 10%, rgba(84,185,174,.14), transparent 70%);
+    mix-blend-mode:screen;
   }
 
-  /* viewfinder corner brackets */
+  /* viewfinder corner brackets — "one frame" */
   .hero-frame{ position:relative; }
   .hero-frame::before, .hero-frame::after,
   .hero-frame > .corner::before, .hero-frame > .corner::after{
     content:"";
     position:absolute;
     width:18px; height:18px;
-    border:1px solid var(--brass-lo);
-    opacity:.75;
+    border:1px solid var(--teal-lo);
+    opacity:.7;
     pointer-events:none;
   }
   .hero-frame::before{ top:-1.5rem; left:-1.1rem; border-right:0; border-bottom:0; }
@@ -459,59 +478,68 @@
   .hero-frame > .corner::after{ bottom:-1.5rem; right:-1.1rem; border-left:0; border-top:0; }
 
   .hero h1{
-    font-size:clamp(2.7rem, 8.4vw, 6.1rem);
-    line-height:.94;
+    font-size:clamp(3rem, 12vw, 9rem);
+    line-height:.92;
     letter-spacing:-.045em;
-    margin:1.6rem 0 0;
+    margin:1.5rem 0 0;
     text-wrap:balance;
+    text-shadow:0 2px 40px rgba(6,7,9,.55);
   }
-  .hero h1 .l2{ display:block; color:var(--brass); }
+  .hero h1 .l2{ color:var(--bone-dim); }
   .hero h1 .en{
-    font-size:.3em;
+    font-size:.26em;
     font-weight:500;
-    letter-spacing:.02em;
+    letter-spacing:.01em;
     line-height:1.15;
     margin-top:1.05rem;
     color:var(--muted);
+    text-shadow:none;
+  }
+  /* word-by-word focus pull — the signature move. static state is visible. */
+  .hero h1 .w{ display:inline-block; }
+  @media (prefers-reduced-motion: no-preference){
+    .hero h1 .w{
+      animation:focusIn .82s cubic-bezier(.2,.6,.2,1) both;
+      animation-delay:calc(var(--d, 0) * .09s + .14s);
+      will-change:filter, opacity, transform;
+    }
+  }
+  @keyframes focusIn{
+    from{ opacity:0; filter:blur(12px); transform:translateY(.1em); }
+    to  { opacity:1; filter:blur(0);   transform:none; }
   }
 
-  .hero .lede{ margin-top:1.9rem; max-width:44ch; }
-  .hero .cta-row{ margin-top:2.4rem; }
-
-  /* plane labels riding the seam */
-  .plane-tag{
-    position:absolute;
-    right:clamp(1.2rem, 4vw, 3rem);
-    font-family:var(--display);
-    font-weight:600;
-    font-size:.62rem;
-    letter-spacing:.3em;
-    text-transform:uppercase;
-    color:var(--faint);
-    display:flex; align-items:center; gap:.6rem;
-    z-index:1;
-    pointer-events:none;
-  }
-  .plane-tag i{ width:5px; height:5px; background:var(--brass-lo); display:block; flex:none; }
-  /* the two tags flank the diagonal — still above it, motion below it */
-  .plane-tag.still{ right:auto; left:60%; top:42%; }
-  .plane-tag.motion{ right:auto; left:66%; top:70%; color:var(--brass-hi); }
-  @media (max-width:1050px){ .plane-tag{ display:none; } }
+  .hero .lede{ margin-top:1.9rem; max-width:46ch; color:var(--bone-dim); }
+  .hero .cta-row{ margin-top:2.3rem; }
 
   /* hero contact strip */
   .hero-meta{
     list-style:none;
     display:flex; flex-wrap:wrap; gap:.55rem 2rem;
-    margin-top:2.6rem;
-    padding-top:1.5rem;
+    margin-top:2.4rem;
+    padding-top:1.4rem;
     border-top:1px solid var(--line);
     font-size:.83rem;
     color:var(--muted);
-    max-width:44ch;
+    max-width:46ch;
   }
   .hero-meta li{ display:flex; align-items:center; gap:.55rem; }
-  .hero-meta svg{ width:15px; height:15px; color:var(--brass-lo); flex:none; }
-  .hero-meta a:hover{ color:var(--brass-hi); }
+  .hero-meta svg{ width:15px; height:15px; color:var(--teal-lo); flex:none; }
+  .hero-meta a:hover{ color:var(--teal-hi); }
+
+  /* honest caption for the light study */
+  .fig-cap{
+    margin-top:1.6rem;
+    font-family:var(--display);
+    font-weight:500;
+    font-size:.62rem;
+    letter-spacing:.18em;
+    text-transform:uppercase;
+    color:var(--faint);
+    display:flex; align-items:center; gap:.6rem;
+    max-width:60ch;
+  }
+  .fig-cap svg{ width:13px; height:13px; color:var(--pers-lo); flex:none; }
 
   /* ==============================================================
      SECTIONS
@@ -545,7 +573,9 @@
   @media (min-width:720px){
     .medium + .medium{ border-top:0; border-left:1px solid var(--line); }
   }
-  .medium-icon{ width:30px; height:30px; color:var(--brass); }
+  .medium-icon{ width:30px; height:30px; }
+  .medium.still .medium-icon{ color:var(--pers); }
+  .medium.motion .medium-icon{ color:var(--teal); }
   .medium h3{
     font-size:1.42rem;
     margin-top:1.1rem;
@@ -562,6 +592,8 @@
     text-transform:uppercase;
     color:var(--faint);
   }
+  .medium.still .tag{ color:var(--pers-lo); }
+  .medium.motion .tag{ color:var(--teal-lo); }
 
   /* the joining statement under the two mediums */
   .joint{
@@ -572,7 +604,7 @@
     padding:clamp(1.4rem, 2.6vw, 1.9rem) clamp(1.7rem, 3vw, 2.4rem);
     display:flex; align-items:flex-start; gap:1.1rem;
   }
-  .joint svg{ width:22px; height:22px; color:var(--brass); flex:none; margin-top:.15rem; }
+  .joint svg{ width:22px; height:22px; color:var(--bone-dim); flex:none; margin-top:.15rem; }
   .joint p{
     font-family:var(--display);
     font-weight:500;
@@ -608,7 +640,7 @@
     font-size:.68rem;
     letter-spacing:.32em;
     text-transform:uppercase;
-    color:var(--brass);
+    color:var(--teal);
     margin-top:.7rem;
   }
   .place-card p{ color:var(--muted); font-size:.93rem; margin-top:1.2rem; }
@@ -624,9 +656,9 @@
     font-size:.65rem;
     letter-spacing:.2em;
     text-transform:uppercase;
-    color:var(--brass-hi);
-    border:1px solid var(--brass-dk);
-    background:rgba(224,176,98,.06);
+    color:var(--teal-hi);
+    border:1px solid var(--teal-dk);
+    background:rgba(84,185,174,.07);
     padding:.45rem .8rem;
     border-radius:2px;
   }
@@ -650,8 +682,10 @@
     font-size:clamp(2.3rem, 5.5vw, 3rem);
     letter-spacing:-.045em;
     line-height:1;
-    color:var(--brass);
+    color:var(--teal);
+    font-variant-numeric:tabular-nums lining-nums;
   }
+  .stat:first-child .n{ color:var(--pers); }
   .stat .n.sm{ font-size:clamp(1.5rem, 3.4vw, 1.85rem); letter-spacing:-.02em; }
   .stat .lab{
     font-family:var(--display);
@@ -680,7 +714,73 @@
   }
   .record-note .en{ font-size:.95em; }
 
-  /* ---------- 04 · CONTACT ---------- */
+  /* ---------- 04 · THE FRAME IS YOURS (reply hook) ---------- */
+  .yours{
+    display:grid; gap:clamp(1.8rem,4vw,3.2rem);
+    grid-template-columns:1fr;
+  }
+  @media (min-width:900px){ .yours{ grid-template-columns:.92fr 1.08fr; align-items:center; } }
+
+  .frames{
+    display:grid; gap:clamp(.9rem,2vw,1.3rem);
+    grid-template-columns:1fr;
+  }
+  @media (min-width:560px){ .frames{ grid-template-columns:1fr 1fr; } }
+
+  .frame{
+    position:relative;
+    aspect-ratio:4 / 3;
+    border:1px solid var(--line-2);
+    background:
+      radial-gradient(130% 100% at 28% 18%, rgba(226,121,90,.06), transparent 58%),
+      var(--ink);
+    display:flex; flex-direction:column;
+    align-items:center; justify-content:center;
+    text-align:center;
+    padding:clamp(1.1rem,3vw,1.8rem);
+    overflow:hidden;
+  }
+  .frame.motion{
+    background:
+      radial-gradient(130% 100% at 72% 82%, rgba(84,185,174,.07), transparent 58%),
+      var(--ink);
+  }
+  /* crop marks */
+  .frame::before, .frame::after{
+    content:""; position:absolute; width:15px; height:15px; pointer-events:none;
+  }
+  .frame::before{ top:8px; left:8px; border-top:1px solid var(--pers-lo); border-left:1px solid var(--pers-lo); }
+  .frame::after{ bottom:8px; right:8px; border-bottom:1px solid var(--pers-lo); border-right:1px solid var(--pers-lo); }
+  .frame.motion::before{ border-color:var(--teal-lo); }
+  .frame.motion::after{ border-color:var(--teal-lo); }
+  .frame .fnum{
+    position:absolute; top:9px; right:11px;
+    font-family:var(--display); font-weight:600;
+    font-size:.56rem; letter-spacing:.14em; text-transform:uppercase;
+    color:var(--faint);
+    font-variant-numeric:tabular-nums;
+  }
+  .frame .ficon{ width:30px; height:30px; opacity:.9; margin-bottom:.9rem; }
+  .frame.still .ficon{ color:var(--pers); }
+  .frame.motion .ficon{ color:var(--teal); }
+  .frame .fl{
+    font-family:var(--display);
+    font-weight:700;
+    font-size:1.05rem;
+    letter-spacing:-.01em;
+    line-height:1.15;
+  }
+  .frame .fl .en{ font-size:.66em; font-weight:500; margin-top:.35em; }
+  .frame .fs{
+    margin-top:.7rem;
+    font-size:.8rem;
+    line-height:1.5;
+    color:var(--muted);
+    max-width:26ch;
+  }
+  .frame .fs .en{ font-size:.92em; }
+
+  /* ---------- 05 · CONTACT ---------- */
   .contact{
     display:grid; gap:clamp(2rem, 4vw, 3.5rem);
     grid-template-columns:1fr;
@@ -688,8 +788,8 @@
   @media (min-width:900px){ .contact{ grid-template-columns:1fr .95fr; align-items:start; } }
 
   .contact-box{
-    border:1px solid var(--brass-dk);
-    background:linear-gradient(180deg, rgba(224,176,98,.055), transparent 60%), var(--ink);
+    border:1px solid var(--pers-dk);
+    background:linear-gradient(180deg, rgba(226,121,90,.06), transparent 60%), var(--ink);
     padding:clamp(1.7rem, 3.4vw, 2.5rem);
   }
   .contact-box h3{
@@ -709,7 +809,7 @@
     gap:1.1rem;
   }
   .direct li{ display:flex; gap:.9rem; align-items:flex-start; }
-  .direct svg{ width:18px; height:18px; color:var(--brass); flex:none; margin-top:.3rem; }
+  .direct svg{ width:18px; height:18px; color:var(--teal); flex:none; margin-top:.3rem; }
   .direct .k{
     font-family:var(--display);
     font-size:.6rem;
@@ -727,7 +827,7 @@
     margin-top:.2rem;
     display:block;
   }
-  .direct a.v:hover{ color:var(--brass-hi); }
+  .direct a.v:hover{ color:var(--teal-hi); }
 
   /* ==============================================================
      FOOTER
@@ -744,7 +844,7 @@
   }
   .foot-top .brand{ margin-right:auto; }
   .foot-links{ display:flex; flex-wrap:wrap; gap:1.4rem; font-size:.85rem; color:var(--muted); }
-  .foot-links a:hover{ color:var(--brass-hi); }
+  .foot-links a:hover{ color:var(--teal-hi); }
   .credit{ margin-top:1.8rem; font-size:.79rem; line-height:1.7; color:var(--faint); }
   .credit .studio{ color:var(--bone-dim); font-family:var(--display); font-weight:500; letter-spacing:.01em; }
   .credit .disclaim{ display:block; margin-top:.4rem; max-width:62ch; }
@@ -762,7 +862,7 @@
       position:fixed; left:0; right:0; bottom:0;
       z-index:90;
       background:var(--line);
-      border-top:1px solid var(--brass-dk);
+      border-top:1px solid var(--pers-dk);
       box-shadow:0 -14px 34px rgba(0,0,0,.6);
       padding-bottom:env(safe-area-inset-bottom);
     }
@@ -778,8 +878,8 @@
       color:var(--bone);
     }
     .dock a svg{ width:17px; height:17px; flex:none; }
-    .dock a.mail{ background:var(--brass); color:var(--ink); }
-    .dock a.tel{ color:var(--brass-hi); }
+    .dock a.mail{ background:var(--pers); color:var(--ink); }
+    .dock a.tel{ color:var(--teal-hi); }
     .dock .dl{ display:flex; flex-direction:column; align-items:flex-start; line-height:1.15; }
     .dock .dl .es{ display:block; }
     .dock .dl .en{
@@ -798,6 +898,8 @@
 </style>
 </head>
 <body>
+
+<div class="progress" aria-hidden="true"></div>
 
 <!-- ============================ HEADER ============================ -->
 <div class="topline"></div>
@@ -844,21 +946,8 @@
 <!-- ============================ HERO ============================ -->
 <main id="top">
 <section class="hero">
-  <div class="plane-still" aria-hidden="true"></div>
-  <div class="plane-seam" aria-hidden="true"></div>
-  <div class="plane-motion" aria-hidden="true"></div>
-
-  <svg class="watermark" viewBox="0 0 48 48" fill="none" aria-hidden="true">
-    <circle cx="24" cy="24" r="21" stroke="currentColor" stroke-width="1"/>
-    <path d="M32 24 L28 30.93 L20 30.93 L16 24 L20 17.07 L28 17.07 Z" stroke="currentColor" stroke-width=".9" stroke-linejoin="round"/>
-    <g stroke="currentColor" stroke-width=".8" stroke-linecap="round">
-      <path d="M32 24 L36.05 41.2"/><path d="M28 30.93 L15.13 43.03"/><path d="M20 30.93 L3.08 25.83"/>
-      <path d="M16 24 L11.95 6.8"/><path d="M20 17.07 L32.87 4.97"/><path d="M28 17.07 L44.92 22.17"/>
-    </g>
-  </svg>
-
-  <span class="plane-tag still" aria-hidden="true"><i></i>Still · Foto</span>
-  <span class="plane-tag motion" aria-hidden="true"><i></i>Motion · Film</span>
+  <img class="hero-img" src="atmosphere.jpg" alt="Abstract cinematic light study — concept illustration" width="1600" height="914" fetchpriority="high" decoding="async">
+  <div class="hero-scrim" aria-hidden="true"></div>
 
   <div class="wrap">
     <div class="hero-frame">
@@ -870,8 +959,8 @@
       </p>
 
       <h1>
-        <span class="es" lang="es">Dos medios.<span class="l2">Un solo cuadro.</span></span>
-        <span class="en" lang="en">Two mediums.<span class="l2">One frame.</span></span>
+        <span class="es" lang="es"><span class="line"><span class="w" style="--d:0">Dos</span> <span class="w" style="--d:1">medios.</span></span><span class="line l2"><span class="w" style="--d:2">Un</span> <span class="w" style="--d:3">solo</span> <span class="w" style="--d:4">cuadro.</span></span></span>
+        <span class="en" lang="en"><span class="line"><span class="w" style="--d:0">Two</span> <span class="w" style="--d:1">mediums.</span></span><span class="line l2"><span class="w" style="--d:2">One</span> <span class="w" style="--d:3">frame.</span></span></span>
       </h1>
 
       <p class="lede">
@@ -910,11 +999,16 @@
           <a href="tel:+16156741928">+1 615-674-1928</a>
         </li>
       </ul>
+
+      <p class="fig-cap">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3.4"/></svg>
+        <span class="inl"><span class="es" lang="es">Estudio de luz — ilustración conceptual</span><span class="en" lang="en">Light study — concept illustration</span></span>
+      </p>
     </div>
   </div>
 </section>
 
-<div class="rail brass" aria-hidden="true"></div>
+<div class="rail warm" aria-hidden="true"></div>
 
 <!-- ==================== 01 · TWO MEDIUMS, ONE STUDIO ==================== -->
 <section class="band band-2" id="estudio">
@@ -927,20 +1021,20 @@
     </p>
 
     <div class="thesis">
-      <div>
+      <div class="reveal">
         <h2 class="sec-h">
           <span class="es" lang="es">Casi siempre te piden elegir.</span>
           <span class="en" lang="en">Almost everyone makes you choose.</span>
         </h2>
         <p class="lede" style="margin-top:1.6rem">
-          <span class="es" lang="es">Fotógrafo por un lado, camarógrafo por el otro. Dos contrataciones, dos formas de trabajar, dos personas que se conocen el mismo día y se estorban entre ellas. Valuarte hace las dos: fotografía y film, del mismo estudio.</span>
+          <span class="es" lang="es">Fotógrafo por un lado, camarógrafo por el otro. Dos contrataciones, dos formas de trabajar, dos personas que se conocen el mismo día y se estorban entre sí. Valuarte hace las dos: fotografía y film, del mismo estudio.</span>
           <span class="en" lang="en">A photographer on one side, a videographer on the other. Two bookings, two ways of working, two people who meet for the first time on the day itself. Valuarte does both: photography and film, from one studio.</span>
         </p>
       </div>
 
-      <div>
+      <div class="reveal">
         <div class="mediums">
-          <article class="medium">
+          <article class="medium still">
             <span class="tag" aria-hidden="true">01 / A</span>
             <svg class="medium-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" aria-hidden="true">
               <rect x="4" y="12" width="40" height="28" rx="2"/>
@@ -958,7 +1052,7 @@
             </p>
           </article>
 
-          <article class="medium">
+          <article class="medium motion">
             <span class="tag" aria-hidden="true">01 / B</span>
             <svg class="medium-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" aria-hidden="true">
               <rect x="5" y="10" width="38" height="28" rx="2"/>
@@ -1006,7 +1100,7 @@
     </p>
 
     <div class="place">
-      <div>
+      <div class="reveal">
         <h2 class="sec-h">
           <span class="es" lang="es">En Nashville, y en tu idioma.</span>
           <span class="en" lang="en">In Nashville, and in your language.</span>
@@ -1017,7 +1111,7 @@
         </p>
       </div>
 
-      <div class="place-card">
+      <div class="place-card reveal">
         <div class="perf-v" aria-hidden="true"></div>
         <div class="body">
           <p class="city">Nashville</p>
@@ -1048,16 +1142,18 @@
       </span>
     </p>
 
-    <h2 class="sec-h" style="max-width:20ch">
-      <span class="es" lang="es">17 de 17.</span>
-      <span class="en" lang="en">17 out of 17.</span>
-    </h2>
-    <p class="lede" style="margin-top:1.6rem">
-      <span class="es" lang="es">No vas a encontrar aquí frases bonitas que nos escribimos solos. Éstos son los números que cualquiera puede ir a verificar en la página de Facebook de Valuarte, ahora mismo.</span>
-      <span class="en" lang="en">You won't find flattering quotes we wrote ourselves. These are the numbers anyone can go verify on Valuarte's Facebook page, right now.</span>
-    </p>
+    <div class="reveal">
+      <h2 class="sec-h" style="max-width:20ch">
+        <span class="es" lang="es">17 de 17.</span>
+        <span class="en" lang="en">17 out of 17.</span>
+      </h2>
+      <p class="lede" style="margin-top:1.6rem">
+        <span class="es" lang="es">No vas a encontrar aquí frases bonitas que nos escribimos solos. Éstos son los números que cualquiera puede ir a verificar en la página de Facebook de Valuarte, ahora mismo.</span>
+        <span class="en" lang="en">You won't find flattering quotes we wrote ourselves. These are the numbers anyone can go verify on Valuarte's Facebook page, right now.</span>
+      </p>
+    </div>
 
-    <div class="record">
+    <div class="record reveal">
       <div class="stat">
         <p class="n">100%</p>
         <p class="lab">
@@ -1111,20 +1207,92 @@
   </div>
 </section>
 
-<div class="rail brass" aria-hidden="true"></div>
+<div class="rail warm" aria-hidden="true"></div>
 
-<!-- ==================== 04 · CONTACT ==================== -->
-<section class="band" id="contacto">
+<!-- ==================== 04 · THE FRAME IS YOURS (reply hook) ==================== -->
+<section class="band" id="tu-trabajo">
   <div class="wrap">
     <p class="slate">
       <b>04</b>
+      <span>
+        <span class="es" lang="es">El cuadro</span><span class="en" lang="en">The frame</span>
+      </span>
+    </p>
+
+    <div class="yours">
+      <div class="reveal">
+        <h2 class="sec-h">
+          <span class="es" lang="es">Este marco es tuyo.</span>
+          <span class="en" lang="en">This frame is yours.</span>
+        </h2>
+        <p class="lede" style="margin-top:1.6rem">
+          <span class="es" lang="es">Esta página todavía no enseña tu trabajo — a propósito. Mándanos unas fotos y unos clips y los montamos aquí esta misma noche, en el mismo cuadro.</span>
+          <span class="en" lang="en">This page doesn't show your work yet — on purpose. Send a few photos and clips and they go up here tonight, in the same frame.</span>
+        </p>
+        <div class="cta-row" style="margin-top:1.9rem">
+          <a class="btn btn-primary" href="mailto:valuartephotography@gmail.com?subject=Fotos%20y%20clips%20para%20la%20p%C3%A1gina%20%2F%20Photos%20and%20clips%20for%20the%20page">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="5" width="19" height="14" rx="1.5"/><path d="M3 6.5 12 13l9-6.5"/></svg>
+            <span class="lbl">
+              <span class="es" lang="es">Mandar fotos y clips</span>
+              <span class="en" lang="en">Send photos and clips</span>
+            </span>
+          </a>
+        </div>
+      </div>
+
+      <div class="frames reveal">
+        <div class="frame still">
+          <span class="fnum" aria-hidden="true">01 · A</span>
+          <svg class="ficon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" aria-hidden="true">
+            <rect x="4" y="12" width="40" height="28" rx="2"/>
+            <path d="M16 12l3-5h10l3 5"/>
+            <circle cx="24" cy="26" r="8"/>
+          </svg>
+          <p class="fl">
+            <span class="es" lang="es">Tus fotos aquí</span>
+            <span class="en" lang="en">Your photos here</span>
+          </p>
+          <p class="fs">
+            <span class="es" lang="es">Un puñado de imágenes y llenamos este marco.</span>
+            <span class="en" lang="en">A handful of images and this frame fills in.</span>
+          </p>
+        </div>
+
+        <div class="frame motion">
+          <span class="fnum" aria-hidden="true">01 · B</span>
+          <svg class="ficon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" aria-hidden="true">
+            <rect x="5" y="10" width="38" height="28" rx="2"/>
+            <path d="M14 10v28M34 10v28"/>
+            <path d="M5 17h9M5 24h9M5 31h9M34 17h9M34 24h9M34 31h9"/>
+          </svg>
+          <p class="fl">
+            <span class="es" lang="es">Tus clips aquí</span>
+            <span class="en" lang="en">Your clips here</span>
+          </p>
+          <p class="fs">
+            <span class="es" lang="es">Unos segundos de film y este marco se mueve.</span>
+            <span class="en" lang="en">A few seconds of film and this frame moves.</span>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="rail" aria-hidden="true"></div>
+
+<!-- ==================== 05 · CONTACT ==================== -->
+<section class="band" id="contacto">
+  <div class="wrap">
+    <p class="slate">
+      <b>05</b>
       <span>
         <span class="es" lang="es">El contacto</span><span class="en" lang="en">Get in touch</span>
       </span>
     </p>
 
     <div class="contact">
-      <div>
+      <div class="reveal">
         <h2 class="sec-h">
           <span class="es" lang="es">Cuéntanos de tu día.</span>
           <span class="en" lang="en">Tell us about your day.</span>
@@ -1135,7 +1303,7 @@
         </p>
       </div>
 
-      <div class="contact-box">
+      <div class="contact-box reveal">
         <h3>
           <span class="es" lang="es">Escribe al estudio</span>
           <span class="en" lang="en">Write to the studio</span>

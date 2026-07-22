@@ -14,11 +14,13 @@
      AUBREY PHOTOGRAPHY — design concept
      A front door, not a gallery link.
 
-     No photographs appear on this page, by design: the studio's
-     pictures are theirs to publish, not ours to invent. So the
-     page is built the way a good print is mounted — pale sage
-     and bone, deep ink, one hairline, and a great deal of
-     margin around very little.
+     No photographs of the studio's work appear on this page, by
+     design: those pictures are theirs to publish, not ours to
+     invent. So the page is built the way a good print is mounted —
+     pale sage and warm bone, deep ink, one hairline, a single
+     field of soft light, and a great deal of margin around very
+     little. The one image is a LIGHT study, captioned as a concept
+     illustration; it is not the studio's photography.
      ========================================================== */
 
   :root{
@@ -37,6 +39,9 @@
     --text: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 
     --gut: 6.5rem;          /* the hanging margin on desktop */
+
+    /* a whisper of grain — used ONLY over the light field */
+    --grain:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 600'%3E%3Cfilter id='a'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.72' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23a)'/%3E%3C/svg%3E");
   }
 
   *,*::before,*::after{ box-sizing:border-box; margin:0; padding:0; }
@@ -63,6 +68,26 @@
   ::selection{ background:var(--sage-wash); color:var(--ink); }
 
   a{ color:inherit; }
+  img{ display:block; max-width:100%; }
+
+  /* ---------- reading-progress hairline ----------
+     Hidden unless scroll timelines are supported AND motion is
+     allowed — so it can never paint as a permanent full bar. */
+  .progress{ display:none; }
+  @media (prefers-reduced-motion: no-preference){
+    @supports (animation-timeline: scroll()){
+      .progress{
+        display:block;
+        position:fixed; inset:0 0 auto 0;
+        height:2px; z-index:90;
+        background:var(--sage);
+        transform-origin:left;
+        animation:grow linear;
+        animation-timeline:scroll(root);
+      }
+    }
+  }
+  @keyframes grow{ from{ transform:scaleX(0); } to{ transform:scaleX(1); } }
 
   /* ---------- shared measure ---------- */
 
@@ -131,6 +156,7 @@
     font-size:clamp(2.1rem, 5.4vw, 3.35rem);
     line-height:1.08;
     letter-spacing:-.012em;
+    text-wrap:balance;
     max-width:20ch;
   }
   h2 em{ font-style:italic; color:var(--sage-deep); }
@@ -140,6 +166,7 @@
     line-height:1.72;
     color:var(--ink-soft);
     max-width:44ch;
+    text-wrap:pretty;
   }
   p + p{ margin-top:1rem; }
 
@@ -147,68 +174,108 @@
 
   .mark{ display:block; color:var(--sage); }
 
-  /* ---------- hero (asymmetric split) ---------- */
+  /* =========================================================
+     HERO — masthead · light field · overlapping display line
+     ========================================================= */
 
-  .hero{
+  .hero{ border-bottom:1px solid var(--rule); padding-bottom:3.75rem; }
+  @media (min-width:820px){ .hero{ padding-bottom:6rem; } }
+
+  /* masthead strip */
+  .masthead{
+    padding-block:1.5rem 1.75rem;
+    display:flex;
+    flex-wrap:wrap;
+    align-items:center;
+    justify-content:space-between;
+    gap:1rem .75rem;
     border-bottom:1px solid var(--rule);
-    padding-block:3.25rem 4rem;
   }
-  @media (min-width:820px){
-    .hero{
-      padding-block:4.5rem 6.5rem;
-      min-height:88vh;
-      display:flex;
-      align-items:center;
-    }
-  }
+  @media (min-width:820px){ .masthead{ padding-block:2rem 2.25rem; } }
 
-  .hero-grid{ display:grid; gap:2.75rem; width:100%; }
-  @media (min-width:820px){
-    .hero-grid{
-      grid-template-columns:16rem minmax(0,1fr);   /* narrow id · wide voice */
-      gap:0;
-      align-items:start;
-    }
-  }
-
-  .id{ display:flex; flex-direction:column; gap:1.15rem; align-items:flex-start; }
-  @media (min-width:820px){
-    .id{ padding-right:3rem; padding-top:.4rem; }
-  }
-
-  .wordmark{
+  .mh-mark{ display:flex; align-items:center; gap:.8rem; }
+  .mh-mark .wordmark{
     font-family:var(--display);
     font-weight:400;
-    font-size:1.32rem;
-    line-height:1.25;
-    letter-spacing:.06em;
+    font-size:1.24rem;
+    letter-spacing:.1em;
     text-transform:uppercase;
+    line-height:1;
   }
-  .wordmark span{ display:block; color:var(--sage-deep); letter-spacing:.16em; font-size:.86em; }
-
-  .id-rule{ width:2.75rem; height:1px; background:var(--rule-2); }
-
-  .id-place{
-    font-size:.82rem;
-    line-height:1.55;
+  .mh-meta{
+    font-size:.72rem;
+    letter-spacing:.18em;
+    text-transform:uppercase;
     color:var(--muted);
-    letter-spacing:.01em;
   }
 
-  .voice{ min-width:0; }
-  @media (min-width:820px){
-    .voice{ border-left:1px solid var(--rule); padding-left:4rem; }
+  /* the one image — a soft atmospheric LIGHT field (full bleed) */
+  .field-fig{ position:relative; margin:0; }
+  .field{
+    position:relative;
+    width:100%;
+    aspect-ratio:16/9;
+    max-height:56vh;
+    overflow:hidden;
+    background:var(--sage-wash);
+  }
+  .field img{
+    width:100%; height:100%;
+    object-fit:cover;
+    object-position:center;
+  }
+  /* whisper of grain — over the light field ONLY (light ground → multiply) */
+  .field::after{
+    content:"";
+    position:absolute; inset:0;
+    pointer-events:none;
+    background-image:var(--grain);
+    background-size:172px;
+    opacity:.07;
+    mix-blend-mode:multiply;
+  }
+  /* soft bone fade at the base so the display line lands on quiet light */
+  .field::before{
+    content:"";
+    position:absolute; left:0; right:0; bottom:0; height:38%;
+    pointer-events:none;
+    background:linear-gradient(to top, var(--bone) 2%, rgba(251,249,244,0) 100%);
+    z-index:1;
+  }
+  /* honest caption — always visible, on a bone chip so it never gets lost */
+  .field-cap{
+    position:absolute;
+    top:.85rem;
+    right:clamp(1rem,4vw,2.5rem);
+    z-index:2;
+    font-size:.62rem;
+    letter-spacing:.16em;
+    text-transform:uppercase;
+    color:var(--ink-soft);
+    background:rgba(251,249,244,.82);
+    -webkit-backdrop-filter:blur(2px);
+    backdrop-filter:blur(2px);
+    padding:.42rem .7rem;
+    border:1px solid var(--rule);
+  }
+
+  /* the display line overlaps the field's lower edge — the trick */
+  .hero-body{
+    position:relative;
+    z-index:2;
+    margin-top:clamp(-3.25rem, -5vw, -1.5rem);
   }
 
   h1{
     font-family:var(--display);
     font-weight:300;
-    font-size:clamp(2.55rem, 8.2vw, 5.4rem);
-    line-height:1.02;
+    font-size:clamp(2.6rem, 9vw, 6.5rem);
+    line-height:1.0;
     letter-spacing:-.02em;
     text-wrap:balance;
-    max-width:15ch;
+    max-width:16ch;
   }
+  h1 .line{ display:block; }
   h1 em{ font-style:italic; color:var(--sage-deep); }
 
   .hero-note{
@@ -219,6 +286,7 @@
     font-size:1.02rem;
     line-height:1.7;
     color:var(--ink-soft);
+    text-wrap:pretty;
   }
 
   /* ---------- actions ---------- */
@@ -243,13 +311,6 @@
   .btn svg{ transition:transform .22s ease; }
   .btn:hover, .btn:focus-visible{ background:transparent; color:var(--sage-deep); }
   .btn:hover svg, .btn:focus-visible svg{ transform:translateX(4px); }
-
-  .btn-ghost{
-    background:transparent;
-    color:var(--sage-deep);
-    border-color:var(--rule-2);
-  }
-  .btn-ghost:hover, .btn-ghost:focus-visible{ background:var(--sage-deep); color:var(--bone); border-color:var(--sage-deep); }
 
   .addr{
     font-size:.9rem;
@@ -292,7 +353,7 @@
     letter-spacing:.005em;
     margin-bottom:.3rem;
   }
-  .list p{ color:var(--ink-soft); font-size:.98rem; max-width:52ch; }
+  .list p{ color:var(--ink-soft); font-size:.98rem; max-width:52ch; text-wrap:pretty; }
 
   /* ---------- 02 · where ---------- */
 
@@ -315,6 +376,7 @@
     max-width:38ch;
     color:var(--ink-soft);
     font-size:.98rem;
+    text-wrap:pretty;
   }
 
   /* two-up: a wide left element and a narrow note holding the right margin */
@@ -392,7 +454,64 @@
     padding-left:1rem;
   }
 
-  /* ---------- 04 · contact ---------- */
+  /* ---------- 04 · the frame (the reply hook) ---------- */
+
+  .frame-fig{ margin:2.75rem 0 0; position:relative; }
+
+  .plate{
+    position:relative;
+    aspect-ratio:3/2;
+    max-height:52vh;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:2rem 1.5rem;
+    background:linear-gradient(158deg, var(--sage-wash) 0%, var(--bone-2) 62%, var(--bone) 100%);
+    border:1px solid var(--rule-2);
+  }
+  /* crop marks — two diagonal corners, in the accent */
+  .plate::before,.plate::after{
+    content:"";
+    position:absolute;
+    width:20px; height:20px;
+  }
+  .plate::before{ top:11px; left:11px; border-top:1px solid var(--sage); border-left:1px solid var(--sage); }
+  .plate::after{ bottom:11px; right:11px; border-bottom:1px solid var(--sage); border-right:1px solid var(--sage); }
+
+  .plate-lead{
+    font-family:var(--display);
+    font-weight:400;
+    font-size:clamp(1.65rem, 5vw, 2.75rem);
+    line-height:1.08;
+    letter-spacing:-.01em;
+    color:var(--sage-deep);
+  }
+  .plate-sub{
+    margin-top:.9rem;
+    font-size:.98rem;
+    line-height:1.6;
+    color:var(--ink-soft);
+    max-width:32ch;
+  }
+  .plate-tag{
+    position:absolute;
+    top:1rem; left:1rem;
+    font-size:.6rem;
+    letter-spacing:.2em;
+    text-transform:uppercase;
+    color:var(--muted);
+  }
+  .plate-cap{
+    margin-top:1rem;
+    font-size:.66rem;
+    letter-spacing:.16em;
+    text-transform:uppercase;
+    color:var(--muted);
+  }
+
+  /* ---------- 05 · contact ---------- */
 
   .contact{ background:var(--bone-2); border-top:1px solid var(--rule); }
 
@@ -482,20 +601,57 @@
   }
   .bar svg{ flex:none; }
   @media (min-width:820px){ .bar{ display:none; } }
+
+  /* =========================================================
+     MOTION — restrained, and always degrading to a visible state
+     ========================================================= */
+
+  /* hero: type drifts in on load (never a scroll reveal on the hero) */
+  @media (prefers-reduced-motion: no-preference){
+    h1 .line{ animation:focusIn 1.5s cubic-bezier(.22,.61,.28,1) both; }
+    h1 .line:nth-child(2){ animation-delay:.24s; }
+    .hero-rise{ animation:softUp 1s ease both; animation-delay:.55s; }
+    .hero-rise.two{ animation-delay:.72s; }
+  }
+  @keyframes focusIn{
+    0%{ opacity:0; filter:blur(16px); transform:translateY(1.1rem); }
+    100%{ opacity:1; filter:blur(0); transform:none; }
+  }
+  @keyframes softUp{
+    from{ opacity:0; transform:translateY(.7rem); }
+    to{ opacity:1; transform:none; }
+  }
+
+  /* sections: slow blur-to-focus drift as they enter — scroll driven,
+     static state is the finished (visible) one for non-supporting browsers */
+  @media (prefers-reduced-motion: no-preference){
+    @supports (animation-timeline: view()){
+      .reveal{
+        animation:rise linear both;
+        animation-timeline:view();
+        animation-range:entry 0% cover 42%;
+      }
+    }
+  }
+  @keyframes rise{
+    from{ opacity:0; transform:translateY(1.6rem); filter:blur(9px); }
+    to{ opacity:1; transform:none; filter:blur(0); }
+  }
 </style>
 </head>
 <body>
 
+<div class="progress" aria-hidden="true"></div>
+
 <main>
 
-  <!-- ============ HERO — asymmetric split ============ -->
+  <!-- ============ HERO — masthead · light field · overlapping line ============ -->
   <header class="hero">
     <div class="wrap">
-      <div class="hero-grid">
-
-        <div class="id">
-          <!-- abstract lens iris: the only graphic on the page -->
-          <svg class="mark" width="42" height="42" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1" aria-hidden="true">
+      <div class="masthead">
+        <div class="mh-mark">
+          <!-- abstract lens iris: the only line-graphic on the page -->
+          <svg class="mark" width="34" height="34" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1" aria-hidden="true">
             <circle cx="24" cy="24" r="21.5"/>
             <path d="M24 9 L11 16.5 L11 31.5 L24 39 L37 31.5 L37 16.5 Z"/>
             <path d="M24 9 V2.5"/>
@@ -505,40 +661,42 @@
             <path d="M37 31.5 L42.6 34.75"/>
             <path d="M37 16.5 L42.6 13.25"/>
           </svg>
-
-          <p class="wordmark">
-            Aubrey
-            <span>Photography</span>
-          </p>
-
-          <div class="id-rule"></div>
-
-          <p class="id-place">
-            Hendersonville, Tennessee<br>
-            Booked by email
-          </p>
+          <span class="wordmark">Aubrey Photography</span>
         </div>
+        <p class="mh-meta">Photographer &middot; Hendersonville, TN</p>
+      </div>
+    </div>
 
-        <div class="voice">
-          <p class="label" style="margin-bottom:1.6rem;">Photographer &middot; Hendersonville, TN</p>
+    <!-- THE IMAGE: a soft atmospheric LIGHT study — not the studio's work -->
+    <figure class="field-fig">
+      <div class="field">
+        <img src="atmosphere.jpg" width="1600" height="914"
+             alt="Abstract soft light study — concept illustration"
+             fetchpriority="high" decoding="async">
+        <p class="field-cap">Light study — concept illustration.</p>
+      </div>
+    </figure>
 
-          <h1>A photograph is a decision about <em>what to keep.</em></h1>
+    <div class="wrap">
+      <div class="hero-body">
+        <h1>
+          <span class="line">A photograph is a decision</span>
+          <span class="line">about <em>what to keep.</em></span>
+        </h1>
 
-          <p class="hero-note">
-            This page is a front door, not a gallery. There is nothing to scroll
-            past and no form to fill in &mdash; only an address, and whatever you
-            want to write to it.
-          </p>
+        <p class="hero-note hero-rise">
+          This page is a front door, not a gallery. There is nothing to scroll
+          past and no form to fill in &mdash; only an address, and whatever you
+          want to write to it.
+        </p>
 
-          <div class="act">
-            <a class="btn" href="mailto:aubreyphotography23@gmail.com?subject=Photography%20inquiry">
-              Send a note
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h15"/><path d="M13 6l6 6-6 6"/></svg>
-            </a>
-            <a class="addr" href="mailto:aubreyphotography23@gmail.com?subject=Photography%20inquiry">aubreyphotography23@gmail.com</a>
-          </div>
+        <div class="act hero-rise two">
+          <a class="btn" href="mailto:aubreyphotography23@gmail.com?subject=Photography%20inquiry">
+            Send a note
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h15"/><path d="M13 6l6 6-6 6"/></svg>
+          </a>
+          <a class="addr" href="mailto:aubreyphotography23@gmail.com?subject=Photography%20inquiry">aubreyphotography23@gmail.com</a>
         </div>
-
       </div>
     </div>
   </header>
@@ -547,7 +705,7 @@
   <section class="band" aria-labelledby="work-h">
     <div class="wrap">
       <p class="marker">01</p>
-      <div class="col">
+      <div class="col reveal">
         <p class="label">The work</p>
         <h2 id="work-h" style="margin-top:1.1rem;">Booked one session at a <em>time.</em></h2>
         <p class="lede" style="margin-top:1.5rem;">
@@ -597,7 +755,7 @@
   <section class="band where" aria-labelledby="where-h">
     <div class="wrap">
       <p class="marker">02</p>
-      <div class="col">
+      <div class="col reveal">
         <p class="label">Where</p>
         <div class="split">
           <p class="place" id="where-h">
@@ -618,7 +776,7 @@
   <section class="band" aria-labelledby="record-h">
     <div class="wrap">
       <p class="marker">03</p>
-      <div class="col">
+      <div class="col reveal">
         <p class="label">The record</p>
         <h2 id="record-h" style="margin-top:1.1rem;">What is already <em>on the page.</em></h2>
 
@@ -652,11 +810,40 @@
     </div>
   </section>
 
-  <!-- ============ 04 · CONTACT ============ -->
-  <section class="band contact" aria-labelledby="contact-h">
+  <!-- ============ 04 · THE FRAME (the reply hook) ============ -->
+  <section class="band" aria-labelledby="frame-h">
     <div class="wrap">
       <p class="marker">04</p>
-      <div class="col">
+      <div class="col reveal">
+        <p class="label">The frame</p>
+        <h2 id="frame-h" style="margin-top:1.1rem;">Where the photographs will <em>go.</em></h2>
+        <p class="lede" style="margin-top:1.5rem;">
+          This is a design concept, so it carries no photographs &mdash; the
+          pictures are the studio's to publish, not ours to invent. The space is
+          already cut for them, waiting on the real ones.
+        </p>
+
+        <figure class="frame-fig">
+          <div class="plate">
+            <span class="plate-tag">Placeholder</span>
+            <p class="plate-lead">Your photographs go here.</p>
+            <p class="plate-sub">
+              Send four, and this page is real by tonight.
+            </p>
+          </div>
+          <figcaption class="plate-cap">
+            A designed placeholder &mdash; this concept shows no photographs, by design.
+          </figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 05 · CONTACT ============ -->
+  <section class="band contact" aria-labelledby="contact-h">
+    <div class="wrap">
+      <p class="marker">05</p>
+      <div class="col reveal">
         <svg class="mark contact-mark" width="30" height="30" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.1" aria-hidden="true">
           <circle cx="24" cy="24" r="21.5"/>
           <path d="M24 9 L11 16.5 L11 31.5 L24 39 L37 31.5 L37 16.5 Z"/>

@@ -12,28 +12,33 @@
 <style>
 /* ============================================================
    ALECIA HOBACK PHOTOGRAPHY — design concept
-   Concept: craft over count. The page is built like a mat board
-   and a commission brief. Restraint carries the credibility.
-   Palette: deep navy ground / brass accent / bone type.
+   Concept: CRAFT OVER COUNT. No tallies, no scores — the page
+   argues through craft. It is built like a mat board and a
+   commission brief. Restraint carries the credibility.
+   Palette: deep navy ground / warm brass accent / bone type.
+   One luminous image: light, not the work.
    ============================================================ */
 
 :root{
   --navy:      #0B1626;   /* ground */
-  --navy-2:    #102034;   /* duotone second tone */
+  --navy-2:    #102034;   /* second tone */
   --navy-3:    #16293F;   /* plate fill */
   --navy-4:    #1D3450;   /* raised edge */
   --brass:     #D9AD68;
+  --brass-lit: #EBC384;
   --brass-dim: #A87F45;
   --bone:      #EAE3D6;
   --bone-62:   rgba(234,227,214,.62);
   --bone-44:   rgba(234,227,214,.44);
   --hair:      rgba(217,173,104,.26);
   --hair-soft: rgba(234,227,214,.13);
-  --display:   "Chivo", Georgia, serif;
+  --display:   "Chivo", system-ui, sans-serif;
   --text:      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
                Helvetica, Arial, sans-serif;
   --gut:       clamp(20px, 5vw, 56px);
   --plate-max: 1140px;
+  /* film grain — feTurbulence, ~230 bytes, resolution-independent */
+  --grain:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 600'%3E%3Cfilter id='a'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.72' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23a)'/%3E%3C/svg%3E");
 }
 
 *,*::before,*::after{ box-sizing:border-box; }
@@ -48,12 +53,13 @@ body{
   font-size:16px;
   line-height:1.65;
   -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
   /* clearance for the sticky mobile action bar */
   padding-bottom:calc(76px + env(safe-area-inset-bottom));
 }
 @media (min-width:820px){ body{ padding-bottom:0; } }
 
-img{ max-width:100%; }
+img{ max-width:100%; display:block; }
 
 a{ color:inherit; }
 
@@ -74,9 +80,26 @@ a{ color:inherit; }
 .skip{
   position:absolute; left:-9999px; top:0;
   background:var(--brass); color:var(--navy);
-  padding:12px 18px; font-weight:700; z-index:99;
+  padding:12px 18px; font-weight:700; z-index:120;
 }
 .skip:focus{ left:0; }
+
+/* ---------- scroll-progress hairline (the single growing brass line) --- */
+
+.progress{ display:none; }
+@supports (animation-timeline: scroll()){
+  @media (prefers-reduced-motion: no-preference){
+    .progress{
+      display:block;
+      position:fixed; inset:0 0 auto 0; height:2px;
+      background:var(--brass); transform:scaleX(0); transform-origin:left;
+      z-index:110;
+      animation:grow linear both;
+      animation-timeline:scroll(root);
+    }
+  }
+}
+@keyframes grow{ from{transform:scaleX(0);} to{transform:scaleX(1);} }
 
 /* ---------- shared type ---------- */
 
@@ -96,6 +119,7 @@ h1,h2,h3{
   line-height:1.03;
   letter-spacing:-.028em;
   margin:0;
+  text-wrap:balance;
 }
 
 .lede{
@@ -103,6 +127,26 @@ h1,h2,h3{
   line-height:1.6;
   color:var(--bone-62);
   max-width:46ch;
+  text-wrap:pretty;
+}
+
+.num{ font-variant-numeric:tabular-nums lining-nums; }
+
+/* ---------- scroll-driven reveal (blur-to-focus, a focus pull) ---------- */
+/* Static state is the visible one, so non-supporting browsers show finished
+   content — a free, correct fallback. Reveals never touch the hero. */
+@media (prefers-reduced-motion: no-preference){
+  @supports (animation-timeline: view()){
+    .reveal{
+      animation:pull linear both;
+      animation-timeline:view();
+      animation-range:entry 6% cover 40%;
+    }
+  }
+}
+@keyframes pull{
+  from{ opacity:0; transform:translateY(1.1rem); filter:blur(11px); }
+  to  { opacity:1; transform:none;               filter:blur(0);    }
 }
 
 /* ---------- masthead ---------- */
@@ -110,6 +154,7 @@ h1,h2,h3{
 header.mast{
   border-bottom:1px solid var(--hair-soft);
   background:var(--navy);
+  position:relative; z-index:5;
 }
 .mast-in{
   display:flex; align-items:center; justify-content:space-between;
@@ -149,8 +194,123 @@ header.mast{
   transition:color .18s ease, border-color .18s ease;
 }
 .mast-links a:hover{ color:var(--brass); border-bottom-color:var(--hair); }
+.mast-links .cta{ color:var(--brass); }
 
-/* ---------- the step wedge (photographic calibration strip) ---------- */
+/* ---------- HERO — the light band ---------- */
+
+.hero{
+  position:relative; isolation:isolate; overflow:hidden;
+  min-height:clamp(540px, 86vh, 840px);
+  display:flex; align-items:flex-end;
+  padding:clamp(84px,13vh,140px) 0 clamp(40px,6vw,72px);
+}
+.hero-img{
+  position:absolute; inset:0; z-index:-3;
+  width:100%; height:100%;
+  object-fit:cover; object-position:72% 42%;
+}
+.hero-scrim{
+  position:absolute; inset:0; z-index:-2; pointer-events:none;
+  background:
+    linear-gradient(90deg,
+      rgba(11,22,38,.97) 0%, rgba(11,22,38,.88) 32%,
+      rgba(11,22,38,.48) 64%, rgba(11,22,38,.12) 100%),
+    linear-gradient(0deg,
+      rgba(11,22,38,.94) 0%, rgba(11,22,38,.30) 44%, rgba(11,22,38,0) 74%);
+}
+.hero-grain{
+  position:absolute; inset:0; z-index:-1; pointer-events:none;
+  background-image:var(--grain); background-size:178px;
+  opacity:.10; mix-blend-mode:screen;
+}
+
+.hero-content{ position:relative; max-width:760px; }
+
+.hero .eyebrow{ margin-bottom:clamp(18px,3vw,26px); }
+
+.hero h1{
+  font-size:clamp(2.8rem, 11vw, 8rem);
+  line-height:.92;
+  letter-spacing:-.035em;
+  margin:0;
+}
+.hero h1 .ln{ display:block; }
+.hero h1 .ln--2{ color:var(--brass); }
+
+.hero-rule{
+  display:flex; align-items:center; gap:14px;
+  margin:clamp(22px,3.4vw,30px) 0 clamp(18px,2.6vw,24px);
+}
+.hero-rule::after{
+  content:""; flex:1 1 auto; height:1px; background:var(--hair);
+}
+.hero-rule b{
+  font-family:var(--display); font-weight:400;
+  font-size:clamp(13.5px,2.2vw,16px);
+  letter-spacing:.02em;
+  color:var(--bone);
+  white-space:nowrap;
+}
+
+.hero .lede{ max-width:52ch; }
+
+.acts{ display:flex; flex-wrap:wrap; gap:12px; margin-top:clamp(26px,4vw,34px); }
+
+.hero-cap{
+  display:inline-flex; align-items:center; gap:9px;
+  margin:clamp(30px,5vw,44px) 0 0;
+  font-family:var(--display); font-weight:400;
+  font-size:11px; letter-spacing:.14em; text-transform:uppercase;
+  color:var(--bone-44);
+}
+.hero-cap::before{
+  content:""; width:16px; height:1px; background:var(--brass-dim); flex:none;
+}
+
+/* on-load focus pull for the hero headline (never scroll-driven) */
+@media (prefers-reduced-motion: no-preference){
+  .hero h1 .ln{ animation:focuspull .9s cubic-bezier(.2,.7,.2,1) both; }
+  .hero h1 .ln--1{ animation-delay:.12s; }
+  .hero h1 .ln--2{ animation-delay:.30s; }
+  .hero .hero-rule,
+  .hero .lede,
+  .hero .acts,
+  .hero-cap{ animation:fadein .8s ease both; animation-delay:.5s; }
+}
+@keyframes focuspull{
+  from{ opacity:0; filter:blur(16px); transform:translateY(.5rem); }
+  to  { opacity:1; filter:blur(0);    transform:none; }
+}
+@keyframes fadein{ from{opacity:0; transform:translateY(.5rem);} to{opacity:1; transform:none;} }
+
+/* ---------- buttons ---------- */
+
+.btn{
+  display:inline-flex; align-items:center; justify-content:center; gap:10px;
+  min-height:52px;
+  padding:0 26px;
+  font-family:var(--display);
+  font-weight:700; font-size:13px;
+  letter-spacing:.13em; text-transform:uppercase;
+  text-decoration:none;
+  border:1px solid transparent;
+  border-radius:2px;
+  transition:background .18s ease, color .18s ease, border-color .18s ease, transform .18s ease;
+}
+.btn svg{ width:16px; height:16px; flex:none; }
+.btn--brass{
+  background:var(--brass); color:var(--navy); border-color:var(--brass);
+}
+.btn--brass:hover{ background:var(--brass-lit); border-color:var(--brass-lit); transform:translateY(-1px); }
+.btn--ghost{
+  background:rgba(11,22,38,.35); color:var(--bone); border-color:rgba(234,227,214,.32);
+}
+.btn--ghost:hover{ border-color:var(--brass); color:var(--brass); }
+@media (max-width:560px){
+  .hero .acts .btn{ flex:1 1 100%; }
+}
+
+/* ---------- step wedge (calibration strip) ---------- */
 
 .wedge{ display:flex; height:7px; width:100%; }
 .wedge span{ flex:1 1 0; display:block; }
@@ -166,126 +326,39 @@ header.mast{
 .wedge span:nth-child(10){ background:#C59F62; }
 .wedge span:nth-child(11){ background:#D9AD68; }
 
-/* ---------- hero: the mat plate ---------- */
+/* ---------- colophon strip (the particulars) ---------- */
 
-.hero{ padding:clamp(38px,7vw,84px) 0 clamp(30px,5vw,54px); }
-
-.plate-hold{ position:relative; }
-
-/* prepress crop marks at the plate corners */
-.crop{
-  position:absolute; width:13px; height:13px;
-  border-color:var(--brass-dim); border-style:solid; border-width:0;
-  pointer-events:none;
+.colophon{ background:var(--navy-2); border-bottom:1px solid var(--hair-soft); }
+.colo-in{
+  display:grid; gap:1px;
+  background:var(--hair-soft);
 }
-.crop.tl{ top:-9px;  left:-9px;  border-top-width:1px; border-left-width:1px; }
-.crop.tr{ top:-9px;  right:-9px; border-top-width:1px; border-right-width:1px; }
-.crop.bl{ bottom:-9px; left:-9px;  border-bottom-width:1px; border-left-width:1px; }
-.crop.br{ bottom:-9px; right:-9px; border-bottom-width:1px; border-right-width:1px; }
-@media (max-width:560px){ .crop{ display:none; } }
-
-/* the mat board */
-.mat{
-  border:1px solid var(--hair);
+@media (min-width:680px){ .colo-in{ grid-template-columns:repeat(4,1fr); } }
+.colo-in > div{
   background:var(--navy-2);
-  padding:clamp(12px,2.4vw,26px);
+  padding:clamp(16px,2.4vw,22px) var(--gut);
 }
-/* the window cut into the mat, with a bevelled edge */
-.window{
-  background:var(--navy);
-  border:1px solid rgba(234,227,214,.08);
-  box-shadow:
-    inset 1px 1px 0 rgba(234,227,214,.09),
-    inset -1px -1px 0 rgba(0,0,0,.5);
-  padding:clamp(28px,6vw,68px) clamp(22px,5vw,60px);
+@media (min-width:680px){
+  .colo-in > div{ padding-left:clamp(18px,2.4vw,26px); padding-right:clamp(18px,2.4vw,26px); }
+  .colo-in > div:first-child{ padding-left:var(--gut); }
+  .colo-in > div:last-child{ padding-right:var(--gut); }
 }
-
-.hero h1{
-  font-size:clamp(40px, 10.4vw, 104px);
-  margin:20px 0 0;
-}
-.hero h1 .ln{ display:block; }
-.hero h1 .ln--2{ color:var(--brass); }
-
-.hero-rule{
-  display:flex; align-items:center; gap:14px;
-  margin:26px 0 22px;
-}
-.hero-rule::after{
-  content:""; flex:1 1 auto; height:1px; background:var(--hair);
-}
-.hero-rule b{
-  font-family:var(--display); font-weight:400;
-  font-size:clamp(14px,2.4vw,17px);
-  letter-spacing:.03em;
-  color:var(--bone);
-}
-
-.hero-body{
-  display:grid; gap:clamp(24px,4vw,52px);
-  grid-template-columns:1fr;
-}
-@media (min-width:860px){
-  .hero-body{ grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr); align-items:stretch; }
-  /* right-hand caption rail, like the notes on the back of a print */
-  .hero-rail{
-    border-left:1px solid var(--hair-soft);
-    padding-left:clamp(28px,3.6vw,52px);
-  }
-}
-
-/* spec list — reads like the back of a print */
-.spec{ margin:0; font-size:13.5px; }
-.spec div{
-  display:flex; gap:14px; align-items:baseline;
-  padding:11px 0;
-  border-top:1px solid var(--hair-soft);
-}
-.spec div:last-child{ border-bottom:1px solid var(--hair-soft); }
-.spec dt{
-  flex:0 0 88px;
+.colo-k{
   font-family:var(--display); font-weight:700;
-  font-size:10px; letter-spacing:.2em; text-transform:uppercase;
-  color:var(--bone-44);
+  font-size:9.5px; letter-spacing:.2em; text-transform:uppercase;
+  color:var(--bone-44); margin:0 0 5px;
 }
-.spec dd{ margin:0; color:var(--bone); }
-.spec dd a{ text-decoration:none; border-bottom:1px solid var(--hair); }
-.spec dd a:hover{ color:var(--brass); }
-
-/* ---------- buttons ---------- */
-
-.acts{ display:flex; flex-wrap:wrap; gap:12px; margin-top:clamp(26px,4vw,36px); }
-
-.btn{
-  display:inline-flex; align-items:center; justify-content:center; gap:10px;
-  min-height:52px;
-  padding:0 26px;
-  font-family:var(--display);
-  font-weight:700; font-size:13px;
-  letter-spacing:.13em; text-transform:uppercase;
-  text-decoration:none;
-  border:1px solid transparent;
-  border-radius:2px;
-  transition:background .18s ease, color .18s ease, border-color .18s ease;
+.colo-v{
+  font-family:var(--display); font-weight:400;
+  font-size:clamp(14px,1.9vw,16px); letter-spacing:-.01em;
+  color:var(--bone); margin:0; overflow-wrap:anywhere;
 }
-.btn svg{ width:16px; height:16px; flex:none; }
-.btn--brass{
-  background:var(--brass); color:var(--navy); border-color:var(--brass);
-}
-.btn--brass:hover{ background:#EBC384; border-color:#EBC384; }
-.btn--ghost{
-  background:transparent; color:var(--bone); border-color:rgba(234,227,214,.28);
-}
-.btn--ghost:hover{ border-color:var(--brass); color:var(--brass); }
-.btn--wide{ flex:1 1 240px; }
+.colo-v a{ text-decoration:none; border-bottom:1px solid var(--hair); }
+.colo-v a:hover{ color:var(--brass); }
 
-/* ---------- duotone bands ---------- */
+/* ---------- bands ---------- */
 
-.band{ padding:clamp(52px,8vw,104px) 0; }
-
-/* flat two-tone panels, hard stops only — never a soft gradient.
-   The area band splits at exactly 50%, which lands dead centre of the
-   two-column gutter because .wrap is centred with symmetric padding. */
+.band{ padding:clamp(56px,8vw,110px) 0; }
 .band--duo{ background:var(--navy-2); }
 .band--duo-r{ background:var(--navy); }
 @media (min-width:860px){
@@ -296,10 +369,81 @@ header.mast{
 
 .sec-head{ max-width:60ch; }
 .sec-head h2{
-  font-size:clamp(27px,5vw,44px);
+  font-size:clamp(27px,5vw,46px);
   margin:16px 0 0;
 }
 .sec-head p{ margin:18px 0 0; }
+
+/* ---------- RESERVED FRAME — the reply hook ---------- */
+
+.reserve{ background:var(--navy); }
+.reserve-head{ max-width:56ch; margin-bottom:clamp(34px,5vw,52px); }
+.reserve-head h2{ font-size:clamp(26px,4.6vw,44px); margin:16px 0 0; line-height:1.06; }
+
+.rframe{ margin:0; }
+.rframe-plate{
+  position:relative;
+  border:1px solid var(--hair);
+  background:var(--navy-2);
+  padding:clamp(12px,2.2vw,22px);
+}
+.crop{
+  position:absolute; width:14px; height:14px;
+  border-color:var(--brass-dim); border-style:solid; border-width:0;
+  pointer-events:none;
+}
+.crop.tl{ top:-1px;  left:-1px;  border-top-width:1px; border-left-width:1px; }
+.crop.tr{ top:-1px;  right:-1px; border-top-width:1px; border-right-width:1px; }
+.crop.bl{ bottom:-1px; left:-1px;  border-bottom-width:1px; border-left-width:1px; }
+.crop.br{ bottom:-1px; right:-1px; border-bottom-width:1px; border-right-width:1px; }
+
+.rframe-window{
+  position:relative; overflow:hidden;
+  border:1px solid rgba(234,227,214,.08);
+  background:
+    radial-gradient(120% 130% at 78% 12%, rgba(217,173,104,.16), transparent 58%),
+    radial-gradient(120% 120% at 12% 92%, rgba(29,52,80,.65), transparent 60%),
+    var(--navy);
+  box-shadow:
+    inset 1px 1px 0 rgba(234,227,214,.07),
+    inset -1px -1px 0 rgba(0,0,0,.5);
+  min-height:clamp(240px,42vw,420px);
+  display:flex; flex-direction:column; justify-content:center;
+  padding:clamp(30px,6vw,72px) clamp(24px,5vw,64px);
+}
+.rframe-window::after{
+  content:""; position:absolute; inset:0; pointer-events:none;
+  background-image:var(--grain); background-size:176px;
+  opacity:.09; mix-blend-mode:screen;
+}
+.rframe-tag{
+  position:absolute; top:14px; left:16px;
+  font-family:var(--display); font-weight:700;
+  font-size:9.5px; letter-spacing:.2em; text-transform:uppercase;
+  color:var(--bone-44);
+}
+.rframe-lead{
+  font-family:var(--display); font-weight:900;
+  font-size:clamp(24px,4.6vw,44px);
+  letter-spacing:-.028em; line-height:1.02;
+  color:var(--bone); margin:0; max-width:20ch;
+}
+.rframe-lead em{ color:var(--brass); font-style:normal; }
+.rframe-sub{
+  margin:clamp(14px,2vw,18px) 0 0; max-width:44ch;
+  font-size:14.6px; color:var(--bone-62);
+}
+.rframe figcaption{
+  display:flex; gap:12px; align-items:baseline;
+  margin-top:clamp(16px,2.4vw,22px);
+  font-size:12.5px; color:var(--bone-44); line-height:1.6;
+}
+.rframe figcaption b{
+  flex:0 0 auto; white-space:nowrap;
+  font-family:var(--display); font-weight:700;
+  font-size:10px; letter-spacing:.16em; text-transform:uppercase;
+  color:var(--brass-dim);
+}
 
 /* ---------- the brief: numbered plates ---------- */
 
@@ -312,17 +456,19 @@ header.mast{
 @media (min-width:760px){ .brief{ grid-template-columns:repeat(3,1fr); } }
 
 .card{
-  background:var(--navy);
+  background:var(--navy-2);
   padding:clamp(24px,3.4vw,34px);
   display:flex; flex-direction:column; gap:14px;
 }
+.band--duo .card{ background:var(--navy); }
 .card-top{
   display:flex; align-items:center; justify-content:space-between;
   color:var(--brass);
 }
-.card-top .num{
+.card-top .cnum{
   font-family:var(--display); font-weight:900;
   font-size:12px; letter-spacing:.14em;
+  font-variant-numeric:tabular-nums;
 }
 .card-top svg{ width:26px; height:26px; }
 .card h3{
@@ -395,18 +541,26 @@ header.mast{
 .contact{ padding:clamp(52px,8vw,104px) 0; background:var(--navy); }
 
 .contact-plate{
+  position:relative;
   border:1px solid var(--hair);
   background:var(--navy-2);
   padding:clamp(12px,2.2vw,22px);
 }
 .contact-inner{
+  position:relative; overflow:hidden;
   background:var(--navy);
   border:1px solid rgba(234,227,214,.07);
   padding:clamp(28px,5vw,58px);
 }
-.contact h2{ font-size:clamp(26px,4.6vw,40px); }
+.contact-inner::after{
+  content:""; position:absolute; inset:0; pointer-events:none;
+  background:radial-gradient(90% 120% at 88% 0%, rgba(217,173,104,.10), transparent 55%);
+}
+.contact h2{ font-size:clamp(26px,4.6vw,40px); position:relative; }
+.contact .lede{ position:relative; }
 
 .reach{
+  position:relative;
   display:grid; gap:1px;
   margin-top:clamp(28px,4vw,40px);
   background:var(--hair-soft);
@@ -433,7 +587,6 @@ header.mast{
   letter-spacing:-.015em;
   overflow-wrap:anywhere;
 }
-/* the address is long — let it sit a size down so it holds one line */
 .reach .v--email{ font-size:clamp(14px,2.1vw,19px); }
 .reach .m{ font-size:12.5px; color:var(--bone-44); }
 
@@ -463,7 +616,7 @@ footer.site{
 /* ---------- sticky mobile action bar ---------- */
 
 .dock{
-  position:fixed; left:0; right:0; bottom:0; z-index:50;
+  position:fixed; left:0; right:0; bottom:0; z-index:100;
   display:grid; grid-template-columns:1fr 1fr; gap:1px;
   background:var(--hair-soft);
   border-top:1px solid var(--hair);
@@ -480,7 +633,13 @@ footer.site{
 .dock a svg{ width:16px; height:16px; }
 .dock .d-mail{ background:var(--brass); color:var(--navy); }
 .dock .d-call{ background:var(--navy-2); color:var(--bone); }
+
+@media (prefers-reduced-motion: reduce){
+  *{ animation:none !important; transition:none !important; }
+}
 </style>
+
+<span class="progress" aria-hidden="true"></span>
 
 <a class="skip" href="#brief">Skip to content</a>
 
@@ -497,83 +656,112 @@ footer.site{
       <a href="#brief">The brief</a>
       <a href="#area">Where</a>
       <a href="tel:+16155798399">615&#8202;·&#8202;579&#8202;·&#8202;8399</a>
-      <a href="mailto:aleciahobackphotography@gmail.com?subject=Photography%20inquiry">Email</a>
+      <a class="cta" href="mailto:aleciahobackphotography@gmail.com?subject=Photography%20inquiry">Email</a>
     </nav>
   </div>
 </header>
 
 <main id="top">
 
-  <!-- ============ HERO — mat plate ============ -->
+  <!-- ============ HERO — the light band ============ -->
   <section class="hero">
-    <div class="wrap">
-      <div class="plate-hold">
-        <span class="crop tl" aria-hidden="true"></span>
-        <span class="crop tr" aria-hidden="true"></span>
-        <span class="crop bl" aria-hidden="true"></span>
-        <span class="crop br" aria-hidden="true"></span>
+    <img class="hero-img" src="atmosphere.jpg" alt="Abstract light study on a dark field — concept illustration">
+    <div class="hero-scrim" aria-hidden="true"></div>
+    <div class="hero-grain" aria-hidden="true"></div>
 
-        <div class="mat">
-          <div class="window">
-            <p class="eyebrow">La Vergne, Tennessee &nbsp;·&nbsp; 37086</p>
+    <div class="wrap hero-content">
+      <p class="eyebrow">Alecia Hoback &nbsp;·&nbsp; La Vergne, Tennessee</p>
 
-            <h1>
-              <span class="ln">Alecia</span>
-              <span class="ln ln--2">Hoback</span>
-            </h1>
+      <h1>
+        <span class="ln ln--1">Light, held</span>
+        <span class="ln ln--2">with intent.</span>
+      </h1>
 
-            <div class="hero-rule"><b>Photography, by commission</b></div>
+      <div class="hero-rule"><b>Photography, by commission</b></div>
 
-            <div class="hero-body">
-              <div>
-                <p class="lede">
-                  Say what you need photographed, when and where it happens,
-                  and where the pictures go afterward. That is the whole beginning
-                  &mdash; and it is the fastest way to find out whether the date is
-                  open and the work is a fit.
-                </p>
+      <p class="lede">
+        Say what you need photographed, when and where it happens, and where the
+        pictures go afterward. That is the whole beginning &mdash; and the fastest
+        way to find out whether the date is open and the work is a fit.
+      </p>
 
-                <div class="acts">
-                  <a class="btn btn--brass" href="mailto:aleciahobackphotography@gmail.com?subject=Photography%20inquiry">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
-                      <rect x="2.5" y="5" width="19" height="14"/>
-                      <path d="M2.5 6.2 12 13.2l9.5-7"/>
-                    </svg>
-                    Email Alecia
-                  </a>
-                  <a class="btn btn--ghost" href="tel:+16155798399">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
-                      <path d="M6.2 3.5h3.2l1.6 4-2 1.4a12.5 12.5 0 0 0 6.1 6.1l1.4-2 4 1.6v3.2a1.7 1.7 0 0 1-1.9 1.7C10.4 20 4 13.6 4.5 5.4A1.7 1.7 0 0 1 6.2 3.5Z"/>
-                    </svg>
-                    615 579 8399
-                  </a>
-                </div>
-              </div>
+      <div class="acts">
+        <a class="btn btn--brass" href="mailto:aleciahobackphotography@gmail.com?subject=Photography%20inquiry">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+            <rect x="2.5" y="5" width="19" height="14"/>
+            <path d="M2.5 6.2 12 13.2l9.5-7"/>
+          </svg>
+          Email Alecia
+        </a>
+        <a class="btn btn--ghost" href="tel:+16155798399">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+            <path d="M6.2 3.5h3.2l1.6 4-2 1.4a12.5 12.5 0 0 0 6.1 6.1l1.4-2 4 1.6v3.2a1.7 1.7 0 0 1-1.9 1.7C10.4 20 4 13.6 4.5 5.4A1.7 1.7 0 0 1 6.2 3.5Z"/>
+          </svg>
+          615 579 8399
+        </a>
+      </div>
 
-              <div class="hero-rail">
-                <dl class="spec">
-                  <div>
-                    <dt>Based</dt>
-                    <dd>La Vergne, TN 37086</dd>
-                  </div>
-                  <div>
-                    <dt>Area</dt>
-                    <dd>Middle Tennessee</dd>
-                  </div>
-                  <div>
-                    <dt>Email</dt>
-                    <dd><a href="mailto:aleciahobackphotography@gmail.com?subject=Photography%20inquiry">aleciahobackphotography<wbr>@gmail.com</a></dd>
-                  </div>
-                  <div>
-                    <dt>Phone</dt>
-                    <dd><a href="tel:+16155798399">+1 615-579-8399</a></dd>
-                  </div>
-                </dl>
-              </div>
-            </div>
-          </div>
+      <p class="hero-cap">Light study &mdash; concept illustration.</p>
+    </div>
+  </section>
+
+  <div class="wedge" aria-hidden="true">
+    <span></span><span></span><span></span><span></span><span></span><span></span>
+    <span></span><span></span><span></span><span></span><span></span>
+  </div>
+
+  <!-- ============ COLOPHON — the particulars ============ -->
+  <section class="colophon" aria-label="Studio particulars">
+    <div class="wrap" style="padding-left:0;padding-right:0">
+      <div class="colo-in">
+        <div>
+          <p class="colo-k">Based</p>
+          <p class="colo-v num">La Vergne, TN 37086</p>
+        </div>
+        <div>
+          <p class="colo-k">Working area</p>
+          <p class="colo-v">Middle Tennessee</p>
+        </div>
+        <div>
+          <p class="colo-k">Email</p>
+          <p class="colo-v"><a href="mailto:aleciahobackphotography@gmail.com?subject=Photography%20inquiry">aleciahobackphotography<wbr>@gmail.com</a></p>
+        </div>
+        <div>
+          <p class="colo-k">Phone</p>
+          <p class="colo-v num"><a href="tel:+16155798399">+1 615-579-8399</a></p>
         </div>
       </div>
+    </div>
+  </section>
+
+  <!-- ============ RESERVED FRAME — the reply hook ============ -->
+  <section class="band reserve" id="frame">
+    <div class="wrap">
+      <div class="reserve-head">
+        <p class="eyebrow">Reserved space</p>
+        <h2 class="reveal">The frame is built.<br>The pictures come from you.</h2>
+      </div>
+
+      <figure class="rframe reveal">
+        <div class="rframe-plate">
+          <span class="crop tl" aria-hidden="true"></span>
+          <span class="crop tr" aria-hidden="true"></span>
+          <span class="crop bl" aria-hidden="true"></span>
+          <span class="crop br" aria-hidden="true"></span>
+          <div class="rframe-window">
+            <span class="rframe-tag">Fig. 01 &nbsp;·&nbsp; 3:2</span>
+            <p class="rframe-lead">Your work goes <em>here.</em></p>
+            <p class="rframe-sub">
+              Send a few favorites &mdash; a portrait, a venue, the single frame a
+              whole shoot hinged on &mdash; and this space carries them by tonight.
+            </p>
+          </div>
+        </div>
+        <figcaption>
+          <b>On this page</b>
+          <span>A held space, not a broken image. Nothing here is stock, and nothing pretends to be a photograph &mdash; the real pictures live wherever you keep them, and slot in the moment they arrive.</span>
+        </figcaption>
+      </figure>
     </div>
   </section>
 
@@ -587,7 +775,7 @@ footer.site{
     <div class="wrap">
       <div class="sec-head">
         <p class="eyebrow">Before the shutter</p>
-        <h2>Three lines make a<br>workable brief.</h2>
+        <h2 class="reveal">Three lines make a<br>workable brief.</h2>
         <p class="lede">
           A photography inquiry does not need to be long. It needs to be specific.
           Answer these three and Alecia can tell you quickly whether the date is
@@ -595,11 +783,11 @@ footer.site{
         </p>
       </div>
 
-      <div class="brief">
+      <div class="brief reveal">
 
         <article class="card">
           <div class="card-top">
-            <span class="num">01</span>
+            <span class="cnum">01</span>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true">
               <circle cx="12" cy="12" r="9"/>
               <path d="M12 3 16.5 10.8"/>
@@ -621,7 +809,7 @@ footer.site{
 
         <article class="card">
           <div class="card-top">
-            <span class="num">02</span>
+            <span class="cnum">02</span>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true">
               <path d="M3 8V3h5"/><path d="M21 8V3h-5"/>
               <path d="M3 16v5h5"/><path d="M21 16v5h-5"/>
@@ -639,7 +827,7 @@ footer.site{
 
         <article class="card">
           <div class="card-top">
-            <span class="num">03</span>
+            <span class="cnum">03</span>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true">
               <circle cx="12" cy="12" r="6"/>
               <path d="M12 1v6"/><path d="M12 17v6"/>
@@ -677,7 +865,7 @@ footer.site{
 
       <div class="sec-head">
         <p class="eyebrow">The ground covered</p>
-        <h2>La Vergne, and the<br>middle of Tennessee.</h2>
+        <h2 class="reveal">La Vergne, and the<br>middle of Tennessee.</h2>
         <p class="lede">
           La Vergne sits on the seam between Nashville and Murfreesboro, with
           Smyrna and Antioch a few minutes either side. A good deal of Middle
@@ -689,7 +877,7 @@ footer.site{
         </p>
       </div>
 
-      <div class="pinbox">
+      <div class="pinbox reveal">
         <p class="eyebrow">Nearest points</p>
         <ul class="towns">
           <li class="home">La Vergne <small>Based here</small></li>
@@ -729,7 +917,7 @@ footer.site{
             </a>
             <a href="tel:+16155798399">
               <span class="k">Telephone</span>
-              <span class="v">+1 615-579-8399</span>
+              <span class="v num">+1 615-579-8399</span>
               <span class="m">Tap to call from a phone</span>
             </a>
           </div>
